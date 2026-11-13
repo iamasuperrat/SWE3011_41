@@ -67,40 +67,31 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* with plan-deviation replanning: if the expanded node closest to the
-    current waypoint has no line of sight to it, drop the remaining waypoints and
-    search toward the goal only."""
+    """Original LLM-A* search, followed by line-of-sight path smoothing:
+    consecutive path nodes are replaced by the farthest node reachable in a
+    collision-free straight line."""
 
     # main() records this attribute; this method uses no waypoint confidence.
     waypoint_confidence = None
 
-    def _initialize_llm_paths(self):
-        super()._initialize_llm_paths()
-        self._tracked_target = None
-        self._best_dist = math.inf
-        self.plan_dropped = False
+    def extract_path(self, PARENT):
+        # Used both inside searching() (reported length) and in search() (validity check),
+        # so the smoothed path is what gets measured and validated.
+        path = super().extract_path(PARENT)
+        return self._smooth(path)
 
-    def get_neighbor(self, s):
-        # Called once per expansion with the node just popped from OPEN.
-        self._check_plan_deviation(s)
-        return super().get_neighbor(s)
-
-    def _check_plan_deviation(self, s):
-        if self.s_target == self.s_goal:
-            return
-        if self.s_target != self._tracked_target:  # new waypoint: reset tracking
-            self._tracked_target = self.s_target
-            self._best_dist = math.inf
-        dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
-        if dist >= self._best_dist:
-            return
-        self._best_dist = dist
-        # Closest approach so far is blocked by a barrier: the plan contradicts the map.
-        if self.is_collision(s, self.s_target):
-            self.i = len(self.target_list) - 1
-            self.s_target = self.s_goal
-            self.plan_dropped = True
-            self._update_queue()
+    def _smooth(self, path):
+        if len(path) <= 2:
+            return path
+        smoothed = [path[0]]
+        i = 0
+        while i < len(path) - 1:
+            j = len(path) - 1
+            while j > i + 1 and self.is_collision(path[i], path[j]):
+                j -= 1
+            smoothed.append(path[j])
+            i = j
+        return smoothed
 
 
 def valid_length(nodes, planner):
