@@ -67,91 +67,28 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* as sequential subgoal search: an independent search is run for each
-    segment (start -> waypoint 1 -> waypoint 2 -> ... -> goal) and the segment paths
-    are concatenated. If a waypoint is unreachable, it is skipped and the next one is
-    searched from the same anchor. Each segment keeps the original heuristic form
-    d(s, goal) + d(s, segment target)."""
+    """LLM-A* with a remaining-plan heuristic:
+    h(s) = W * [d(s, current target) + length of the remaining waypoint polyline to the goal].
+    With W = 2, the last segment (target = goal) matches the original 2 * d(s, goal)."""
+
+    W = 2.0
 
     # main() records this attribute; this method uses no waypoint confidence.
     waypoint_confidence = None
 
-    def searching(self, query, filepath='temp.png'):
-        self.filepath = filepath
-        input_data = self._parse_query(query)
-        self._initialize_parameters(input_data)
-        self._initialize_llm_paths()
+    def _initialize_llm_paths(self):
+        super()._initialize_llm_paths()
+        # remaining[i]: polyline length from target_list[i] through the later waypoints to the goal
+        n = len(self.target_list)
+        self._remaining = [0.0] * n
+        for k in range(n - 2, -1, -1):
+            a, b = self.target_list[k], self.target_list[k + 1]
+            self._remaining[k] = self._remaining[k + 1] + math.hypot(b[0] - a[0], b[1] - a[1])
 
-        self._stored = {}
-        self.skipped_waypoints = 0
-        path, anchor = [self.s_start], self.s_start
-
-        for t in self.target_list[1:]:
-            seg = self._segment_search(anchor, t)
-            if seg is None:
-                if t == self.s_goal:  # goal unreachable from the current anchor
-                    path = None
-                    break
-                self.skipped_waypoints += 1
-                continue
-            path.extend(seg[1:])
-            anchor = t
-
-        self.g = self._stored  # storage: distinct states stored by any segment
-        self._path = path
-
-        path = self.extract_path(self.PARENT)
-        result = {
-            "operation": len(self.CLOSED),
-            "storage": len(self.g),
-            "length": sum(self._euclidean_distance(path[i], path[i + 1]) for i in range(len(path) - 1)),
-            "llm_output": self.target_list,
-        }
-        if self.filepath is not None:
-            self.plot.animation(path, self.CLOSED, True, "LLM-A*", self.filepath)
-        return result
-
-    def _segment_f(self, g, s, target):
-        return (g[s] + math.hypot(self.s_goal[0] - s[0], self.s_goal[1] - s[1])
-                + math.hypot(target[0] - s[0], target[1] - s[1]))
-
-    def _segment_search(self, origin, target):
-        import heapq
-
-        g, parent, closed = {origin: 0}, {origin: origin}, set()
-        open_ = [(self._segment_f(g, origin, target), origin)]
-
-        while open_:
-            _, s = heapq.heappop(open_)
-            closed.add(s)
-            self.CLOSED.append(s)  # every segment's expansions are counted
-
-            if s == target:
-                break
-
-            for s_n in self.get_neighbor(s):
-                if s_n in closed:
-                    continue
-                new_cost = g[s] + self.cost(s, s_n)
-                if s_n not in g:  # keep original storage rule
-                    g[s_n] = math.inf
-                if new_cost < g[s_n]:
-                    g[s_n] = new_cost
-                    parent[s_n] = s
-                    heapq.heappush(open_, (self._segment_f(g, s_n, target), s_n))
-
-        self._stored.update(g)
-        if target not in closed:
-            return None
-        seg = [target]
-        while seg[-1] != origin:
-            seg.append(parent[seg[-1]])
-        return seg[::-1]
-
-    def extract_path(self, PARENT):
-        if self._path is None:  # no path: same KeyError as the original, handled by search()
-            raise KeyError(self.s_goal)
-        return list(self._path)
+    def heuristic(self, s):
+        i = min(self.i, len(self.target_list) - 1)
+        to_target = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
+        return self.W * (to_target + self._remaining[i])
 
 def valid_length(nodes, planner):
     """Evaluate the raw LLM polyline without filtering/repairing its nodes."""
