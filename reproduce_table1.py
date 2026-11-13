@@ -67,57 +67,38 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """Bidirectional LLM-A*: a forward search (start -> waypoints in order -> goal)
-    and a backward search (goal -> waypoints in reverse -> start) expand alternately.
-    Each side keeps the original LLM-A* heuristic and target switching.
-    The search stops when a popped state has already been reached by the other side."""
+    """LLM-A* as sequential subgoal search: an independent search is run for each
+    segment (start -> waypoint 1 -> waypoint 2 -> ... -> goal) and the segment paths
+    are concatenated. If a waypoint is unreachable, it is skipped and the next one is
+    searched from the same anchor. Each segment keeps the original heuristic form
+    d(s, goal) + d(s, segment target)."""
 
     # main() records this attribute; this method uses no waypoint confidence.
     waypoint_confidence = None
 
     def searching(self, query, filepath='temp.png'):
-        import heapq
-
         self.filepath = filepath
         input_data = self._parse_query(query)
         self._initialize_parameters(input_data)
         self._initialize_llm_paths()
 
-        fwd = self._make_side(self.s_start, self.s_goal, self.target_list[1:])
-        bwd = self._make_side(self.s_goal, self.s_start, self.target_list[-2::-1])
-        self.meet = None
-        sides, turn = (fwd, bwd), 0
+        self._stored = {}
+        self.skipped_waypoints = 0
+        path, anchor = [self.s_start], self.s_start
 
-        while fwd['open'] and bwd['open']:
-            side, other = sides[turn], sides[1 - turn]
-            turn = 1 - turn
+        for t in self.target_list[1:]:
+            seg = self._segment_search(anchor, t)
+            if seg is None:
+                if t == self.s_goal:  # goal unreachable from the current anchor
+                    path = None
+                    break
+                self.skipped_waypoints += 1
+                continue
+            path.extend(seg[1:])
+            anchor = t
 
-            _, s = heapq.heappop(side['open'])
-            side['closed'].add(s)
-            self.CLOSED.append(s)
-
-            if other['g'].get(s, math.inf) < math.inf:  # the two searches meet
-                self.meet = s
-                break
-
-            for s_n in self.get_neighbor(s):
-                if s_n == side['target'] and side['target'] != side['end']:
-                    self._advance_target(side)
-
-                if s_n in side['closed']:
-                    continue
-
-                new_cost = side['g'][s] + self.cost(s, s_n)
-                if s_n not in side['g']:  # keep original storage rule
-                    side['g'][s_n] = math.inf
-
-                if new_cost < side['g'][s_n]:
-                    side['g'][s_n] = new_cost
-                    side['parent'][s_n] = s
-                    heapq.heappush(side['open'], (self._f(side, s_n), s_n))
-
-        self.PARENT, self.PARENT_b = fwd['parent'], bwd['parent']
-        self.g = {**bwd['g'], **fwd['g']}  # storage: states stored by either side
+        self.g = self._stored  # storage: distinct states stored by any segment
+        self._path = path
 
         path = self.extract_path(self.PARENT)
         result = {
@@ -130,39 +111,47 @@ class Ours(LLMAStar):
             self.plot.animation(path, self.CLOSED, True, "LLM-A*", self.filepath)
         return result
 
-    def _make_side(self, origin, end, targets):
-        side = {'end': end, 'targets': targets, 'i': 0, 'target': targets[0],
-                'g': {origin: 0}, 'parent': {origin: origin}, 'closed': set()}
-        side['open'] = [(self._f(side, origin), origin)]
-        return side
-
-    def _f(self, side, s):
-        end, target = side['end'], side['target']
-        return (side['g'][s] + math.hypot(end[0] - s[0], end[1] - s[1])
+    def _segment_f(self, g, s, target):
+        return (g[s] + math.hypot(self.s_goal[0] - s[0], self.s_goal[1] - s[1])
                 + math.hypot(target[0] - s[0], target[1] - s[1]))
 
-    def _advance_target(self, side):
+    def _segment_search(self, origin, target):
         import heapq
 
-        side['i'] += 1
-        if side['i'] < len(side['targets']):
-            side['target'] = side['targets'][side['i']]
-        side['open'] = [(self._f(side, s), s) for _, s in side['open']]
-        heapq.heapify(side['open'])
+        g, parent, closed = {origin: 0}, {origin: origin}, set()
+        open_ = [(self._segment_f(g, origin, target), origin)]
+
+        while open_:
+            _, s = heapq.heappop(open_)
+            closed.add(s)
+            self.CLOSED.append(s)  # every segment's expansions are counted
+
+            if s == target:
+                break
+
+            for s_n in self.get_neighbor(s):
+                if s_n in closed:
+                    continue
+                new_cost = g[s] + self.cost(s, s_n)
+                if s_n not in g:  # keep original storage rule
+                    g[s_n] = math.inf
+                if new_cost < g[s_n]:
+                    g[s_n] = new_cost
+                    parent[s_n] = s
+                    heapq.heappush(open_, (self._segment_f(g, s_n, target), s_n))
+
+        self._stored.update(g)
+        if target not in closed:
+            return None
+        seg = [target]
+        while seg[-1] != origin:
+            seg.append(parent[seg[-1]])
+        return seg[::-1]
 
     def extract_path(self, PARENT):
-        if self.meet is None:  # no path: same KeyError as the original, handled by search()
+        if self._path is None:  # no path: same KeyError as the original, handled by search()
             raise KeyError(self.s_goal)
-        path = [self.meet]
-        while path[-1] != self.s_start:
-            path.append(self.PARENT[path[-1]])
-        path.reverse()
-        node = self.meet
-        while node != self.s_goal:
-            node = self.PARENT_b[node]
-            path.append(node)
-        return path
-
+        return list(self._path)
 
 def valid_length(nodes, planner):
     """Evaluate the raw LLM polyline without filtering/repairing its nodes."""
