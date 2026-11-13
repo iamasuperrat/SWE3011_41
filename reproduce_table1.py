@@ -67,32 +67,49 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* with waypoint ordering repair: intermediate waypoints are reordered
-    so that the remaining distance to the goal decreases, and waypoints that move
-    away from the goal (farther than the start) are removed."""
+    """LLM-A* with progress-adaptive inflation: the whole heuristic is scaled by w/2.
+    w starts at W_MAX (= original LLM-A*). If the search stops getting closer to the
+    current target for STALL_LIMIT expansions, w is lowered by W_STEP toward W_MIN.
+    w is restored to W_MAX whenever the target switches."""
+
+    W_MAX, W_MIN, W_STEP, STALL_LIMIT = 2.0, 1.0, 0.25, 20
 
     # main() records this attribute; this method uses no waypoint confidence.
     waypoint_confidence = None
 
     def _initialize_llm_paths(self):
         super()._initialize_llm_paths()
+        self.w = self.W_MAX
+        self._reset_progress()
 
-        def to_goal(p):
-            return math.hypot(self.s_goal[0] - p[0], self.s_goal[1] - p[1])
+    def _reset_progress(self):
+        self._best_dist = math.inf
+        self._stall = 0
 
-        start_dist = to_goal(self.s_start)
-        seen, middle = set(), []
-        for p in self.target_list[1:-1]:
-            if p in (self.s_start, self.s_goal) or p in seen:
-                continue
-            seen.add(p)
-            if to_goal(p) < start_dist:  # drop backtracking waypoints
-                middle.append(p)
+    def _update_target(self):
+        super()._update_target()
+        self.w = self.W_MAX
+        self._reset_progress()
 
-        middle.sort(key=to_goal, reverse=True)  # farther from goal first
-        self.target_list = [self.s_start] + middle + [self.s_goal]
-        self.i = 1
-        self.s_target = self.target_list[self.i]
+    def get_neighbor(self, s):
+        # Called once per expansion with the node just popped from OPEN.
+        self._track_progress(s)
+        return super().get_neighbor(s)
+
+    def _track_progress(self, s):
+        dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
+        if dist < self._best_dist:
+            self._best_dist = dist
+            self._stall = 0
+            return
+        self._stall += 1
+        if self._stall >= self.STALL_LIMIT and self.w > self.W_MIN:
+            self.w = max(self.W_MIN, self.w - self.W_STEP)
+            self._stall = 0
+            self._update_queue()  # heuristic changed: recompute f of open states
+
+    def heuristic(self, s):
+        return (self.w / 2) * super().heuristic(s)
 
 
 def valid_length(nodes, planner):
