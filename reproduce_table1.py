@@ -67,49 +67,101 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* with progress-adaptive inflation: the whole heuristic is scaled by w/2.
-    w starts at W_MAX (= original LLM-A*). If the search stops getting closer to the
-    current target for STALL_LIMIT expansions, w is lowered by W_STEP toward W_MIN.
-    w is restored to W_MAX whenever the target switches."""
-
-    W_MAX, W_MIN, W_STEP, STALL_LIMIT = 2.0, 1.0, 0.25, 20
+    """Bidirectional LLM-A*: a forward search (start -> waypoints in order -> goal)
+    and a backward search (goal -> waypoints in reverse -> start) expand alternately.
+    Each side keeps the original LLM-A* heuristic and target switching.
+    The search stops when a popped state has already been reached by the other side."""
 
     # main() records this attribute; this method uses no waypoint confidence.
     waypoint_confidence = None
 
-    def _initialize_llm_paths(self):
-        super()._initialize_llm_paths()
-        self.w = self.W_MAX
-        self._reset_progress()
+    def searching(self, query, filepath='temp.png'):
+        import heapq
 
-    def _reset_progress(self):
-        self._best_dist = math.inf
-        self._stall = 0
+        self.filepath = filepath
+        input_data = self._parse_query(query)
+        self._initialize_parameters(input_data)
+        self._initialize_llm_paths()
 
-    def _update_target(self):
-        super()._update_target()
-        self.w = self.W_MAX
-        self._reset_progress()
+        fwd = self._make_side(self.s_start, self.s_goal, self.target_list[1:])
+        bwd = self._make_side(self.s_goal, self.s_start, self.target_list[-2::-1])
+        self.meet = None
+        sides, turn = (fwd, bwd), 0
 
-    def get_neighbor(self, s):
-        # Called once per expansion with the node just popped from OPEN.
-        self._track_progress(s)
-        return super().get_neighbor(s)
+        while fwd['open'] and bwd['open']:
+            side, other = sides[turn], sides[1 - turn]
+            turn = 1 - turn
 
-    def _track_progress(self, s):
-        dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
-        if dist < self._best_dist:
-            self._best_dist = dist
-            self._stall = 0
-            return
-        self._stall += 1
-        if self._stall >= self.STALL_LIMIT and self.w > self.W_MIN:
-            self.w = max(self.W_MIN, self.w - self.W_STEP)
-            self._stall = 0
-            self._update_queue()  # heuristic changed: recompute f of open states
+            _, s = heapq.heappop(side['open'])
+            side['closed'].add(s)
+            self.CLOSED.append(s)
 
-    def heuristic(self, s):
-        return (self.w / 2) * super().heuristic(s)
+            if other['g'].get(s, math.inf) < math.inf:  # the two searches meet
+                self.meet = s
+                break
+
+            for s_n in self.get_neighbor(s):
+                if s_n == side['target'] and side['target'] != side['end']:
+                    self._advance_target(side)
+
+                if s_n in side['closed']:
+                    continue
+
+                new_cost = side['g'][s] + self.cost(s, s_n)
+                if s_n not in side['g']:  # keep original storage rule
+                    side['g'][s_n] = math.inf
+
+                if new_cost < side['g'][s_n]:
+                    side['g'][s_n] = new_cost
+                    side['parent'][s_n] = s
+                    heapq.heappush(side['open'], (self._f(side, s_n), s_n))
+
+        self.PARENT, self.PARENT_b = fwd['parent'], bwd['parent']
+        self.g = {**bwd['g'], **fwd['g']}  # storage: states stored by either side
+
+        path = self.extract_path(self.PARENT)
+        result = {
+            "operation": len(self.CLOSED),
+            "storage": len(self.g),
+            "length": sum(self._euclidean_distance(path[i], path[i + 1]) for i in range(len(path) - 1)),
+            "llm_output": self.target_list,
+        }
+        if self.filepath is not None:
+            self.plot.animation(path, self.CLOSED, True, "LLM-A*", self.filepath)
+        return result
+
+    def _make_side(self, origin, end, targets):
+        side = {'end': end, 'targets': targets, 'i': 0, 'target': targets[0],
+                'g': {origin: 0}, 'parent': {origin: origin}, 'closed': set()}
+        side['open'] = [(self._f(side, origin), origin)]
+        return side
+
+    def _f(self, side, s):
+        end, target = side['end'], side['target']
+        return (side['g'][s] + math.hypot(end[0] - s[0], end[1] - s[1])
+                + math.hypot(target[0] - s[0], target[1] - s[1]))
+
+    def _advance_target(self, side):
+        import heapq
+
+        side['i'] += 1
+        if side['i'] < len(side['targets']):
+            side['target'] = side['targets'][side['i']]
+        side['open'] = [(self._f(side, s), s) for _, s in side['open']]
+        heapq.heapify(side['open'])
+
+    def extract_path(self, PARENT):
+        if self.meet is None:  # no path: same KeyError as the original, handled by search()
+            raise KeyError(self.s_goal)
+        path = [self.meet]
+        while path[-1] != self.s_start:
+            path.append(self.PARENT[path[-1]])
+        path.reverse()
+        node = self.meet
+        while node != self.s_goal:
+            node = self.PARENT_b[node]
+            path.append(node)
+        return path
 
 
 def valid_length(nodes, planner):
