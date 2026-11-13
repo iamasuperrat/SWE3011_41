@@ -67,32 +67,40 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """Original LLM-A*, weighting each waypoint's heuristic term by confidence."""
+    """LLM-A* with plan-deviation replanning: if the expanded node closest to the
+    current waypoint has no line of sight to it, drop the remaining waypoints and
+    search toward the goal only."""
+
+    # main() records this attribute; this method uses no waypoint confidence.
+    waypoint_confidence = None
 
     def _initialize_llm_paths(self):
         super()._initialize_llm_paths()
-        nodes = list_parse(self.model.response)
-        match = re.search(r"Waypoint Confidence:\s*(\[[^\]]*\])", self.model.response)
-        try:
-            scores = json.loads(match[1]) if match else []
-        except ValueError:
-            scores = []
-        # Missing/misaligned/invalid scores give no extra waypoint guidance.
-        confidence = {}
-        if isinstance(nodes, list) and isinstance(scores, list) and len(nodes) == len(scores):
-            for node, score in zip(nodes, scores):
-                if (isinstance(node, (list, tuple)) and len(node) == 2
-                        and all(isinstance(v, (int, float)) and math.isfinite(v) for v in node)):
-                    confidence[tuple(node)] = (score if type(score) in (int, float)
-                                              and math.isfinite(score) and 0 <= score <= 1 else 0)
-        # Keep the original start/goal behavior, including automatically inserted endpoints.
-        confidence[self.s_start] = confidence[self.s_goal] = 1
-        self.waypoint_confidence = [confidence.get(point, 0) for point in self.target_list]
+        self._tracked_target = None
+        self._best_dist = math.inf
+        self.plan_dropped = False
 
-    def heuristic(self, s):
-        goal = math.hypot(self.s_goal[0] - s[0], self.s_goal[1] - s[1])
-        waypoint = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
-        return goal + self.waypoint_confidence[self.i] * waypoint
+    def get_neighbor(self, s):
+        # Called once per expansion with the node just popped from OPEN.
+        self._check_plan_deviation(s)
+        return super().get_neighbor(s)
+
+    def _check_plan_deviation(self, s):
+        if self.s_target == self.s_goal:
+            return
+        if self.s_target != self._tracked_target:  # new waypoint: reset tracking
+            self._tracked_target = self.s_target
+            self._best_dist = math.inf
+        dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
+        if dist >= self._best_dist:
+            return
+        self._best_dist = dist
+        # Closest approach so far is blocked by a barrier: the plan contradicts the map.
+        if self.is_collision(s, self.s_target):
+            self.i = len(self.target_list) - 1
+            self.s_target = self.s_goal
+            self.plan_dropped = True
+            self._update_queue()
 
 
 def valid_length(nodes, planner):
