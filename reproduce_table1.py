@@ -67,126 +67,32 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* on Jump Point Search: successors are jump points instead of the
-    8 neighbors, while the LLM waypoint heuristic and target switching are kept.
-    A jump also stops at the current waypoint so that target switching still works."""
+    """LLM-A* with waypoint ordering repair: intermediate waypoints are reordered
+    so that the remaining distance to the goal decreases, and waypoints that move
+    away from the goal (farther than the start) are removed."""
 
     # main() records this attribute; this method uses no waypoint confidence.
     waypoint_confidence = None
 
-    def searching(self, query, filepath='temp.png'):
-        import heapq
+    def _initialize_llm_paths(self):
+        super()._initialize_llm_paths()
 
-        self.filepath = filepath
-        input_data = self._parse_query(query)
-        self._initialize_parameters(input_data)
-        self._initialize_llm_paths()
+        def to_goal(p):
+            return math.hypot(self.s_goal[0] - p[0], self.s_goal[1] - p[1])
 
-        self.PARENT[self.s_start] = self.s_start
-        self.g[self.s_start] = 0
-        heapq.heappush(self.OPEN, (self.f_value(self.s_start), self.s_start))
+        start_dist = to_goal(self.s_start)
+        seen, middle = set(), []
+        for p in self.target_list[1:-1]:
+            if p in (self.s_start, self.s_goal) or p in seen:
+                continue
+            seen.add(p)
+            if to_goal(p) < start_dist:  # drop backtracking waypoints
+                middle.append(p)
 
-        while self.OPEN:
-            _, s = heapq.heappop(self.OPEN)
-            self.CLOSED.append(s)
-
-            if s == self.s_goal:
-                break
-
-            for d in self._successor_dirs(s):
-                s_n = self._jump(s, d)
-                if s_n is None:
-                    continue
-
-                if s_n == self.s_target and self.s_goal != self.s_target:
-                    self._update_target()
-                    self._update_queue()
-
-                if s_n in self.CLOSED:
-                    continue
-
-                new_cost = self.g[s] + math.hypot(s_n[0] - s[0], s_n[1] - s[1])
-                if s_n not in self.g:
-                    self.g[s_n] = math.inf
-
-                if new_cost < self.g[s_n]:
-                    self.g[s_n] = new_cost
-                    self.PARENT[s_n] = s
-                    heapq.heappush(self.OPEN, (self.f_value(s_n), s_n))
-
-        path = self.extract_path(self.PARENT)
-        result = {
-            "operation": len(self.CLOSED),
-            "storage": len(self.g),
-            "length": sum(self._euclidean_distance(path[i], path[i + 1]) for i in range(len(path) - 1)),
-            "llm_output": self.target_list,
-        }
-        if self.filepath is not None:
-            self.plot.animation(path, self.CLOSED, True, "LLM-A*", self.filepath)
-        return result
-
-    # ---- grid helpers -------------------------------------------------------
-    def _free(self, c):
-        return (self.range_x[0] < c[0] < self.range_x[1]
-                and self.range_y[0] < c[1] < self.range_y[1]
-                and c not in self.obs)
-
-    def _can_move(self, a, b):
-        return self._free(b) and not self.is_collision(a, b)
-
-    # ---- JPS pruning (8-connected, corner cutting allowed) ------------------
-    def _successor_dirs(self, s):
-        p = self.PARENT[s]
-        if p == s:  # start node: all directions
-            return [(dx, dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1) if dx or dy]
-        x, y = s
-        dx = (x > p[0]) - (x < p[0])
-        dy = (y > p[1]) - (y < p[1])
-        dirs = []
-        if dx and dy:
-            dirs += [(dx, 0), (0, dy), (dx, dy)]
-            if not self._free((x - dx, y)):
-                dirs.append((-dx, dy))
-            if not self._free((x, y - dy)):
-                dirs.append((dx, -dy))
-        elif dx:
-            dirs.append((dx, 0))
-            if not self._free((x, y + 1)):
-                dirs.append((dx, 1))
-            if not self._free((x, y - 1)):
-                dirs.append((dx, -1))
-        else:
-            dirs.append((0, dy))
-            if not self._free((x + 1, y)):
-                dirs.append((1, dy))
-            if not self._free((x - 1, y)):
-                dirs.append((-1, dy))
-        return dirs
-
-    def _jump(self, s, d):
-        x, y = s
-        dx, dy = d
-        while True:
-            nx, ny = x + dx, y + dy
-            if not self._can_move((x, y), (nx, ny)):
-                return None
-            x, y = nx, ny
-            if (x, y) == self.s_goal or (x, y) == self.s_target:
-                return (x, y)
-            if dx and dy:
-                if ((not self._free((x - dx, y)) and self._free((x - dx, y + dy)))
-                        or (not self._free((x, y - dy)) and self._free((x + dx, y - dy)))):
-                    return (x, y)
-                if self._jump((x, y), (dx, 0)) or self._jump((x, y), (0, dy)):
-                    return (x, y)
-            elif dx:
-                if ((not self._free((x, y + 1)) and self._free((x + dx, y + 1)))
-                        or (not self._free((x, y - 1)) and self._free((x + dx, y - 1)))):
-                    return (x, y)
-            else:
-                if ((not self._free((x + 1, y)) and self._free((x + 1, y + dy)))
-                        or (not self._free((x - 1, y)) and self._free((x - 1, y + dy)))):
-                    return (x, y)
+        middle.sort(key=to_goal, reverse=True)  # farther from goal first
+        self.target_list = [self.s_start] + middle + [self.s_goal]
+        self.i = 1
+        self.s_target = self.target_list[self.i]
 
 
 def valid_length(nodes, planner):
