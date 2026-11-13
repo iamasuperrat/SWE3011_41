@@ -67,28 +67,31 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* with a remaining-plan heuristic:
-    h(s) = W * [d(s, current target) + length of the remaining waypoint polyline to the goal].
-    With W = 2, the last segment (target = goal) matches the original 2 * d(s, goal)."""
+    """LLM-A* with proximity-based target switching: a waypoint counts as reached when
+    an expanded node is within R of it and has a collision-free straight line to it.
+    The original exact-match switching is kept as well."""
 
-    W = 2.0
+    R = 2.0
 
     # main() records this attribute; this method uses no waypoint confidence.
     waypoint_confidence = None
 
-    def _initialize_llm_paths(self):
-        super()._initialize_llm_paths()
-        # remaining[i]: polyline length from target_list[i] through the later waypoints to the goal
-        n = len(self.target_list)
-        self._remaining = [0.0] * n
-        for k in range(n - 2, -1, -1):
-            a, b = self.target_list[k], self.target_list[k + 1]
-            self._remaining[k] = self._remaining[k + 1] + math.hypot(b[0] - a[0], b[1] - a[1])
+    def get_neighbor(self, s):
+        # Called once per expansion with the node just popped from OPEN.
+        self._proximity_switch(s)
+        return super().get_neighbor(s)
 
-    def heuristic(self, s):
-        i = min(self.i, len(self.target_list) - 1)
-        to_target = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
-        return self.W * (to_target + self._remaining[i])
+    def _proximity_switch(self, s):
+        switched = False
+        while self.s_target != self.s_goal and self._reached(s, self.s_target):
+            self._update_target()
+            switched = True
+        if switched:
+            self._update_queue()  # heuristic changed: recompute f of open states
+
+    def _reached(self, s, t):
+        return (math.hypot(t[0] - s[0], t[1] - s[1]) <= self.R
+                and not self.is_collision(s, t))
 
 def valid_length(nodes, planner):
     """Evaluate the raw LLM polyline without filtering/repairing its nodes."""
