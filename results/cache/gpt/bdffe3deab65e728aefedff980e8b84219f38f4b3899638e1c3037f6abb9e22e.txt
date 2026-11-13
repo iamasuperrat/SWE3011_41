@@ -1,0 +1,31 @@
+To navigate from the start point [20, 14] to the goal point [5, 8], we need to consider the horizontal and vertical barriers that may obstruct our path.
+
+- **First Iteration on [20, 14]**
+  - Thought: The vertical barrier at x=12 spanning y=13 to y=29 blocks the direct path to the goal. We should move left to avoid it.
+  - Selected Point: [11, 14]
+  - Evaluation: The point [11, 14] successfully avoids the vertical barrier and positions us closer to the goal.
+
+- **Second Iteration on [11, 14]**
+  - Thought: The horizontal barrier at y=13 spanning x=19 to x=40 is now behind us. We can move down to y=10 to avoid the next horizontal barrier at y=26.
+  - Selected Point: [11, 10]
+  - Evaluation: The point [11, 10] is clear of obstacles and allows us to navigate downward.
+
+- **Third Iteration on [11, 10]**
+  - Thought: The vertical barrier at x=1 spanning y=16 to y=18 is still a concern. We need to move left to avoid it.
+  - Selected Point: [6, 10]
+  - Evaluation: The point [6, 10] is clear of obstacles and allows us to move closer to the goal.
+
+- **Fourth Iteration on [6, 10]**
+  - Thought: Now we can move down to y=8, which is unobstructed.
+  - Selected Point: [6, 8]
+  - Evaluation: The point [6, 8] is clear of obstacles and allows us to move directly to the goal.
+
+- **Fifth Iteration on [6, 8]**
+  - Thought: The goal point [5, 8] is directly to the left and unobstructed.
+  - Selected Point: [5, 8]
+  - Evaluation: The path to the goal is clear from here, allowing a direct move to [5, 8].
+
+The generated path is:
+Generated Path: [[20, 14], [11, 14], [11, 10], [6, 10], [6, 8], [5, 8]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]

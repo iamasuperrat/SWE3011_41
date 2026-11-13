@@ -1,0 +1,31 @@
+To find a path from the start point [30, 4] to the goal point [41, 23], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: [[11, 28, 41]]
+  - This barrier spans from (28, 11) to (41, 11), blocking any movement through y = 11 in that x-range.
+  
+- **Vertical Barriers**: [[21, 30, 31]]
+  - This barrier spans from (30, 21) to (31, 21), blocking any movement through x = 21 in that y-range.
+
+### Pathfinding:
+1. Start at [30, 4].
+2. Move up to avoid the horizontal barrier at y = 11.
+3. Navigate around the vertical barrier at x = 21.
+4. Continue towards the goal at [41, 23].
+
+### Proposed Path:
+- Start at [30, 4].
+- Move to [30, 10] (up to avoid the horizontal barrier).
+- Move to [35, 10] (right).
+- Move to [35, 20] (up).
+- Move to [41, 20] (right).
+- Finally, move to [41, 23] (up).
+
+### Generated Path:
+Generated Path: [[30, 4], [30, 10], [35, 10], [35, 20], [41, 20], [41, 23]]
+
+### Confidence Scores:
+- Start and goal points have a confidence of 1.
+- Intermediate points are chosen based on their avoidance of barriers and proximity to the goal.
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]

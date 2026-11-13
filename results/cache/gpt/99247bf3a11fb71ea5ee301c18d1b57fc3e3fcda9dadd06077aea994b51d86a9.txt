@@ -1,0 +1,41 @@
+To find a path from the start point [25, 19] to the goal point [18, 14] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [25, 19] (confidence 1)
+2. **Goal Point**: [18, 14] (confidence 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**: 
+  - [18, 45, 49] (does not affect the path)
+  - [4, 27, 30] (does not affect the path)
+  
+- **Vertical Barriers**:
+  - [37, 29, 30] (does not affect the path)
+  - [20, 13, 16] (blocks the path directly below the goal)
+  - [49, 29, 30] (does not affect the path)
+
+### Pathfinding:
+Starting from [25, 19], we can move left towards the goal while avoiding the vertical barrier at x=20. The path can be constructed as follows:
+
+1. Move left to [24, 19]
+2. Move left to [23, 19]
+3. Move left to [22, 19]
+4. Move left to [21, 19]
+5. Move down to [21, 18]
+6. Move down to [21, 17]
+7. Move down to [21, 16]
+8. Move left to [20, 16]
+9. Move down to [20, 15]
+10. Move down to [20, 14]
+11. Move left to [19, 14]
+12. Move left to [18, 14] (goal)
+
+### Generated Path:
+The generated path is:
+Generated Path: [[25, 19], [24, 19], [23, 19], [22, 19], [21, 19], [21, 18], [21, 17], [21, 16], [20, 16], [20, 15], [20, 14], [19, 14], [18, 14]]
+
+### Waypoint Confidence:
+The confidence scores for each waypoint are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are part of the path but not guaranteed to be optimal.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

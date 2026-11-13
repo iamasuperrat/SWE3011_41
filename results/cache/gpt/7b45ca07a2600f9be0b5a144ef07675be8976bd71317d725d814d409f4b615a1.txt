@@ -1,0 +1,54 @@
+To find a path from the start point [8, 24] to the goal point [29, 21] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [8, 24] (confidence 1)
+2. **Goal Point**: [29, 21] (confidence 1)
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [2, 13, 49]: This barrier spans from y=2 to y=49, affecting the vertical movement.
+  - [12, 31, 37]: This barrier spans from y=12 to y=37.
+  - [5, 6, 8]: This barrier spans from y=5 to y=8.
+  - [3, 37, 39]: This barrier spans from y=3 to y=39.
+
+- **Vertical Barriers**:
+  - [22, 17, 28]: This barrier spans from x=22 to x=28.
+  - [39, 23, 30]: This barrier spans from x=39 to x=30.
+
+### Pathfinding:
+Starting from [8, 24], we can move right and down while avoiding the barriers. The path can be constructed as follows:
+
+1. Move right to [9, 24]
+2. Move right to [10, 24]
+3. Move right to [11, 24]
+4. Move down to [11, 23]
+5. Move down to [11, 22]
+6. Move down to [11, 21]
+7. Move right to [12, 21]
+8. Move right to [13, 21]
+9. Move right to [14, 21]
+10. Move right to [15, 21]
+11. Move right to [16, 21]
+12. Move right to [17, 21]
+13. Move right to [18, 21]
+14. Move right to [19, 21]
+15. Move right to [20, 21]
+16. Move right to [21, 21]
+17. Move right to [22, 21]
+18. Move right to [23, 21]
+19. Move right to [24, 21]
+20. Move right to [25, 21]
+21. Move right to [26, 21]
+22. Move right to [27, 21]
+23. Move right to [28, 21]
+24. Move right to [29, 21] (goal)
+
+### Generated Path:
+The generated path is:
+Generated Path: [[8, 24], [9, 24], [10, 24], [11, 24], [11, 23], [11, 22], [11, 21], [12, 21], [13, 21], [14, 21], [15, 21], [16, 21], [17, 21], [18, 21], [19, 21], [20, 21], [21, 21], [22, 21], [23, 21], [24, 21], [25, 21], [26, 21], [27, 21], [28, 21], [29, 21]]
+
+### Waypoint Confidence:
+The confidence scores for the waypoints are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are part of a clear path.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

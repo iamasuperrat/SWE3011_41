@@ -1,0 +1,11 @@
+To navigate from the start point [8, 8] to the goal point [46, 26], we need to avoid the horizontal barriers and the vertical barrier while finding the shortest path.
+
+1. Start at [8, 8].
+2. Move right to [20, 8] to avoid the horizontal barrier at y=13.
+3. Move up to [20, 12] to bypass the vertical barrier at x=2.
+4. Continue moving right to [46, 12].
+5. Move up to [46, 26] to reach the goal.
+
+The generated path is:
+Generated Path: [[8, 8], [20, 8], [20, 12], [46, 12], [46, 26]]
+Waypoint Confidence: [1, 1, 1, 1, 1]

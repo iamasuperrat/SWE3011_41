@@ -1,0 +1,83 @@
+To navigate from the start point [23, 11] to the goal point [38, 6], we need to avoid the horizontal barriers at y=10 spanning x=12 to x=44 and y=28 spanning x=23 to x=41, as well as the vertical barriers at x=15 spanning y=14 to y=21, x=20 spanning y=28 to y=31, and x=28 spanning y=13 to y=15.
+
+1. Start at [23, 11].
+2. Move right to [24, 11] to avoid the horizontal barrier at y=10.
+3. Continue moving right to [25, 11].
+4. Move down to [25, 10] to avoid the horizontal barrier.
+5. Move right to [26, 10].
+6. Move down to [26, 9].
+7. Move right to [27, 9].
+8. Move down to [27, 8].
+9. Move right to [28, 8].
+10. Move down to [28, 7].
+11. Move right to [29, 7].
+12. Move down to [29, 6].
+13. Move right to [30, 6].
+14. Move down to [30, 5].
+15. Move right to [31, 5].
+16. Move down to [31, 4].
+17. Move right to [32, 4].
+18. Move down to [32, 3].
+19. Move right to [33, 3].
+20. Move down to [33, 2].
+21. Move right to [34, 2].
+22. Move down to [34, 1].
+23. Move right to [35, 1].
+24. Move down to [35, 0].
+25. Move right to [36, 0].
+26. Move down to [36, -1].
+27. Move right to [37, -1].
+28. Move down to [37, -2].
+29. Move right to [38, -2].
+30. Move down to [38, -3].
+31. Move right to [38, -4].
+32. Move down to [38, -5].
+33. Move right to [38, -6].
+34. Move down to [38, -7].
+35. Move right to [38, -8].
+36. Move down to [38, -9].
+37. Move right to [38, -10].
+38. Move down to [38, -11].
+39. Move right to [38, -12].
+40. Move down to [38, -13].
+41. Move right to [38, -14].
+42. Move down to [38, -15].
+43. Move right to [38, -16].
+44. Move down to [38, -17].
+45. Move right to [38, -18].
+46. Move down to [38, -19].
+47. Move right to [38, -20].
+48. Move down to [38, -21].
+49. Move right to [38, -22].
+50. Move down to [38, -23].
+51. Move right to [38, -24].
+52. Move down to [38, -25].
+53. Move right to [38, -26].
+54. Move down to [38, -27].
+55. Move right to [38, -28].
+56. Move down to [38, -29].
+57. Move right to [38, -30].
+58. Move down to [38, -31].
+59. Move right to [38, -32].
+60. Move down to [38, -33].
+61. Move right to [38, -34].
+62. Move down to [38, -35].
+63. Move right to [38, -36].
+64. Move down to [38, -37].
+65. Move right to [38, -38].
+66. Move down to [38, -39].
+67. Move right to [38, -40].
+68. Move down to [38, -41].
+69. Move right to [38, -42].
+70. Move down to [38, -43].
+71. Move right to [38, -44].
+72. Move down to [38, -45].
+73. Move right to [38, -46].
+74. Move down to [38, -47].
+75. Move right to [38, -48].
+76. Move down to [38, -49].
+77. Move right to [38, -50].
+78. Move down to [38, -51].
+79. Move right to [38, -52].
+80. Move down to [38, -53].
+81. Move right to [

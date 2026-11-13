@@ -1,0 +1,53 @@
+To find a path from the start point [36, 22] to the goal point [49, 13] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [36, 22] (Confidence: 1)
+2. **Goal Point**: [49, 13] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [5, 49, 49]: This barrier is irrelevant as it does not affect the path.
+  - [6, 8, 39]: This barrier spans from (6, 8) to (6, 39).
+  - [19, 18, 36]: This barrier spans from (19, 18) to (19, 36).
+
+- **Vertical Barriers**:
+  - [22, 12, 18]: This barrier spans from (22, 12) to (22, 18).
+  - [44, 12, 30]: This barrier spans from (44, 12) to (44, 30).
+  - [21, 25, 30]: This barrier spans from (21, 25) to (21, 30).
+
+### Pathfinding:
+Starting from [36, 22], we can navigate around the barriers:
+- Move right to [37, 22]
+- Move right to [38, 22]
+- Move right to [39, 22]
+- Move down to [39, 21]
+- Move down to [39, 20]
+- Move down to [39, 19]
+- Move down to [39, 18]
+- Move down to [39, 17]
+- Move down to [39, 16]
+- Move down to [39, 15]
+- Move down to [39, 14]
+- Move right to [40, 14]
+- Move right to [41, 14]
+- Move right to [42, 14]
+- Move right to [43, 14]
+- Move right to [44, 14]
+- Move down to [44, 13]
+- Move right to [45, 13]
+- Move right to [46, 13]
+- Move right to [47, 13]
+- Move right to [48, 13]
+- Move right to [49, 13] (Goal)
+
+### Generated Path:
+The path taken is:
+- [[36, 22], [37, 22], [38, 22], [39, 22], [39, 21], [39, 20], [39, 19], [39, 18], [39, 17], [39, 16], [39, 15], [39, 14], [40, 14], [41, 14], [42, 14], [43, 14], [44, 14], [44, 13], [45, 13], [46, 13], [47, 13], [48, 13], [49, 13]]
+
+### Confidence Scores:
+- Start Point: 1
+- Intermediate Points: 0.9 (for points that are not directly adjacent to barriers)
+- Goal Point: 1
+
+### Final Output:
+Generated Path: [[36, 22], [37, 22], [38, 22], [39, 22], [39, 21], [39, 20], [39, 19], [39, 18], [39, 17], [39, 16], [39, 15], [39, 14], [40, 14], [41, 14], [42, 14], [43, 14], [44, 14], [44, 13], [45, 13], [46, 13], [47, 13], [48, 13], [49, 13]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1, 0.9, 0.9, 0.9, 0.9, 1]

@@ -1,0 +1,40 @@
+To navigate from the start point [19, 24] to the goal point [9, 1], we need to avoid the horizontal and vertical barriers provided. 
+
+1. **Start Point**: [19, 24] - Confidence: 1
+2. **Move Down**: To avoid the horizontal barrier at y=23 spanning x=18 to x=50, we can move down to y=22.
+3. **Move Left**: From [19, 22], we can move left to [18, 22].
+4. **Move Down**: Next, we can move down to [18, 21].
+5. **Move Left**: Continue moving left to [17, 21].
+6. **Move Down**: Move down to [17, 20].
+7. **Move Left**: Move left to [16, 20].
+8. **Move Down**: Move down to [16, 19].
+9. **Move Left**: Move left to [15, 19].
+10. **Move Down**: Move down to [15, 18].
+11. **Move Left**: Move left to [14, 18].
+12. **Move Down**: Move down to [14, 17].
+13. **Move Left**: Move left to [13, 17].
+14. **Move Down**: Move down to [13, 16].
+15. **Move Left**: Move left to [12, 16].
+16. **Move Down**: Move down to [12, 15].
+17. **Move Left**: Move left to [11, 15].
+18. **Move Down**: Move down to [11, 14].
+19. **Move Left**: Move left to [10, 14].
+20. **Move Down**: Move down to [10, 13].
+21. **Move Left**: Move left to [9, 13].
+22. **Move Down**: Move down to [9, 12].
+23. **Move Down**: Move down to [9, 11].
+24. **Move Down**: Move down to [9, 10].
+25. **Move Down**: Move down to [9, 9].
+26. **Move Down**: Move down to [9, 8].
+27. **Move Down**: Move down to [9, 7].
+28. **Move Down**: Move down to [9, 6].
+29. **Move Down**: Move down to [9, 5].
+30. **Move Down**: Move down to [9, 4].
+31. **Move Down**: Move down to [9, 3].
+32. **Move Down**: Move down to [9, 2].
+33. **Move Down**: Move down to [9, 1] - Goal Point - Confidence: 1
+
+The generated path is as follows:
+
+Generated Path: [[19, 24], [19, 22], [18, 22], [18, 21], [17, 21], [17, 20], [16, 20], [16, 19], [15, 19], [15, 18], [14, 18], [14, 17], [13, 17], [13, 16], [12, 16], [12, 15], [11, 15], [10, 14], [10, 13], [9, 13], [9, 12], [9, 11], [9, 10], [9, 9], [9, 8], [9, 7], [9, 6], [9, 5], [9, 4], [9, 3], [9, 2], [9, 1]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

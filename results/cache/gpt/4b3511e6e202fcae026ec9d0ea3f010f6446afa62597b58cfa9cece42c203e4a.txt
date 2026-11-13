@@ -1,0 +1,49 @@
+To find a path from the start point [39, 12] to the goal point [26, 17] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [39, 12] (confidence 1)
+2. **Goal Point**: [26, 17] (confidence 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [20, 30, 39]: This barrier spans horizontally from (30, 20) to (39, 20).
+  - [27, 8, 49]: This barrier spans horizontally from (8, 27) to (49, 27).
+  - [16, 21, 36]: This barrier spans horizontally from (21, 16) to (36, 16).
+
+- **Vertical Barriers**:
+  - [23, 19, 24]: This barrier spans vertically from (19, 23) to (24, 23).
+  - [39, 26, 26]: This barrier spans vertically from (26, 39) to (26, 39).
+
+### Pathfinding:
+Starting from [39, 12], we can navigate around the barriers:
+1. Move left to [38, 12].
+2. Move left to [37, 12].
+3. Move left to [36, 12].
+4. Move left to [35, 12].
+5. Move left to [34, 12].
+6. Move left to [33, 12].
+7. Move left to [32, 12].
+8. Move left to [31, 12].
+9. Move left to [30, 12].
+10. Move down to [30, 11].
+11. Move down to [30, 10].
+12. Move left to [29, 10].
+13. Move left to [28, 10].
+14. Move left to [27, 10].
+15. Move down to [27, 9].
+16. Move left to [26, 9].
+17. Move up to [26, 10].
+18. Move up to [26, 11].
+19. Move up to [26, 12].
+20. Move up to [26, 13].
+21. Move up to [26, 14].
+22. Move up to [26, 15].
+23. Move up to [26, 16].
+24. Move up to [26, 17] (goal).
+
+### Generated Path:
+The path taken is:
+- [[39, 12], [38, 12], [37, 12], [36, 12], [35, 12], [34, 12], [33, 12], [32, 12], [31, 12], [30, 12], [30, 11], [30, 10], [29, 10], [28, 10], [27, 10], [27, 9], [26, 9], [26, 10], [26, 11], [26, 12], [26, 13], [26, 14], [26, 15], [26, 16], [26, 17]]
+
+### Final Output:
+Generated Path: [[39, 12], [38, 12], [37, 12], [36, 12], [35, 12], [34, 12], [33, 12], [32, 12], [31, 12], [30, 12], [30, 11], [30, 10], [29, 10], [28, 10], [27, 10], [27, 9], [26, 9], [26, 10], [26, 11], [26, 12], [26, 13], [26, 14], [26, 15], [26, 16], [26, 17]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

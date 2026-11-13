@@ -1,0 +1,56 @@
+To find a path from the start point [24, 15] to the goal point [7, 9] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [24, 15] (confidence 1)
+2. **Goal Point**: [7, 9] (confidence 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**: [[4, 36, 40]] - This barrier does not affect the path since it is outside the range of our start and goal points.
+- **Vertical Barriers**: [[16, 7, 28]] - This barrier will block any path that tries to go through x = 16 between y = 7 and y = 28.
+
+### Pathfinding:
+Starting from [24, 15], we can move left towards the goal while avoiding the vertical barrier at x = 16. 
+
+1. Move left to [16, 15] (this is the closest point before hitting the vertical barrier).
+2. Move down to [16, 9] (this is below the vertical barrier).
+3. Move left to [15, 9].
+4. Move left to [14, 9].
+5. Move left to [13, 9].
+6. Move left to [12, 9].
+7. Move left to [11, 9].
+8. Move left to [10, 9].
+9. Move left to [9, 9].
+10. Finally, move down to [8, 9] and then to [7, 9] (goal).
+
+### Generated Path:
+The path can be summarized as follows:
+- Start: [24, 15]
+- [16, 15]
+- [16, 9]
+- [15, 9]
+- [14, 9]
+- [13, 9]
+- [12, 9]
+- [11, 9]
+- [10, 9]
+- [9, 9]
+- [8, 9]
+- Goal: [7, 9]
+
+Thus, the generated path is:
+Generated Path: [[24, 15], [16, 15], [16, 9], [15, 9], [14, 9], [13, 9], [12, 9], [11, 9], [10, 9], [9, 9], [8, 9], [7, 9]]
+
+### Waypoint Confidence:
+- Start: 1
+- [16, 15]: 0.9 (close to the barrier but valid)
+- [16, 9]: 1 (valid path below the barrier)
+- [15, 9]: 1 (valid)
+- [14, 9]: 1 (valid)
+- [13, 9]: 1 (valid)
+- [12, 9]: 1 (valid)
+- [11, 9]: 1 (valid)
+- [10, 9]: 1 (valid)
+- [9, 9]: 1 (valid)
+- [8, 9]: 1 (valid)
+- Goal: 1
+
+Waypoint Confidence: [1, 0.9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

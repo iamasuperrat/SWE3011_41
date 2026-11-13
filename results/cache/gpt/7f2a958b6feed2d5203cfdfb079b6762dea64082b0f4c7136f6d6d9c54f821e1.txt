@@ -1,0 +1,39 @@
+To find a path from the start point [30, 6] to the goal point [31, 19] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [30, 6] (Confidence: 1)
+2. **Goal Point**: [31, 19] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [2, 38, 43]: This barrier does not affect our path as it is outside the y-range we are navigating.
+  - [10, 9, 9]: This barrier is vertical and does not affect our path.
+  - [15, 25, 33]: This barrier is horizontal and does not affect our path.
+
+- **Vertical Barriers**:
+  - [30, 25, 28]: This barrier is vertical and blocks the path at x=30 from y=25 to y=28.
+  - [7, 2, 12]: This barrier does not affect our path as it is outside the x-range we are navigating.
+  - [50, 17, 30]: This barrier does not affect our path as it is outside the x-range we are navigating.
+
+### Pathfinding:
+Starting from [30, 6], we can move to the right and up to reach the goal while avoiding the barriers.
+
+1. Move to [30, 7] (Confidence: 0.9)
+2. Move to [30, 8] (Confidence: 0.9)
+3. Move to [30, 9] (Confidence: 0.9)
+4. Move to [30, 10] (Confidence: 0.9)
+5. Move to [30, 11] (Confidence: 0.9)
+6. Move to [30, 12] (Confidence: 0.9)
+7. Move to [30, 13] (Confidence: 0.9)
+8. Move to [30, 14] (Confidence: 0.9)
+9. Move to [30, 15] (Confidence: 0.9)
+10. Move to [30, 16] (Confidence: 0.9)
+11. Move to [30, 17] (Confidence: 0.9)
+12. Move to [30, 18] (Confidence: 0.9)
+13. Move to [31, 19] (Confidence: 1)
+
+### Final Path:
+The generated path is:
+Generated Path: [[30, 6], [30, 7], [30, 8], [30, 9], [30, 10], [30, 11], [30, 12], [30, 13], [30, 14], [30, 15], [30, 16], [30, 17], [30, 18], [31, 19]]
+
+### Confidence Scores:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

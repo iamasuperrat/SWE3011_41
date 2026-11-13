@@ -1,0 +1,39 @@
+To find a path from the start point [18, 8] to the goal point [2, 28] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [18, 8] (confidence 1)
+2. **Navigate around barriers**:
+   - The horizontal barriers at y=7 and y=5 restrict movement in the vertical direction.
+   - The vertical barriers at x=14 restrict movement in the horizontal direction.
+3. **Pathfinding**:
+   - Move left to avoid the vertical barrier at x=14.
+   - Move up to navigate around the horizontal barriers.
+   - Continue moving left and up until reaching the goal.
+
+After analyzing the grid and the barriers, a possible path is:
+
+- Start at [18, 8]
+- Move to [17, 9]
+- Move to [16, 10]
+- Move to [15, 11]
+- Move to [14, 12]
+- Move to [13, 13]
+- Move to [12, 14]
+- Move to [11, 15]
+- Move to [10, 16]
+- Move to [9, 17]
+- Move to [8, 18]
+- Move to [7, 19]
+- Move to [6, 20]
+- Move to [5, 21]
+- Move to [4, 22]
+- Move to [3, 23]
+- Move to [2, 24]
+- Move to [2, 25]
+- Move to [2, 26]
+- Move to [2, 27]
+- Finally, reach the goal at [2, 28]
+
+The generated path is:
+
+Generated Path: [[18, 8], [17, 9], [16, 10], [15, 11], [14, 12], [13, 13], [12, 14], [11, 15], [10, 16], [9, 17], [8, 18], [7, 19], [6, 20], [5, 21], [4, 22], [3, 23], [2, 24], [2, 25], [2, 26], [2, 27], [2, 28]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

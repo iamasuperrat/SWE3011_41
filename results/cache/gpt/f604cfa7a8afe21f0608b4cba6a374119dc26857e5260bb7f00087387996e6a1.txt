@@ -1,0 +1,56 @@
+To find a path from the start point [35, 19] to the goal point [38, 12] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [35, 19] (Confidence: 1)
+2. **Goal Point**: [38, 12] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [19, 36, 39]: This barrier is at y=19 from x=36 to x=39.
+  - [16, 16, 37]: This barrier is at y=16 from x=16 to x=37.
+  - [19, 2, 2]: This barrier is at y=19 from x=2 to x=2 (essentially a vertical line).
+
+- **Vertical Barriers**:
+  - [29, 12, 20]: This barrier is at x=29 from y=12 to y=20.
+  - [45, 5, 16]: This barrier is at x=45 from y=5 to y=16.
+
+### Pathfinding:
+Starting from [35, 19], we need to navigate around the barriers. The immediate next step can be to move left to [34, 19], then down to [34, 18], and continue navigating downwards and leftwards while avoiding the barriers.
+
+After analyzing the grid and potential paths, the following path can be generated:
+
+1. Move left to [34, 19]
+2. Move down to [34, 18]
+3. Move left to [33, 18]
+4. Move down to [33, 17]
+5. Move left to [32, 17]
+6. Move down to [32, 16]
+7. Move left to [31, 16]
+8. Move down to [31, 15]
+9. Move left to [30, 15]
+10. Move down to [30, 14]
+11. Move left to [29, 14]
+12. Move down to [29, 13]
+13. Move left to [28, 13]
+14. Move down to [28, 12]
+15. Move right to [29, 12]
+16. Move right to [30, 12]
+17. Move right to [31, 12]
+18. Move right to [32, 12]
+19. Move right to [33, 12]
+20. Move right to [34, 12]
+21. Move right to [35, 12]
+22. Move right to [36, 12]
+23. Move right to [37, 12]
+24. Finally, move to [38, 12] (Goal)
+
+### Generated Path:
+The generated path is:
+Generated Path: [[35, 19], [34, 19], [34, 18], [33, 18], [33, 17], [32, 17], [32, 16], [31, 16], [31, 15], [30, 15], [30, 14], [29, 14], [29, 13], [28, 13], [28, 12], [29, 12], [30, 12], [31, 12], [32, 12], [33, 12], [34, 12], [35, 12], [36, 12], [37, 12], [38, 12]]
+
+### Confidence Scores:
+- Start Point: 1
+- Intermediate Points: 0.9 (for points that are not directly adjacent to barriers)
+- Goal Point: 1
+
+Thus, the confidence scores for the generated path are:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

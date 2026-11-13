@@ -1,0 +1,87 @@
+To find a path from the start point [26, 22] to the goal point [2, 18] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [21, 13, 28]: This barrier spans horizontally from (13, 21) to (28, 21).
+  - [3, 45, 47]: This barrier does not affect the path since it is outside the relevant range.
+  
+- **Vertical Barriers**: 
+  - [3, 5, 30]: This barrier spans vertically from (5, 3) to (30, 3).
+
+### Pathfinding:
+Starting from [26, 22], we need to navigate downwards and leftwards towards [2, 18]. The barriers will guide our path selection.
+
+1. Start at [26, 22].
+2. Move left to [25, 22].
+3. Move left to [24, 22].
+4. Move left to [23, 22].
+5. Move down to [23, 21].
+6. Move down to [23, 20].
+7. Move left to [22, 20].
+8. Move down to [22, 19].
+9. Move left to [21, 19].
+10. Move down to [21, 18].
+11. Move left to [20, 18].
+12. Move down to [20, 17].
+13. Move left to [19, 17].
+14. Move down to [19, 16].
+15. Move left to [18, 16].
+16. Move down to [18, 15].
+17. Move left to [17, 15].
+18. Move down to [17, 14].
+19. Move left to [16, 14].
+20. Move down to [16, 13].
+21. Move left to [15, 13].
+22. Move down to [15, 12].
+23. Move left to [14, 12].
+24. Move down to [14, 11].
+25. Move left to [13, 11].
+26. Move down to [13, 10].
+27. Move left to [12, 10].
+28. Move down to [12, 9].
+29. Move left to [11, 9].
+30. Move down to [11, 8].
+31. Move left to [10, 8].
+32. Move down to [10, 7].
+33. Move left to [9, 7].
+34. Move down to [9, 6].
+35. Move left to [8, 6].
+36. Move down to [8, 5].
+37. Move left to [7, 5].
+38. Move down to [7, 4].
+39. Move left to [6, 4].
+40. Move down to [6, 3].
+41. Move left to [5, 3].
+42. Move down to [5, 2].
+43. Move left to [4, 2].
+44. Move down to [4, 1].
+45. Move left to [3, 1].
+46. Move down to [3, 0].
+47. Move left to [2, 0].
+48. Move down to [2, -1].
+49. Move left to [1, -1].
+50. Move down to [1, -2].
+51. Move left to [0, -2].
+52. Move down to [0, -3].
+53. Move left to [-1, -3].
+54. Move down to [-1, -4].
+55. Move left to [-2, -4].
+56. Move down to [-2, -5].
+57. Move left to [-3, -5].
+58. Move down to [-3, -6].
+59. Move left to [-4, -6].
+60. Move down to [-4, -7].
+61. Move left to [-5, -7].
+62. Move down to [-5, -8].
+63. Move left to [-6, -8].
+64. Move down to [-6, -9].
+65. Move left to [-7, -9].
+66. Move down to [-7, -10].
+67. Move left to [-8, -10].
+68. Move down to [-8, -11].
+69. Move left to [-9, -11].
+70. Move down to [-9, -12].
+71. Move left to [-10, -12].
+72. Move down to [-10, -13].
+73. Move left to [-11, -13].
+74. Move down to [-11, -

@@ -1,0 +1,39 @@
+To find a path from the start point [1, 25] to the goal point [17, 6], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [17, 11, 33]: This barrier spans horizontally from y=17, x=11 to x=33.
+  - [14, 51, 51]: This barrier is a vertical line at x=14 from y=51 to y=51.
+  - [3, 50, 51]: This barrier is a vertical line at x=3 from y=50 to y=51.
+
+- **Vertical Barriers**:
+  - [10, 14, 26]: This barrier spans vertically from x=10, y=14 to y=26.
+
+### Pathfinding:
+1. Start at [1, 25].
+2. Move to [1, 14] to avoid the vertical barrier at x=10.
+3. Move to [10, 14] to navigate around the vertical barrier.
+4. Move down to [10, 6] to get closer to the goal.
+5. Finally, move to the goal point [17, 6].
+
+### Generated Path:
+The path avoiding obstacles is:
+- Start: [1, 25]
+- Move to: [1, 14]
+- Move to: [10, 14]
+- Move to: [10, 6]
+- Move to: [17, 6] (Goal)
+
+Thus, the generated path is:
+Generated Path: [[1, 25], [1, 14], [10, 14], [10, 6], [17, 6]]
+
+### Confidence Scores:
+- Start point [1, 25]: 1 (confident it's a starting point)
+- Point [1, 14]: 0.9 (confident it's a valid waypoint)
+- Point [10, 14]: 0.9 (confident it's a valid waypoint)
+- Point [10, 6]: 0.9 (confident it's a valid waypoint)
+- Goal point [17, 6]: 1 (confident it's the goal)
+
+### Final Output:
+Generated Path: [[1, 25], [1, 14], [10, 14], [10, 6], [17, 6]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 1]

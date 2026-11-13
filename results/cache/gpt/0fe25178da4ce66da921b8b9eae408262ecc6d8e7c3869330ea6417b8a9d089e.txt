@@ -1,0 +1,41 @@
+To find a path from the start point [12, 25] to the goal point [25, 22], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [2, 33, 35]: This barrier is located at y=2, spanning from x=33 to x=35.
+  - [9, 8, 11]: This barrier is located at y=9, spanning from x=8 to x=11.
+  
+- **Vertical Barriers**:
+  - [16, 17, 17]: This barrier is located at x=16, spanning from y=17 to y=17.
+  - [13, 15, 27]: This barrier is located at x=13, spanning from y=15 to y=27.
+
+### Pathfinding:
+1. Start at [12, 25].
+2. Move to [12, 24] (down one unit).
+3. Move to [12, 23] (down one unit).
+4. Move to [12, 22] (down one unit).
+5. Move to [13, 22] (right one unit).
+6. Move to [14, 22] (right one unit).
+7. Move to [15, 22] (right one unit).
+8. Move to [16, 22] (right one unit).
+9. Move to [17, 22] (right one unit).
+10. Move to [18, 22] (right one unit).
+11. Move to [19, 22] (right one unit).
+12. Move to [20, 22] (right one unit).
+13. Move to [21, 22] (right one unit).
+14. Move to [22, 22] (right one unit).
+15. Move to [23, 22] (right one unit).
+16. Move to [24, 22] (right one unit).
+17. Move to [25, 22] (right one unit).
+
+### Generated Path:
+The path from the start point to the goal point is:
+Generated Path: [[12, 25], [12, 24], [12, 23], [12, 22], [13, 22], [14, 22], [15, 22], [16, 22], [17, 22], [18, 22], [19, 22], [20, 22], [21, 22], [22, 22], [23, 22], [24, 22], [25, 22]]
+
+### Waypoint Confidence:
+- Start point [12, 25]: 1
+- Intermediate points: 0.9 (as they are close to barriers but still valid)
+- Goal point [25, 22]: 1
+
+Thus, the confidence scores are:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

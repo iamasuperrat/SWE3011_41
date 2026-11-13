@@ -1,0 +1,31 @@
+To navigate from the start point [33, 9] to the goal point [31, 1], we need to avoid the horizontal barriers at y=6 spanning x=23 to x=47 and y=22 spanning x=14 to x=36, as well as the vertical barriers at x=5 spanning y=3 to y=29 and x=37 spanning y=13 to y=25.
+
+1. Start at [33, 9].
+2. Move left to [32, 9] to avoid the vertical barrier at x=37.
+3. Move left to [31, 9].
+4. Move down to [31, 8].
+5. Move down to [31, 7].
+6. Move down to [31, 6].
+7. Move down to [31, 5].
+8. Move down to [31, 4].
+9. Move down to [31, 3].
+10. Move down to [31, 2].
+11. Finally, move down to [31, 1] (goal).
+
+The generated path is:
+Generated Path: [[33, 9], [32, 9], [31, 9], [31, 8], [31, 7], [31, 6], [31, 5], [31, 4], [31, 3], [31, 2], [31, 1]]
+
+The confidence scores for each waypoint are as follows:
+- Start point [33, 9]: 1 (confident it's a valid starting point)
+- Point [32, 9]: 1 (confident it's a valid point avoiding barriers)
+- Point [31, 9]: 1 (confident it's a valid point avoiding barriers)
+- Point [31, 8]: 1 (confident it's a valid point avoiding barriers)
+- Point [31, 7]: 1 (confident it's a valid point avoiding barriers)
+- Point [31, 6]: 1 (confident it's a valid point avoiding barriers)
+- Point [31, 5]: 1 (confident it's a valid point avoiding barriers)
+- Point [31, 4]: 1 (confident it's a valid point avoiding barriers)
+- Point [31, 3]: 1 (confident it's a valid point avoiding barriers)
+- Point [31, 2]: 1 (confident it's a valid point avoiding barriers)
+- Goal point [31, 1]: 1 (confident it's the goal)
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

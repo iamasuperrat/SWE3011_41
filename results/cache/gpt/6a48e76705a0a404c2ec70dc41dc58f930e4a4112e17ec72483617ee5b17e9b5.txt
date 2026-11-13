@@ -1,0 +1,38 @@
+To navigate from the start point [4, 25] to the goal point [6, 20], we need to avoid the specified horizontal and vertical barriers. 
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [2, 37, 51]: This barrier does not affect our path since it is above our start and goal points.
+  - [28, 12, 46]: This barrier is also irrelevant as it is below our path.
+  
+- **Vertical Barriers**:
+  - [50, 27, 27]: This barrier is far to the right and does not affect our path.
+  - [5, 22, 28]: This barrier runs vertically at x=5 from y=22 to y=28, which we need to avoid.
+  - [27, 6, 22]: This barrier is also irrelevant as it is far to the right.
+
+### Pathfinding:
+Starting from [4, 25], we can move to the right to avoid the vertical barrier at x=5. The goal is to reach [6, 20].
+
+1. Move from [4, 25] to [6, 25] (right).
+2. Move down from [6, 25] to [6, 24].
+3. Move down from [6, 24] to [6, 23].
+4. Move down from [6, 23] to [6, 22].
+5. Move down from [6, 22] to [6, 21].
+6. Finally, move down from [6, 21] to [6, 20] (goal).
+
+### Generated Path:
+The path avoiding obstacles is:
+- [[4, 25], [6, 25], [6, 24], [6, 23], [6, 22], [6, 21], [6, 20]]
+
+### Confidence Scores:
+- Start Point [4, 25]: 1 (certainly a starting point)
+- [6, 25]: 1 (clear path)
+- [6, 24]: 1 (clear path)
+- [6, 23]: 1 (clear path)
+- [6, 22]: 1 (clear path)
+- [6, 21]: 1 (clear path)
+- Goal Point [6, 20]: 1 (certainly the goal)
+
+### Final Output:
+Generated Path: [[4, 25], [6, 25], [6, 24], [6, 23], [6, 22], [6, 21], [6, 20]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1]

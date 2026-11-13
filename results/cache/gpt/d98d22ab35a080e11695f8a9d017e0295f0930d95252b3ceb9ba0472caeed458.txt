@@ -1,0 +1,62 @@
+To navigate from the start point [25, 25] to the goal point [43, 14], we need to avoid the horizontal and vertical barriers provided. 
+
+1. **Start Point**: [25, 25] - Confidence: 1
+2. **Move Left**: We can move left to [24, 25] to avoid the vertical barrier at x=25.
+3. **Move Down**: Next, we can move down to [24, 24] to continue avoiding barriers.
+4. **Move Down**: Continue down to [24, 23].
+5. **Move Down**: Move down to [24, 22].
+6. **Move Down**: Move down to [24, 21].
+7. **Move Down**: Move down to [24, 20].
+8. **Move Down**: Move down to [24, 19].
+9. **Move Down**: Move down to [24, 18].
+10. **Move Down**: Move down to [24, 17].
+11. **Move Down**: Move down to [24, 16].
+12. **Move Down**: Move down to [24, 15].
+13. **Move Left**: Move left to [23, 15].
+14. **Move Left**: Move left to [22, 15].
+15. **Move Left**: Move left to [21, 15].
+16. **Move Left**: Move left to [20, 15].
+17. **Move Left**: Move left to [19, 15].
+18. **Move Left**: Move left to [18, 15].
+19. **Move Down**: Move down to [18, 14].
+20. **Move Down**: Move down to [18, 13].
+21. **Move Down**: Move down to [18, 12].
+22. **Move Down**: Move down to [18, 11].
+23. **Move Down**: Move down to [18, 10].
+24. **Move Down**: Move down to [18, 9].
+25. **Move Down**: Move down to [18, 8].
+26. **Move Right**: Move right to [19, 8].
+27. **Move Right**: Move right to [20, 8].
+28. **Move Right**: Move right to [21, 8].
+29. **Move Right**: Move right to [22, 8].
+30. **Move Right**: Move right to [23, 8].
+31. **Move Right**: Move right to [24, 8].
+32. **Move Right**: Move right to [25, 8].
+33. **Move Right**: Move right to [26, 8].
+34. **Move Right**: Move right to [27, 8].
+35. **Move Right**: Move right to [28, 8].
+36. **Move Right**: Move right to [29, 8].
+37. **Move Right**: Move right to [30, 8].
+38. **Move Right**: Move right to [31, 8].
+39. **Move Right**: Move right to [32, 8].
+40. **Move Right**: Move right to [33, 8].
+41. **Move Right**: Move right to [34, 8].
+42. **Move Right**: Move right to [35, 8].
+43. **Move Right**: Move right to [36, 8].
+44. **Move Right**: Move right to [37, 8].
+45. **Move Right**: Move right to [38, 8].
+46. **Move Right**: Move right to [39, 8].
+47. **Move Right**: Move right to [40, 8].
+48. **Move Right**: Move right to [41, 8].
+49. **Move Right**: Move right to [42, 8].
+50. **Move Right**: Move right to [43, 8].
+51. **Move Up**: Move up to [43, 9].
+52. **Move Up**: Move up to [43, 10].
+53. **Move Up**: Move up to [43, 11].
+54. **Move Up**: Move up to [43, 12].
+55. **Move Up**: Move up to [43, 13].
+56. **Move Up**: Move up to [43, 14] - Goal Point - Confidence: 1
+
+The generated path is as follows:
+
+Generated Path: [[25, 25], [24, 25], [24, 24], [24, 23], [24,

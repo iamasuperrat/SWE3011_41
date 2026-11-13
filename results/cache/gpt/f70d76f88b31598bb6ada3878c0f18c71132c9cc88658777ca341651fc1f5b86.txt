@@ -1,0 +1,50 @@
+To find the shortest path from the start point [33, 15] to the goal point [44, 16] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [33, 15]
+2. **Goal Point**: [44, 16]
+3. **Horizontal Barriers**: [[16, 33, 36], [9, 33, 35]]
+4. **Vertical Barriers**: [[8, 8, 21], [30, 1, 22], [22, 22, 25], [40, 6, 31]]
+
+### Pathfinding Steps:
+- Starting at [33, 15], we need to move towards the goal [44, 16].
+- The horizontal barrier at y=16 from x=33 to x=36 blocks direct movement to the right.
+- The vertical barriers also restrict movement in certain areas.
+
+### Possible Path:
+1. Move right to [34, 15] (clear path).
+2. Move right to [35, 15] (clear path).
+3. Move right to [36, 15] (clear path).
+4. Move up to [36, 16] (clear path).
+5. Move right to [37, 16] (clear path).
+6. Move right to [38, 16] (clear path).
+7. Move right to [39, 16] (clear path).
+8. Move right to [40, 16] (clear path).
+9. Move right to [41, 16] (clear path).
+10. Move right to [42, 16] (clear path).
+11. Move right to [43, 16] (clear path).
+12. Move right to [44, 16] (goal reached).
+
+### Generated Path:
+The path taken is:
+- Start: [33, 15]
+- [34, 15]
+- [35, 15]
+- [36, 15]
+- [36, 16]
+- [37, 16]
+- [38, 16]
+- [39, 16]
+- [40, 16]
+- [41, 16]
+- [42, 16]
+- [43, 16]
+- Goal: [44, 16]
+
+Thus, the generated path is:
+Generated Path: [[33, 15], [34, 15], [35, 15], [36, 15], [36, 16], [37, 16], [38, 16], [39, 16], [40, 16], [41, 16], [42, 16], [43, 16], [44, 16]]
+
+### Waypoint Confidence:
+- Start and goal points have a confidence of 1.
+- Intermediate points are also clear and unobstructed, so they will have a confidence of 1 as well.
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

@@ -1,0 +1,37 @@
+To find a path from the start point [45, 9] to the goal point [22, 2], we need to navigate around the given horizontal and vertical barriers. 
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [12, 45, 45]: This barrier is at y = 12 from x = 45 to x = 45 (essentially a point).
+  - [23, 18, 50]: This barrier is at y = 23 from x = 18 to x = 50.
+  - [4, 15, 27]: This barrier is at y = 4 from x = 15 to x = 27.
+  - [8, 22, 45]: This barrier is at y = 8 from x = 22 to x = 45.
+
+- **Vertical Barriers**:
+  - [34, 23, 28]: This barrier is at x = 34 from y = 23 to y = 28.
+  - [9, 7, 28]: This barrier is at x = 9 from y = 7 to y = 28.
+  - [32, 10, 18]: This barrier is at x = 32 from y = 10 to y = 18.
+
+### Pathfinding:
+1. Start at [45, 9].
+2. Move left to avoid the vertical barrier at x = 9.
+3. Move down to y = 8 to avoid the horizontal barrier at y = 12.
+4. Continue moving left to x = 22, then down to y = 2.
+
+### Generated Path:
+Following the above analysis, the path can be represented as:
+- Start: [45, 9]
+- Move to: [30, 8] (to avoid barriers)
+- Move to: [22, 8] (to reach the goal's x-coordinate)
+- Move to: [22, 2] (to reach the goal)
+
+Thus, the generated path is:
+Generated Path: [[45, 9], [30, 8], [22, 8], [22, 2]]
+
+### Confidence Scores:
+- Start Point: [45, 9] - Confidence: 1
+- Intermediate Point: [30, 8] - Confidence: 0.9 (good path but not guaranteed)
+- Intermediate Point: [22, 8] - Confidence: 0.9 (good path but not guaranteed)
+- Goal Point: [22, 2] - Confidence: 1
+
+Waypoint Confidence: [1, 0.9, 0.9, 1]

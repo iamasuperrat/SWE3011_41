@@ -1,0 +1,30 @@
+To find the shortest path from the start point [35, 10] to the goal point [34, 26] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. Start at [35, 10].
+2. Move to [34, 11] (clear path).
+3. Move to [34, 12] (clear path).
+4. Move to [34, 13] (clear path).
+5. Move to [34, 14] (clear path).
+6. Move to [34, 15] (clear path).
+7. Move to [34, 16] (clear path).
+8. Move to [34, 17] (clear path).
+9. Move to [34, 18] (clear path).
+10. Move to [34, 19] (clear path).
+11. Move to [34, 20] (clear path).
+12. Move to [34, 21] (clear path).
+13. Move to [34, 22] (clear path).
+14. Move to [34, 23] (clear path).
+15. Move to [34, 24] (clear path).
+16. Move to [34, 25] (clear path).
+17. Finally, move to [34, 26] (goal).
+
+The generated path is as follows:
+Generated Path: [[35, 10], [34, 11], [34, 12], [34, 13], [34, 14], [34, 15], [34, 16], [34, 17], [34, 18], [34, 19], [34, 20], [34, 21], [34, 22], [34, 23], [34, 24], [34, 25], [34, 26]]
+
+Now, assigning confidence scores:
+- Start point [35, 10]: 1
+- Intermediate points: 0.9 (as they are clear but not directly on the goal path)
+- Goal point [34, 26]: 1
+
+Thus, the confidence scores are:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

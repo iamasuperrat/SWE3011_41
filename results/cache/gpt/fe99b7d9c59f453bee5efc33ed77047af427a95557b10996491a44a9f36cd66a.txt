@@ -1,0 +1,30 @@
+To find a path from the start point [33, 15] to the goal point [5, 4], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [25, 50, 51]: This barrier does not affect the path since it is above the start and goal points.
+  - [25, 0, 21]: This barrier is at y=25 and spans from x=0 to x=21, which is below the start point.
+
+- **Vertical Barriers**:
+  - [28, 3, 15]: This barrier is at x=28 and spans from y=3 to y=15, which is to the right of the start point.
+  - [31, 5, 15]: This barrier is at x=31 and spans from y=5 to y=15, which is also to the right of the start point.
+
+### Pathfinding:
+1. Start at [33, 15].
+2. Move left to avoid vertical barriers, heading towards the goal.
+3. Navigate downwards to reach y=4 while avoiding any barriers.
+
+### Proposed Path:
+- Start at [33, 15]
+- Move to [30, 15] (left)
+- Move to [30, 10] (down)
+- Move to [25, 10] (left)
+- Move to [20, 10] (left)
+- Move to [15, 10] (left)
+- Move to [10, 10] (left)
+- Move to [5, 10] (left)
+- Move down to [5, 4] (down)
+
+### Final Path:
+Generated Path: [[33, 15], [30, 15], [30, 10], [25, 10], [20, 10], [15, 10], [10, 10], [5, 10], [5, 4]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

@@ -1,0 +1,55 @@
+To find a path from the start point [42, 5] to the goal point [8, 17] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [42, 5] (confidence 1)
+2. **Navigate around barriers**:
+   - The vertical barrier at x = 42 from y = 13 to y = 23 blocks direct movement downwards.
+   - The horizontal barrier at y = 12 from x = 17 to x = 30 blocks movement horizontally.
+   - The vertical barrier at x = 40 from y = 31 to y = 31 also restricts movement.
+
+3. **Pathfinding**:
+   - Move left from [42, 5] to [41, 5].
+   - Move left to [40, 5].
+   - Move down to [40, 12] (avoiding the horizontal barrier).
+   - Move left to [39, 12].
+   - Move down to [39, 17].
+   - Move left to [38, 17].
+   - Move left to [37, 17].
+   - Move left to [36, 17].
+   - Move left to [35, 17].
+   - Move left to [34, 17].
+   - Move left to [33, 17].
+   - Move left to [32, 17].
+   - Move left to [31, 17].
+   - Move left to [30, 17].
+   - Move left to [29, 17].
+   - Move left to [28, 17].
+   - Move left to [27, 17].
+   - Move left to [26, 17].
+   - Move left to [25, 17].
+   - Move left to [24, 17].
+   - Move left to [23, 17].
+   - Move left to [22, 17].
+   - Move left to [21, 17].
+   - Move left to [20, 17].
+   - Move left to [19, 17].
+   - Move left to [18, 17].
+   - Move left to [17, 17].
+   - Move left to [16, 17].
+   - Move left to [15, 17].
+   - Move left to [14, 17].
+   - Move left to [13, 17].
+   - Move left to [12, 17].
+   - Move left to [11, 17].
+   - Move left to [10, 17].
+   - Move left to [9, 17].
+   - Move left to [8, 17] (goal).
+
+4. **Generated Path**:
+The path can be summarized as follows:
+Generated Path: [[42, 5], [41, 5], [40, 5], [40, 12], [39, 12], [39, 17], [38, 17], [37, 17], [36, 17], [35, 17], [34, 17], [33, 17], [32, 17], [31, 17], [30, 17], [29, 17], [28, 17], [27, 17], [26, 17], [25, 17], [24, 17], [23, 17], [22, 17], [21, 17], [20, 17], [19, 17], [18, 17], [17, 17], [16, 17], [15, 17], [14, 17], [13, 17], [12, 17], [11, 17], [10, 17], [9, 17], [8, 17]]
+
+5. **Waypoint Confidence**:
+- Start and goal points have confidence 1.
+- Intermediate points have confidence based on their utility in avoiding obstacles.
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

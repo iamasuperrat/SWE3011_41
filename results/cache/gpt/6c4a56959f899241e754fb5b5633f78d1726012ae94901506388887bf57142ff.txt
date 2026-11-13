@@ -1,0 +1,41 @@
+To find a path from the start point [9, 28] to the goal point [30, 22] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [9, 28]
+2. **Goal Point**: [30, 22]
+3. **Horizontal Barriers**: [[8, 27, 44]]
+4. **Vertical Barriers**: [[5, 2, 5], [44, 28, 30], [26, 18, 28]]
+
+### Pathfinding Steps:
+- Starting at [9, 28], we can move right to avoid the horizontal barrier at y=27.
+- We can navigate downwards to avoid the vertical barriers.
+- The goal is to reach [30, 22] while avoiding the barriers.
+
+### Generated Path:
+After analyzing the grid and potential movements, the path can be constructed as follows:
+1. Move from [9, 28] to [10, 28]
+2. Move from [10, 28] to [11, 28]
+3. Move from [11, 28] to [12, 28]
+4. Move from [12, 28] to [13, 28]
+5. Move from [13, 28] to [14, 28]
+6. Move from [14, 28] to [15, 28]
+7. Move from [15, 28] to [16, 28]
+8. Move from [16, 28] to [17, 28]
+9. Move from [17, 28] to [18, 28]
+10. Move from [18, 28] to [19, 28]
+11. Move from [19, 28] to [20, 28]
+12. Move from [20, 28] to [21, 28]
+13. Move from [21, 28] to [22, 28]
+14. Move from [22, 28] to [23, 28]
+15. Move from [23, 28] to [24, 28]
+16. Move from [24, 28] to [25, 28]
+17. Move from [25, 28] to [26, 28]
+18. Move from [26, 28] to [27, 28]
+19. Move from [27, 28] to [28, 28]
+20. Move from [28, 28] to [29, 28]
+21. Move from [29, 28] to [30, 22]
+
+This path avoids all barriers and reaches the goal.
+
+### Final Output:
+Generated Path: [[9, 28], [10, 28], [11, 28], [12, 28], [13, 28], [14, 28], [15, 28], [16, 28], [17, 28], [18, 28], [19, 28], [20, 28], [21, 28], [22, 28], [23, 28], [24, 28], [25, 28], [26, 28], [27, 28], [28, 28], [29, 28], [30, 22]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

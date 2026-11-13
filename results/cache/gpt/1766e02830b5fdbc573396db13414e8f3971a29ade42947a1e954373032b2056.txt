@@ -1,0 +1,13 @@
+To find a path from the start point [20, 20] to the goal point [5, 5], we need to navigate around the given obstacles. The horizontal barriers are at y = 10 (from x = 0 to x = 25) and y = 15 (from x = 30 to x = 50). The vertical barrier is at x = 25 (from y = 10 to y = 22).
+
+Given these constraints, we can outline a potential path:
+
+1. Start at [20, 20].
+2. Move left to [20, 10] (avoiding the horizontal barrier at y = 10).
+3. Move down to [10, 10] (avoiding the vertical barrier at x = 25).
+4. Move left to [5, 5] (reaching the goal).
+
+The generated path is as follows:
+
+Generated Path: [[20, 20], [20, 10], [10, 10], [5, 5]]
+Waypoint Confidence: [1, 1, 1, 1]

@@ -1,0 +1,13 @@
+To navigate from the start point [12, 9] to the goal point [39, 19], we need to avoid the horizontal and vertical barriers provided. 
+
+1. **Start Point**: [12, 9] - Confidence: 1
+2. **Move Right**: We can move to [20, 9] to avoid the vertical barriers and stay below the horizontal barriers.
+3. **Move Up**: Next, we can move to [20, 15] to bypass the horizontal barrier at y=8.
+4. **Move Right**: Then, we can move to [39, 15] to get closer to the goal while avoiding the vertical barriers.
+5. **Move Up**: Finally, we can move to [39, 19] to reach the goal.
+
+The generated path is:
+Generated Path: [[12, 9], [20, 9], [20, 15], [39, 15], [39, 19]]
+
+The confidence scores for each waypoint are:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 1]

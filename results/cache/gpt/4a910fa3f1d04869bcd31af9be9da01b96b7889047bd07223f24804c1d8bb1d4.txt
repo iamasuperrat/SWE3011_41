@@ -1,0 +1,15 @@
+To navigate from the start point [5, 23] to the goal point [38, 28], we need to avoid the specified horizontal and vertical barriers. 
+
+1. **Start Point**: [5, 23] (confidence 1)
+2. **Move Right**: [10, 23] (confidence 1)
+3. **Move Up**: [10, 25] (confidence 1)
+4. **Move Right**: [20, 25] (confidence 1)
+5. **Move Up**: [20, 26] (confidence 1)
+6. **Move Right**: [30, 26] (confidence 1)
+7. **Move Up**: [30, 27] (confidence 1)
+8. **Move Right**: [38, 28] (confidence 1)
+
+The generated path avoids all obstacles and reaches the goal efficiently.
+
+Generated Path: [[5, 23], [10, 23], [10, 25], [20, 25], [20, 26], [30, 26], [30, 27], [38, 28]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1]

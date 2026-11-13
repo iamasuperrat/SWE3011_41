@@ -1,0 +1,50 @@
+To navigate from the start point [8, 10] to the goal point [21, 6], we need to avoid the horizontal barriers at y=1 (x=49), y=14 (x=37 to x=46), y=19 (x=28 to x=47), and y=14 (x=10 to x=13), as well as the vertical barriers at x=9 (y=1 to y=27) and x=40 (y=2 to y=28).
+
+1. Start at [8, 10].
+2. Move right to [9, 10] (avoiding the vertical barrier at x=9).
+3. Move up to [9, 11].
+4. Move right to [10, 11].
+5. Move up to [10, 12].
+6. Move right to [11, 12].
+7. Move up to [11, 13].
+8. Move right to [12, 13].
+9. Move up to [12, 14].
+10. Move right to [13, 14].
+11. Move up to [13, 15].
+12. Move right to [14, 15].
+13. Move up to [14, 16].
+14. Move right to [15, 16].
+15. Move up to [15, 17].
+16. Move right to [16, 17].
+17. Move up to [16, 18].
+18. Move right to [17, 18].
+19. Move up to [17, 19].
+20. Move right to [18, 19].
+21. Move up to [18, 20].
+22. Move right to [19, 20].
+23. Move up to [19, 21].
+24. Move right to [20, 21].
+25. Move up to [20, 22].
+26. Move right to [21, 22].
+27. Move down to [21, 21].
+28. Move down to [21, 20].
+29. Move down to [21, 19].
+30. Move down to [21, 18].
+31. Move down to [21, 17].
+32. Move down to [21, 16].
+33. Move down to [21, 15].
+34. Move down to [21, 14].
+35. Move down to [21, 13].
+36. Move down to [21, 12].
+37. Move down to [21, 11].
+38. Move down to [21, 10].
+39. Move down to [21, 9].
+40. Move down to [21, 8].
+41. Move down to [21, 7].
+42. Move down to [21, 6] (goal).
+
+After evaluating the path, the generated path is:
+
+Generated Path: [[8, 10], [9, 10], [9, 11], [10, 11], [10, 12], [11, 12], [11, 13], [12, 13], [12, 14], [13, 14], [13, 15], [14, 15], [14, 16], [15, 16], [15, 17], [16, 17], [16, 18], [17, 18], [17, 19], [18, 19], [18, 20], [19, 20], [19, 21], [20, 21], [20, 22], [21, 22], [21, 21], [21, 20], [21, 19], [21, 18], [21, 17], [21, 16], [21, 15], [21, 14], [21, 13], [21, 12], [21, 11], [21, 10], [21, 9], [21, 8], [21, 7], [21, 6]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

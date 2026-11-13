@@ -1,0 +1,60 @@
+To find a path from the start point [3, 8] to the goal point [16, 24] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [3, 8] (confidence 1)
+2. **Goal Point**: [16, 24] (confidence 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**: 
+  - [2, 33, 35] (this is above the goal and does not affect the path)
+  - [9, 8, 11] (this barrier is directly in the path between the start and goal)
+  
+- **Vertical Barriers**:
+  - [16, 17, 17] (this barrier is directly above the goal)
+  - [13, 15, 27] (this barrier is to the right of the start and goal)
+
+### Pathfinding:
+Given the barriers, we can navigate as follows:
+- Start at [3, 8].
+- Move right to [4, 8].
+- Move up to [4, 9].
+- Move right to [5, 9].
+- Move up to [5, 10].
+- Move right to [6, 10].
+- Move up to [6, 11].
+- Move right to [7, 11].
+- Move up to [7, 12].
+- Move right to [8, 12].
+- Move up to [8, 13].
+- Move right to [9, 13].
+- Move up to [9, 14].
+- Move right to [10, 14].
+- Move up to [10, 15].
+- Move right to [11, 15].
+- Move up to [11, 16].
+- Move right to [12, 16].
+- Move up to [12, 17].
+- Move right to [13, 17].
+- Move up to [13, 18].
+- Move right to [14, 18].
+- Move up to [14, 19].
+- Move right to [15, 19].
+- Move up to [15, 20].
+- Move right to [16, 20].
+- Move up to [16, 21].
+- Move right to [17, 21].
+- Move up to [17, 22].
+- Move right to [18, 22].
+- Move up to [18, 23].
+- Move right to [19, 23].
+- Move up to [19, 24].
+- Move left to [16, 24] (goal).
+
+### Generated Path:
+The generated path is:
+Generated Path: [[3, 8], [4, 8], [4, 9], [5, 9], [5, 10], [6, 10], [6, 11], [7, 11], [7, 12], [8, 12], [8, 13], [9, 13], [9, 14], [10, 14], [10, 15], [11, 15], [11, 16], [12, 16], [12, 17], [13, 17], [13, 18], [14, 18], [14, 19], [15, 19], [15, 20], [16, 20], [16, 21], [17, 21], [17, 22], [18, 22], [18, 23], [19, 23], [19, 24], [16, 24]]
+
+### Waypoint Confidence:
+The confidence scores for each waypoint are:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1] 
+
+This indicates high confidence in the path avoiding obstacles while reaching the goal.

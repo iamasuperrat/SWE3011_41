@@ -1,0 +1,28 @@
+To find a path from the start point [7, 8] to the goal point [13, 19] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [7, 8]
+2. **Goal Point**: [13, 19]
+3. **Horizontal Barriers**: [[16, 33, 36], [9, 33, 35]]
+4. **Vertical Barriers**: [[8, 8, 21], [30, 1, 22], [22, 22, 25], [40, 6, 31]]
+
+### Pathfinding Steps:
+- Starting at [7, 8], we can move right to [8, 8], but there's a vertical barrier at x=8 from y=8 to y=21, so we cannot move directly right.
+- We can move up to [7, 9], then continue moving up to [7, 10], [7, 11], [7, 12], [7, 13], [7, 14], [7, 15], [7, 16], [7, 17], [7, 18], and finally to [7, 19].
+- From [7, 19], we can move right to [8, 19], then to [9, 19], [10, 19], [11, 19], and finally to [12, 19].
+- Finally, we can move up to [13, 19].
+
+### Generated Path:
+The path taken is:
+- Start: [7, 8]
+- Move up to [7, 19]
+- Move right to [13, 19] (goal)
+
+Thus, the generated path is:
+Generated Path: [[7, 8], [7, 9], [7, 10], [7, 11], [7, 12], [7, 13], [7, 14], [7, 15], [7, 16], [7, 17], [7, 18], [7, 19], [8, 19], [9, 19], [10, 19], [11, 19], [12, 19], [13, 19]]
+
+### Waypoint Confidence:
+- Start and goal points have a confidence of 1.
+- Intermediate points are also considered valid waypoints with confidence of 1.
+
+Thus, the confidence scores are:
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

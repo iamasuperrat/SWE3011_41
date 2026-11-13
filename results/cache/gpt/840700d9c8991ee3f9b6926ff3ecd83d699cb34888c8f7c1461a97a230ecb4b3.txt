@@ -1,0 +1,33 @@
+To find a path from the start point [2, 3] to the goal point [18, 8] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. Start at [2, 3].
+2. Move to [2, 4] (up).
+3. Move to [3, 4] (right).
+4. Move to [4, 4] (right).
+5. Move to [5, 4] (right).
+6. Move to [6, 4] (right).
+7. Move to [7, 4] (right).
+8. Move to [8, 4] (right).
+9. Move to [9, 4] (right).
+10. Move to [10, 4] (right).
+11. Move to [11, 4] (right).
+12. Move to [12, 4] (right).
+13. Move to [13, 4] (right).
+14. Move to [14, 4] (right).
+15. Move to [14, 5] (up).
+16. Move to [14, 6] (up).
+17. Move to [14, 7] (up).
+18. Move to [15, 7] (right).
+19. Move to [16, 7] (right).
+20. Move to [17, 7] (right).
+21. Move to [18, 7] (right).
+22. Move to [18, 8] (up).
+
+The generated path is:
+Generated Path: [[2, 3], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4], [8, 4], [9, 4], [10, 4], [11, 4], [12, 4], [13, 4], [14, 4], [14, 5], [14, 6], [14, 7], [15, 7], [16, 7], [17, 7], [18, 7], [18, 8]]
+
+Now, I will assign confidence scores to each waypoint:
+- Start and goal points will have a confidence score of 1.
+- Intermediate points will have a confidence score of 0.9, as they are part of the path.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

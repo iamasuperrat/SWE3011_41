@@ -1,0 +1,27 @@
+To navigate from the start point [42, 23] to the goal point [35, 10], we need to consider the horizontal and vertical barriers present in the environment.
+
+1. **First Iteration on [42, 23]**
+   - Thought: The goal is to move towards [35, 10]. The vertical barrier at x=36 spanning y=9 to y=18 blocks a direct path. We should move left to avoid this barrier.
+   - Selected Point: [36, 20]
+   - Evaluation: This point is above the vertical barrier and allows for lateral movement towards the goal.
+
+2. **Second Iteration on [36, 20]**
+   - Thought: From here, I can move left to avoid the vertical barrier at x=36 and then down towards the goal.
+   - Selected Point: [35, 15]
+   - Evaluation: This point is still above the goal and allows for a downward movement towards the goal.
+
+3. **Third Iteration on [35, 15]**
+   - Thought: The path to the goal is now clear. I can move directly down to the goal.
+   - Selected Point: [35, 10]
+   - Evaluation: This point is the goal, and there are no barriers obstructing the path.
+
+The generated path is:
+Generated Path: [[42, 23], [36, 20], [35, 15], [35, 10]]
+
+The confidence scores for each waypoint are as follows:
+- Start Point: 1 (confident it's a valid starting point)
+- Point [36, 20]: 1 (confident it's a valid point avoiding obstacles)
+- Point [35, 15]: 1 (confident it's a valid point avoiding obstacles)
+- Goal Point: 1 (confident it's the destination)
+
+Waypoint Confidence: [1, 1, 1, 1]

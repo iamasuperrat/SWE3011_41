@@ -1,0 +1,73 @@
+To find a path from the start point [3, 3] to the goal point [36, 26] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [6, 23, 47]: This barrier spans horizontally from y=6, x=23 to x=47.
+  - [22, 14, 36]: This barrier spans horizontally from y=22, x=14 to x=36.
+
+- **Vertical Barriers**:
+  - [5, 3, 29]: This barrier spans vertically from x=5, y=3 to y=29.
+  - [37, 13, 25]: This barrier spans vertically from x=37, y=13 to y=25.
+
+### Pathfinding:
+1. Start at [3, 3].
+2. Move to [3, 4] (up).
+3. Move to [3, 5] (up).
+4. Move to [3, 6] (up).
+5. Move to [4, 6] (right).
+6. Move to [5, 6] (right).
+7. Move to [6, 6] (right).
+8. Move to [7, 6] (right).
+9. Move to [8, 6] (right).
+10. Move to [9, 6] (right).
+11. Move to [10, 6] (right).
+12. Move to [11, 6] (right).
+13. Move to [12, 6] (right).
+14. Move to [13, 6] (right).
+15. Move to [14, 6] (right).
+16. Move to [15, 6] (right).
+17. Move to [16, 6] (right).
+18. Move to [17, 6] (right).
+19. Move to [18, 6] (right).
+20. Move to [19, 6] (right).
+21. Move to [20, 6] (right).
+22. Move to [21, 6] (right).
+23. Move to [22, 6] (right).
+24. Move to [23, 6] (right).
+25. Move to [24, 6] (right).
+26. Move to [25, 6] (right).
+27. Move to [26, 6] (right).
+28. Move to [27, 6] (right).
+29. Move to [28, 6] (right).
+30. Move to [29, 6] (right).
+31. Move to [30, 6] (right).
+32. Move to [31, 6] (right).
+33. Move to [32, 6] (right).
+34. Move to [33, 6] (right).
+35. Move to [34, 6] (right).
+36. Move to [35, 6] (right).
+37. Move to [36, 6] (right).
+38. Move to [36, 7] (up).
+39. Move to [36, 8] (up).
+40. Move to [36, 9] (up).
+41. Move to [36, 10] (up).
+42. Move to [36, 11] (up).
+43. Move to [36, 12] (up).
+44. Move to [36, 13] (up).
+45. Move to [36, 14] (up).
+46. Move to [36, 15] (up).
+47. Move to [36, 16] (up).
+48. Move to [36, 17] (up).
+49. Move to [36, 18] (up).
+50. Move to [36, 19] (up).
+51. Move to [36, 20] (up).
+52. Move to [36, 21] (up).
+53. Move to [36, 22] (up).
+54. Move to [36, 23] (up).
+55. Move to [36, 24] (up).
+56. Move to [36, 25] (up).
+57. Move to [36, 26] (up).
+
+### Generated Path:
+The generated path is:
+Generated Path: [[3, 3], [3, 4], [3, 5], [3, 6], [4, 6], [5, 6], [6, 6], [7, 6], [8, 6], [9, 6], [10, 6], [11

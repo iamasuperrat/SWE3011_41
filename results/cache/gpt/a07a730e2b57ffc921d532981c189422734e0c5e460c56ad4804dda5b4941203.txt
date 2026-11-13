@@ -1,0 +1,26 @@
+To find a path from the start point [36, 27] to the goal point [18, 3] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [36, 27] (confidence 1)
+2. **Navigate around barriers**:
+   - The horizontal barriers at y=24 (from x=20 to x=48) and y=6 (from x=50 to x=51) will need to be avoided.
+   - The vertical barriers at x=10 (from y=23 to y=27) and x=17 (from y=24 to y=29) also need to be avoided.
+
+3. **Pathfinding**:
+   - Move left from [36, 27] to [36, 26], then to [36, 25], and continue moving left until reaching [20, 25].
+   - Move down to [20, 24], then down to [20, 23].
+   - Move left to [19, 23], then down to [19, 22], and continue down to [19, 21].
+   - Move left to [18, 21], then down to [18, 20], and continue down to [18, 19].
+   - Move left to [17, 19], then down to [17, 18], and continue down to [17, 17].
+   - Move left to [16, 17], then down to [16, 16], and continue down to [16, 15].
+   - Move left to [15, 15], then down to [15, 14], and continue down to [15, 13].
+   - Move left to [14, 13], then down to [14, 12], and continue down to [14, 11].
+   - Move left to [13, 11], then down to [13, 10], and continue down to [13, 9].
+   - Move left to [12, 9], then down to [12, 8], and continue down to [12, 7].
+   - Move left to [11, 7], then down to [11, 6], and continue down to [11, 5].
+   - Move left to [10, 5], then down to [10, 4], and continue down to [10, 3].
+   - Finally, move left to [9, 3], then down to [8, 3], and finally to [18, 3].
+
+After analyzing the grid and avoiding the barriers, the generated path is:
+
+Generated Path: [[36, 27], [20, 25], [20, 24], [19, 23], [19, 22], [19, 21], [18, 21], [18, 20], [18, 19], [17, 19], [17, 18], [17, 17], [16, 17], [16, 16], [16, 15], [15, 15], [15, 14], [15, 13], [14, 13], [14, 12], [14, 11], [13, 11], [13, 10], [13, 9], [12, 9], [12, 8], [12, 7], [11, 7], [11, 6], [11, 5], [10, 5], [10, 4], [10, 3], [9, 3], [8, 3], [18, 3]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.3, 0.3, 0.3, 0.3, 0.3, 1]

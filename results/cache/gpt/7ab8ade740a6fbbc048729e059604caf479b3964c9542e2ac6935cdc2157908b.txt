@@ -1,0 +1,31 @@
+To find a path from the start point [28, 18] to the goal point [18, 5] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [28, 18] (confidence 1)
+2. **Navigate Left**: Move to [27, 18] (confidence 0.9)
+3. **Continue Left**: Move to [26, 18] (confidence 0.9)
+4. **Move Down**: Move to [26, 17] (confidence 0.8)
+5. **Move Down**: Move to [26, 16] (confidence 0.8)
+6. **Move Left**: Move to [25, 16] (confidence 0.8)
+7. **Move Down**: Move to [25, 15] (confidence 0.7)
+8. **Move Down**: Move to [25, 14] (confidence 0.7)
+9. **Move Left**: Move to [24, 14] (confidence 0.7)
+10. **Move Down**: Move to [24, 13] (confidence 0.6)
+11. **Move Down**: Move to [24, 12] (confidence 0.6)
+12. **Move Left**: Move to [23, 12] (confidence 0.6)
+13. **Move Down**: Move to [23, 11] (confidence 0.5)
+14. **Move Down**: Move to [23, 10] (confidence 0.5)
+15. **Move Left**: Move to [22, 10] (confidence 0.5)
+16. **Move Down**: Move to [22, 9] (confidence 0.4)
+17. **Move Down**: Move to [22, 8] (confidence 0.4)
+18. **Move Left**: Move to [21, 8] (confidence 0.4)
+19. **Move Down**: Move to [21, 7] (confidence 0.3)
+20. **Move Down**: Move to [21, 6] (confidence 0.3)
+21. **Move Left**: Move to [20, 6] (confidence 0.3)
+22. **Move Down**: Move to [20, 5] (confidence 0.2)
+23. **Move Left**: Move to [19, 5] (confidence 0.2)
+24. **Move Left**: Move to [18, 5] (confidence 1)
+
+After analyzing the barriers and the grid, the generated path is:
+
+Generated Path: [[28, 18], [27, 18], [26, 18], [26, 17], [26, 16], [25, 16], [25, 15], [25, 14], [24, 14], [24, 13], [24, 12], [23, 12], [23, 11], [23, 10], [22, 10], [22, 9], [22, 8], [21, 8], [21, 7], [21, 6], [20, 6], [20, 5], [19, 5], [18, 5]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.8, 0.8, 0.8, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.5, 0.5, 0.5, 0.4, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.2, 1]

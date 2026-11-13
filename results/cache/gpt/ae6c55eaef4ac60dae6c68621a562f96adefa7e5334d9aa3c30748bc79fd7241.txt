@@ -1,0 +1,28 @@
+To find a path from the start point [10, 19] to the goal point [40, 4], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [19, 37, 48] (This barrier is at y=19, spanning x=37 to x=48)
+  
+- **Vertical Barriers**: 
+  - [9, 28, 30] (This barrier is at x=9, spanning y=28 to y=30)
+  - [38, 8, 29] (This barrier is at x=38, spanning y=8 to y=29)
+  - [15, 9, 27] (This barrier is at x=15, spanning y=9 to y=27)
+
+### Pathfinding:
+1. Start at [10, 19].
+2. Move right to avoid the horizontal barrier at y=19. The next possible point is [11, 19].
+3. Continue moving right to [12, 19], [13, 19], [14, 19], and then to [15, 19].
+4. At [15, 19], we need to move down to avoid the vertical barrier at x=15. Move to [15, 18], [15, 17], [15, 16], [15, 15], [15, 14], [15, 13], [15, 12], [15, 11], [15, 10], and finally to [15, 9].
+5. Now, we can move left to [14, 9], [13, 9], [12, 9], [11, 9], and [10, 9].
+6. From [10, 9], we can move down to [10, 8], [10, 7], [10, 6], [10, 5], [10, 4].
+7. Finally, move right to [11, 4], [12, 4], [13, 4], [14, 4], [15, 4], [16, 4], [17, 4], [18, 4], [19, 4], [20, 4], [21, 4], [22, 4], [23, 4], [24, 4], [25, 4], [26, 4], [27, 4], [28, 4], [29, 4], [30, 4], [31, 4], [32, 4], [33, 4], [34, 4], [35, 4], [36, 4], [37, 4], [38, 4], [39, 4], and finally reach [40, 4].
+
+### Generated Path:
+The generated path is:
+Generated Path: [[10, 19], [11, 19], [12, 19], [13, 19], [14, 19], [15, 19], [15, 18], [15, 17], [15, 16], [15, 15], [15, 14], [15, 13], [15, 12], [15, 11], [15, 10], [15, 9], [14, 9], [13, 9], [12, 9], [11, 9], [10, 9], [10, 8], [10, 7], [10, 6], [10, 5], [10, 4], [11, 4], [12, 4], [13, 4], [14, 4], [15, 4], [16, 4], [17, 4], [18, 4], [19, 4], [20, 4], [21, 4], [22, 4], [23, 4], [24, 4], [25, 4], [26, 4], [27, 4], [28, 4], [29, 4], [30, 4], [31, 4], [32, 4], [33, 4], [34, 4], [35, 4], [36, 4], [37, 4], [38, 4], [39, 4], [40, 4]]
+
+### Waypoint Confidence:
+The confidence scores for the waypoints are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9,

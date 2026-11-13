@@ -1,0 +1,24 @@
+To find a path from the start point [19, 24] to the goal point [36, 3], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: [[4, 13, 48]]
+- **Vertical Barriers**: [[12, 6, 11], [28, 1, 14], [24, 27, 28], [34, 30, 31]]
+
+### Pathfinding:
+1. Start at [19, 24].
+2. Move right to avoid the vertical barriers and head towards the goal.
+3. Navigate around the horizontal barrier at y=4.
+4. Move downwards towards the goal while avoiding the vertical barriers.
+
+### Generated Path:
+After analyzing the barriers and calculating the shortest route, the path can be represented as follows:
+
+Generated Path: [[19, 24], [25, 20], [30, 15], [36, 3]]
+
+### Confidence Scores:
+- Start Point: [19, 24] - Confidence: 1
+- Waypoint: [25, 20] - Confidence: 0.9 (clear path)
+- Waypoint: [30, 15] - Confidence: 0.8 (some obstacles nearby)
+- Goal Point: [36, 3] - Confidence: 1
+
+Waypoint Confidence: [1, 0.9, 0.8, 1]

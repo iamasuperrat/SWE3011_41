@@ -1,0 +1,36 @@
+To find a path from the start point [9, 26] to the goal point [37, 26] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. Start at [9, 26].
+2. Move right to [10, 26].
+3. Continue moving right to [11, 26].
+4. Move right to [12, 26].
+5. Move right to [13, 26].
+6. Move right to [14, 26].
+7. Move right to [15, 26].
+8. Move right to [16, 26].
+9. Move right to [17, 26].
+10. Move right to [18, 26].
+11. Move right to [19, 26].
+12. Move right to [20, 26].
+13. Move right to [21, 26].
+14. Move right to [22, 26].
+15. Move right to [23, 26].
+16. Move right to [24, 26].
+17. Move right to [25, 26].
+18. Move right to [26, 26].
+19. Move right to [27, 26].
+20. Move right to [28, 26].
+21. Move right to [29, 26].
+22. Move right to [30, 26].
+23. Move right to [31, 26].
+24. Move right to [32, 26].
+25. Move right to [33, 26].
+26. Move right to [34, 26].
+27. Move right to [35, 26].
+28. Move right to [36, 26].
+29. Finally, move right to [37, 26].
+
+This path avoids all barriers and reaches the goal.
+
+Generated Path: [[9, 26], [10, 26], [11, 26], [12, 26], [13, 26], [14, 26], [15, 26], [16, 26], [17, 26], [18, 26], [19, 26], [20, 26], [21, 26], [22, 26], [23, 26], [24, 26], [25, 26], [26, 26], [27, 26], [28, 26], [29, 26], [30, 26], [31, 26], [32, 26], [33, 26], [34, 26], [35, 26], [36, 26], [37, 26]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

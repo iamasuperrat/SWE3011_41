@@ -1,0 +1,36 @@
+To find a path from the start point [3, 5] to the goal point [39, 22], we need to navigate around the given horizontal and vertical barriers. 
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [16, 50, 51]: This barrier is not relevant since it is above the y-coordinate of the start and goal points.
+  - [11, 38, 41]: This barrier is also not relevant since it is above the y-coordinate of the start and goal points.
+  - [3, 35, 49]: This barrier is below the start point and does not affect the path.
+  - [15, 21, 48]: This barrier is relevant as it spans from y=15 to y=21.
+
+- **Vertical Barriers**:
+  - [42, 15, 30]: This barrier is not relevant since it is beyond the x-coordinate of the goal point.
+  - [42, 0, 2]: This barrier is also not relevant since it is beyond the x-coordinate of the goal point.
+
+### Pathfinding:
+Given the barriers, we can create a path that avoids the horizontal barrier at y=15 to y=21. 
+
+1. Start at [3, 5].
+2. Move right to [15, 5] (staying below the horizontal barrier).
+3. Move up to [15, 15] (just below the barrier).
+4. Move right to [39, 15].
+5. Move up to [39, 22] (goal).
+
+### Generated Path:
+The path can be represented as:
+Generated Path: [[3, 5], [15, 5], [15, 15], [39, 15], [39, 22]]
+
+### Confidence Scores:
+- Start Point [3, 5]: 1 (definitely a starting point)
+- Point [15, 5]: 1 (clear path)
+- Point [15, 15]: 1 (just below the barrier)
+- Point [39, 15]: 1 (clear path)
+- Goal Point [39, 22]: 1 (definitely the goal)
+
+### Final Output:
+Generated Path: [[3, 5], [15, 5], [15, 15], [39, 15], [39, 22]]
+Waypoint Confidence: [1, 1, 1, 1, 1]

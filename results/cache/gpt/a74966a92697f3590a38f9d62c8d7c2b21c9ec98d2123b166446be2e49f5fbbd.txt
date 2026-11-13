@@ -1,0 +1,56 @@
+To find a path from the start point [21, 10] to the goal point [24, 22] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Given Information:
+- **Start Point:** [21, 10]
+- **Goal Point:** [24, 22]
+- **Horizontal Barriers:** [[21, 13, 28], [3, 45, 47]]
+- **Vertical Barriers:** [[3, 5, 30]]
+
+### Analysis:
+1. The horizontal barrier at y = 21 spans from x = 13 to x = 28, which means we cannot cross this line between these x-coordinates.
+2. The vertical barrier at x = 3 spans from y = 5 to y = 30, which does not affect our path since we are starting at x = 21.
+3. The goal point is located at [24, 22], which is above the horizontal barrier at y = 21.
+
+### Pathfinding:
+Starting from [21, 10], we can move upwards to avoid the horizontal barrier:
+- Move to [21, 11]
+- Move to [21, 12]
+- Move to [21, 13] (this is the edge of the barrier)
+- Move to [22, 13]
+- Move to [23, 13]
+- Move to [24, 13]
+- Move to [24, 14]
+- Move to [24, 15]
+- Move to [24, 16]
+- Move to [24, 17]
+- Move to [24, 18]
+- Move to [24, 19]
+- Move to [24, 20]
+- Move to [24, 21]
+- Finally, move to [24, 22] (goal)
+
+### Generated Path:
+The path can be summarized as:
+Generated Path: [[21, 10], [21, 11], [21, 12], [21, 13], [22, 13], [23, 13], [24, 13], [24, 14], [24, 15], [24, 16], [24, 17], [24, 18], [24, 19], [24, 20], [24, 21], [24, 22]]
+
+### Confidence Scores:
+- Start Point [21, 10]: 1
+- [21, 11]: 1
+- [21, 12]: 1
+- [21, 13]: 1
+- [22, 13]: 1
+- [23, 13]: 1
+- [24, 13]: 1
+- [24, 14]: 1
+- [24, 15]: 1
+- [24, 16]: 1
+- [24, 17]: 1
+- [24, 18]: 1
+- [24, 19]: 1
+- [24, 20]: 1
+- [24, 21]: 1
+- Goal Point [24, 22]: 1
+
+### Final Output:
+Generated Path: [[21, 10], [21, 11], [21, 12], [21, 13], [22, 13], [23, 13], [24, 13], [24, 14], [24, 15], [24, 16], [24, 17], [24, 18], [24, 19], [24, 20], [24, 21], [24, 22]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

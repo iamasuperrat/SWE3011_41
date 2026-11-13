@@ -1,0 +1,20 @@
+To find a path from the start point [4, 4] to the goal point [16, 16] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+Given the barriers:
+- Horizontal Barriers: [[20, 0, 20], [5, 30, 40]]
+- Vertical Barriers: [[40, 0, 15], [20, 10, 21]]
+
+The path can be constructed as follows:
+1. Start at [4, 4].
+2. Move to [10, 10] to avoid the barriers.
+3. Finally, move to [16, 16].
+
+Thus, the generated path is:
+Generated Path: [[4, 4], [10, 10], [16, 16]]
+
+Now, assigning confidence scores:
+- Start point [4, 4]: 1 (certainly a starting point)
+- Waypoint [10, 10]: 0.9 (confident it's a good waypoint avoiding barriers)
+- Goal point [16, 16]: 1 (certainly the goal)
+
+Waypoint Confidence: [1, 0.9, 1]

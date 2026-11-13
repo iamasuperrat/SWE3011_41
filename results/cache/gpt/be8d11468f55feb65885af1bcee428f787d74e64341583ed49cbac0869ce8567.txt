@@ -1,0 +1,45 @@
+To find a path from the start point [47, 16] to the goal point [2, 16], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [18, 45, 49] (y = 18 from x = 45 to x = 49)
+  - [4, 27, 30] (y = 4 from x = 27 to x = 30)
+  
+- **Vertical Barriers**: 
+  - [37, 29, 30] (x = 37 from y = 29 to y = 30)
+  - [20, 13, 16] (x = 20 from y = 13 to y = 16)
+  - [49, 29, 30] (x = 49 from y = 29 to y = 30)
+
+### Pathfinding:
+1. Start at [47, 16].
+2. Move left to avoid the vertical barrier at x = 49.
+3. Move down to y = 15 to avoid the horizontal barrier at y = 18.
+4. Continue moving left until reaching x = 2 while staying at y = 15.
+5. Finally, move up to the goal point [2, 16].
+
+### Generated Path:
+Following this logic, the path can be constructed as follows:
+- Start at [47, 16]
+- Move to [37, 16]
+- Move to [27, 16]
+- Move to [17, 16]
+- Move to [7, 16]
+- Move to [2, 16]
+
+Thus, the generated path is:
+Generated Path: [[47, 16], [37, 16], [27, 16], [17, 16], [7, 16], [2, 16]]
+
+### Confidence Scores:
+- Start Point: [47, 16] - Confidence: 1
+- [37, 16] - Confidence: 1 (clear path)
+- [27, 16] - Confidence: 1 (clear path)
+- [17, 16] - Confidence: 1 (clear path)
+- [7, 16] - Confidence: 1 (clear path)
+- Goal Point: [2, 16] - Confidence: 1
+
+Thus, the confidence scores are:
+Waypoint Confidence: [1, 1, 1, 1, 1, 1] 
+
+Final output:
+Generated Path: [[47, 16], [37, 16], [27, 16], [17, 16], [7, 16], [2, 16]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]

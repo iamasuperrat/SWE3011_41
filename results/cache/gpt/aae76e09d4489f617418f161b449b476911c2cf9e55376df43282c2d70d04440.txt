@@ -1,0 +1,43 @@
+To find a path from the start point [27, 19] to the goal point [31, 15] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [27, 19] (Confidence: 1)
+2. **Goal Point**: [31, 15] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [21, 19, 26]: This barrier spans from (19, 21) to (19, 26), blocking movement directly to the right.
+  - [25, 15, 35]: This barrier spans from (15, 25) to (15, 35), blocking movement directly downwards.
+  - [7, 17, 48]: This barrier is not relevant for our path since it is far from our start and goal points.
+
+- **Vertical Barriers**:
+  - [7, 18, 23]: This barrier is not relevant for our path since it is far from our start and goal points.
+  - [17, 29, 30]: This barrier is not relevant for our path since it is far from our start and goal points.
+  - [28, 10, 24]: This barrier spans from (10, 28) to (24, 28), blocking movement directly downwards.
+
+### Pathfinding:
+Starting from [27, 19], we can move:
+- Right to [28, 19] (valid)
+- Down to [28, 18] (valid)
+- Down to [29, 18] (valid)
+- Down to [30, 18] (valid)
+- Down to [31, 18] (valid)
+- Finally, move left to [31, 15] (goal)
+
+### Generated Path:
+Following the above steps, the path can be represented as:
+- Start: [27, 19]
+- Move to: [28, 19]
+- Move to: [29, 18]
+- Move to: [30, 18]
+- Move to: [31, 18]
+- Move to: [31, 15] (Goal)
+
+Thus, the generated path is:
+Generated Path: [[27, 19], [28, 19], [29, 18], [30, 18], [31, 18], [31, 15]]
+
+### Confidence Scores:
+- Start Point: 1
+- Intermediate Points: 1 (for [28, 19]), 1 (for [29, 18]), 1 (for [30, 18]), 1 (for [31, 18])
+- Goal Point: 1
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]

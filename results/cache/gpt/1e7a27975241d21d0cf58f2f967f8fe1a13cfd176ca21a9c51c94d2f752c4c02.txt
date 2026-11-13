@@ -1,0 +1,26 @@
+To find a path from the start point [8, 2] to the goal point [1, 13] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [8, 2] (confidence 1)
+2. **Navigate to**: [8, 3] (move up) (confidence 0.9)
+3. **Navigate to**: [7, 3] (move left) (confidence 0.9)
+4. **Navigate to**: [6, 3] (move left) (confidence 0.9)
+5. **Navigate to**: [6, 4] (move up) (confidence 0.9)
+6. **Navigate to**: [6, 5] (move up) (confidence 0.9)
+7. **Navigate to**: [6, 6] (move up) (confidence 0.9)
+8. **Navigate to**: [6, 7] (move up) (confidence 0.9)
+9. **Navigate to**: [6, 8] (move up) (confidence 0.9)
+10. **Navigate to**: [5, 8] (move left) (confidence 0.9)
+11. **Navigate to**: [4, 8] (move left) (confidence 0.9)
+12. **Navigate to**: [3, 8] (move left) (confidence 0.9)
+13. **Navigate to**: [2, 8] (move left) (confidence 0.9)
+14. **Navigate to**: [1, 8] (move left) (confidence 0.9)
+15. **Navigate to**: [1, 9] (move up) (confidence 0.9)
+16. **Navigate to**: [1, 10] (move up) (confidence 0.9)
+17. **Navigate to**: [1, 11] (move up) (confidence 0.9)
+18. **Navigate to**: [1, 12] (move up) (confidence 0.9)
+19. **Goal Point**: [1, 13] (confidence 1)
+
+The generated path is as follows:
+
+Generated Path: [[8, 2], [8, 3], [7, 3], [6, 3], [6, 4], [6, 5], [6, 6], [6, 7], [6, 8], [5, 8], [4, 8], [3, 8], [2, 8], [1, 8], [1, 9], [1, 10], [1, 11], [1, 12], [1, 13]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

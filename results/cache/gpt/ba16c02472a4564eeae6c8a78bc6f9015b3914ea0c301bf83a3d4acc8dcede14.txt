@@ -1,0 +1,64 @@
+To find a path from the start point [28, 4] to the goal point [20, 27] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [28, 4] (confidence 1)
+2. **Goal Point**: [20, 27] (confidence 1)
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [2, 37, 51] (does not affect the path)
+  - [28, 12, 46] (blocks the path from y=12 to y=46 at x=28)
+  
+- **Vertical Barriers**:
+  - [50, 27, 27] (does not affect the path)
+  - [5, 22, 28] (does not affect the path)
+  - [27, 6, 22] (blocks the path from x=27 to x=22 at y=6)
+
+### Pathfinding:
+Starting from [28, 4], we can move left to avoid the barriers:
+- Move to [27, 4]
+- Move to [26, 4]
+- Move to [25, 4]
+- Move to [24, 4]
+- Move to [23, 4]
+- Move to [22, 4]
+- Move to [21, 4]
+- Move to [20, 4]
+- Move up to [20, 5]
+- Move up to [20, 6]
+- Move up to [20, 7]
+- Move up to [20, 8]
+- Move up to [20, 9]
+- Move up to [20, 10]
+- Move up to [20, 11]
+- Move up to [20, 12]
+- Move up to [20, 13]
+- Move up to [20, 14]
+- Move up to [20, 15]
+- Move up to [20, 16]
+- Move up to [20, 17]
+- Move up to [20, 18]
+- Move up to [20, 19]
+- Move up to [20, 20]
+- Move up to [20, 21]
+- Move up to [20, 22]
+- Move up to [20, 23]
+- Move up to [20, 24]
+- Move up to [20, 25]
+- Move up to [20, 26]
+- Move up to [20, 27] (goal)
+
+### Generated Path:
+The path can be summarized as follows:
+- Start at [28, 4]
+- Move left to [20, 4]
+- Move up to [20, 27]
+
+Thus, the generated path is:
+Generated Path: [[28, 4], [20, 4], [20, 27]]
+
+### Confidence Scores:
+- Start Point: [28, 4] (confidence 1)
+- Intermediate Point: [20, 4] (confidence 0.9, as it's a straight path)
+- Goal Point: [20, 27] (confidence 1)
+
+Waypoint Confidence: [1, 0.9, 1]

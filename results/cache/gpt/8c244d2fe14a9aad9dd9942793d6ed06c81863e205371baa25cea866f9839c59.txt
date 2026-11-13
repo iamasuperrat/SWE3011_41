@@ -1,0 +1,94 @@
+To navigate from the start point [3, 25] to the goal point [19, 8], we need to consider the horizontal and vertical barriers that may obstruct our path.
+
+- **First Iteration on [3, 25]**
+  - Thought: The goal is significantly lower than the start point, and there are horizontal barriers below. We need to move downwards while avoiding any barriers.
+  - Selected Point: [3, 24]
+  - Evaluation: This point is directly below the start and keeps us on the same x-coordinate, allowing us to assess further moves.
+
+- **Second Iteration on [3, 24]**
+  - Thought: We can continue moving downwards to avoid the horizontal barriers.
+  - Selected Point: [3, 23]
+  - Evaluation: This point continues to keep us clear of barriers while moving towards the goal.
+
+- **Third Iteration on [3, 23]**
+  - Thought: Continuing downwards is still viable.
+  - Selected Point: [3, 22]
+  - Evaluation: This point is still clear of barriers.
+
+- **Fourth Iteration on [3, 22]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 21]
+  - Evaluation: This point is still clear of barriers.
+
+- **Fifth Iteration on [3, 21]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 20]
+  - Evaluation: This point is still clear of barriers.
+
+- **Sixth Iteration on [3, 20]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 19]
+  - Evaluation: This point is still clear of barriers.
+
+- **Seventh Iteration on [3, 19]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 18]
+  - Evaluation: This point is still clear of barriers.
+
+- **Eighth Iteration on [3, 18]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 17]
+  - Evaluation: This point is still clear of barriers.
+
+- **Ninth Iteration on [3, 17]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 16]
+  - Evaluation: This point is still clear of barriers.
+
+- **Tenth Iteration on [3, 16]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 15]
+  - Evaluation: This point is still clear of barriers.
+
+- **Eleventh Iteration on [3, 15]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 14]
+  - Evaluation: This point is still clear of barriers.
+
+- **Twelfth Iteration on [3, 14]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 13]
+  - Evaluation: This point is still clear of barriers.
+
+- **Thirteenth Iteration on [3, 13]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 12]
+  - Evaluation: This point is still clear of barriers.
+
+- **Fourteenth Iteration on [3, 12]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 11]
+  - Evaluation: This point is still clear of barriers.
+
+- **Fifteenth Iteration on [3, 11]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 10]
+  - Evaluation: This point is still clear of barriers.
+
+- **Sixteenth Iteration on [3, 10]**
+  - Thought: We can continue moving downwards.
+  - Selected Point: [3, 9]
+  - Evaluation: This point is still clear of barriers.
+
+- **Seventeenth Iteration on [3, 9]**
+  - Thought: We can move right towards the goal.
+  - Selected Point: [4, 8]
+  - Evaluation: This point is clear and moves us closer to the goal.
+
+- **Eighteenth Iteration on [4, 8]**
+  - Thought: We can move directly to the goal.
+  - Selected Point: [19, 8]
+  - Evaluation: This point is the goal.
+
+The generated path is:
+Generated Path: [[3, 25], [3, 24], [3, 23], [3, 22], [3, 21], [3, 20], [3,

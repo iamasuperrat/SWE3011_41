@@ -1,0 +1,24 @@
+To navigate from the start point [37, 25] to the goal point [33, 13], we need to avoid the horizontal barriers at y=8 spanning x=12 to x=28, y=13 spanning x=1 to x=9, and y=17 spanning x=32 to x=45, as well as the vertical barriers at x=24 spanning y=26 to y=30 and x=40 spanning y=19 to y=23.
+
+1. Start at [37, 25].
+2. Move left to [36, 25] to avoid the vertical barrier at x=40.
+3. Move left to [35, 25].
+4. Move left to [34, 25].
+5. Move down to [34, 24].
+6. Move down to [34, 23].
+7. Move left to [33, 23].
+8. Move down to [33, 22].
+9. Move down to [33, 21].
+10. Move down to [33, 20].
+11. Move down to [33, 19].
+12. Move down to [33, 18].
+13. Move down to [33, 17].
+14. Move down to [33, 16].
+15. Move down to [33, 15].
+16. Move down to [33, 14].
+17. Finally, move down to [33, 13] (goal).
+
+The generated path is:
+Generated Path: [[37, 25], [36, 25], [35, 25], [34, 25], [34, 24], [34, 23], [33, 23], [33, 22], [33, 21], [33, 20], [33, 19], [33, 18], [33, 17], [33, 16], [33, 15], [33, 14], [33, 13]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

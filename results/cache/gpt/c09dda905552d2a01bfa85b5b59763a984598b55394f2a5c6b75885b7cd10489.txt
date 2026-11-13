@@ -1,0 +1,53 @@
+To find a path from the start point [32, 3] to the goal point [33, 21] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [32, 3] (Confidence: 1)
+2. **Goal Point**: [33, 21] (Confidence: 1)
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [16, 26, 41]: This barrier spans horizontally from y=16, x=26 to x=41.
+  - [21, 24, 32]: This barrier spans horizontally from y=21, x=24 to x=32.
+  
+- **Vertical Barriers**:
+  - [28, 2, 23]: This barrier spans vertically from x=28, y=2 to y=23.
+  - [12, 30, 30]: This barrier spans vertically from x=12, y=30 to y=30.
+
+### Pathfinding:
+Starting from [32, 3], we can move upwards to avoid the vertical barrier at x=28. We can navigate around the barriers as follows:
+
+1. Move from [32, 3] to [32, 4] (up).
+2. Move from [32, 4] to [32, 5] (up).
+3. Move from [32, 5] to [32, 6] (up).
+4. Move from [32, 6] to [32, 7] (up).
+5. Move from [32, 7] to [32, 8] (up).
+6. Move from [32, 8] to [32, 9] (up).
+7. Move from [32, 9] to [32, 10] (up).
+8. Move from [32, 10] to [32, 11] (up).
+9. Move from [32, 11] to [32, 12] (up).
+10. Move from [32, 12] to [32, 13] (up).
+11. Move from [32, 13] to [32, 14] (up).
+12. Move from [32, 14] to [32, 15] (up).
+13. Move from [32, 15] to [32, 16] (up).
+14. Move from [32, 16] to [32, 17] (up).
+15. Move from [32, 17] to [32, 18] (up).
+16. Move from [32, 18] to [32, 19] (up).
+17. Move from [32, 19] to [32, 20] (up).
+18. Move from [32, 20] to [33, 20] (right).
+19. Move from [33, 20] to [33, 21] (up).
+
+### Generated Path:
+The path can be summarized as follows:
+- Start at [32, 3]
+- Move up to [32, 21]
+- Move right to [33, 21]
+
+Thus, the generated path is:
+Generated Path: [[32, 3], [32, 4], [32, 5], [32, 6], [32, 7], [32, 8], [32, 9], [32, 10], [32, 11], [32, 12], [32, 13], [32, 14], [32, 15], [32, 16], [32, 17], [32, 18], [32, 19], [32, 20], [33, 20], [33, 21]]
+
+### Waypoint Confidence:
+- Start Point: 1
+- Intermediate Points: 0.9 (for points avoiding barriers)
+- Goal Point: 1
+
+Thus, the confidence scores are:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1, 1]

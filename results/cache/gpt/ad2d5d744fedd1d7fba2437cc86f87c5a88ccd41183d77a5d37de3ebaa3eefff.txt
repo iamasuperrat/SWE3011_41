@@ -1,0 +1,44 @@
+To find a path from the start point [14, 15] to the goal point [45, 14] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [2, 46, 49]: This barrier is irrelevant as it is outside the y-range of our start and goal points.
+  - [19, 18, 39]: This barrier spans from y=19 to y=39, blocking the path at y=19.
+  - [25, 5, 13]: This barrier spans from y=25 to y=13, blocking the path at y=25.
+
+- **Vertical Barriers**:
+  - [39, 27, 30]: This barrier spans from x=39 to x=30, blocking the path at x=39.
+  - [30, 23, 25]: This barrier spans from x=30 to x=25, blocking the path at x=30.
+  - [24, 11, 16]: This barrier spans from x=24 to x=16, blocking the path at x=24.
+  - [3, 26, 28]: This barrier spans from x=3 to x=28, blocking the path at x=3.
+
+### Pathfinding:
+Starting from [14, 15], we can navigate to the right and then upwards to avoid the barriers. The path can be constructed as follows:
+
+1. Start at [14, 15].
+2. Move right to [20, 15] (avoiding vertical barriers).
+3. Move up to [20, 14].
+4. Move right to [30, 14].
+5. Move right to [40, 14].
+6. Finally, move right to [45, 14].
+
+### Generated Path:
+The path avoiding obstacles is:
+Generated Path: [[14, 15], [20, 15], [20, 14], [30, 14], [40, 14], [45, 14]]
+
+### Confidence Scores:
+- Start Point [14, 15]: 1 (definitely useful)
+- Point [20, 15]: 1 (clear path)
+- Point [20, 14]: 1 (clear path)
+- Point [30, 14]: 1 (clear path)
+- Point [40, 14]: 1 (clear path)
+- Goal Point [45, 14]: 1 (definitely useful)
+
+Thus, the confidence scores are:
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]
+
+### Final Output:
+```
+Generated Path: [[14, 15], [20, 15], [20, 14], [30, 14], [40, 14], [45, 14]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]
+```

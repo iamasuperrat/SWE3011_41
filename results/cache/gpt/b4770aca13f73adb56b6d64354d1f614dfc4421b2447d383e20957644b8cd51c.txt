@@ -1,0 +1,41 @@
+To find a path from the start point [6, 27] to the goal point [25, 12], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [7, 47, 49]: This barrier is located at y = 7, spanning from x = 47 to x = 49.
+  - [25, 6, 43]: This barrier is located at y = 25, spanning from x = 6 to x = 43.
+  
+- **Vertical Barriers**:
+  - [14, 24, 30]: This barrier is located at x = 14, spanning from y = 24 to y = 30.
+  - [51, 8, 21]: This barrier is located at x = 51, spanning from y = 8 to y = 21.
+  - [26, 1, 1]: This barrier is located at x = 26, spanning from y = 1 to y = 1.
+  - [2, 17, 28]: This barrier is located at x = 2, spanning from y = 17 to y = 28.
+
+### Pathfinding:
+1. Start at [6, 27].
+2. Move down to avoid the horizontal barrier at y = 25.
+3. Navigate around the vertical barriers while heading towards the goal.
+
+### Proposed Path:
+- Start at [6, 27].
+- Move to [6, 26] (down).
+- Move to [6, 25] (down).
+- Move to [10, 25] (right).
+- Move to [10, 24] (down).
+- Move to [10, 23] (down).
+- Move to [10, 22] (down).
+- Move to [10, 21] (down).
+- Move to [10, 20] (down).
+- Move to [10, 19] (down).
+- Move to [10, 18] (down).
+- Move to [10, 17] (down).
+- Move to [10, 16] (down).
+- Move to [10, 15] (down).
+- Move to [15, 15] (right).
+- Move to [20, 15] (right).
+- Move to [25, 15] (right).
+- Move to [25, 12] (down).
+
+### Final Path:
+Generated Path: [[6, 27], [6, 26], [6, 25], [10, 25], [10, 24], [10, 23], [10, 22], [10, 21], [10, 20], [10, 19], [10, 18], [10, 17], [10, 16], [10, 15], [15, 15], [20, 15], [25, 15], [25, 12]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

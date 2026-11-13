@@ -1,0 +1,29 @@
+To find a path from the start point [29, 25] to the goal point [7, 2], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: [[10, 43, 49]]
+- **Vertical Barriers**: [[24, 9, 25], [16, 30, 30]]
+
+### Pathfinding:
+1. Start at [29, 25].
+2. Move left to avoid the vertical barrier at x = 24. We can move to [23, 25].
+3. Move down to [23, 24], then to [23, 23], and continue down to [23, 10] to avoid the vertical barrier.
+4. Move left to [22, 10], then to [21, 10], and continue left to [20, 10].
+5. Move down to [20, 9], then to [20, 8], and continue down to [20, 3].
+6. Move left to [19, 3], then to [18, 3], and continue left to [17, 3].
+7. Move down to [17, 2], then to [16, 2], and continue left to [15, 2].
+8. Move down to [15, 1], then to [14, 1], and continue left to [13, 1].
+9. Move down to [13, 0], then to [12, 0], and continue left to [11, 0].
+10. Move down to [11, -1], then to [10, -1], and continue left to [9, -1].
+11. Move down to [9, -2], then to [8, -2], and continue left to [7, -2].
+12. Finally, move down to [7, 2] to reach the goal.
+
+### Generated Path:
+The path can be summarized as follows:
+- Start: [29, 25]
+- Intermediate waypoints: [23, 25], [23, 24], [23, 23], [23, 10], [22, 10], [21, 10], [20, 10], [20, 9], [20, 8], [20, 3], [19, 3], [18, 3], [17, 3], [17, 2], [16, 2], [15, 2], [15, 1], [14, 1], [13, 1], [13, 0], [12, 0], [11, 0], [10, 0], [9, 0], [8, 0], [7, 0], [7, 2]
+- Goal: [7, 2]
+
+### Final Output:
+Generated Path: [[29, 25], [23, 25], [23, 24], [23, 23], [23, 10], [22, 10], [21, 10], [20, 10], [20, 9], [20, 8], [20, 3], [19, 3], [18, 3], [17, 3], [17, 2], [16, 2], [15, 2], [15, 1], [14, 1], [13, 1], [13, 0], [12, 0], [11, 0], [10, 0], [9, 0], [8, 0], [7, 0], [7, 2]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.8, 0.8, 0.8, 0.9, 0.9, 0.9, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 1]

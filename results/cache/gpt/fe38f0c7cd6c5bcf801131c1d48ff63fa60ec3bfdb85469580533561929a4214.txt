@@ -1,0 +1,15 @@
+To navigate from the start point [40, 13] to the goal point [34, 21], we need to avoid the horizontal and vertical barriers provided. 
+
+1. Starting at [40, 13], we can move left to [39, 13].
+2. From [39, 13], we can move left to [38, 13].
+3. Next, we can move left to [37, 13].
+4. Then, we can move up to [37, 14].
+5. From [37, 14], we can move up to [37, 15].
+6. Next, we can move left to [36, 15].
+7. Then, we can move left to [35, 15].
+8. Finally, we can move up to [34, 21].
+
+This path avoids all barriers and reaches the goal.
+
+Generated Path: [[40, 13], [39, 13], [38, 13], [37, 13], [37, 14], [37, 15], [36, 15], [35, 15], [34, 21]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1]

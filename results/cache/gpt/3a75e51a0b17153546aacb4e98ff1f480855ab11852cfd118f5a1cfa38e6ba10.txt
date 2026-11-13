@@ -1,0 +1,41 @@
+To find a path from the start point [21, 15] to the goal point [16, 27], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [31, 43, 43] (This barrier is irrelevant as it is outside the y-range of our path)
+  - [16, 19, 26] (This barrier is relevant as it spans from y=19 to y=26 at x=16)
+
+- **Vertical Barriers**:
+  - [42, 13, 29] (This barrier is irrelevant as it is outside the x-range of our path)
+  - [38, 6, 28] (This barrier is irrelevant as it is outside the x-range of our path)
+  - [32, 9, 30] (This barrier is irrelevant as it is outside the x-range of our path)
+  - [50, 18, 28] (This barrier is irrelevant as it is outside the x-range of our path)
+
+### Pathfinding:
+1. Start at [21, 15].
+2. Move to [21, 19] to avoid the horizontal barrier at y=16.
+3. Move to [20, 20] to get closer to the goal.
+4. Move to [19, 21].
+5. Move to [18, 22].
+6. Move to [17, 23].
+7. Move to [16, 24].
+8. Move to [16, 25].
+9. Move to [16, 26].
+10. Finally, move to [16, 27] (goal).
+
+### Generated Path:
+The path taken is:
+- [21, 15]
+- [21, 19]
+- [20, 20]
+- [19, 21]
+- [18, 22]
+- [17, 23]
+- [16, 24]
+- [16, 25]
+- [16, 26]
+- [16, 27]
+
+### Final Output:
+Generated Path: [[21, 15], [21, 19], [20, 20], [19, 21], [18, 22], [17, 23], [16, 24], [16, 25], [16, 26], [16, 27]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

@@ -1,0 +1,50 @@
+To find a path from the start point [25, 19] to the goal point [2, 16], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: [[19, 37, 48]]
+- **Vertical Barriers**: [[9, 28, 30], [38, 8, 29], [15, 9, 27]]
+
+### Pathfinding:
+1. Start at [25, 19].
+2. Move left to avoid the vertical barriers and head towards the goal.
+3. Navigate around the barriers while ensuring we stay within the bounds of the grid.
+
+### Generated Path:
+After analyzing the barriers and calculating the shortest route, the path can be constructed as follows:
+- Start at [25, 19]
+- Move to [24, 19]
+- Move to [23, 19]
+- Move to [22, 19]
+- Move to [21, 19]
+- Move to [20, 19]
+- Move to [19, 19]
+- Move to [18, 19]
+- Move to [17, 19]
+- Move to [16, 19]
+- Move to [15, 19]
+- Move to [14, 19]
+- Move to [13, 19]
+- Move to [12, 19]
+- Move to [11, 19]
+- Move to [10, 19]
+- Move to [9, 19]
+- Move to [8, 19]
+- Move to [7, 19]
+- Move to [6, 19]
+- Move to [5, 19]
+- Move to [4, 19]
+- Move to [3, 19]
+- Move to [2, 19]
+- Move to [2, 18]
+- Move to [2, 17]
+- Finally, reach the goal at [2, 16].
+
+### Final Path:
+The generated path is:
+Generated Path: [[25, 19], [24, 19], [23, 19], [22, 19], [21, 19], [20, 19], [19, 19], [18, 19], [17, 19], [16, 19], [15, 19], [14, 19], [13, 19], [12, 19], [11, 19], [10, 19], [9, 19], [8, 19], [7, 19], [6, 19], [5, 19], [4, 19], [3, 19], [2, 19], [2, 18], [2, 17], [2, 16]]
+
+### Confidence Scores:
+- Start and goal points have a confidence score of 1.
+- Intermediate points have a confidence score of 0.9, as they are part of the path but may be less certain due to proximity to barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

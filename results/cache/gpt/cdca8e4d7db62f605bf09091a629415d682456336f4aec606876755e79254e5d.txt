@@ -1,0 +1,20 @@
+To navigate from the start point [12, 17] to the goal point [40, 28], we need to avoid the horizontal and vertical barriers provided. 
+
+1. Starting at [12, 17], we can move right to [20, 17] to avoid the vertical barriers.
+2. From [20, 17], we can move up to [20, 24] to bypass the horizontal barrier at y=24.
+3. Next, we can move right to [30, 24].
+4. Then, we can move up to [30, 28] to avoid the vertical barrier at x=37.
+5. Finally, we can move right to the goal point [40, 28].
+
+The generated path is:
+Generated Path: [[12, 17], [20, 17], [20, 24], [30, 24], [30, 28], [40, 28]]
+
+Now, assigning confidence scores:
+- Start point [12, 17] has a confidence of 1.
+- [20, 17] is a clear path, confidence 1.
+- [20, 24] is also clear, confidence 1.
+- [30, 24] is clear, confidence 1.
+- [30, 28] is clear, confidence 1.
+- Goal point [40, 28] has a confidence of 1.
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]

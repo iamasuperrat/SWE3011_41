@@ -1,0 +1,30 @@
+To find a path from the start point [38, 27] to the goal point [40, 12] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [38, 27] (Confidence: 1)
+2. **Navigate Down**: Move to [38, 26] (Confidence: 0.9)
+3. **Navigate Down**: Move to [38, 25] (Confidence: 0.9)
+4. **Navigate Down**: Move to [38, 24] (Confidence: 0.9)
+5. **Navigate Down**: Move to [38, 23] (Confidence: 0.9)
+6. **Navigate Down**: Move to [38, 22] (Confidence: 0.9)
+7. **Navigate Down**: Move to [38, 21] (Confidence: 0.9)
+8. **Navigate Down**: Move to [38, 20] (Confidence: 0.9)
+9. **Navigate Left**: Move to [37, 20] (Confidence: 0.8)
+10. **Navigate Left**: Move to [36, 20] (Confidence: 0.8)
+11. **Navigate Left**: Move to [35, 20] (Confidence: 0.8)
+12. **Navigate Down**: Move to [35, 19] (Confidence: 0.8)
+13. **Navigate Down**: Move to [35, 18] (Confidence: 0.8)
+14. **Navigate Down**: Move to [35, 17] (Confidence: 0.8)
+15. **Navigate Down**: Move to [35, 16] (Confidence: 0.8)
+16. **Navigate Down**: Move to [35, 15] (Confidence: 0.8)
+17. **Navigate Right**: Move to [36, 15] (Confidence: 0.8)
+18. **Navigate Right**: Move to [37, 15] (Confidence: 0.8)
+19. **Navigate Right**: Move to [38, 15] (Confidence: 0.8)
+20. **Navigate Right**: Move to [39, 15] (Confidence: 0.8)
+21. **Navigate Down**: Move to [39, 14] (Confidence: 0.8)
+22. **Navigate Down**: Move to [39, 13] (Confidence: 0.8)
+23. **Navigate Right**: Move to [40, 12] (Confidence: 1)
+
+The generated path is as follows:
+
+Generated Path: [[38, 27], [38, 26], [38, 25], [38, 24], [38, 23], [38, 22], [38, 21], [38, 20], [37, 20], [36, 20], [35, 20], [35, 19], [35, 18], [35, 17], [35, 16], [35, 15], [36, 15], [37, 15], [38, 15], [39, 15], [39, 14], [39, 13], [40, 12]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 1]

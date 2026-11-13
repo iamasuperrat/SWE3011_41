@@ -1,0 +1,17 @@
+To navigate from the start point [24, 23] to the goal point [4, 20], we need to avoid the horizontal barriers at y=17 spanning x=11 to x=33 and y=14 at x=51, as well as the vertical barrier at x=10 spanning y=14 to y=26.
+
+1. Start at [24, 23].
+2. Move left to [10, 23] to avoid the vertical barrier at x=10.
+3. Move down to [10, 20] to get closer to the goal while avoiding the horizontal barrier at y=17.
+4. Move left to [4, 20] to reach the goal.
+
+The generated path is:
+Generated Path: [[24, 23], [10, 23], [10, 20], [4, 20]]
+
+Now, let's assign confidence scores:
+- Start point [24, 23]: confidence 1 (it's the starting point)
+- Point [10, 23]: confidence 1 (it's a valid move avoiding barriers)
+- Point [10, 20]: confidence 1 (it's a valid move avoiding barriers)
+- Goal point [4, 20]: confidence 1 (it's the goal)
+
+Waypoint Confidence: [1, 1, 1, 1]

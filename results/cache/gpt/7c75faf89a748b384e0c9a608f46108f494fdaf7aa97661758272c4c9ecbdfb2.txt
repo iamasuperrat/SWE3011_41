@@ -1,0 +1,58 @@
+To find a path from the start point [13, 28] to the goal point [2, 9] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [2, 46, 49]: This barrier is irrelevant as it is outside the y-range of our start and goal points.
+  - [19, 18, 39]: This barrier is also irrelevant as it is outside the y-range of our start and goal points.
+  - [25, 5, 13]: This barrier is relevant as it spans from y=25 to y=5, affecting the path.
+
+- **Vertical Barriers**:
+  - [39, 27, 30]: This barrier is irrelevant as it is outside the x-range of our start and goal points.
+  - [30, 23, 25]: This barrier is irrelevant as it is outside the x-range of our start and goal points.
+  - [24, 11, 16]: This barrier is relevant as it spans from x=24 to x=11, affecting the path.
+  - [3, 26, 28]: This barrier is relevant as it spans from x=3 to x=26, affecting the path.
+
+### Pathfinding:
+Starting from [13, 28], we can navigate downwards and leftwards to avoid the barriers. The path can be constructed as follows:
+
+1. Start at [13, 28].
+2. Move down to [13, 27].
+3. Move down to [13, 26].
+4. Move down to [13, 25].
+5. Move left to [12, 25].
+6. Move left to [11, 25].
+7. Move left to [10, 25].
+8. Move down to [10, 24].
+9. Move down to [10, 23].
+10. Move down to [10, 22].
+11. Move down to [10, 21].
+12. Move down to [10, 20].
+13. Move left to [9, 20].
+14. Move left to [8, 20].
+15. Move left to [7, 20].
+16. Move down to [7, 19].
+17. Move down to [7, 18].
+18. Move down to [7, 17].
+19. Move down to [7, 16].
+20. Move left to [6, 16].
+21. Move left to [5, 16].
+22. Move left to [4, 16].
+23. Move left to [3, 16].
+24. Move down to [3, 15].
+25. Move down to [3, 14].
+26. Move down to [3, 13].
+27. Move down to [3, 12].
+28. Move down to [3, 11].
+29. Move down to [3, 10].
+30. Move left to [2, 10].
+31. Move down to [2, 9] (goal).
+
+### Final Path:
+The generated path is:
+Generated Path: [[13, 28], [13, 27], [13, 26], [13, 25], [12, 25], [11, 25], [10, 25], [10, 24], [10, 23], [10, 22], [10, 21], [10, 20], [9, 20], [8, 20], [7, 20], [7, 19], [7, 18], [7, 17], [7, 16], [6, 16], [5, 16], [4, 16], [3, 16], [3, 15], [3, 14], [3, 13], [3, 12], [3, 11], [3, 10], [2, 10], [2, 9]]
+
+### Confidence Scores:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9 as they are carefully chosen to avoid barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.

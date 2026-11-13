@@ -1,0 +1,60 @@
+To find a path from the start point [23, 22] to the goal point [20, 6], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [13, 49, 50]: This barrier does not affect our path as it is above our start and goal points.
+  - [30, 9, 17]: This barrier is also above our path.
+  - [17, 12, 38]: This barrier is above our path.
+  - [14, 23, 29]: This barrier is directly in the way of moving down from [23, 22] to [20, 6].
+
+- **Vertical Barriers**:
+  - [2, 16, 29]: This barrier does not affect our path as it is far left of our start and goal points.
+
+### Pathfinding:
+1. Start at [23, 22].
+2. Move left to [22, 22] (1 step).
+3. Move down to [22, 21] (1 step).
+4. Move down to [22, 20] (1 step).
+5. Move left to [21, 20] (1 step).
+6. Move left to [20, 20] (1 step).
+7. Move down to [20, 19] (1 step).
+8. Move down to [20, 18] (1 step).
+9. Move down to [20, 17] (1 step).
+10. Move down to [20, 16] (1 step).
+11. Move down to [20, 15] (1 step).
+12. Move down to [20, 14] (1 step).
+13. Move down to [20, 13] (1 step).
+14. Move down to [20, 12] (1 step).
+15. Move down to [20, 11] (1 step).
+16. Move down to [20, 10] (1 step).
+17. Move down to [20, 9] (1 step).
+18. Move down to [20, 8] (1 step).
+19. Move down to [20, 7] (1 step).
+20. Finally, move down to [20, 6] (1 step).
+
+### Generated Path:
+The path taken is:
+- Start: [23, 22]
+- [22, 22]
+- [22, 21]
+- [22, 20]
+- [21, 20]
+- [20, 20]
+- [20, 19]
+- [20, 18]
+- [20, 17]
+- [20, 16]
+- [20, 15]
+- [20, 14]
+- [20, 13]
+- [20, 12]
+- [20, 11]
+- [20, 10]
+- [20, 9]
+- [20, 8]
+- [20, 7]
+- Goal: [20, 6]
+
+### Final Output:
+Generated Path: [[23, 22], [22, 22], [22, 21], [22, 20], [21, 20], [20, 20], [20, 19], [20, 18], [20, 17], [20, 16], [20, 15], [20, 14], [20, 13], [20, 12], [20, 11], [20, 10], [20, 9], [20, 8], [20, 7], [20, 6]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

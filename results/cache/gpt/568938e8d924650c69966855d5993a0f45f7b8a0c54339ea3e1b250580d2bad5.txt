@@ -1,0 +1,46 @@
+To find a path from the start point [25, 26] to the goal point [32, 11], we need to navigate around the given horizontal and vertical barriers. 
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [8, 34, 40] (y = 8 from x = 34 to x = 40)
+  - [24, 33, 44] (y = 24 from x = 33 to x = 44)
+  - [30, 3, 5] (y = 30 from x = 3 to x = 5)
+  - [0, 31, 33] (y = 0 from x = 31 to x = 33)
+
+- **Vertical Barriers**:
+  - [45, 6, 24] (x = 45 from y = 6 to y = 24)
+  - [37, 16, 19] (x = 37 from y = 16 to y = 19)
+  - [26, 17, 30] (x = 26 from y = 17 to y = 30)
+
+### Pathfinding:
+1. Start at [25, 26].
+2. Move to [26, 26] (right).
+3. Move to [27, 26] (right).
+4. Move to [28, 26] (right).
+5. Move to [29, 26] (right).
+6. Move to [30, 26] (right).
+7. Move to [31, 26] (right).
+8. Move to [32, 26] (right).
+9. Move to [32, 25] (down).
+10. Move to [32, 24] (down).
+11. Move to [32, 23] (down).
+12. Move to [32, 22] (down).
+13. Move to [32, 21] (down).
+14. Move to [32, 20] (down).
+15. Move to [32, 19] (down).
+16. Move to [32, 18] (down).
+17. Move to [32, 17] (down).
+18. Move to [32, 16] (down).
+19. Move to [32, 15] (down).
+20. Move to [32, 14] (down).
+21. Move to [32, 13] (down).
+22. Move to [32, 12] (down).
+23. Move to [32, 11] (down).
+
+### Generated Path:
+The path from the start to the goal while avoiding obstacles is:
+Generated Path: [[25, 26], [26, 26], [27, 26], [28, 26], [29, 26], [30, 26], [31, 26], [32, 26], [32, 25], [32, 24], [32, 23], [32, 22], [32, 21], [32, 20], [32, 19], [32, 18], [32, 17], [32, 16], [32, 15], [32, 14], [32, 13], [32, 12], [32, 11]]
+
+### Waypoint Confidence:
+Since the start and goal points are certain, we assign them a confidence of 1. The intermediate points will have a confidence of 0.9, as they are part of the path but may have some uncertainty due to proximity to barriers.
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

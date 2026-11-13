@@ -1,0 +1,33 @@
+To navigate from the start point [1, 4] to the goal point [11, 18] while avoiding the specified obstacles, we can follow these steps:
+
+1. **First Iteration on [1, 4]**:
+   - The horizontal barrier at y=7 spans from x=1 to x=42, blocking the direct path to the goal. We need to move upward to bypass this barrier.
+   - **Selected Point**: [1, 8]
+   - **Evaluation**: This point moves us above the horizontal barrier.
+
+2. **Second Iteration on [1, 8]**:
+   - From [1, 8], we can move right to avoid the vertical barrier at x=7, which spans from y=17 to y=30.
+   - **Selected Point**: [8, 8]
+   - **Evaluation**: This point allows us to bypass the vertical barrier while remaining above the horizontal barrier.
+
+3. **Third Iteration on [8, 8]**:
+   - Now, we can move upward to clear the horizontal barrier at y=13.
+   - **Selected Point**: [8, 14]
+   - **Evaluation**: This point positions us above the horizontal barrier.
+
+4. **Fourth Iteration on [8, 14]**:
+   - From here, we can move directly to the goal since there are no barriers obstructing the path.
+   - **Selected Point**: [11, 18]
+   - **Evaluation**: The path to the goal is clear from this position.
+
+The generated path is as follows:
+Generated Path: [[1, 4], [1, 8], [8, 8], [8, 14], [11, 18]]
+
+The confidence scores for each waypoint are:
+- Start Point: 1 (confident it's a valid starting point)
+- Point [1, 8]: 1 (confident it's a valid waypoint)
+- Point [8, 8]: 1 (confident it's a valid waypoint)
+- Point [8, 14]: 1 (confident it's a valid waypoint)
+- Goal Point: 1 (confident it's the destination)
+
+Waypoint Confidence: [1, 1, 1, 1, 1]

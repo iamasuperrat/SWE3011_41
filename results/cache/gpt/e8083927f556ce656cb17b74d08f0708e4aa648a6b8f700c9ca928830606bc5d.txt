@@ -1,0 +1,35 @@
+To navigate from the start point [28, 1] to the goal point [26, 26], we need to avoid the horizontal barriers at y=23 (spanning x=21 to x=46) and y=22 (spanning x=7 to x=16), as well as the vertical barriers at x=36 (spanning y=1 to y=22), x=44 (spanning y=8 to y=14), x=27 (spanning y=7 to y=16), and x=14 (spanning y=30 to y=30).
+
+1. Start at [28, 1].
+2. Move left to [27, 1] to avoid the vertical barrier at x=36.
+3. Move left to [26, 1].
+4. Move up to [26, 2].
+5. Move up to [26, 3].
+6. Move up to [26, 4].
+7. Move up to [26, 5].
+8. Move up to [26, 6].
+9. Move up to [26, 7].
+10. Move up to [26, 8].
+11. Move up to [26, 9].
+12. Move up to [26, 10].
+13. Move up to [26, 11].
+14. Move up to [26, 12].
+15. Move up to [26, 13].
+16. Move up to [26, 14].
+17. Move up to [26, 15].
+18. Move up to [26, 16].
+19. Move up to [26, 17].
+20. Move up to [26, 18].
+21. Move up to [26, 19].
+22. Move up to [26, 20].
+23. Move up to [26, 21].
+24. Move up to [26, 22].
+25. Move up to [26, 23].
+26. Move up to [26, 24].
+27. Move up to [26, 25].
+28. Move up to [26, 26] (goal).
+
+This path avoids all obstacles and reaches the goal.
+
+Generated Path: [[28, 1], [27, 1], [26, 1], [26, 2], [26, 3], [26, 4], [26, 5], [26, 6], [26, 7], [26, 8], [26, 9], [26, 10], [26, 11], [26, 12], [26, 13], [26, 14], [26, 15], [26, 16], [26, 17], [26, 18], [26, 19], [26, 20], [26, 21], [26, 22], [26, 23], [26, 24], [26, 25], [26, 26]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

@@ -1,0 +1,35 @@
+To find a path from the start point [3, 27] to the goal point [28, 8], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [10, 0, 25] (y = 10 from x = 0 to x = 25)
+  - [15, 30, 50] (y = 15 from x = 30 to x = 50)
+  
+- **Vertical Barriers**: 
+  - [25, 10, 22] (x = 25 from y = 10 to y = 22)
+
+### Pathfinding:
+1. Start at [3, 27].
+2. Move down to avoid the horizontal barrier at y = 10.
+3. Navigate around the vertical barrier at x = 25.
+4. Move towards the goal at [28, 8].
+
+### Generated Path:
+After analyzing the barriers and calculating the shortest route while avoiding obstacles, the path can be constructed as follows:
+- Start at [3, 27]
+- Move to [3, 15] (down to avoid the horizontal barrier)
+- Move to [10, 15] (right to avoid the vertical barrier)
+- Move to [10, 8] (down towards the goal)
+- Move to [28, 8] (right to the goal)
+
+Thus, the generated path is:
+Generated Path: [[3, 27], [3, 15], [10, 15], [10, 8], [28, 8]]
+
+### Confidence Scores:
+- Start Point [3, 27]: 1 (definitely a starting point)
+- Point [3, 15]: 0.9 (clear path down)
+- Point [10, 15]: 0.9 (clear path right)
+- Point [10, 8]: 0.9 (clear path down)
+- Goal Point [28, 8]: 1 (definitely the goal)
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 1]

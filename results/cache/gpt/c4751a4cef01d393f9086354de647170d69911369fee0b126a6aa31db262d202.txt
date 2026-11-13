@@ -1,0 +1,39 @@
+To find a path from the start point [35, 4] to the goal point [25, 25], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [20, 0, 20]: This barrier spans horizontally from (0, 20) to (20, 20).
+  - [5, 30, 40]: This barrier spans horizontally from (30, 5) to (40, 5).
+
+- **Vertical Barriers**: 
+  - [40, 0, 15]: This barrier spans vertically from (40, 0) to (40, 15).
+  - [20, 10, 21]: This barrier spans vertically from (20, 10) to (20, 21).
+
+### Pathfinding:
+1. Start at [35, 4].
+2. Move left to avoid the vertical barrier at x=40.
+3. Move down to avoid the horizontal barrier at y=5.
+4. Move left to navigate around the vertical barrier at x=20.
+5. Move down to reach the goal.
+
+### Generated Path:
+Following the above steps, a possible path could be:
+- Start at [35, 4]
+- Move to [30, 4]
+- Move to [25, 4]
+- Move to [25, 10] (navigating around the vertical barrier)
+- Move to [25, 25] (goal)
+
+Thus, the generated path is:
+Generated Path: [[35, 4], [30, 4], [25, 4], [25, 10], [25, 25]]
+
+### Confidence Scores:
+- Start Point: [35, 4] - Confidence: 1
+- [30, 4] - Confidence: 0.9 (close to the barrier but still clear)
+- [25, 4] - Confidence: 0.9 (clear path)
+- [25, 10] - Confidence: 0.8 (navigating around the barrier)
+- Goal Point: [25, 25] - Confidence: 1
+
+Final output:
+Generated Path: [[35, 4], [30, 4], [25, 4], [25, 10], [25, 25]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.8, 1]

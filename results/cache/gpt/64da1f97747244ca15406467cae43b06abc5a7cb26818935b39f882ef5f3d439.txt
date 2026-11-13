@@ -1,0 +1,32 @@
+To find a path from the start point [6, 9] to the goal point [41, 27] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [6, 23, 47]: This barrier spans horizontally from (6, 23) to (47, 23).
+  - [22, 14, 36]: This barrier spans horizontally from (22, 14) to (36, 14).
+
+- **Vertical Barriers**:
+  - [5, 3, 29]: This barrier spans vertically from (5, 3) to (5, 29).
+  - [37, 13, 25]: This barrier spans vertically from (37, 13) to (37, 25).
+
+### Pathfinding:
+1. Start at [6, 9].
+2. Move right to avoid the vertical barrier at x=5.
+3. Navigate upwards to avoid the horizontal barriers.
+4. Continue moving right and upwards towards the goal.
+
+### Generated Path:
+After analyzing the barriers and calculating the shortest route, the path can be represented as follows:
+
+Generated Path: [[6, 9], [10, 10], [20, 15], [30, 20], [41, 27]]
+
+### Confidence Scores:
+- Start Point: [6, 9] - Confidence: 1 (starting point)
+- [10, 10] - Confidence: 0.9 (clear path)
+- [20, 15] - Confidence: 0.8 (navigating around barriers)
+- [30, 20] - Confidence: 0.9 (clear path)
+- Goal Point: [41, 27] - Confidence: 1 (goal point)
+
+### Final Output:
+Generated Path: [[6, 9], [10, 10], [20, 15], [30, 20], [41, 27]]
+Waypoint Confidence: [1, 0.9, 0.8, 0.9, 1]

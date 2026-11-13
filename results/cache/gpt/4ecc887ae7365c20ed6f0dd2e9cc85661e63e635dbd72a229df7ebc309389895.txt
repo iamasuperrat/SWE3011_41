@@ -1,0 +1,71 @@
+To find a path from the start point [14, 15] to the goal point [35, 10], we need to navigate around the given barriers. 
+
+1. **Start Point**: [14, 15] (confidence 1)
+2. **Goal Point**: [35, 10] (confidence 1)
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: [[4, 36, 40]] - This barrier does not affect our path since it is located at y=4, which is below our start and goal points.
+- **Vertical Barriers**: [[16, 7, 28]] - This barrier runs vertically from x=16 to x=28, affecting our path.
+
+### Pathfinding:
+1. Start at [14, 15].
+2. Move right to [15, 15] (clear of barriers).
+3. Move right to [16, 15] (clear of barriers).
+4. Move down to [16, 14] (clear of barriers).
+5. Move down to [16, 13] (clear of barriers).
+6. Move down to [16, 12] (clear of barriers).
+7. Move down to [16, 11] (clear of barriers).
+8. Move down to [16, 10] (clear of barriers).
+9. Move right to [17, 10] (clear of barriers).
+10. Move right to [18, 10] (clear of barriers).
+11. Move right to [19, 10] (clear of barriers).
+12. Move right to [20, 10] (clear of barriers).
+13. Move right to [21, 10] (clear of barriers).
+14. Move right to [22, 10] (clear of barriers).
+15. Move right to [23, 10] (clear of barriers).
+16. Move right to [24, 10] (clear of barriers).
+17. Move right to [25, 10] (clear of barriers).
+18. Move right to [26, 10] (clear of barriers).
+19. Move right to [27, 10] (clear of barriers).
+20. Move right to [28, 10] (clear of barriers).
+21. Move right to [29, 10] (clear of barriers).
+22. Move right to [30, 10] (clear of barriers).
+23. Move right to [31, 10] (clear of barriers).
+24. Move right to [32, 10] (clear of barriers).
+25. Move right to [33, 10] (clear of barriers).
+26. Move right to [34, 10] (clear of barriers).
+27. Move right to [35, 10] (goal).
+
+### Generated Path:
+The path taken is:
+- Start: [14, 15]
+- [15, 15]
+- [16, 15]
+- [16, 14]
+- [16, 13]
+- [16, 12]
+- [16, 11]
+- [16, 10]
+- [17, 10]
+- [18, 10]
+- [19, 10]
+- [20, 10]
+- [21, 10]
+- [22, 10]
+- [23, 10]
+- [24, 10]
+- [25, 10]
+- [26, 10]
+- [27, 10]
+- [28, 10]
+- [29, 10]
+- [30, 10]
+- [31, 10]
+- [32, 10]
+- [33, 10]
+- [34, 10]
+- Goal: [35, 10]
+
+### Final Output:
+Generated Path: [[14, 15], [15, 15], [16, 15], [16, 14], [16, 13], [16, 12], [16, 11], [16, 10], [17, 10], [18, 10], [19, 10], [20, 10], [21, 10], [22, 10], [23, 10], [24, 10], [25, 10], [26, 10], [27, 10], [28, 10], [29, 10], [30, 10], [31, 10], [32, 10], [33, 10], [34, 10], [35, 10]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1

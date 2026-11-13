@@ -1,0 +1,61 @@
+To find a path from the start point [43, 18] to the goal point [28, 3], we need to navigate around the given horizontal and vertical barriers. 
+
+1. **Start Point**: [43, 18] (Confidence: 1)
+2. **Goal Point**: [28, 3] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [0, 12, 36]: This barrier spans from y=12 to y=36, blocking any movement through this y-coordinate.
+  - [26, 34, 42]: This barrier spans from y=34 to y=42, blocking movement through this y-coordinate.
+  - [17, 38, 43]: This barrier spans from y=38 to y=43, blocking movement through this y-coordinate.
+  - [8, 6, 31]: This barrier spans from y=6 to y=31, blocking movement through this y-coordinate.
+
+- **Vertical Barriers**:
+  - [22, 1, 12]: This barrier spans from x=22 to x=12, blocking movement through this x-coordinate.
+  - [44, 6, 22]: This barrier spans from x=44 to x=22, blocking movement through this x-coordinate.
+  - [12, 2, 3]: This barrier spans from x=12 to x=3, blocking movement through this x-coordinate.
+
+### Pathfinding:
+Starting from [43, 18], we can move left towards the goal while avoiding barriers. The following path is determined:
+
+1. Move left to [42, 18]
+2. Move left to [41, 18]
+3. Move left to [40, 18]
+4. Move down to [40, 17]
+5. Move down to [40, 16]
+6. Move down to [40, 15]
+7. Move left to [39, 15]
+8. Move left to [38, 15]
+9. Move left to [37, 15]
+10. Move left to [36, 15]
+11. Move left to [35, 15]
+12. Move down to [35, 14]
+13. Move down to [35, 13]
+14. Move down to [35, 12]
+15. Move left to [34, 12]
+16. Move left to [33, 12]
+17. Move left to [32, 12]
+18. Move down to [32, 11]
+19. Move down to [32, 10]
+20. Move down to [32, 9]
+21. Move left to [31, 9]
+22. Move left to [30, 9]
+23. Move left to [29, 9]
+24. Move down to [29, 8]
+25. Move down to [29, 7]
+26. Move left to [28, 7]
+27. Move down to [28, 6]
+28. Move down to [28, 5]
+29. Move down to [28, 4]
+30. Move down to [28, 3] (Goal)
+
+### Final Path:
+The generated path is:
+Generated Path: [[43, 18], [42, 18], [41, 18], [40, 18], [40, 17], [40, 16], [40, 15], [39, 15], [38, 15], [37, 15], [36, 15], [35, 15], [35, 14], [35, 13], [35, 12], [34, 12], [33, 12], [32, 12], [32, 11], [32, 10], [32, 9], [31, 9], [30, 9], [29, 9], [29, 8], [29, 7], [28, 7], [28, 6], [28, 5], [28, 4], [28, 3]]
+
+### Confidence Scores:
+- Start Point: 1
+- Intermediate Points: 0.9 (for points that are not blocked and are useful)
+- Goal Point: 1
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,

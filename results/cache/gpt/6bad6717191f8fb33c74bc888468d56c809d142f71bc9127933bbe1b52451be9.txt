@@ -1,0 +1,42 @@
+To find a path from the start point [35, 14] to the goal point [35, 19], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [19, 48, 49]: This barrier is irrelevant as it is outside the y-range of our path.
+  - [18, 30, 45]: This barrier is also irrelevant as it does not intersect with our path.
+  - [25, 42, 48]: This barrier is irrelevant as it does not intersect with our path.
+
+- **Vertical Barriers**:
+  - [36, 2, 18]: This barrier is vertical and will block movement at x = 36 from y = 2 to y = 18.
+  - [23, 19, 27]: This barrier is vertical and will block movement at x = 23 from y = 19 to y = 27.
+
+### Pathfinding:
+Starting from [35, 14], we can move vertically up to [35, 19] directly, but we need to check if there are any barriers in the way.
+
+1. **Move from [35, 14] to [35, 15]**: No barriers.
+2. **Move from [35, 15] to [35, 16]**: No barriers.
+3. **Move from [35, 16] to [35, 17]**: No barriers.
+4. **Move from [35, 17] to [35, 18]**: No barriers.
+5. **Move from [35, 18] to [35, 19]**: This is the goal point.
+
+### Generated Path:
+The path taken is:
+- Start: [35, 14]
+- Move to: [35, 15]
+- Move to: [35, 16]
+- Move to: [35, 17]
+- Move to: [35, 18]
+- Goal: [35, 19]
+
+Thus, the generated path is:
+Generated Path: [[35, 14], [35, 15], [35, 16], [35, 17], [35, 18], [35, 19]]
+
+### Confidence Scores:
+- Start point [35, 14]: 1 (definitely a starting point)
+- Waypoint [35, 15]: 1 (clear path)
+- Waypoint [35, 16]: 1 (clear path)
+- Waypoint [35, 17]: 1 (clear path)
+- Waypoint [35, 18]: 1 (clear path)
+- Goal point [35, 19]: 1 (definitely the goal)
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]

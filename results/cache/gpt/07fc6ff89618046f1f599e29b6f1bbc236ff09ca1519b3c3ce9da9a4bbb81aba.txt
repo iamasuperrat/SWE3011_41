@@ -1,0 +1,33 @@
+To find a path from the start point [28, 1] to the goal point [26, 26] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [28, 1] (Confidence: 1)
+2. **Navigate to**: [28, 2] (Confidence: 0.9) - Move up to avoid barriers.
+3. **Navigate to**: [28, 3] (Confidence: 0.9) - Continue moving up.
+4. **Navigate to**: [28, 4] (Confidence: 0.9) - Continue moving up.
+5. **Navigate to**: [28, 5] (Confidence: 0.9) - Continue moving up.
+6. **Navigate to**: [28, 6] (Confidence: 0.9) - Continue moving up.
+7. **Navigate to**: [27, 7] (Confidence: 0.9) - Move left and up to avoid barriers.
+8. **Navigate to**: [26, 8] (Confidence: 0.9) - Move left and up to avoid barriers.
+9. **Navigate to**: [26, 9] (Confidence: 0.9) - Move up.
+10. **Navigate to**: [26, 10] (Confidence: 0.9) - Move up.
+11. **Navigate to**: [26, 11] (Confidence: 0.9) - Move up.
+12. **Navigate to**: [26, 12] (Confidence: 0.9) - Move up.
+13. **Navigate to**: [26, 13] (Confidence: 0.9) - Move up.
+14. **Navigate to**: [26, 14] (Confidence: 0.9) - Move up.
+15. **Navigate to**: [26, 15] (Confidence: 0.9) - Move up.
+16. **Navigate to**: [26, 16] (Confidence: 0.9) - Move up.
+17. **Navigate to**: [26, 17] (Confidence: 0.9) - Move up.
+18. **Navigate to**: [26, 18] (Confidence: 0.9) - Move up.
+19. **Navigate to**: [26, 19] (Confidence: 0.9) - Move up.
+20. **Navigate to**: [26, 20] (Confidence: 0.9) - Move up.
+21. **Navigate to**: [26, 21] (Confidence: 0.9) - Move up.
+22. **Navigate to**: [26, 22] (Confidence: 0.9) - Move up.
+23. **Navigate to**: [26, 23] (Confidence: 0.9) - Move up.
+24. **Navigate to**: [26, 24] (Confidence: 0.9) - Move up.
+25. **Navigate to**: [26, 25] (Confidence: 0.9) - Move up.
+26. **Navigate to**: [26, 26] (Confidence: 1) - Reach the goal.
+
+The generated path is as follows:
+
+Generated Path: [[28, 1], [28, 2], [28, 3], [28, 4], [28, 5], [28, 6], [27, 7], [26, 8], [26, 9], [26, 10], [26, 11], [26, 12], [26, 13], [26, 14], [26, 15], [26, 16], [26, 17], [26, 18], [26, 19], [26, 20], [26, 21], [26, 22], [26, 23], [26, 24], [26, 25], [26, 26]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

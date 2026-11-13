@@ -1,0 +1,56 @@
+To find a path from the start point [17, 25] to the goal point [44, 18] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [15, 30, 48]: This barrier spans horizontally from (30, 15) to (48, 15).
+  - [2, 34, 38]: This barrier spans horizontally from (34, 2) to (38, 2).
+  
+- **Vertical Barriers**:
+  - [33, 8, 27]: This barrier spans vertically from (8, 33) to (27, 33).
+  - [24, 9, 17]: This barrier spans vertically from (9, 24) to (17, 24).
+
+### Pathfinding:
+Starting from [17, 25], we need to navigate around the barriers to reach [44, 18]. 
+
+1. Move right to [18, 25].
+2. Move right to [19, 25].
+3. Move right to [20, 25].
+4. Move down to [20, 24].
+5. Move down to [20, 23].
+6. Move down to [20, 22].
+7. Move down to [20, 21].
+8. Move down to [20, 20].
+9. Move right to [21, 20].
+10. Move right to [22, 20].
+11. Move right to [23, 20].
+12. Move right to [24, 20].
+13. Move right to [25, 20].
+14. Move right to [26, 20].
+15. Move right to [27, 20].
+16. Move right to [28, 20].
+17. Move right to [29, 20].
+18. Move right to [30, 20].
+19. Move right to [31, 20].
+20. Move right to [32, 20].
+21. Move right to [33, 20].
+22. Move right to [34, 20].
+23. Move right to [35, 20].
+24. Move right to [36, 20].
+25. Move right to [37, 20].
+26. Move right to [38, 20].
+27. Move right to [39, 20].
+28. Move right to [40, 20].
+29. Move right to [41, 20].
+30. Move right to [42, 20].
+31. Move right to [43, 20].
+32. Move right to [44, 20].
+33. Move down to [44, 19].
+34. Move down to [44, 18].
+
+### Generated Path:
+The path can be summarized as follows:
+Generated Path: [[17, 25], [18, 25], [19, 25], [20, 25], [20, 24], [20, 23], [20, 22], [20, 21], [20, 20], [21, 20], [22, 20], [23, 20], [24, 20], [25, 20], [26, 20], [27, 20], [28, 20], [29, 20], [30, 20], [31, 20], [32, 20], [33, 20], [34, 20], [35, 20], [36, 20], [37, 20], [38, 20], [39, 20], [40, 20], [41, 20], [42, 20], [43, 20], [44, 20], [44, 19], [44, 18]]
+
+### Waypoint Confidence:
+The confidence scores for the waypoints are as follows:
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

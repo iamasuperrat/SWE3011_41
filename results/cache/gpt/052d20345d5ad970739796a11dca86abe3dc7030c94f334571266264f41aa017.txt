@@ -1,0 +1,34 @@
+To navigate from the start point [43, 16] to the goal point [17, 29], we need to consider the horizontal and vertical barriers provided.
+
+1. **First Iteration on [43, 16]**:
+   - The horizontal barrier at y=20 spans from x=14 to x=43, which blocks a direct path to the goal.
+   - To bypass this barrier, we can move vertically upwards to y=21 and then navigate left towards the goal.
+   - **Selected Point**: [43, 21]
+   - **Evaluation**: This point is above the horizontal barrier, allowing us to move left towards the goal.
+
+2. **Second Iteration on [43, 21]**:
+   - From [43, 21], we can move left to avoid the horizontal barrier.
+   - **Selected Point**: [30, 21]
+   - **Evaluation**: This point is still above the barrier and allows further movement left.
+
+3. **Third Iteration on [30, 21]**:
+   - Continuing left, we can move to [17, 21] to align vertically with the goal.
+   - **Selected Point**: [17, 21]
+   - **Evaluation**: This point is directly below the goal and allows for a final upward move.
+
+4. **Fourth Iteration on [17, 21]**:
+   - Now we can move directly up to the goal.
+   - **Selected Point**: [17, 29]
+   - **Evaluation**: The path to the goal is clear from here.
+
+The generated path is:
+Generated Path: [[43, 16], [43, 21], [30, 21], [17, 21], [17, 29]]
+
+Confidence scores for each waypoint:
+- Start Point: [43, 16] - Confidence: 1
+- Point: [43, 21] - Confidence: 1
+- Point: [30, 21] - Confidence: 1
+- Point: [17, 21] - Confidence: 1
+- Goal Point: [17, 29] - Confidence: 1
+
+Waypoint Confidence: [1, 1, 1, 1, 1]

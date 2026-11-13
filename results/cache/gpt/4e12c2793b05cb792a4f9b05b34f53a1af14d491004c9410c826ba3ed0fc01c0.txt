@@ -1,0 +1,13 @@
+To find the shortest path from the start point [10, 13] to the goal point [44, 27] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. Start at [10, 13].
+2. Move right to [20, 13] (avoiding vertical barriers).
+3. Move up to [20, 20] (still avoiding barriers).
+4. Move right to [30, 20].
+5. Move up to [30, 27].
+6. Move right to [44, 27].
+
+The generated path is as follows:
+
+Generated Path: [[10, 13], [20, 13], [20, 20], [30, 20], [30, 27], [44, 27]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 1]

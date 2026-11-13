@@ -1,0 +1,48 @@
+To find a path from the start point [19, 4] to the goal point [3, 13] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [19, 4]
+2. **Goal Point**: [3, 13]
+3. **Horizontal Barriers**: [[23, 37, 46], [27, 6, 34]]
+4. **Vertical Barriers**: [[8, 10, 15]]
+
+### Pathfinding Steps:
+- Starting at [19, 4], we can move left towards the goal.
+- We need to avoid the vertical barrier at x = 8, which spans from y = 10 to y = 15.
+- We can navigate downwards and then left to avoid the barriers.
+
+### Generated Path:
+After analyzing the grid and avoiding the barriers, the path can be constructed as follows:
+- Move left to [18, 4]
+- Move left to [17, 4]
+- Move left to [16, 4]
+- Move left to [15, 4]
+- Move left to [14, 4]
+- Move left to [13, 4]
+- Move left to [12, 4]
+- Move left to [11, 4]
+- Move left to [10, 4]
+- Move down to [10, 5]
+- Move down to [10, 6]
+- Move down to [10, 7]
+- Move down to [10, 8]
+- Move left to [9, 8]
+- Move left to [8, 8]
+- Move down to [8, 9]
+- Move down to [8, 10]
+- Move down to [8, 11]
+- Move down to [8, 12]
+- Move left to [7, 12]
+- Move left to [6, 12]
+- Move left to [5, 12]
+- Move left to [4, 12]
+- Move left to [3, 12]
+- Move down to [3, 13]
+
+Thus, the generated path is:
+Generated Path: [[19, 4], [18, 4], [17, 4], [16, 4], [15, 4], [14, 4], [13, 4], [12, 4], [11, 4], [10, 4], [10, 5], [10, 6], [10, 7], [10, 8], [9, 8], [8, 8], [8, 9], [8, 10], [8, 11], [8, 12], [7, 12], [6, 12], [5, 12], [4, 12], [3, 12], [3, 13]]
+
+### Confidence Scores:
+- Start and goal points have a confidence of 1.
+- Intermediate points will have a confidence of 0.9, as they are part of the path but not guaranteed to be the only way.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

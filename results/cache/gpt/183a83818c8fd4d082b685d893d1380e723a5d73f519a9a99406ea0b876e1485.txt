@@ -1,0 +1,53 @@
+To find a path from the start point [15, 18] to the goal point [27, 3], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [19, 36, 39]: This barrier is located at y = 19, spanning x = 36 to x = 39.
+  - [16, 16, 37]: This barrier is located at y = 16, spanning x = 16 to x = 37.
+  - [19, 2, 2]: This barrier is located at y = 19, spanning x = 2 to x = 2 (a vertical line).
+
+- **Vertical Barriers**:
+  - [29, 12, 20]: This barrier is located at x = 29, spanning y = 12 to y = 20.
+  - [45, 5, 16]: This barrier is located at x = 45, spanning y = 5 to y = 16.
+
+### Pathfinding:
+1. Start at [15, 18].
+2. Move left to [15, 17] (avoiding the horizontal barrier at y = 16).
+3. Move left to [15, 16] (still avoiding the horizontal barrier).
+4. Move left to [15, 15].
+5. Move down to [15, 14].
+6. Move down to [15, 13].
+7. Move down to [15, 12].
+8. Move down to [15, 11].
+9. Move down to [15, 10].
+10. Move right to [16, 10].
+11. Move right to [17, 10].
+12. Move right to [18, 10].
+13. Move right to [19, 10].
+14. Move down to [19, 9].
+15. Move down to [19, 8].
+16. Move down to [19, 7].
+17. Move down to [19, 6].
+18. Move down to [19, 5].
+19. Move down to [19, 4].
+20. Move down to [19, 3].
+21. Move right to [20, 3].
+22. Move right to [21, 3].
+23. Move right to [22, 3].
+24. Move right to [23, 3].
+25. Move right to [24, 3].
+26. Move right to [25, 3].
+27. Move right to [26, 3].
+28. Move right to [27, 3] (goal).
+
+### Generated Path:
+The path taken is:
+- [[15, 18], [15, 17], [15, 16], [15, 15], [15, 14], [15, 13], [15, 12], [15, 11], [15, 10], [16, 10], [17, 10], [18, 10], [19, 10], [19, 9], [19, 8], [19, 7], [19, 6], [19, 5], [19, 4], [19, 3], [20, 3], [21, 3], [22, 3], [23, 3], [24, 3], [25, 3], [26, 3], [27, 3]]
+
+### Confidence Scores:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are strategically chosen to avoid barriers.
+
+### Final Output:
+Generated Path: [[15, 18], [15, 17], [15, 16], [15, 15], [15, 14], [15, 13], [15, 12], [15, 11], [15, 10], [16, 10], [17, 10], [18, 10], [19, 10], [19, 9], [19, 8], [19, 7], [19, 6], [19, 5], [19, 4], [19, 3], [20, 3], [21, 3], [22, 3], [23, 3], [24, 3], [25, 3], [26, 3], [27, 3]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9

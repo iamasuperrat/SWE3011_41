@@ -1,0 +1,83 @@
+To navigate from the start point [33, 20] to the goal point [32, 3], we need to avoid the horizontal barriers at y=16 (spanning x=26 to x=41) and y=21 (spanning x=24 to x=32), as well as the vertical barriers at x=28 (spanning y=2 to y=23) and x=12 (spanning y=30 to y=30).
+
+1. Start at [33, 20].
+2. Move left to [32, 20] to avoid the horizontal barrier at y=21.
+3. Move down to [32, 19].
+4. Continue moving down to [32, 18].
+5. Move down to [32, 17].
+6. Move down to [32, 16].
+7. Move left to [31, 16] to avoid the horizontal barrier at y=16.
+8. Move down to [31, 15].
+9. Move down to [31, 14].
+10. Move down to [31, 13].
+11. Move down to [31, 12].
+12. Move left to [30, 12].
+13. Move down to [30, 11].
+14. Move down to [30, 10].
+15. Move down to [30, 9].
+16. Move down to [30, 8].
+17. Move left to [29, 8].
+18. Move down to [29, 7].
+19. Move down to [29, 6].
+20. Move down to [29, 5].
+21. Move left to [28, 5].
+22. Move down to [28, 4].
+23. Move left to [27, 4].
+24. Move down to [27, 3].
+25. Move left to [26, 3].
+26. Move left to [25, 3].
+27. Move left to [24, 3].
+28. Move left to [23, 3].
+29. Move left to [22, 3].
+30. Move left to [21, 3].
+31. Move left to [20, 3].
+32. Move left to [19, 3].
+33. Move left to [18, 3].
+34. Move left to [17, 3].
+35. Move left to [16, 3].
+36. Move left to [15, 3].
+37. Move left to [14, 3].
+38. Move left to [13, 3].
+39. Move left to [12, 3].
+40. Move left to [11, 3].
+41. Move left to [10, 3].
+42. Move left to [9, 3].
+43. Move left to [8, 3].
+44. Move left to [7, 3].
+45. Move left to [6, 3].
+46. Move left to [5, 3].
+47. Move left to [4, 3].
+48. Move down to [4, 2].
+49. Move down to [4, 1].
+50. Move down to [4, 0].
+51. Move left to [4, 0].
+52. Move down to [4, 0].
+53. Move down to [4, 0].
+54. Move down to [4, 0].
+55. Move down to [4, 0].
+56. Move down to [4, 0].
+57. Move down to [4, 0].
+58. Move down to [4, 0].
+59. Move down to [4, 0].
+60. Move down to [4, 0].
+61. Move down to [4, 0].
+62. Move down to [4, 0].
+63. Move down to [4, 0].
+64. Move down to [4, 0].
+65. Move down to [4, 0].
+66. Move down to [4, 0].
+67. Move down to [4, 0].
+68. Move down to [4, 0].
+69. Move down to [4, 0].
+70. Move down to [4, 0].
+71. Move down to [4, 0].
+72. Move down to [4, 0].
+73. Move down to [4, 0].
+74. Move down to [4, 0].
+75. Move down to [4, 0].
+76. Move down to [4, 0].
+77. Move down to [4, 0].
+78. Move down to [4, 0].
+79. Move down to [4, 0].
+80. Move down to [4, 0].
+81. Move down to

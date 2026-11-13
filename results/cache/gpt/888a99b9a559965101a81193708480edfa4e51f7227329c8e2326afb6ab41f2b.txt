@@ -1,0 +1,12 @@
+To navigate from the start point [48, 24] to the goal point [32, 2], we need to avoid the horizontal and vertical barriers provided. 
+
+1. **Start Point**: [48, 24] - Confidence: 1
+2. **Move Left**: We can move left to [32, 24] to avoid the vertical barrier at x=44.
+3. **Move Down**: Next, we can move down to [32, 12] to avoid the horizontal barrier at y=17.
+4. **Move Down Again**: Then, we can move down to [32, 3] to bypass the vertical barrier at x=22.
+5. **Final Move**: Finally, we can move down to the goal point [32, 2].
+
+The generated path is:
+Generated Path: [[48, 24], [32, 24], [32, 12], [32, 3], [32, 2]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1]

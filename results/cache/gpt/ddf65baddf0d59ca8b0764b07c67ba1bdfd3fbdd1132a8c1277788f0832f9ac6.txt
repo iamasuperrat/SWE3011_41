@@ -1,0 +1,51 @@
+To find a path from the start point [28, 16] to the goal point [19, 24] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [28, 16] (confidence 1)
+2. **Goal Point**: [19, 24] (confidence 1)
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [15, 1, 17]: This barrier spans from (1, 15) to (17, 15).
+  - [2, 14, 22]: This barrier spans from (14, 2) to (22, 2).
+  - [2, 14, 17]: This barrier spans from (14, 2) to (17, 2).
+  - [2, 34, 45]: This barrier spans from (34, 2) to (45, 2).
+
+- **Vertical Barriers**:
+  - [12, 11, 20]: This barrier spans from (11, 12) to (20, 12).
+  - [26, 4, 28]: This barrier spans from (4, 26) to (28, 26).
+  - [34, 29, 29]: This barrier spans from (29, 34) to (29, 34).
+
+### Pathfinding:
+Starting from [28, 16], we can navigate around the barriers as follows:
+1. Move left to [27, 16].
+2. Move left to [26, 16].
+3. Move left to [25, 16].
+4. Move left to [24, 16].
+5. Move left to [23, 16].
+6. Move left to [22, 16].
+7. Move left to [21, 16].
+8. Move left to [20, 16].
+9. Move up to [20, 17].
+10. Move up to [20, 18].
+11. Move up to [20, 19].
+12. Move up to [20, 20].
+13. Move up to [20, 21].
+14. Move up to [20, 22].
+15. Move up to [20, 23].
+16. Move left to [19, 24] (goal).
+
+### Generated Path:
+The path can be summarized as:
+Generated Path: [[28, 16], [27, 16], [26, 16], [25, 16], [24, 16], [23, 16], [22, 16], [21, 16], [20, 16], [20, 17], [20, 18], [20, 19], [20, 20], [20, 21], [20, 22], [20, 23], [19, 24]]
+
+### Confidence Scores:
+- Start Point: 1
+- Intermediate Points: 0.9 (for points that are not directly adjacent to barriers)
+- Goal Point: 1
+
+Thus, the confidence scores would be:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1] 
+
+Final output:
+Generated Path: [[28, 16], [27, 16], [26, 16], [25, 16], [24, 16], [23, 16], [22, 16], [21, 16], [20, 16], [20, 17], [20, 18], [20, 19], [20, 20], [20, 21], [20, 22], [20, 23], [19, 24]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

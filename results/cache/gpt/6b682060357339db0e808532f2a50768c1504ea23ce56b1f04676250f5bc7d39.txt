@@ -1,0 +1,49 @@
+To find a path from the start point [36, 17] to the goal point [49, 26] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [36, 17] (Confidence: 1)
+2. **Goal Point**: [49, 26] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [2, 46, 49]: This barrier does not affect the path since it is outside the range of our start and goal points.
+  - [19, 18, 39]: This barrier spans from (19, 18) to (39, 18) and will need to be avoided.
+  - [25, 5, 13]: This barrier is also outside the range of our path.
+
+- **Vertical Barriers**:
+  - [39, 27, 30]: This barrier spans from (39, 27) to (39, 30) and will need to be avoided.
+  - [30, 23, 25]: This barrier spans from (30, 23) to (30, 25) and will also need to be avoided.
+  - [24, 11, 16]: This barrier does not affect the path since it is below our start and goal points.
+  - [3, 26, 28]: This barrier does not affect the path since it is outside the range of our start and goal points.
+
+### Pathfinding:
+Starting from [36, 17], we can navigate around the barriers:
+- Move right to [37, 17]
+- Move right to [38, 17]
+- Move right to [39, 17]
+- Move up to [39, 18] (this is blocked, so we need to go around)
+- Move up to [39, 19]
+- Move up to [39, 20]
+- Move up to [39, 21]
+- Move up to [39, 22]
+- Move up to [39, 23]
+- Move up to [39, 24]
+- Move up to [39, 25]
+- Move up to [39, 26]
+- Move right to [40, 26]
+- Move right to [41, 26]
+- Move right to [42, 26]
+- Move right to [43, 26]
+- Move right to [44, 26]
+- Move right to [45, 26]
+- Move right to [46, 26]
+- Move right to [47, 26]
+- Move right to [48, 26]
+- Move right to [49, 26] (Goal)
+
+### Generated Path:
+The path taken is:
+- [[36, 17], [37, 17], [38, 17], [39, 19], [39, 20], [39, 21], [39, 22], [39, 23], [39, 24], [39, 25], [39, 26], [40, 26], [41, 26], [42, 26], [43, 26], [44, 26], [45, 26], [46, 26], [47, 26], [48, 26], [49, 26]]
+
+### Final Output:
+Generated Path: [[36, 17], [37, 17], [38, 17], [39, 19], [39, 20], [39, 21], [39, 22], [39, 23], [39, 24], [39, 25], [39, 26], [40, 26], [41, 26], [42, 26], [43, 26], [44, 26], [45, 26], [46, 26], [47, 26], [48, 26], [49, 26]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

@@ -1,0 +1,42 @@
+To navigate from the start point [24, 2] to the goal point [26, 26], we need to avoid the horizontal barriers and vertical barriers provided. 
+
+1. **Start Point**: [24, 2] (confidence 1)
+2. **Move Upward**: Since there are no barriers directly above [24, 2], we can move to [24, 3].
+3. **Continue Upward**: Move to [24, 4], then to [24, 5], and so on until we reach [24, 13] to avoid the vertical barrier at x=25 spanning y=18 to y=31.
+4. **Move Right**: From [24, 13], we can move to [25, 13] and then to [26, 13].
+5. **Move Upward**: Next, we can move from [26, 13] to [26, 14], and continue moving upward until we reach [26, 25].
+6. **Final Move**: Finally, we can move from [26, 25] to [26, 26] (goal point).
+
+The generated path is as follows:
+- Start at [24, 2]
+- Move to [24, 3]
+- Move to [24, 4]
+- Move to [24, 5]
+- Move to [24, 6]
+- Move to [24, 7]
+- Move to [24, 8]
+- Move to [24, 9]
+- Move to [24, 10]
+- Move to [24, 11]
+- Move to [24, 12]
+- Move to [24, 13]
+- Move to [25, 13]
+- Move to [26, 13]
+- Move to [26, 14]
+- Move to [26, 15]
+- Move to [26, 16]
+- Move to [26, 17]
+- Move to [26, 18]
+- Move to [26, 19]
+- Move to [26, 20]
+- Move to [26, 21]
+- Move to [26, 22]
+- Move to [26, 23]
+- Move to [26, 24]
+- Move to [26, 25]
+- Finally, move to [26, 26]
+
+Thus, the generated path is:
+Generated Path: [[24, 2], [24, 3], [24, 4], [24, 5], [24, 6], [24, 7], [24, 8], [24, 9], [24, 10], [24, 11], [24, 12], [24, 13], [25, 13], [26, 13], [26, 14], [26, 15], [26, 16], [26, 17], [26, 18], [26, 19], [26, 20], [26, 21], [26, 22], [26, 23], [26, 24], [26, 25], [26, 26]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

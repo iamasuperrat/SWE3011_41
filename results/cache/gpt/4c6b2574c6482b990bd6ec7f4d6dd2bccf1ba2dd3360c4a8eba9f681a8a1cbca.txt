@@ -1,0 +1,27 @@
+To find a path from the start point [39, 22] to the goal point [3, 14] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [39, 22]
+2. **Goal Point**: [3, 14]
+3. **Horizontal Barriers**: [[10, 0, 25], [15, 30, 50]]
+4. **Vertical Barriers**: [[25, 10, 22]]
+
+### Pathfinding Steps:
+- Starting at [39, 22], we need to move left and down towards the goal.
+- We can move left to [38, 22], then continue moving left until we reach [26, 22].
+- From [26, 22], we can move down to [26, 21], then to [26, 20].
+- Next, we can move left to [25, 20] and then down to [25, 19].
+- Continuing down to [25, 18], we can then move left to [24, 18].
+- We can then navigate down to [24, 17], [24, 16], and [24, 15].
+- Moving left to [23, 15], then down to [23, 14].
+- Finally, we can move left to [22, 14], then down to [21, 14], and continue left until we reach [3, 14].
+
+### Generated Path:
+After analyzing the grid and avoiding the barriers, the path can be represented as follows:
+
+Generated Path: [[39, 22], [38, 22], [26, 22], [26, 21], [26, 20], [25, 20], [25, 19], [25, 18], [24, 18], [24, 17], [24, 16], [24, 15], [23, 15], [23, 14], [22, 14], [21, 14], [20, 14], [19, 14], [18, 14], [17, 14], [16, 14], [15, 14], [14, 14], [13, 14], [12, 14], [11, 14], [10, 14], [9, 14], [8, 14], [7, 14], [6, 14], [5, 14], [4, 14], [3, 14]]
+
+### Waypoint Confidence:
+- The start and goal points are given a confidence of 1.
+- Intermediate waypoints are assigned a confidence of 0.9, as they are strategically chosen to avoid barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9]

@@ -1,0 +1,50 @@
+To find a path from the start point [20, 18] to the goal point [33, 9] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [12, 42, 45]: This barrier is located at y = 12, spanning from x = 42 to x = 45.
+  - [28, 48, 51]: This barrier is located at y = 28, spanning from x = 48 to x = 51.
+  - [3, 23, 37]: This barrier is located at y = 3, spanning from x = 23 to x = 37.
+  - [14, 19, 22]: This barrier is located at y = 14, spanning from x = 19 to x = 22.
+
+- **Vertical Barriers**:
+  - [12, 18, 23]: This barrier is located at x = 12, spanning from y = 18 to y = 23.
+  - [31, 27, 29]: This barrier is located at x = 31, spanning from y = 27 to y = 29.
+  - [31, 5, 30]: This barrier is located at x = 31, spanning from y = 5 to y = 30.
+
+### Pathfinding:
+Starting from [20, 18], we can move right and down while avoiding the barriers. The path can be constructed as follows:
+
+1. Start at [20, 18].
+2. Move to [21, 18] (right).
+3. Move to [22, 18] (right).
+4. Move to [23, 18] (right).
+5. Move to [24, 18] (right).
+6. Move to [25, 18] (right).
+7. Move to [26, 18] (right).
+8. Move to [27, 18] (right).
+9. Move to [28, 18] (right).
+10. Move to [29, 18] (right).
+11. Move to [30, 18] (right).
+12. Move to [31, 18] (right).
+13. Move to [32, 18] (right).
+14. Move to [33, 18] (right).
+15. Move to [33, 17] (down).
+16. Move to [33, 16] (down).
+17. Move to [33, 15] (down).
+18. Move to [33, 14] (down).
+19. Move to [33, 13] (down).
+20. Move to [33, 12] (down).
+21. Move to [33, 11] (down).
+22. Move to [33, 10] (down).
+23. Move to [33, 9] (down).
+
+### Final Path:
+The generated path is:
+Generated Path: [[20, 18], [21, 18], [22, 18], [23, 18], [24, 18], [25, 18], [26, 18], [27, 18], [28, 18], [29, 18], [30, 18], [31, 18], [32, 18], [33, 18], [33, 17], [33, 16], [33, 15], [33, 14], [33, 13], [33, 12], [33, 11], [33, 10], [33, 9]]
+
+### Confidence Scores:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are clear of barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

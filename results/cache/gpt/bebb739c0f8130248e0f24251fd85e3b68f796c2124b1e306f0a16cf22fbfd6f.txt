@@ -1,0 +1,39 @@
+To find a path from the start point [21, 15] to the goal point [28, 6], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [23, 21, 46]: This barrier spans horizontally from (21, 23) to (46, 23).
+  - [22, 7, 16]: This barrier spans horizontally from (7, 22) to (16, 22).
+
+- **Vertical Barriers**:
+  - [36, 1, 22]: This barrier spans vertically from (1, 36) to (22, 36).
+  - [44, 8, 14]: This barrier spans vertically from (8, 44) to (14, 44).
+  - [27, 7, 16]: This barrier spans vertically from (7, 27) to (16, 27).
+  - [14, 30, 30]: This barrier spans vertically from (30, 14) to (30, 14).
+
+### Finding the Path:
+1. Start at [21, 15].
+2. Move to [22, 15] (right).
+3. Move to [23, 15] (right).
+4. Move to [24, 15] (right).
+5. Move to [25, 15] (right).
+6. Move to [26, 15] (right).
+7. Move to [27, 15] (right).
+8. Move to [28, 15] (right).
+9. Move to [28, 14] (down).
+10. Move to [28, 13] (down).
+11. Move to [28, 12] (down).
+12. Move to [28, 11] (down).
+13. Move to [28, 10] (down).
+14. Move to [28, 9] (down).
+15. Move to [28, 8] (down).
+16. Move to [28, 7] (down).
+17. Move to [28, 6] (down).
+
+### Generated Path:
+The path from the start to the goal while avoiding obstacles is:
+Generated Path: [[21, 15], [22, 15], [23, 15], [24, 15], [25, 15], [26, 15], [27, 15], [28, 15], [28, 14], [28, 13], [28, 12], [28, 11], [28, 10], [28, 9], [28, 8], [28, 7], [28, 6]]
+
+### Waypoint Confidence:
+The confidence scores for each waypoint, with the start and goal points having a confidence of 1, are as follows:
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

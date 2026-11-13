@@ -1,0 +1,60 @@
+To find a path from the start point [4, 21] to the goal point [36, 21] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [4, 21] (confidence 1)
+2. **Goal Point**: [36, 21] (confidence 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [28, 19, 34]: This barrier spans from (19, 28) to (34, 28).
+  - [3, 0, 34]: This barrier spans from (0, 3) to (34, 3).
+  - [17, 28, 28]: This barrier spans from (28, 17) to (28, 28).
+  
+- **Vertical Barriers**:
+  - [4, 29, 29]: This barrier spans from (29, 4) to (29, 29).
+  - [35, 11, 30]: This barrier spans from (11, 35) to (30, 35).
+  - [47, 29, 30]: This barrier spans from (29, 47) to (30, 47).
+
+### Pathfinding:
+Starting from [4, 21], we can move right along the y=21 line until we reach the goal, while avoiding the barriers.
+
+1. Move right to [5, 21]
+2. Continue moving right to [6, 21]
+3. Continue moving right to [7, 21]
+4. Continue moving right to [8, 21]
+5. Continue moving right to [9, 21]
+6. Continue moving right to [10, 21]
+7. Continue moving right to [11, 21]
+8. Continue moving right to [12, 21]
+9. Continue moving right to [13, 21]
+10. Continue moving right to [14, 21]
+11. Continue moving right to [15, 21]
+12. Continue moving right to [16, 21]
+13. Continue moving right to [17, 21]
+14. Continue moving right to [18, 21]
+15. Continue moving right to [19, 21]
+16. Continue moving right to [20, 21]
+17. Continue moving right to [21, 21]
+18. Continue moving right to [22, 21]
+19. Continue moving right to [23, 21]
+20. Continue moving right to [24, 21]
+21. Continue moving right to [25, 21]
+22. Continue moving right to [26, 21]
+23. Continue moving right to [27, 21]
+24. Continue moving right to [28, 21]
+25. Move up to [28, 22] to avoid the horizontal barrier at y=28.
+26. Move right to [29, 22]
+27. Move right to [30, 22]
+28. Move right to [31, 22]
+29. Move right to [32, 22]
+30. Move right to [33, 22]
+31. Move right to [34, 22]
+32. Move down to [34, 21]
+33. Move right to [35, 21]
+34. Move right to [36, 21] (goal)
+
+### Generated Path:
+The path can be summarized as follows:
+Generated Path: [[4, 21], [5, 21], [6, 21], [7, 21], [8, 21], [9, 21], [10, 21], [11, 21], [12, 21], [13, 21], [14, 21], [15, 21], [16, 21], [17, 21], [18, 21], [19, 21], [20, 21], [21, 21], [22, 21], [23, 21], [24, 21], [25, 21], [26, 21], [27, 21], [28, 21], [28, 22], [29, 22], [30, 22], [31, 22], [32, 22], [33, 22], [34, 22], [34, 21], [35, 21], [36, 21]]
+
+### Waypoint Confidence:
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,

@@ -1,0 +1,55 @@
+To find a path from the start point [25, 26] to the goal point [7, 14] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [19, 26, 49]: This barrier spans horizontally from (19, 26) to (49, 26).
+  - [25, 50, 51]: This barrier spans horizontally from (25, 50) to (51, 50).
+  
+- **Vertical Barriers**: 
+  - [16, 16, 24]: This barrier spans vertically from (16, 16) to (16, 24).
+  - [40, 4, 19]: This barrier spans vertically from (40, 4) to (40, 19).
+
+### Pathfinding:
+Starting from [25, 26], we need to navigate around the barriers to reach [7, 14]. 
+
+1. Move left to [24, 26].
+2. Move left to [23, 26].
+3. Move left to [22, 26].
+4. Move left to [21, 26].
+5. Move down to [21, 25].
+6. Move down to [21, 24].
+7. Move down to [21, 23].
+8. Move down to [21, 22].
+9. Move down to [21, 21].
+10. Move down to [21, 20].
+11. Move left to [20, 20].
+12. Move left to [19, 20].
+13. Move left to [18, 20].
+14. Move left to [17, 20].
+15. Move left to [16, 20].
+16. Move down to [16, 19].
+17. Move down to [16, 18].
+18. Move down to [16, 17].
+19. Move down to [16, 16].
+20. Move left to [15, 16].
+21. Move left to [14, 16].
+22. Move left to [13, 16].
+23. Move left to [12, 16].
+24. Move left to [11, 16].
+25. Move down to [11, 15].
+26. Move down to [11, 14].
+27. Move left to [10, 14].
+28. Move left to [9, 14].
+29. Move left to [8, 14].
+30. Move left to [7, 14].
+
+### Generated Path:
+The generated path is:
+Generated Path: [[25, 26], [24, 26], [23, 26], [22, 26], [21, 26], [21, 25], [21, 24], [21, 23], [21, 22], [21, 21], [21, 20], [20, 20], [19, 20], [18, 20], [17, 20], [16, 20], [16, 19], [16, 18], [16, 17], [16, 16], [15, 16], [14, 16], [13, 16], [12, 16], [11, 16], [11, 15], [11, 14], [10, 14], [9, 14], [8, 14], [7, 14]]
+
+### Waypoint Confidence:
+The confidence scores for the waypoints are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are part of the path but may have slight uncertainty due to proximity to barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

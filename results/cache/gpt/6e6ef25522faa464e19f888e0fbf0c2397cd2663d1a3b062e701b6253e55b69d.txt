@@ -1,0 +1,46 @@
+To find a path from the start point [22, 10] to the goal point [34, 3] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [24, 14, 40]: This barrier spans horizontally from (14, 24) to (40, 24).
+  - [9, 11, 30]: This barrier spans horizontally from (11, 9) to (30, 9).
+  
+- **Vertical Barriers**: 
+  - [6, 4, 16]: This barrier spans vertically from (4, 6) to (16, 6).
+  - [21, 19, 26]: This barrier spans vertically from (19, 21) to (26, 21).
+  - [26, 30, 31]: This barrier spans vertically from (30, 26) to (31, 26).
+
+### Pathfinding:
+Starting from [22, 10], we can navigate around the barriers:
+1. Move right to [23, 10].
+2. Move right to [24, 10].
+3. Move down to [24, 9] (avoiding the horizontal barrier at y=9).
+4. Move down to [24, 8].
+5. Move down to [24, 7].
+6. Move down to [24, 6].
+7. Move left to [23, 6] (avoiding the vertical barrier at x=6).
+8. Move left to [22, 6].
+9. Move down to [22, 5].
+10. Move down to [22, 4].
+11. Move right to [23, 4].
+12. Move right to [24, 4].
+13. Move right to [25, 4].
+14. Move right to [26, 4].
+15. Move right to [27, 4].
+16. Move right to [28, 4].
+17. Move right to [29, 4].
+18. Move right to [30, 4].
+19. Move right to [31, 4].
+20. Move right to [32, 4].
+21. Move right to [33, 4].
+22. Move up to [34, 3] (goal).
+
+### Generated Path:
+The path can be summarized as follows:
+Generated Path: [[22, 10], [23, 10], [24, 10], [24, 9], [24, 8], [24, 7], [24, 6], [23, 6], [22, 6], [22, 5], [22, 4], [23, 4], [24, 4], [25, 4], [26, 4], [27, 4], [28, 4], [29, 4], [30, 4], [31, 4], [32, 4], [33, 4], [34, 3]]
+
+### Confidence Scores:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are strategically chosen to avoid barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

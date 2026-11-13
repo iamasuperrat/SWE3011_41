@@ -1,0 +1,53 @@
+To find the shortest path from the start point [10, 8] to the goal point [37, 12] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [10, 8] (Confidence: 1)
+2. **Goal Point**: [37, 12] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [27, 2, 21]: This barrier spans horizontally from (2, 27) to (21, 27).
+  - [15, 19, 43]: This barrier spans horizontally from (19, 15) to (43, 15).
+
+- **Vertical Barriers**:
+  - [14, 7, 23]: This barrier spans vertically from (7, 14) to (23, 14).
+  - [11, 6, 17]: This barrier spans vertically from (6, 11) to (17, 11).
+
+### Pathfinding:
+Starting from [10, 8], we can navigate around the barriers as follows:
+1. Move right to [11, 8] (clear path).
+2. Move right to [12, 8].
+3. Move right to [13, 8].
+4. Move right to [14, 8].
+5. Move up to [14, 9].
+6. Move up to [14, 10].
+7. Move right to [15, 10].
+8. Move right to [16, 10].
+9. Move right to [17, 10].
+10. Move right to [18, 10].
+11. Move right to [19, 10].
+12. Move right to [20, 10].
+13. Move right to [21, 10].
+14. Move right to [22, 10].
+15. Move right to [23, 10].
+16. Move right to [24, 10].
+17. Move right to [25, 10].
+18. Move right to [26, 10].
+19. Move right to [27, 10].
+20. Move right to [28, 10].
+21. Move right to [29, 10].
+22. Move right to [30, 10].
+23. Move right to [31, 10].
+24. Move right to [32, 10].
+25. Move right to [33, 10].
+26. Move right to [34, 10].
+27. Move right to [35, 10].
+28. Move right to [36, 10].
+29. Move up to [37, 12].
+
+### Generated Path:
+The generated path is:
+Generated Path: [[10, 8], [11, 8], [12, 8], [13, 8], [14, 8], [14, 9], [14, 10], [15, 10], [16, 10], [17, 10], [18, 10], [19, 10], [20, 10], [21, 10], [22, 10], [23, 10], [24, 10], [25, 10], [26, 10], [27, 10], [28, 10], [29, 10], [30, 10], [31, 10], [32, 10], [33, 10], [34, 10], [35, 10], [36, 10], [37, 12]]
+
+### Waypoint Confidence:
+The confidence scores for the waypoints are:
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

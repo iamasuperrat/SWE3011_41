@@ -1,0 +1,33 @@
+To navigate from the start point [46, 16] to the goal point [31, 7], we need to avoid the horizontal and vertical barriers provided. 
+
+1. **Start Point**: [46, 16] - Confidence: 1
+2. **Move Left**: We can move left to [45, 16] to start avoiding the barriers.
+3. **Continue Left**: Move left to [44, 16].
+4. **Move Down**: Move down to [44, 15] to avoid the horizontal barrier at y=16.
+5. **Move Left**: Move left to [43, 15].
+6. **Move Down**: Move down to [43, 14].
+7. **Move Left**: Move left to [42, 14].
+8. **Move Down**: Move down to [42, 13].
+9. **Move Left**: Move left to [41, 13].
+10. **Move Down**: Move down to [41, 12].
+11. **Move Left**: Move left to [40, 12].
+12. **Move Down**: Move down to [40, 11].
+13. **Move Left**: Move left to [39, 11].
+14. **Move Down**: Move down to [39, 10].
+15. **Move Left**: Move left to [38, 10].
+16. **Move Down**: Move down to [38, 9].
+17. **Move Left**: Move left to [37, 9].
+18. **Move Down**: Move down to [37, 8].
+19. **Move Left**: Move left to [36, 8].
+20. **Move Down**: Move down to [36, 7].
+21. **Move Left**: Move left to [35, 7].
+22. **Move Down**: Move down to [34, 7].
+23. **Move Left**: Move left to [33, 7].
+24. **Move Down**: Move down to [32, 7].
+25. **Move Left**: Move left to [31, 7] - Goal Point - Confidence: 1
+
+The generated path is as follows:
+
+Generated Path: [[46, 16], [45, 16], [44, 16], [44, 15], [43, 15], [43, 14], [42, 14], [42, 13], [41, 13], [41, 12], [40, 12], [40, 11], [39, 11], [39, 10], [38, 10], [38, 9], [37, 9], [37, 8], [36, 8], [36, 7], [35, 7], [34, 7], [33, 7], [32, 7], [31, 7]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

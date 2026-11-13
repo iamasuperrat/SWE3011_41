@@ -1,0 +1,18 @@
+To find a path from the start point [6, 13] to the goal point [7, 22] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [6, 13] (Confidence: 1)
+2. **Move Up**: [6, 14] (Confidence: 0.9) - This is a valid move as it avoids the horizontal barriers.
+3. **Move Up**: [6, 15] (Confidence: 0.9) - Continuing to move up.
+4. **Move Up**: [6, 16] (Confidence: 0.9) - Still moving up.
+5. **Move Up**: [6, 17] (Confidence: 0.9) - Continuing to avoid barriers.
+6. **Move Right**: [7, 17] (Confidence: 0.9) - Moving right to get closer to the goal.
+7. **Move Up**: [7, 18] (Confidence: 0.9) - Continuing to move towards the goal.
+8. **Move Up**: [7, 19] (Confidence: 0.9) - Still moving up.
+9. **Move Up**: [7, 20] (Confidence: 0.9) - Continuing to approach the goal.
+10. **Move Up**: [7, 21] (Confidence: 0.9) - Almost at the goal.
+11. **Move Up**: [7, 22] (Confidence: 1) - Reached the goal.
+
+Now, compiling the generated path and confidence scores:
+
+Generated Path: [[6, 13], [6, 14], [6, 15], [6, 16], [6, 17], [7, 17], [7, 18], [7, 19], [7, 20], [7, 21], [7, 22]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

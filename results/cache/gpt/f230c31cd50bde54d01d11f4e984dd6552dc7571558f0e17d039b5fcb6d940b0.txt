@@ -1,0 +1,29 @@
+To find a path from the start point [45, 2] to the goal point [3, 25] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [45, 2] (confidence 1)
+2. **Navigate around barriers**:
+   - The horizontal barriers at y=17 (from x=29 to x=49) and y=12 (from x=17 to x=30) will restrict movement in those areas.
+   - The vertical barriers at x=42 (from y=13 to y=23), x=40 (at y=31), and x=46 (from y=28 to y=29) will also restrict movement.
+
+3. **Pathfinding**:
+   - Move left from [45, 2] to [30, 2] (avoiding the vertical barriers).
+   - Move up to [30, 12] (just below the horizontal barrier).
+   - Move left to [17, 12] (just before the vertical barrier).
+   - Move down to [17, 25] (navigating around the barriers).
+   - Finally, move left to [3, 25].
+
+The generated path is:
+Generated Path: [[45, 2], [30, 2], [30, 12], [17, 12], [17, 25], [3, 25]]
+
+Confidence scores for each waypoint:
+- Start: 1
+- [30, 2]: 1 (clear path)
+- [30, 12]: 1 (clear path)
+- [17, 12]: 1 (clear path)
+- [17, 25]: 1 (clear path)
+- Goal: 1
+
+Thus, the final output is:
+
+Generated Path: [[45, 2], [30, 2], [30, 12], [17, 12], [17, 25], [3, 25]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]

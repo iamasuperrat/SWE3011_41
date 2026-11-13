@@ -1,0 +1,50 @@
+To navigate from the start point [44, 14] to the goal point [40, 3] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and find a suitable path.
+
+1. **Start Point**: [44, 14] (confidence 1)
+2. **Goal Point**: [40, 3] (confidence 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**: 
+  - [8, 27, 44] (this barrier spans horizontally from y=8 to y=44)
+  
+- **Vertical Barriers**: 
+  - [5, 2, 5] (this barrier spans vertically from x=5 to y=5)
+  - [44, 28, 30] (this barrier spans vertically from x=44 to y=30)
+  - [26, 18, 28] (this barrier spans vertically from x=26 to y=28)
+
+### Pathfinding:
+Starting from [44, 14], we can move left towards the goal while avoiding the barriers. The path can be constructed as follows:
+
+1. Move left to [43, 14]
+2. Move left to [42, 14]
+3. Move left to [41, 14]
+4. Move down to [41, 13]
+5. Move down to [41, 12]
+6. Move down to [41, 11]
+7. Move down to [41, 10]
+8. Move left to [40, 10]
+9. Move down to [40, 9]
+10. Move down to [40, 8]
+11. Move down to [40, 7]
+12. Move down to [40, 6]
+13. Move down to [40, 5]
+14. Move down to [40, 4]
+15. Move down to [40, 3] (goal)
+
+### Generated Path:
+The generated path is:
+Generated Path: [[44, 14], [43, 14], [42, 14], [41, 14], [41, 13], [41, 12], [41, 11], [41, 10], [40, 10], [40, 9], [40, 8], [40, 7], [40, 6], [40, 5], [40, 4], [40, 3]]
+
+### Confidence Scores:
+- Start Point: 1
+- Intermediate Points: 1 (for all points as they are clear of barriers)
+- Goal Point: 1
+
+Thus, the confidence scores are:
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] 
+
+Final output:
+```
+Generated Path: [[44, 14], [43, 14], [42, 14], [41, 14], [41, 13], [41, 12], [41, 11], [41, 10], [40, 10], [40, 9], [40, 8], [40, 7], [40, 6], [40, 5], [40, 4], [40, 3]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+```

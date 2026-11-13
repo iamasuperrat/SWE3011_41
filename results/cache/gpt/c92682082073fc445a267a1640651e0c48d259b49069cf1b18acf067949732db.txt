@@ -1,0 +1,58 @@
+To navigate from the start point [35, 24] to the goal point [25, 25], we need to avoid the horizontal barrier at y=15 spanning x=10 to x=21 and the vertical barriers at x=20 spanning y=0 to y=15, x=30 spanning y=15 to y=30, and x=40 spanning y=0 to y=16.
+
+1. Start at [35, 24].
+2. Move left to [34, 24].
+3. Move left to [33, 24].
+4. Move left to [32, 24].
+5. Move left to [31, 24].
+6. Move left to [30, 24].
+7. Move down to [30, 23].
+8. Move down to [30, 22].
+9. Move down to [30, 21].
+10. Move left to [29, 21].
+11. Move left to [28, 21].
+12. Move left to [27, 21].
+13. Move left to [26, 21].
+14. Move left to [25, 21].
+15. Move down to [25, 20].
+16. Move down to [25, 19].
+17. Move down to [25, 18].
+18. Move down to [25, 17].
+19. Move down to [25, 16].
+20. Move down to [25, 15].
+21. Move down to [25, 14].
+22. Move down to [25, 13].
+23. Move down to [25, 12].
+24. Move down to [25, 11].
+25. Move down to [25, 10].
+26. Move down to [25, 9].
+27. Move down to [25, 8].
+28. Move down to [25, 7].
+29. Move down to [25, 6].
+30. Move down to [25, 5].
+31. Move down to [25, 4].
+32. Move left to [24, 4].
+33. Move left to [23, 4].
+34. Move left to [22, 4].
+35. Move left to [21, 4].
+36. Move left to [20, 4].
+37. Move left to [19, 4].
+38. Move left to [18, 4].
+39. Move left to [17, 4].
+40. Move left to [16, 4].
+41. Move left to [15, 4].
+42. Move left to [14, 4].
+43. Move left to [13, 4].
+44. Move left to [12, 4].
+45. Move left to [11, 4].
+46. Move left to [10, 4].
+47. Move left to [9, 4].
+48. Move left to [8, 4].
+49. Move left to [7, 4].
+50. Move left to [6, 4].
+51. Move left to [5, 4].
+52. Move left to [4, 4].
+53. Finally, move up to [4, 5] and then to [4, 6] to reach [25, 25].
+
+The generated path is:
+Generated Path: [[35, 24], [34, 24], [33, 24], [32, 24], [31, 24], [30, 24], [30, 23], [30, 22], [30, 21], [29, 21], [28, 21], [27, 21], [26, 21], [25, 21], [25, 20], [25, 19], [25, 18], [25, 17], [25, 16], [25, 15], [25, 14], [25, 13], [25, 12], [25, 11], [25, 10], [25, 9], [25, 8], [25, 7], [25, 6], [25, 5], [25, 4], [24, 4], [23, 4], [22, 4], [21, 4], [20, 4], [19, 4], [18, 4], [17, 4], [16, 4], [15, 4], [14, 4], [13, 4], [12, 4], [11, 4], [10, 4], [9, 4], [8, 4], [7, 4], [6, 4], [5, 4], [4

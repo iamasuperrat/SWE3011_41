@@ -1,0 +1,11 @@
+To navigate from the start point [44, 14] to the goal point [49, 1], we need to avoid the horizontal barrier at y=10 spanning x=43 to x=49. The vertical barriers do not directly obstruct the path between the start and goal points.
+
+1. Start at [44, 14].
+2. Move down to [44, 9] to avoid the horizontal barrier at y=10.
+3. Move right to [49, 9].
+4. Move down to [49, 1] to reach the goal.
+
+The generated path is:
+Generated Path: [[44, 14], [44, 9], [49, 9], [49, 1]]
+
+Waypoint Confidence: [1, 1, 1, 1]

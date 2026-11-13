@@ -1,0 +1,40 @@
+To navigate from the start point [3, 23] to the goal point [20, 5], we need to avoid the specified horizontal and vertical barriers. 
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [20, 0, 20] (y = 20 from x = 0 to x = 20)
+  - [5, 30, 40] (y = 5 from x = 30 to x = 40)
+  
+- **Vertical Barriers**: 
+  - [40, 0, 15] (x = 40 from y = 0 to y = 15)
+  - [20, 10, 21] (x = 20 from y = 10 to y = 21)
+
+### Pathfinding:
+1. Start at [3, 23].
+2. Move down to avoid the horizontal barrier at y = 20.
+3. Navigate left towards the goal while avoiding the vertical barrier at x = 20.
+4. Move down to reach the goal at [20, 5].
+
+### Generated Path:
+After analyzing the barriers and calculating the shortest route, the path can be constructed as follows:
+- Start at [3, 23]
+- Move to [3, 19] (down)
+- Move to [10, 19] (right)
+- Move to [10, 10] (down)
+- Move to [20, 10] (right)
+- Move to [20, 5] (down)
+
+Thus, the generated path is:
+Generated Path: [[3, 23], [3, 19], [10, 19], [10, 10], [20, 10], [20, 5]]
+
+### Confidence Scores:
+- Start Point: [3, 23] - Confidence: 1
+- [3, 19] - Confidence: 0.9 (safe move down)
+- [10, 19] - Confidence: 0.9 (safe move right)
+- [10, 10] - Confidence: 0.9 (safe move down)
+- [20, 10] - Confidence: 0.9 (safe move right)
+- Goal Point: [20, 5] - Confidence: 1
+
+Final output:
+Generated Path: [[3, 23], [3, 19], [10, 19], [10, 10], [20, 10], [20, 5]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 1]

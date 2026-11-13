@@ -1,0 +1,48 @@
+To find a path from the start point [42, 28] to the goal point [36, 7], we need to navigate around the given horizontal and vertical barriers. 
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [0, 12, 36]: This barrier spans horizontally from (12, 0) to (36, 0).
+  - [26, 34, 42]: This barrier spans horizontally from (34, 26) to (42, 26).
+  - [17, 38, 43]: This barrier spans horizontally from (38, 17) to (43, 17).
+  - [8, 6, 31]: This barrier spans horizontally from (6, 8) to (31, 8).
+
+- **Vertical Barriers**:
+  - [22, 1, 12]: This barrier spans vertically from (1, 22) to (12, 22).
+  - [44, 6, 22]: This barrier spans vertically from (6, 44) to (22, 44).
+  - [12, 2, 3]: This barrier spans vertically from (2, 12) to (3, 12).
+
+### Pathfinding:
+1. Start at [42, 28].
+2. Move left to avoid the vertical barriers and horizontal barriers.
+3. Navigate downwards while avoiding the horizontal barriers.
+4. Continue moving left and down until reaching the goal.
+
+### Generated Path:
+After analyzing the barriers and calculating the shortest path, the generated path is:
+- Start at [42, 28]
+- Move to [41, 27]
+- Move to [40, 26]
+- Move to [39, 25]
+- Move to [38, 24]
+- Move to [37, 23]
+- Move to [36, 22]
+- Move to [36, 21]
+- Move to [36, 20]
+- Move to [36, 19]
+- Move to [36, 18]
+- Move to [36, 17]
+- Move to [36, 16]
+- Move to [36, 15]
+- Move to [36, 14]
+- Move to [36, 13]
+- Move to [36, 12]
+- Move to [36, 11]
+- Move to [36, 10]
+- Move to [36, 9]
+- Move to [36, 8]
+- Move to [36, 7] (Goal)
+
+Thus, the final generated path is:
+Generated Path: [[42, 28], [41, 27], [40, 26], [39, 25], [38, 24], [37, 23], [36, 22], [36, 21], [36, 20], [36, 19], [36, 18], [36, 17], [36, 16], [36, 15], [36, 14], [36, 13], [36, 12], [36, 11], [36, 10], [36, 9], [36, 8], [36, 7]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

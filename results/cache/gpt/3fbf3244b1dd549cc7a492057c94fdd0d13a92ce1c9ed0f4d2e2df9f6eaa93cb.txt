@@ -1,0 +1,57 @@
+To find a path from the start point [35, 8] to the goal point [4, 27] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [35, 8] (confidence 1)
+2. **Navigate around barriers**:
+   - The vertical barrier at x = 33 from y = 8 to y = 27 blocks direct movement towards the goal.
+   - The horizontal barrier at y = 15 from x = 30 to x = 48 also restricts movement.
+   - The vertical barrier at x = 24 from y = 9 to y = 17 further complicates the path.
+
+3. **Pathfinding**:
+   - Move left to avoid the vertical barriers.
+   - Move up to navigate around the horizontal barriers.
+   - Finally, move left and down to reach the goal.
+
+After analyzing the grid and the barriers, a possible path is:
+- Start at [35, 8]
+- Move to [34, 8]
+- Move to [33, 8]
+- Move to [32, 8]
+- Move to [31, 8]
+- Move to [30, 9]
+- Move to [30, 10]
+- Move to [30, 11]
+- Move to [30, 12]
+- Move to [30, 13]
+- Move to [30, 14]
+- Move to [30, 15]
+- Move to [29, 16]
+- Move to [28, 17]
+- Move to [27, 18]
+- Move to [26, 19]
+- Move to [25, 20]
+- Move to [24, 21]
+- Move to [23, 22]
+- Move to [22, 23]
+- Move to [21, 24]
+- Move to [20, 25]
+- Move to [19, 26]
+- Move to [18, 27]
+- Move to [17, 27]
+- Move to [16, 27]
+- Move to [15, 27]
+- Move to [14, 27]
+- Move to [13, 27]
+- Move to [12, 27]
+- Move to [11, 27]
+- Move to [10, 27]
+- Move to [9, 27]
+- Move to [8, 27]
+- Move to [7, 27]
+- Move to [6, 27]
+- Move to [5, 27]
+- Move to [4, 27] (goal)
+
+The generated path is:
+Generated Path: [[35, 8], [34, 8], [33, 8], [32, 8], [31, 8], [30, 9], [30, 10], [30, 11], [30, 12], [30, 13], [30, 14], [30, 15], [29, 16], [28, 17], [27, 18], [26, 19], [25, 20], [24, 21], [23, 22], [22, 23], [21, 24], [20, 25], [19, 26], [18, 27], [17, 27], [16, 27], [15, 27], [14, 27], [13, 27], [12, 27], [11, 27], [10, 27], [9, 27], [8, 27], [7, 27], [6, 27], [5, 27], [4, 27]]
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.6, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]

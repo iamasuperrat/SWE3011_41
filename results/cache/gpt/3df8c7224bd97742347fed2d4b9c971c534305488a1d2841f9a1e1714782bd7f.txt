@@ -1,0 +1,26 @@
+To find a path from the start point [25, 16] to the goal point [28, 16] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and determine a valid route.
+
+Given the barriers:
+- Horizontal Barriers: [[6, 10, 29], [23, 18, 36], [13, 51, 51], [2, 45, 49]]
+- Vertical Barriers: [[26, 13, 24], [6, 5, 11]]
+
+The start point is [25, 16] and the goal point is [28, 16]. 
+
+1. From [25, 16], we can move right to [26, 16].
+2. However, [26, 16] is blocked by the vertical barrier at x=26.
+3. Therefore, we need to move down to [25, 15] first.
+4. From [25, 15], we can move right to [26, 15].
+5. Then, we can move right again to [27, 15].
+6. Finally, we can move right to [28, 15] and then up to [28, 16] to reach the goal.
+
+The generated path is:
+- Start: [25, 16]
+- Move down: [25, 15]
+- Move right: [26, 15]
+- Move right: [27, 15]
+- Move right: [28, 15]
+- Move up: [28, 16] (Goal)
+
+Thus, the complete path is:
+Generated Path: [[25, 16], [25, 15], [26, 15], [27, 15], [28, 15], [28, 16]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]

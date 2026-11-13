@@ -1,0 +1,80 @@
+To navigate from the start point [40, 23] to the goal point [47, 1], we need to avoid the horizontal barriers at y=27 spanning x=2 to x=21 and y=15 spanning x=19 to x=43, as well as the vertical barriers at x=14 spanning y=7 to y=23 and x=11 spanning y=6 to y=17.
+
+1. Start at [40, 23].
+2. Move left to [39, 23] to avoid the vertical barrier at x=14.
+3. Move down to [39, 22].
+4. Move down to [39, 21].
+5. Move down to [39, 20].
+6. Move left to [38, 20].
+7. Move down to [38, 19].
+8. Move left to [37, 19].
+9. Move down to [37, 18].
+10. Move left to [36, 18].
+11. Move down to [36, 17].
+12. Move left to [35, 17].
+13. Move down to [35, 16].
+14. Move left to [34, 16].
+15. Move down to [34, 15].
+16. Move left to [33, 15].
+17. Move down to [33, 14].
+18. Move left to [32, 14].
+19. Move down to [32, 13].
+20. Move left to [31, 13].
+21. Move down to [31, 12].
+22. Move left to [30, 12].
+23. Move down to [30, 11].
+24. Move left to [29, 11].
+25. Move down to [29, 10].
+26. Move left to [28, 10].
+27. Move down to [28, 9].
+28. Move left to [27, 9].
+29. Move down to [27, 8].
+30. Move left to [26, 8].
+31. Move down to [26, 7].
+32. Move left to [25, 7].
+33. Move down to [25, 6].
+34. Move left to [24, 6].
+35. Move down to [24, 5].
+36. Move left to [23, 5].
+37. Move down to [23, 4].
+38. Move left to [22, 4].
+39. Move down to [22, 3].
+40. Move left to [21, 3].
+41. Move down to [21, 2].
+42. Move left to [20, 2].
+43. Move down to [20, 1].
+44. Move left to [19, 1].
+45. Move down to [19, 0].
+46. Move right to [20, 0].
+47. Move right to [21, 0].
+48. Move right to [22, 0].
+49. Move right to [23, 0].
+50. Move right to [24, 0].
+51. Move right to [25, 0].
+52. Move right to [26, 0].
+53. Move right to [27, 0].
+54. Move right to [28, 0].
+55. Move right to [29, 0].
+56. Move right to [30, 0].
+57. Move right to [31, 0].
+58. Move right to [32, 0].
+59. Move right to [33, 0].
+60. Move right to [34, 0].
+61. Move right to [35, 0].
+62. Move right to [36, 0].
+63. Move right to [37, 0].
+64. Move right to [38, 0].
+65. Move right to [39, 0].
+66. Move right to [40, 0].
+67. Move right to [41, 0].
+68. Move right to [42, 0].
+69. Move right to [43, 0].
+70. Move right to [44, 0].
+71. Move right to [45, 0].
+72. Move right to [46, 0].
+73. Move right to [47, 0].
+74. Move up to [47, 1].
+
+The generated path is as follows:
+
+Generated Path: [[40, 23], [39, 23], [39, 22], [39, 21], [39, 20], [38, 20], [38, 19], [37, 19], [37, 18], [36, 18], [36, 17], [35, 17], [35, 16], [34, 

@@ -1,0 +1,66 @@
+To find a path from the start point [40, 21] to the goal point [45, 10], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [16, 50, 51]: This barrier is not relevant as it is above the start and goal points.
+  - [11, 38, 41]: This barrier is also above the start and goal points.
+  - [3, 35, 49]: This barrier is above the start and goal points.
+  - [15, 21, 48]: This barrier starts at y=21 and extends horizontally, blocking the path directly to the right of the start point.
+
+- **Vertical Barriers**:
+  - [42, 15, 30]: This barrier is vertical and blocks the path at x=42 from y=15 to y=30.
+  - [42, 0, 2]: This barrier is vertical and blocks the path at x=42 from y=0 to y=2.
+
+### Pathfinding:
+1. Start at [40, 21].
+2. Move left to [39, 21] (avoiding the horizontal barrier at y=21).
+3. Move down to [39, 20].
+4. Move down to [39, 19].
+5. Move down to [39, 18].
+6. Move down to [39, 17].
+7. Move down to [39, 16].
+8. Move down to [39, 15].
+9. Move left to [38, 15].
+10. Move down to [38, 14].
+11. Move down to [38, 13].
+12. Move down to [38, 12].
+13. Move down to [38, 11].
+14. Move down to [38, 10].
+15. Move right to [39, 10].
+16. Move right to [40, 10].
+17. Move right to [41, 10].
+18. Move right to [42, 10].
+19. Move right to [43, 10].
+20. Move right to [44, 10].
+21. Move right to [45, 10] (goal).
+
+### Generated Path:
+The path taken is:
+- [[40, 21], [39, 21], [39, 20], [39, 19], [39, 18], [39, 17], [39, 16], [39, 15], [38, 15], [38, 14], [38, 13], [38, 12], [38, 11], [38, 10], [39, 10], [40, 10], [41, 10], [42, 10], [43, 10], [44, 10], [45, 10]]
+
+### Confidence Scores:
+- Start point [40, 21]: 1
+- [39, 21]: 1
+- [39, 20]: 1
+- [39, 19]: 1
+- [39, 18]: 1
+- [39, 17]: 1
+- [39, 16]: 1
+- [39, 15]: 1
+- [38, 15]: 1
+- [38, 14]: 1
+- [38, 13]: 1
+- [38, 12]: 1
+- [38, 11]: 1
+- [38, 10]: 1
+- [39, 10]: 1
+- [40, 10]: 1
+- [41, 10]: 1
+- [42, 10]: 1
+- [43, 10]: 1
+- [44, 10]: 1
+- Goal point [45, 10]: 1
+
+### Final Output:
+Generated Path: [[40, 21], [39, 21], [39, 20], [39, 19], [39, 18], [39, 17], [39, 16], [39, 15], [38, 15], [38, 14], [38, 13], [38, 12], [38, 11], [38, 10], [39, 10], [40, 10], [41, 10], [42, 10], [43, 10], [44, 10], [45, 10]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 

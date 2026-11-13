@@ -1,0 +1,32 @@
+To find a path from the start point [44, 26] to the goal point [2, 18] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [4, 48, 48]: This barrier is irrelevant as it is outside the range of our path.
+  - [27, 39, 49]: This barrier is also irrelevant as it is outside the range of our path.
+  - [20, 44, 44]: This barrier is irrelevant as it is outside the range of our path.
+  - [24, 5, 47]: This barrier is irrelevant as it is outside the range of our path.
+
+- **Vertical Barriers**:
+  - [45, 31, 31]: This barrier is irrelevant as it is outside the range of our path.
+  - [49, 14, 26]: This barrier is irrelevant as it is outside the range of our path.
+  - [33, 18, 30]: This barrier is relevant as it blocks the path between y=18 and y=30 at x=33.
+
+### Pathfinding:
+Starting from [44, 26], we can move left towards the goal while avoiding the vertical barrier at x=33. The path can be constructed as follows:
+
+1. Move left to [33, 26] (valid move).
+2. Move down to [33, 18] (valid move).
+3. Move left to [2, 18] (goal).
+
+### Generated Path:
+The path from the start point to the goal point while avoiding obstacles is:
+Generated Path: [[44, 26], [33, 26], [33, 18], [2, 18]]
+
+### Confidence Scores:
+- Start Point [44, 26]: 1 (definitely a starting point)
+- Waypoint [33, 26]: 1 (valid move)
+- Waypoint [33, 18]: 1 (valid move)
+- Goal Point [2, 18]: 1 (definitely a goal point)
+
+Waypoint Confidence: [1, 1, 1, 1]

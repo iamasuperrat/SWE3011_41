@@ -1,0 +1,57 @@
+To find a path from the start point [24, 11] to the goal point [45, 16] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [24, 11] (Confidence: 1)
+2. **Goal Point**: [45, 16] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [0, 12, 36]: This barrier spans horizontally from y=12 to y=36, blocking any movement through this row.
+  - [26, 34, 42]: This barrier spans horizontally from y=34 to y=42.
+  - [17, 38, 43]: This barrier spans horizontally from y=38 to y=43.
+  - [8, 6, 31]: This barrier spans horizontally from y=6 to y=31.
+
+- **Vertical Barriers**:
+  - [22, 1, 12]: This barrier spans vertically from x=22 to y=1 to y=12.
+  - [44, 6, 22]: This barrier spans vertically from x=44 to y=6 to y=22.
+  - [12, 2, 3]: This barrier spans vertically from x=12 to y=2 to y=3.
+
+### Pathfinding:
+Starting from [24, 11], we can navigate around the barriers as follows:
+
+1. Move right to [25, 11] (clear path).
+2. Move right to [26, 11] (clear path).
+3. Move right to [27, 11] (clear path).
+4. Move right to [28, 11] (clear path).
+5. Move right to [29, 11] (clear path).
+6. Move right to [30, 11] (clear path).
+7. Move right to [31, 11] (clear path).
+8. Move up to [31, 12] (clear path).
+9. Move up to [31, 13] (clear path).
+10. Move up to [31, 14] (clear path).
+11. Move up to [31, 15] (clear path).
+12. Move right to [32, 15] (clear path).
+13. Move right to [33, 15] (clear path).
+14. Move right to [34, 15] (clear path).
+15. Move right to [35, 15] (clear path).
+16. Move right to [36, 15] (clear path).
+17. Move right to [37, 15] (clear path).
+18. Move right to [38, 15] (clear path).
+19. Move right to [39, 15] (clear path).
+20. Move right to [40, 15] (clear path).
+21. Move right to [41, 15] (clear path).
+22. Move right to [42, 15] (clear path).
+23. Move right to [43, 15] (clear path).
+24. Move right to [44, 15] (clear path).
+25. Move right to [45, 15] (clear path).
+26. Move up to [45, 16] (goal).
+
+### Generated Path:
+The generated path is:
+Generated Path: [[24, 11], [25, 11], [26, 11], [27, 11], [28, 11], [29, 11], [30, 11], [31, 11], [31, 12], [31, 13], [31, 14], [31, 15], [32, 15], [33, 15], [34, 15], [35, 15], [36, 15], [37, 15], [38, 15], [39, 15], [40, 15], [41, 15], [42, 15], [43, 15], [44, 15], [45, 15], [45, 16]]
+
+### Waypoint Confidence:
+The confidence scores for each waypoint are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are clear but not guaranteed to be the only path.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.

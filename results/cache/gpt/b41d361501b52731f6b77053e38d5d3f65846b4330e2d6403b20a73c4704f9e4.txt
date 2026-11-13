@@ -1,0 +1,31 @@
+To find a path from the start point [29, 10] to the goal point [25, 12], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: [[12, 45, 48]]
+- **Vertical Barriers**: [[48, 20, 28], [12, 13, 24], [51, 22, 30], [26, 4, 26]]
+
+### Start Point: [29, 10]
+### Goal Point: [25, 12]
+
+### Pathfinding:
+1. Start at [29, 10].
+2. Move left to [28, 10] (no barriers).
+3. Move left to [27, 10] (no barriers).
+4. Move left to [26, 10] (no barriers).
+5. Move up to [26, 11] (no barriers).
+6. Move left to [25, 11] (no barriers).
+7. Move up to [25, 12] (goal reached).
+
+### Generated Path:
+The path taken is:
+- [29, 10]
+- [28, 10]
+- [27, 10]
+- [26, 10]
+- [26, 11]
+- [25, 11]
+- [25, 12]
+
+### Final Output:
+Generated Path: [[29, 10], [28, 10], [27, 10], [26, 10], [26, 11], [25, 11], [25, 12]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1]

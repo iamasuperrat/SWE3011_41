@@ -1,0 +1,10 @@
+To navigate from the start point [30, 3] to the goal point [31, 6], we need to avoid the horizontal and vertical barriers provided. 
+
+1. Starting at [30, 3], we can move up to [30, 4] to avoid the horizontal barrier at y=4.
+2. Next, we can move to [30, 5] and then to [30, 6].
+3. From [30, 6], we can move right to [31, 6], which is our goal.
+
+The path avoids all barriers and reaches the goal directly.
+
+Generated Path: [[30, 3], [30, 4], [30, 5], [30, 6], [31, 6]]
+Waypoint Confidence: [1, 1, 1, 1, 1]

@@ -1,0 +1,25 @@
+To navigate from the start point [5, 5] to the goal point [27, 15] while avoiding the specified obstacles, we can follow these steps:
+
+1. **First Iteration on [5, 5]**:
+   - The horizontal barrier at y=10 spanning x=0 to x=25 blocks the direct path to the goal. We need to move upward to bypass it.
+   - **Selected Point**: [5, 11]
+   - **Evaluation**: This point is above the barrier and allows us to navigate around it.
+
+2. **Second Iteration on [5, 11]**:
+   - From [5, 11], we can move right to avoid the horizontal barrier and head towards the goal.
+   - **Selected Point**: [20, 11]
+   - **Evaluation**: This point is clear of obstacles and allows us to continue toward the goal.
+
+3. **Third Iteration on [20, 11]**:
+   - Now we need to navigate around the vertical barrier at x=25, which spans y=10 to y=22.
+   - **Selected Point**: [25, 12]
+   - **Evaluation**: This point is just above the vertical barrier, allowing us to continue toward the goal.
+
+4. **Fourth Iteration on [25, 12]**:
+   - From here, we can move directly to the goal since there are no obstacles in the way.
+   - **Selected Point**: [27, 15]
+   - **Evaluation**: The path to the goal is clear from this position.
+
+The generated path is as follows:
+Generated Path: [[5, 5], [5, 11], [20, 11], [25, 12], [27, 15]]
+Waypoint Confidence: [1, 1, 1, 1, 1]

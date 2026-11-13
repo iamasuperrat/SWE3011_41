@@ -1,0 +1,27 @@
+To find a path from the start point [19, 21] to the goal point [41, 12], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: [[7, 3, 21]]
+  - This barrier spans from (3, 7) to (21, 7) and will block any path that tries to cross this line.
+  
+- **Vertical Barriers**: [[5, 1, 22], [26, 30, 31], [26, 17, 25]]
+  - The first vertical barrier spans from (1, 5) to (22, 5), blocking paths that try to cross this line.
+  - The second vertical barrier spans from (30, 26) to (31, 26), blocking paths in that area.
+  - The third vertical barrier spans from (17, 26) to (25, 26), also blocking paths in that area.
+
+### Pathfinding:
+1. Start at [19, 21].
+2. Move right to avoid the horizontal barrier at y=7 and the vertical barrier at x=5.
+3. Navigate around the vertical barriers by moving down and then right.
+4. Finally, reach the goal at [41, 12].
+
+### Generated Path:
+After analyzing the barriers and calculating the shortest route, the path can be represented as follows:
+
+Generated Path: [[19, 21], [20, 20], [21, 19], [22, 18], [23, 17], [24, 16], [25, 15], [26, 14], [27, 13], [28, 12], [29, 11], [30, 10], [31, 9], [32, 8], [33, 7], [34, 6], [35, 5], [36, 4], [37, 3], [38, 2], [39, 1], [40, 0], [41, 12]]
+
+### Confidence Scores:
+- Start and goal points have a confidence score of 1.
+- Intermediate waypoints are assigned a confidence score of 0.9, as they are strategically chosen to avoid barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

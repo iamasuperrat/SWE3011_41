@@ -1,0 +1,24 @@
+To navigate from the start point [28, 8] to the goal point [11, 25], we need to avoid the horizontal and vertical barriers provided. 
+
+1. Starting at [28, 8], we can move left to [27, 8].
+2. From [27, 8], we can move up to [27, 9] and then continue moving left to [26, 9].
+3. Next, we can move up to [26, 10] and then left to [25, 10].
+4. We can then move up to [25, 11] and continue left to [24, 11].
+5. Moving up to [24, 12] and then left to [23, 12].
+6. Continuing left to [22, 12] and then up to [22, 13].
+7. Moving left to [21, 13] and then up to [21, 14].
+8. Continuing left to [20, 14] and then up to [20, 15].
+9. Moving left to [19, 15] and then up to [19, 16].
+10. Continuing left to [18, 16] and then up to [18, 17].
+11. Moving left to [17, 17] and then up to [17, 18].
+12. Continuing left to [16, 18] and then up to [16, 19].
+13. Moving left to [15, 19] and then up to [15, 20].
+14. Continuing left to [14, 20] and then up to [14, 21].
+15. Moving left to [13, 21] and then up to [13, 22].
+16. Continuing left to [12, 22] and then up to [12, 23].
+17. Finally, moving left to [11, 23] and then up to [11, 25].
+
+This path avoids all barriers and reaches the goal.
+
+Generated Path: [[28, 8], [27, 8], [26, 9], [26, 10], [25, 10], [25, 11], [24, 11], [24, 12], [23, 12], [22, 12], [22, 13], [21, 13], [21, 14], [20, 14], [20, 15], [19, 15], [19, 16], [18, 16], [18, 17], [17, 17], [17, 18], [16, 18], [16, 19], [15, 19], [15, 20], [14, 20], [14, 21], [13, 21], [13, 22], [12, 22], [12, 23], [11, 23], [11, 25]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

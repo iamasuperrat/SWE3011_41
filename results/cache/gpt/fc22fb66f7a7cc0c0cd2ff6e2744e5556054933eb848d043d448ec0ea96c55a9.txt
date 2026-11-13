@@ -1,0 +1,40 @@
+To find a path from the start point [37, 25] to the goal point [33, 13], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [8, 12, 28]: This barrier spans from (12, 8) to (28, 8).
+  - [13, 1, 9]: This barrier spans from (1, 13) to (9, 13).
+  - [17, 32, 45]: This barrier spans from (32, 17) to (45, 17).
+
+- **Vertical Barriers**:
+  - [24, 26, 30]: This barrier spans from (26, 24) to (30, 24).
+  - [40, 19, 23]: This barrier spans from (19, 40) to (23, 40).
+
+### Pathfinding:
+1. Start at [37, 25].
+2. Move left to avoid the vertical barriers and navigate around the horizontal barriers.
+3. The path can be constructed as follows:
+   - Move from [37, 25] to [36, 25] (1 step left).
+   - Move to [35, 24] (1 step left and down).
+   - Move to [34, 23] (1 step left and down).
+   - Move to [33, 22] (1 step left and down).
+   - Move to [33, 21] (1 step down).
+   - Move to [33, 20] (1 step down).
+   - Move to [33, 19] (1 step down).
+   - Move to [33, 18] (1 step down).
+   - Move to [33, 17] (1 step down).
+   - Move to [33, 16] (1 step down).
+   - Move to [33, 15] (1 step down).
+   - Move to [33, 14] (1 step down).
+   - Finally, move to [33, 13] (1 step down to the goal).
+
+### Generated Path:
+The generated path is:
+Generated Path: [[37, 25], [36, 25], [35, 24], [34, 23], [33, 22], [33, 21], [33, 20], [33, 19], [33, 18], [33, 17], [33, 16], [33, 15], [33, 14], [33, 13]]
+
+### Waypoint Confidence:
+The confidence scores for each waypoint are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are strategically chosen to avoid barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

@@ -1,0 +1,51 @@
+To find the shortest path from the start point [31, 25] to the goal point [39, 16] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [31, 25] (Confidence: 1)
+2. **Goal Point**: [39, 16] (Confidence: 1)
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [9, 41, 43]: This barrier does not affect the path since it is above the start and goal points.
+  - [24, 6, 48]: This barrier is also below the start and goal points.
+
+- **Vertical Barriers**:
+  - [30, 24, 28]: This barrier is located at x=30 from y=24 to y=28, which affects the path.
+  - [4, 1, 12]: This barrier is far left and does not affect the path.
+  - [50, 17, 17]: This barrier is far right and does not affect the path.
+  - [50, 9, 11]: This barrier is also far right and does not affect the path.
+
+### Pathfinding:
+Given the barriers, we can navigate as follows:
+- Start at [31, 25].
+- Move to [31, 24] (just below the vertical barrier).
+- Move to [32, 24] (to the right).
+- Move to [33, 24] (to the right).
+- Move to [34, 24] (to the right).
+- Move to [35, 24] (to the right).
+- Move to [36, 24] (to the right).
+- Move to [37, 24] (to the right).
+- Move to [38, 24] (to the right).
+- Move to [39, 24] (to the right).
+- Move down to [39, 23].
+- Move down to [39, 22].
+- Move down to [39, 21].
+- Move down to [39, 20].
+- Move down to [39, 19].
+- Move down to [39, 18].
+- Move down to [39, 17].
+- Finally, move down to [39, 16] (goal).
+
+### Generated Path:
+The generated path is:
+```
+Generated Path: [[31, 25], [31, 24], [32, 24], [33, 24], [34, 24], [35, 24], [36, 24], [37, 24], [38, 24], [39, 24], [39, 23], [39, 22], [39, 21], [39, 20], [39, 19], [39, 18], [39, 17], [39, 16]]
+```
+
+### Waypoint Confidence:
+The confidence scores for each waypoint are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are all valid and avoid obstacles.
+
+```
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]
+```

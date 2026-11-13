@@ -1,0 +1,26 @@
+To navigate from the start point [28, 6] to the goal point [45, 7], we need to avoid the horizontal and vertical barriers provided. 
+
+1. **Start Point**: [28, 6] (confidence 1)
+2. **Move Right**: We can move to [29, 6] as it is clear of barriers.
+3. **Continue Right**: Move to [30, 6], still clear.
+4. **Move Up**: Move to [30, 7] to avoid the vertical barrier at x=31.
+5. **Move Right**: Move to [31, 7], clear of barriers.
+6. **Continue Right**: Move to [32, 7], still clear.
+7. **Continue Right**: Move to [33, 7], still clear.
+8. **Continue Right**: Move to [34, 7], still clear.
+9. **Continue Right**: Move to [35, 7], still clear.
+10. **Continue Right**: Move to [36, 7], still clear.
+11. **Continue Right**: Move to [37, 7], still clear.
+12. **Continue Right**: Move to [38, 7], still clear.
+13. **Continue Right**: Move to [39, 7], still clear.
+14. **Continue Right**: Move to [40, 7], still clear.
+15. **Continue Right**: Move to [41, 7], still clear.
+16. **Continue Right**: Move to [42, 7], still clear.
+17. **Continue Right**: Move to [43, 7], still clear.
+18. **Continue Right**: Move to [44, 7], still clear.
+19. **Final Move**: Move to [45, 7] (goal point).
+
+The generated path is as follows:
+Generated Path: [[28, 6], [29, 6], [30, 6], [30, 7], [31, 7], [32, 7], [33, 7], [34, 7], [35, 7], [36, 7], [37, 7], [38, 7], [39, 7], [40, 7], [41, 7], [42, 7], [43, 7], [44, 7], [45, 7]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

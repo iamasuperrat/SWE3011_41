@@ -1,0 +1,35 @@
+To find a path from the start point [6, 27] to the goal point [15, 21], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [7, 0, 20] (y = 7 from x = 0 to x = 20)
+  - [15, 10, 15] (y = 15 from x = 10 to x = 15)
+  
+- **Vertical Barriers**: 
+  - [10, 15, 30] (x = 10 from y = 15 to y = 30)
+  - [30, 0, 18] (x = 30 from y = 0 to y = 18)
+  - [10, 0, 5] (x = 10 from y = 0 to y = 5)
+
+### Pathfinding:
+1. Start at [6, 27].
+2. Move to [10, 27] (to the right).
+3. Move down to [10, 21] (to avoid the vertical barrier at x = 10).
+4. Move right to [15, 21] (goal point).
+
+### Generated Path:
+The path taken is:
+- Start: [6, 27]
+- Move to: [10, 27]
+- Move to: [10, 21]
+- Move to: [15, 21] (Goal)
+
+Thus, the generated path is:
+Generated Path: [[6, 27], [10, 27], [10, 21], [15, 21]]
+
+### Confidence Scores:
+- Start point [6, 27]: 1 (confident it's a starting point)
+- Point [10, 27]: 1 (confident it's a valid move)
+- Point [10, 21]: 1 (confident it's a valid move)
+- Goal point [15, 21]: 1 (confident it's the goal)
+
+Waypoint Confidence: [1, 1, 1, 1]

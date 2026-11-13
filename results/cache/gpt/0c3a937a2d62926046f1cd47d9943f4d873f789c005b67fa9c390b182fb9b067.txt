@@ -1,0 +1,37 @@
+To find a path from the start point [22, 2] to the goal point [32, 21] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [22, 2] (confidence 1)
+2. **Navigate Right**: Move to [23, 2] (confidence 1)
+3. **Move Up**: Move to [23, 3] (confidence 1)
+4. **Continue Up**: Move to [23, 4] (confidence 1)
+5. **Move Right**: Move to [24, 4] (confidence 1)
+6. **Move Up**: Move to [24, 5] (confidence 1)
+7. **Continue Up**: Move to [24, 6] (confidence 1)
+8. **Move Right**: Move to [25, 6] (confidence 1)
+9. **Continue Up**: Move to [25, 7] (confidence 1)
+10. **Move Right**: Move to [26, 7] (confidence 1)
+11. **Continue Up**: Move to [26, 8] (confidence 1)
+12. **Move Right**: Move to [27, 8] (confidence 1)
+13. **Continue Up**: Move to [27, 9] (confidence 1)
+14. **Move Right**: Move to [28, 9] (confidence 1)
+15. **Continue Up**: Move to [28, 10] (confidence 1)
+16. **Move Right**: Move to [29, 10] (confidence 1)
+17. **Continue Up**: Move to [29, 11] (confidence 1)
+18. **Move Right**: Move to [30, 11] (confidence 1)
+19. **Continue Up**: Move to [30, 12] (confidence 1)
+20. **Move Right**: Move to [31, 12] (confidence 1)
+21. **Continue Up**: Move to [31, 13] (confidence 1)
+22. **Move Right**: Move to [32, 13] (confidence 1)
+23. **Continue Up**: Move to [32, 14] (confidence 1)
+24. **Move Right**: Move to [32, 15] (confidence 1)
+25. **Continue Up**: Move to [32, 16] (confidence 1)
+26. **Move Right**: Move to [32, 17] (confidence 1)
+27. **Continue Up**: Move to [32, 18] (confidence 1)
+28. **Move Right**: Move to [32, 19] (confidence 1)
+29. **Continue Up**: Move to [32, 20] (confidence 1)
+30. **Move Right**: Move to [32, 21] (goal point, confidence 1)
+
+After navigating around the barriers, the generated path is:
+
+Generated Path: [[22, 2], [23, 2], [23, 3], [23, 4], [24, 4], [24, 5], [24, 6], [25, 6], [25, 7], [26, 7], [26, 8], [27, 8], [27, 9], [28, 9], [28, 10], [29, 10], [29, 11], [30, 11], [30, 12], [31, 12], [31, 13], [32, 13], [32, 14], [32, 15], [32, 16], [32, 17], [32, 18], [32, 19], [32, 20], [32, 21]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

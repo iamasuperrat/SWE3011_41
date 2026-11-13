@@ -1,0 +1,37 @@
+To navigate from the start point [22, 12] to the goal point [5, 5], we need to consider the horizontal and vertical barriers present.
+
+1. **First Iteration on [22, 12]**:
+   - The horizontal barrier at y=10 spans x=0 to x=25, which blocks a direct path downward.
+   - To bypass this barrier, we can move to a point above it.
+   - **Selected Point**: [22, 11]
+   - **Evaluation**: This point is just above the barrier and allows us to navigate around it.
+
+2. **Second Iteration on [22, 11]**:
+   - The horizontal barrier at y=10 is still present, but we can move left to avoid it.
+   - **Selected Point**: [15, 11]
+   - **Evaluation**: This point is clear of barriers and allows us to move left toward the goal.
+
+3. **Third Iteration on [15, 11]**:
+   - We can now move downward to avoid the horizontal barrier at y=10.
+   - **Selected Point**: [15, 9]
+   - **Evaluation**: This point is below the horizontal barrier and allows further movement toward the goal.
+
+4. **Fourth Iteration on [15, 9]**:
+   - Now we can move left toward the goal.
+   - **Selected Point**: [10, 9]
+   - **Evaluation**: This point is clear and allows us to continue moving left.
+
+5. **Fifth Iteration on [10, 9]**:
+   - We can now move downward to avoid the horizontal barrier at y=10.
+   - **Selected Point**: [10, 5]
+   - **Evaluation**: This point is below the horizontal barrier and allows further movement toward the goal.
+
+6. **Sixth Iteration on [10, 5]**:
+   - Now we can move left toward the goal.
+   - **Selected Point**: [5, 5]
+   - **Evaluation**: This point is the goal.
+
+The generated path is:
+Generated Path: [[22, 12], [22, 11], [15, 11], [15, 9], [10, 9], [10, 5], [5, 5]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1]

@@ -1,0 +1,21 @@
+To navigate from the start point [33, 9] to the goal point [21, 22], we need to avoid the horizontal and vertical barriers provided. 
+
+1. Starting at [33, 9], we can move left to [32, 9].
+2. Then, we can move down to [32, 10] to avoid the horizontal barrier at y=2.
+3. Next, we can move left to [31, 10], then continue left to [30, 10].
+4. We can then move down to [30, 11] and continue down to [30, 12].
+5. Next, we can move left to [29, 12], then down to [29, 13].
+6. We can then move left to [28, 13], and down to [28, 14].
+7. Next, we can move left to [27, 14], then down to [27, 15].
+8. We can then move left to [26, 15], and down to [26, 16].
+9. Next, we can move left to [25, 16], then down to [25, 17].
+10. We can then move left to [24, 17], and down to [24, 18].
+11. Next, we can move left to [23, 18], then down to [23, 19].
+12. We can then move left to [22, 19], and down to [22, 20].
+13. Finally, we can move left to [21, 20], and then down to [21, 22] to reach the goal.
+
+The generated path is as follows:
+
+Generated Path: [[33, 9], [32, 9], [32, 10], [31, 10], [30, 10], [30, 11], [30, 12], [29, 12], [29, 13], [28, 13], [28, 14], [27, 14], [27, 15], [26, 15], [26, 16], [25, 16], [25, 17], [24, 17], [24, 18], [23, 18], [23, 19], [22, 19], [22, 20], [21, 20], [21, 22]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

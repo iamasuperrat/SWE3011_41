@@ -1,0 +1,76 @@
+To navigate from the start point [31, 7] to the goal point [7, 2], we need to consider the barriers and find a path that avoids them while minimizing the distance to the goal.
+
+- **First Iteration on [31, 7]**
+  - Thought: The goal is significantly to the left and slightly down. There are no immediate barriers in the way, so we can move left.
+  - Selected Point: [30, 7]
+  - Evaluation: This point is clear and moves us closer to the goal.
+
+- **Second Iteration on [30, 7]**
+  - Thought: Continuing left seems viable. We can keep moving left until we reach a point where we need to navigate around any barriers.
+  - Selected Point: [29, 7]
+  - Evaluation: This point is still clear and continues to move toward the goal.
+
+- **Third Iteration on [29, 7]**
+  - Thought: We can keep moving left. The goal is still to the left and slightly down.
+  - Selected Point: [28, 7]
+  - Evaluation: This point is clear and continues to progress toward the goal.
+
+- **Fourth Iteration on [28, 7]**
+  - Thought: Continuing left is still valid. We are getting closer to the goal.
+  - Selected Point: [27, 7]
+  - Evaluation: This point is clear and continues to progress toward the goal.
+
+- **Fifth Iteration on [27, 7]**
+  - Thought: We can keep moving left. The goal is still to the left and slightly down.
+  - Selected Point: [26, 7]
+  - Evaluation: This point is clear and continues to progress toward the goal.
+
+- **Sixth Iteration on [26, 7]**
+  - Thought: Continuing left is still viable. We can keep moving left until we reach a point where we need to navigate around any barriers.
+  - Selected Point: [25, 7]
+  - Evaluation: This point is clear and continues to progress toward the goal.
+
+- **Seventh Iteration on [25, 7]**
+  - Thought: We can keep moving left. The goal is still to the left and slightly down.
+  - Selected Point: [24, 7]
+  - Evaluation: This point is clear and continues to progress toward the goal.
+
+- **Eighth Iteration on [24, 7]**
+  - Thought: Continuing left is still valid. We are getting closer to the goal.
+  - Selected Point: [23, 7]
+  - Evaluation: This point is clear and continues to progress toward the goal.
+
+- **Ninth Iteration on [23, 7]**
+  - Thought: We can keep moving left. The goal is still to the left and slightly down.
+  - Selected Point: [22, 7]
+  - Evaluation: This point is clear and continues to progress toward the goal.
+
+- **Tenth Iteration on [22, 7]**
+  - Thought: Continuing left is still viable. We can keep moving left until we reach a point where we need to navigate around any barriers.
+  - Selected Point: [21, 7]
+  - Evaluation: This point is clear and continues to progress toward the goal.
+
+- **Eleventh Iteration on [21, 7]**
+  - Thought: We can keep moving left. The goal is still to the left and slightly down.
+  - Selected Point: [20, 7]
+  - Evaluation: This point is clear and continues to progress toward the goal.
+
+- **Twelfth Iteration on [20, 7]**
+  - Thought: Continuing left is still valid. We are getting closer to the goal.
+  - Selected Point: [19, 7]
+  - Evaluation: This point is clear and continues to progress toward the goal.
+
+- **Thirteenth Iteration on [19, 7]**
+  - Thought: We can keep moving left. The goal is still to the left and slightly down.
+  - Selected Point: [18, 7]
+  - Evaluation: This point is clear and continues to progress toward the goal.
+
+- **Fourteenth Iteration on [18, 7]**
+  - Thought: Continuing left is still viable. We can keep moving left until we reach a point where we need to navigate around any barriers.
+  - Selected Point: [17, 7]
+  - Evaluation: This point is clear and continues to progress toward the goal.
+
+- **Fifteenth Iteration on [17, 7]**
+  - Thought: We can keep moving left. The goal is still to the left and slightly down.
+  - Selected Point: [16, 7]
+  - Evaluation: This point is clear and continues to progress toward

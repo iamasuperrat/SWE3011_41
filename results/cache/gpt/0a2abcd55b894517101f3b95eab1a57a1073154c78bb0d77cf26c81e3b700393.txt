@@ -1,0 +1,42 @@
+To find a path from the start point [35, 4] to the goal point [42, 24] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [19, 48, 49]: This barrier is not relevant as it is outside the y-range of our path.
+  - [18, 30, 45]: This barrier spans from y=30 to y=45, affecting the path if we try to go through that area.
+  - [25, 42, 48]: This barrier spans from y=42 to y=48, also affecting the path.
+
+- **Vertical Barriers**:
+  - [36, 2, 18]: This barrier spans from x=36 to x=36 (a vertical line) between y=2 and y=18.
+  - [23, 19, 27]: This barrier spans from x=23 to x=23 (another vertical line) between y=19 and y=27.
+
+### Pathfinding:
+Starting from [35, 4], we can move right towards the goal while avoiding the barriers. The path can be constructed as follows:
+
+1. Move right to [36, 4] (valid move).
+2. Move up to [36, 18] (valid move, avoiding the vertical barrier).
+3. Move right to [37, 18] (valid move).
+4. Move right to [38, 18] (valid move).
+5. Move right to [39, 18] (valid move).
+6. Move right to [40, 18] (valid move).
+7. Move up to [40, 24] (valid move).
+8. Move right to [41, 24] (valid move).
+9. Move right to [42, 24] (goal reached).
+
+### Generated Path:
+The path from start to goal is:
+Generated Path: [[35, 4], [36, 4], [36, 18], [37, 18], [38, 18], [39, 18], [40, 18], [40, 24], [41, 24], [42, 24]]
+
+### Confidence Scores:
+- Start Point [35, 4]: 1
+- [36, 4]: 1 (valid move)
+- [36, 18]: 1 (valid move)
+- [37, 18]: 1 (valid move)
+- [38, 18]: 1 (valid move)
+- [39, 18]: 1 (valid move)
+- [40, 18]: 1 (valid move)
+- [40, 24]: 1 (valid move)
+- [41, 24]: 1 (valid move)
+- Goal Point [42, 24]: 1
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

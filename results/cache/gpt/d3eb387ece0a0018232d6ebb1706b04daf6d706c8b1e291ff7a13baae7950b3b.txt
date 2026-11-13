@@ -1,0 +1,36 @@
+To find a path from the start point [46, 20] to the goal point [27, 3], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [25, 50, 51]: This barrier is not relevant since it is above the start and goal points.
+  - [25, 0, 21]: This barrier spans from (0, 25) to (21, 25), which is relevant as it blocks the path below y=25.
+
+- **Vertical Barriers**:
+  - [28, 3, 15]: This barrier spans from (3, 28) to (15, 28), which is relevant as it blocks the path to the left of x=28.
+  - [31, 5, 15]: This barrier spans from (5, 31) to (15, 31), which is also relevant.
+
+### Finding the Path:
+1. Start at [46, 20].
+2. Move left to avoid the vertical barriers. The first move can be to [30, 20].
+3. Then move down to [30, 15] to avoid the vertical barrier at x=31.
+4. Move left to [28, 15].
+5. Move down to [28, 5] to avoid the vertical barrier at x=28.
+6. Finally, move left to [27, 3] to reach the goal.
+
+### Generated Path:
+The path can be summarized as follows:
+- Start: [46, 20]
+- Move to: [30, 20]
+- Move to: [30, 15]
+- Move to: [28, 15]
+- Move to: [28, 5]
+- Move to: [27, 3] (Goal)
+
+Thus, the generated path is:
+Generated Path: [[46, 20], [30, 20], [30, 15], [28, 15], [28, 5], [27, 3]]
+
+### Confidence Scores:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9 as they are strategically chosen to avoid barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 1]

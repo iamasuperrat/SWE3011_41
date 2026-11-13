@@ -1,0 +1,45 @@
+To find the shortest path from the start point [32, 15] to the goal point [49, 18] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [25, 10, 37]: This barrier spans from (10, 25) to (37, 25).
+  - [28, 51, 51]: This barrier is a single line at y=28 from x=51 to x=51 (not relevant for our path).
+  - [14, 43, 48]: This barrier spans from (43, 14) to (48, 14).
+
+- **Vertical Barriers**:
+  - [43, 21, 30]: This barrier spans from (21, 43) to (30, 43).
+  - [45, 16, 19]: This barrier spans from (16, 45) to (19, 45).
+  - [6, 5, 9]: This barrier spans from (5, 6) to (9, 6) (not relevant for our path).
+
+### Pathfinding:
+Starting from [32, 15], we can navigate around the barriers:
+1. Move right to [33, 15].
+2. Move right to [34, 15].
+3. Move right to [35, 15].
+4. Move right to [36, 15].
+5. Move right to [37, 15].
+6. Move up to [37, 16].
+7. Move up to [37, 17].
+8. Move right to [38, 17].
+9. Move right to [39, 17].
+10. Move right to [40, 17].
+11. Move right to [41, 17].
+12. Move right to [42, 17].
+13. Move right to [43, 17].
+14. Move right to [44, 17].
+15. Move right to [45, 17].
+16. Move right to [46, 17].
+17. Move right to [47, 17].
+18. Move right to [48, 17].
+19. Move up to [49, 18].
+
+### Generated Path:
+The path from the start point to the goal point is:
+Generated Path: [[32, 15], [33, 15], [34, 15], [35, 15], [36, 15], [37, 15], [37, 16], [37, 17], [38, 17], [39, 17], [40, 17], [41, 17], [42, 17], [43, 17], [44, 17], [45, 17], [46, 17], [47, 17], [48, 17], [49, 18]]
+
+### Waypoint Confidence:
+The confidence scores for the waypoints are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are all valid and avoid obstacles.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

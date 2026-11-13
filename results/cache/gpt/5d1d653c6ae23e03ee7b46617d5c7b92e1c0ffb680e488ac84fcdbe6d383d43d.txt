@@ -1,0 +1,31 @@
+To navigate from the start point [5, 25] to the goal point [45, 25], we need to avoid the horizontal and vertical barriers provided. 
+
+The horizontal barriers are:
+- [15, 10, 21] (which affects the y-coordinate from 10 to 21 at x = 15)
+
+The vertical barriers are:
+- [20, 0, 15] (which affects the x-coordinate from 20 at y = 0 to y = 15)
+- [30, 15, 30] (which affects the x-coordinate from 30 at y = 15 to y = 30)
+- [40, 0, 16] (which affects the x-coordinate from 40 at y = 0 to y = 16)
+
+Given these barriers, we can find a path that avoids them. 
+
+1. Start at [5, 25].
+2. Move horizontally to [15, 25] (this is safe as it is above the horizontal barrier).
+3. Move to [20, 25] (this is safe as it is still above the vertical barrier).
+4. Move to [30, 25] (this is safe as it is still above the vertical barrier).
+5. Move to [40, 25] (this is safe as it is still above the vertical barrier).
+6. Finally, move to [45, 25].
+
+Thus, the generated path is:
+Generated Path: [[5, 25], [15, 25], [20, 25], [30, 25], [40, 25], [45, 25]]
+
+Now, let's assign confidence scores:
+- Start point [5, 25]: 1 (confident)
+- Waypoint [15, 25]: 1 (confident)
+- Waypoint [20, 25]: 1 (confident)
+- Waypoint [30, 25]: 1 (confident)
+- Waypoint [40, 25]: 1 (confident)
+- Goal point [45, 25]: 1 (confident)
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]

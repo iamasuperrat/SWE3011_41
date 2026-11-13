@@ -1,0 +1,25 @@
+To navigate from the start point [18, 8] to the goal point [2, 28], we need to consider the horizontal and vertical barriers provided. 
+
+1. **First Iteration on [18, 8]**:
+   - Thought: The goal is significantly higher in the y-direction, and there are horizontal barriers at y=7 and y=5 that could obstruct upward movement. We should move upward and to the left to avoid these barriers.
+   - Selected Point: [10, 9]
+   - Evaluation: The point [10, 9] is above the horizontal barrier at y=7 and allows for further upward movement.
+
+2. **Second Iteration on [10, 9]**:
+   - Thought: The path to the goal is still obstructed by the horizontal barrier at y=5. We need to navigate around the vertical barrier at x=14 as well.
+   - Selected Point: [10, 20]
+   - Evaluation: The point [10, 20] is clear of horizontal barriers and allows for upward movement toward the goal.
+
+3. **Third Iteration on [10, 20]**:
+   - Thought: Now we need to move left toward the goal while avoiding the vertical barrier at x=14.
+   - Selected Point: [2, 20]
+   - Evaluation: The point [2, 20] is clear of barriers and allows for a direct move to the goal.
+
+4. **Fourth Iteration on [2, 20]**:
+   - Thought: The goal is directly above at [2, 28], and there are no barriers in the way.
+   - Selected Point: [2, 28]
+   - Evaluation: The path to the goal is clear from here, allowing a direct move to [2, 28].
+
+The generated path is:
+Generated Path: [[18, 8], [10, 9], [10, 20], [2, 20], [2, 28]]
+Waypoint Confidence: [1, 1, 1, 1, 1]

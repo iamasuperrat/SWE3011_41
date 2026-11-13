@@ -1,0 +1,35 @@
+To navigate from the start point [25, 3] to the goal point [30, 25] while avoiding the specified obstacles, we will analyze the barriers and determine a suitable path.
+
+1. **First Iteration on [25, 3]**
+   - Thought: The vertical barrier at x=25 spanning y=10 to y=18 blocks the direct path upward. We need to move right to bypass it.
+   - Selected Point: [26, 3]
+   - Evaluation: This point moves us right, avoiding the vertical barrier.
+
+2. **Second Iteration on [26, 3]**
+   - Thought: The vertical barrier at x=35 spanning y=21 to y=25 is still far away, but we need to navigate upward to avoid the horizontal barrier at y=20 spanning x=28 to x=31.
+   - Selected Point: [26, 20]
+   - Evaluation: This point moves us upward, clearing the horizontal barrier.
+
+3. **Third Iteration on [26, 20]**
+   - Thought: Now we can move right towards the goal while avoiding the vertical barrier at x=35.
+   - Selected Point: [30, 20]
+   - Evaluation: This point moves us closer to the goal without hitting any barriers.
+
+4. **Fourth Iteration on [30, 20]**
+   - Thought: The path to the goal is clear from here, allowing a direct move to the goal.
+   - Selected Point: [30, 25]
+   - Evaluation: This point reaches the goal directly.
+
+The generated path is:
+Generated Path: [[25, 3], [26, 3], [26, 20], [30, 20], [30, 25]]
+
+The confidence scores for each waypoint are as follows:
+- Start Point: [25, 3] - Confidence: 1
+- Point: [26, 3] - Confidence: 1
+- Point: [26, 20] - Confidence: 1
+- Point: [30, 20] - Confidence: 1
+- Goal Point: [30, 25] - Confidence: 1
+
+Thus, the final output is:
+Generated Path: [[25, 3], [26, 3], [26, 20], [30, 20], [30, 25]]
+Waypoint Confidence: [1, 1, 1, 1, 1]

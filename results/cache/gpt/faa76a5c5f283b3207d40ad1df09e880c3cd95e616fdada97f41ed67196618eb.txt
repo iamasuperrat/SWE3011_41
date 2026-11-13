@@ -1,0 +1,38 @@
+To find a path from the start point [45, 25] to the goal point [5, 5], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [15, 10, 21] (y = 15 from x = 10 to x = 21)
+  
+- **Vertical Barriers**: 
+  - [20, 0, 15] (x = 20 from y = 0 to y = 15)
+  - [30, 15, 30] (x = 30 from y = 15 to y = 30)
+  - [40, 0, 16] (x = 40 from y = 0 to y = 16)
+
+### Pathfinding:
+1. Start at [45, 25].
+2. Move left to avoid the vertical barrier at x = 40.
+3. Move down to avoid the horizontal barrier at y = 15.
+4. Continue moving left and down until reaching the goal.
+
+### Generated Path:
+Following the above logic, a possible path could be:
+- Start at [45, 25]
+- Move to [35, 25] (left)
+- Move to [35, 15] (down)
+- Move to [25, 15] (left)
+- Move to [25, 5] (down)
+- Move to [5, 5] (left)
+
+Thus, the generated path is:
+Generated Path: [[45, 25], [35, 25], [35, 15], [25, 15], [25, 5], [5, 5]]
+
+### Confidence Scores:
+- Start Point [45, 25]: 1
+- [35, 25]: 1 (clear path)
+- [35, 15]: 1 (clear path)
+- [25, 15]: 1 (clear path)
+- [25, 5]: 1 (clear path)
+- Goal Point [5, 5]: 1
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]

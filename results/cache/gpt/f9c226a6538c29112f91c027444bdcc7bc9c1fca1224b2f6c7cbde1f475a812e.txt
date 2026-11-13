@@ -1,0 +1,24 @@
+To find a path from the start point [48, 14] to the goal point [20, 10] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [17, 29, 49]: This barrier spans horizontally from (29, 17) to (49, 17).
+  - [12, 17, 30]: This barrier spans horizontally from (17, 12) to (30, 12).
+
+- **Vertical Barriers**:
+  - [42, 13, 23]: This barrier spans vertically from (42, 13) to (42, 23).
+  - [40, 31, 31]: This barrier is a vertical line at x=40 from y=31 to y=31.
+  - [46, 28, 29]: This barrier is a vertical line at x=46 from y=28 to y=29.
+
+### Pathfinding:
+Starting from [48, 14], we need to navigate around the barriers to reach [20, 10]. 
+
+1. Move left to avoid the vertical barrier at x=42.
+2. Move down to avoid the horizontal barriers.
+3. Continue navigating left and down until reaching the goal.
+
+### Generated Path:
+After calculating the optimal route while avoiding the barriers, the path can be represented as follows:
+
+Generated Path: [[48, 14], [41, 14], [40, 13], [30, 12], [20, 10]]
+Waypoint Confidence: [1, 1, 1, 1, 1]

@@ -1,0 +1,21 @@
+To find a path from the start point [39, 24] to the goal point [3, 3] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [39, 24] (confidence 1)
+2. **Navigate around barriers**:
+   - The horizontal barriers at y=5 (x=49), y=6 (x=8 to 39), and y=19 (x=18 to 36) create significant obstacles.
+   - The vertical barriers at x=22 (y=12 to 18), x=44 (y=12 to 30), and x=21 (y=25 to 30) also restrict movement.
+
+3. **Pathfinding**:
+   - Move left from [39, 24] to [38, 24], then to [37, 24], and continue left until reaching [22, 24].
+   - From [22, 24], move down to [22, 23], then to [22, 22], and so on until reaching [22, 12].
+   - Navigate around the vertical barrier at x=22 by moving left to [21, 12], then down to [21, 11], and further down to [21, 3].
+   - Finally, move left to reach the goal at [3, 3].
+
+4. **Generated Path**:
+   - The path taken is: [[39, 24], [38, 24], [37, 24], [36, 24], [35, 24], [34, 24], [33, 24], [32, 24], [31, 24], [30, 24], [29, 24], [28, 24], [27, 24], [26, 24], [25, 24], [24, 24], [23, 24], [22, 24], [21, 24], [21, 23], [21, 22], [21, 21], [21, 20], [21, 19], [21, 18], [21, 17], [21, 16], [21, 15], [21, 14], [21, 13], [21, 12], [21, 11], [21, 10], [21, 9], [21, 8], [21, 7], [21, 6], [21, 5], [21, 4], [21, 3], [20, 3], [19, 3], [18, 3], [17, 3], [16, 3], [15, 3], [14, 3], [13, 3], [12, 3], [11, 3], [10, 3], [9, 3], [8, 3], [7, 3], [6, 3], [5, 3], [4, 3], [3, 3]].
+
+5. **Confidence Scores**:
+   - The start and goal points have a confidence of 1. The intermediate points will have a confidence of 0.9, as they are part of the path but may be closer to barriers.
+
+Final output:
+Generated Path: [[39, 24], [38, 24], [37, 24], [36, 24], [35, 24], [34, 24], [33, 24], [32, 24], [31, 24], [30, 24], [29, 24], [28, 24], [27, 24], [26, 24], [25, 24], [24, 24], [23, 24], [22, 24], [21, 24], [21, 23], [21, 22], [21, 21], [21, 20], [21, 19], [21, 18], [21, 17], [21, 16], [21, 15], [21, 14], [21, 13], [21, 12], [21, 11], [21, 10], [21, 9], [21, 8], [21, 7], [21, 6], [21, 5], [21, 4], [21, 3], [20, 3], [19, 3], [18, 3], [17, 3], [16, 3], [15, 3], [14, 3], [13, 3], [12

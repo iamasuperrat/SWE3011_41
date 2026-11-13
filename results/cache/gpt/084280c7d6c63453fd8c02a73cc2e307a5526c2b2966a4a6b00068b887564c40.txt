@@ -1,0 +1,21 @@
+To navigate from the start point [31, 9] to the goal point [1, 3], we need to consider the horizontal and vertical barriers provided.
+
+1. **First Iteration on [31, 9]**:
+   - The horizontal barrier at y=20 spans from x=14 to x=43, which does not directly block the path to the goal. However, we need to move left and down to avoid the vertical barrier at x=15.
+   - **Selected Point**: [15, 8]
+   - **Evaluation**: This point is just below the vertical barrier and allows us to move left toward the goal.
+
+2. **Second Iteration on [15, 8]**:
+   - From here, we can move left to avoid the vertical barrier while also moving downward.
+   - **Selected Point**: [5, 5]
+   - **Evaluation**: This point is clear of barriers and allows further movement toward the goal.
+
+3. **Third Iteration on [5, 5]**:
+   - Now we can move directly toward the goal without encountering any barriers.
+   - **Selected Point**: [1, 3]
+   - **Evaluation**: The path to the goal is clear from here.
+
+The generated path is:
+Generated Path: [[31, 9], [15, 8], [5, 5], [1, 3]]
+
+Waypoint Confidence: [1, 1, 1, 1]

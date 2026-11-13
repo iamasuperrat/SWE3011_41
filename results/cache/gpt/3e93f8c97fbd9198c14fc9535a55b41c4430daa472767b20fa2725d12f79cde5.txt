@@ -1,0 +1,46 @@
+To find a path from the start point [41, 28] to the goal point [5, 26] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. Start at [41, 28].
+2. Move left to [40, 28].
+3. Move left to [39, 28].
+4. Move left to [38, 28].
+5. Move left to [37, 28].
+6. Move left to [36, 28].
+7. Move left to [35, 28].
+8. Move left to [34, 28].
+9. Move left to [33, 28].
+10. Move left to [32, 28].
+11. Move left to [31, 28].
+12. Move left to [30, 28].
+13. Move left to [29, 28].
+14. Move left to [28, 28].
+15. Move down to [28, 27].
+16. Move down to [28, 26].
+17. Move left to [27, 26].
+18. Move left to [26, 26].
+19. Move left to [25, 26].
+20. Move left to [24, 26].
+21. Move left to [23, 26].
+22. Move left to [22, 26].
+23. Move left to [21, 26].
+24. Move left to [20, 26].
+25. Move left to [19, 26].
+26. Move left to [18, 26].
+27. Move left to [17, 26].
+28. Move left to [16, 26].
+29. Move left to [15, 26].
+30. Move left to [14, 26].
+31. Move left to [13, 26].
+32. Move left to [12, 26].
+33. Move left to [11, 26].
+34. Move left to [10, 26].
+35. Move left to [9, 26].
+36. Move left to [8, 26].
+37. Move left to [7, 26].
+38. Move left to [6, 26].
+39. Move left to [5, 26].
+
+This path avoids all barriers and reaches the goal.
+
+Generated Path: [[41, 28], [40, 28], [39, 28], [38, 28], [37, 28], [36, 28], [35, 28], [34, 28], [33, 28], [32, 28], [31, 28], [30, 28], [29, 28], [28, 28], [28, 27], [28, 26], [27, 26], [26, 26], [25, 26], [24, 26], [23, 26], [22, 26], [21, 26], [20, 26], [19, 26], [18, 26], [17, 26], [16, 26], [15, 26], [14, 26], [13, 26], [12, 26], [11, 26], [10, 26], [9, 26], [8, 26], [7, 26], [6, 26], [5, 26]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

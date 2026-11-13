@@ -1,0 +1,51 @@
+To find a path from the start point [43, 13] to the goal point [26, 20] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [2, 37, 51]: This barrier is located at y = 2, spanning from x = 37 to x = 51.
+  - [28, 12, 46]: This barrier is located at y = 28, spanning from x = 12 to x = 46.
+
+- **Vertical Barriers**:
+  - [50, 27, 27]: This barrier is located at x = 50, spanning from y = 27 to y = 27.
+  - [5, 22, 28]: This barrier is located at x = 5, spanning from y = 22 to y = 28.
+  - [27, 6, 22]: This barrier is located at x = 27, spanning from y = 6 to y = 22.
+
+### Pathfinding:
+Starting from [43, 13], we can navigate around the barriers as follows:
+1. Move left to [42, 13].
+2. Move left to [41, 13].
+3. Move left to [40, 13].
+4. Move left to [39, 13].
+5. Move left to [38, 13].
+6. Move left to [37, 13].
+7. Move left to [36, 13].
+8. Move left to [35, 13].
+9. Move left to [34, 13].
+10. Move left to [33, 13].
+11. Move left to [32, 13].
+12. Move left to [31, 13].
+13. Move left to [30, 13].
+14. Move left to [29, 13].
+15. Move left to [28, 13].
+16. Move left to [27, 13].
+17. Move down to [27, 12] (avoiding the vertical barrier).
+18. Move down to [27, 11].
+19. Move down to [27, 10].
+20. Move left to [26, 10].
+21. Move up to [26, 20].
+
+### Generated Path:
+The path can be summarized as:
+Generated Path: [[43, 13], [42, 13], [41, 13], [40, 13], [39, 13], [38, 13], [37, 13], [36, 13], [35, 13], [34, 13], [33, 13], [32, 13], [31, 13], [30, 13], [29, 13], [28, 13], [27, 13], [27, 12], [27, 11], [27, 10], [26, 10], [26, 20]]
+
+### Confidence Scores:
+- Start Point: 1
+- Intermediate Points: 0.9 (for points that are not directly adjacent to barriers)
+- Goal Point: 1
+
+Thus, the confidence scores would be:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1, 1] 
+
+Final output:
+Generated Path: [[43, 13], [42, 13], [41, 13], [40, 13], [39, 13], [38, 13], [37, 13], [36, 13], [35, 13], [34, 13], [33, 13], [32, 13], [31, 13], [30, 13], [29, 13], [28, 13], [27, 13], [27, 12], [27, 11], [27, 10], [26, 10], [26, 20]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0

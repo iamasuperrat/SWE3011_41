@@ -1,0 +1,59 @@
+To find a path from the start point [11, 6] to the goal point [24, 11] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [11, 6] (Confidence: 1)
+2. **Goal Point**: [24, 11] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**: 
+  - [10, 12, 44]: This barrier spans horizontally from (12, 10) to (44, 10).
+  - [28, 23, 41]: This barrier spans horizontally from (23, 28) to (41, 28).
+  
+- **Vertical Barriers**:
+  - [15, 14, 21]: This barrier spans vertically from (14, 15) to (21, 15).
+  - [20, 28, 31]: This barrier spans vertically from (28, 20) to (31, 20).
+  - [28, 13, 15]: This barrier spans vertically from (13, 28) to (15, 28).
+
+### Pathfinding:
+Starting from [11, 6], we can navigate around the barriers as follows:
+- Move right to [12, 6]
+- Move right to [13, 6]
+- Move right to [14, 6]
+- Move up to [14, 7]
+- Move up to [14, 8]
+- Move up to [14, 9]
+- Move up to [14, 10]
+- Move right to [15, 10]
+- Move right to [16, 10]
+- Move right to [17, 10]
+- Move right to [18, 10]
+- Move right to [19, 10]
+- Move right to [20, 10]
+- Move right to [21, 10]
+- Move right to [22, 10]
+- Move right to [23, 10]
+- Move up to [24, 11] (Goal)
+
+### Generated Path:
+The path taken is:
+- [11, 6]
+- [12, 6]
+- [13, 6]
+- [14, 6]
+- [14, 7]
+- [14, 8]
+- [14, 9]
+- [14, 10]
+- [15, 10]
+- [16, 10]
+- [17, 10]
+- [18, 10]
+- [19, 10]
+- [20, 10]
+- [21, 10]
+- [22, 10]
+- [23, 10]
+- [24, 11]
+
+### Final Output:
+Generated Path: [[11, 6], [12, 6], [13, 6], [14, 6], [14, 7], [14, 8], [14, 9], [14, 10], [15, 10], [16, 10], [17, 10], [18, 10], [19, 10], [20, 10], [21, 10], [22, 10], [23, 10], [24, 11]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.8, 0.8, 0.8, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

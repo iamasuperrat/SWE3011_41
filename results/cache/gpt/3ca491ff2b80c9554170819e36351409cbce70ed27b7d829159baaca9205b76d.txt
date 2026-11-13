@@ -1,0 +1,35 @@
+To find a path from the start point [25, 3] to the goal point [30, 25] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [25, 3] (Confidence: 1)
+2. **Navigate to**: [26, 3] (Confidence: 0.9) - Move right to avoid vertical barriers.
+3. **Navigate to**: [27, 3] (Confidence: 0.9) - Continue moving right.
+4. **Navigate to**: [28, 3] (Confidence: 0.9) - Continue moving right.
+5. **Navigate to**: [29, 3] (Confidence: 0.9) - Continue moving right.
+6. **Navigate to**: [30, 3] (Confidence: 0.9) - Move right to reach the same x-coordinate as the goal.
+7. **Navigate to**: [30, 4] (Confidence: 0.8) - Move up to avoid horizontal barriers.
+8. **Navigate to**: [30, 5] (Confidence: 0.8) - Continue moving up.
+9. **Navigate to**: [30, 6] (Confidence: 0.8) - Continue moving up.
+10. **Navigate to**: [30, 7] (Confidence: 0.8) - Continue moving up.
+11. **Navigate to**: [30, 8] (Confidence: 0.8) - Continue moving up.
+12. **Navigate to**: [30, 9] (Confidence: 0.8) - Continue moving up.
+13. **Navigate to**: [30, 10] (Confidence: 0.8) - Continue moving up.
+14. **Navigate to**: [30, 11] (Confidence: 0.8) - Continue moving up.
+15. **Navigate to**: [30, 12] (Confidence: 0.8) - Continue moving up.
+16. **Navigate to**: [30, 13] (Confidence: 0.8) - Continue moving up.
+17. **Navigate to**: [30, 14] (Confidence: 0.8) - Continue moving up.
+18. **Navigate to**: [30, 15] (Confidence: 0.8) - Continue moving up.
+19. **Navigate to**: [30, 16] (Confidence: 0.8) - Continue moving up.
+20. **Navigate to**: [30, 17] (Confidence: 0.8) - Continue moving up.
+21. **Navigate to**: [30, 18] (Confidence: 0.8) - Continue moving up.
+22. **Navigate to**: [30, 19] (Confidence: 0.8) - Continue moving up.
+23. **Navigate to**: [30, 20] (Confidence: 0.8) - Continue moving up.
+24. **Navigate to**: [30, 21] (Confidence: 0.8) - Continue moving up.
+25. **Navigate to**: [30, 22] (Confidence: 0.8) - Continue moving up.
+26. **Navigate to**: [30, 23] (Confidence: 0.8) - Continue moving up.
+27. **Navigate to**: [30, 24] (Confidence: 0.8) - Continue moving up.
+28. **Navigate to**: [30, 25] (Confidence: 1) - Reach the goal.
+
+The generated path is as follows:
+
+Generated Path: [[25, 3], [26, 3], [27, 3], [28, 3], [29, 3], [30, 3], [30, 4], [30, 5], [30, 6], [30, 7], [30, 8], [30, 9], [30, 10], [30, 11], [30, 12], [30, 13], [30, 14], [30, 15], [30, 16], [30, 17], [30, 18], [30, 19], [30, 20], [30, 21], [30, 22], [30, 23], [30, 24], [30, 25]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.8, 0.8, 0.8

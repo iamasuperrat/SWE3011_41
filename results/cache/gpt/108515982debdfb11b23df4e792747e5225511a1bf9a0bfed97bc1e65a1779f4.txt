@@ -1,0 +1,41 @@
+To find a path from the start point [39, 26] to the goal point [25, 19], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [6, 23, 47]: This barrier spans from y=23 to y=47, blocking horizontal movement in that range.
+  - [22, 14, 36]: This barrier spans from y=14 to y=36, blocking horizontal movement in that range.
+
+- **Vertical Barriers**:
+  - [5, 3, 29]: This barrier spans from x=5 to x=29, blocking vertical movement in that range.
+  - [37, 13, 25]: This barrier spans from x=37 to x=25, blocking vertical movement in that range.
+
+### Pathfinding:
+1. Start at [39, 26].
+2. Move left to avoid the vertical barrier at x=37.
+3. Move down to y=19 while avoiding the horizontal barriers.
+4. Finally, move left to reach the goal at [25, 19].
+
+### Generated Path:
+Following the above logic, a possible path could be:
+- Start at [39, 26]
+- Move to [36, 26] (left)
+- Move to [35, 25] (down)
+- Move to [34, 24] (down)
+- Move to [33, 23] (down)
+- Move to [32, 22] (down)
+- Move to [31, 21] (down)
+- Move to [30, 20] (down)
+- Move to [29, 19] (down)
+- Move to [28, 19] (left)
+- Move to [27, 19] (left)
+- Move to [26, 19] (left)
+- Move to [25, 19] (left)
+
+Thus, the generated path is:
+Generated Path: [[39, 26], [36, 26], [35, 25], [34, 24], [33, 23], [32, 22], [31, 21], [30, 20], [29, 19], [28, 19], [27, 19], [26, 19], [25, 19]]
+
+### Confidence Scores:
+- Start and goal points have a confidence score of 1.
+- Intermediate points have a confidence score of 0.9, as they are strategically chosen to avoid barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

@@ -1,0 +1,26 @@
+To navigate from the start point [29, 2] to the goal point [5, 25], we need to avoid the horizontal and vertical barriers provided. 
+
+1. **Start Point**: [29, 2] - Confidence: 1
+2. **Move Upwards**: We can move to [29, 10] to avoid the horizontal barriers at y=30 and y=17.
+3. **Move Left**: Next, we can move to [20, 10] to get closer to the goal while avoiding the vertical barrier at x=2.
+4. **Move Upwards**: Then, we can move to [20, 20] to get closer to the goal.
+5. **Move Left**: Finally, we can move to the goal point [5, 25].
+
+The generated path is as follows:
+- Start at [29, 2]
+- Move to [29, 10]
+- Move to [20, 10]
+- Move to [20, 20]
+- Move to [5, 25]
+
+Thus, the generated path is:
+Generated Path: [[29, 2], [29, 10], [20, 10], [20, 20], [5, 25]]
+
+The confidence scores for each waypoint are:
+- Start: 1
+- [29, 10]: 0.9 (confident but not certain due to proximity to barriers)
+- [20, 10]: 0.9 (confident but not certain due to proximity to barriers)
+- [20, 20]: 0.9 (confident but not certain due to proximity to barriers)
+- Goal: 1
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 1]

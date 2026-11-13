@@ -1,0 +1,58 @@
+To find a path from the start point [16, 18] to the goal point [15, 1], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [8, 12, 28]: This barrier spans from y=12 to y=28, affecting the vertical movement in that range.
+  - [13, 1, 9]: This barrier spans from y=1 to y=9, affecting the vertical movement in that range.
+  - [17, 32, 45]: This barrier spans from y=32 to y=45, affecting the vertical movement in that range.
+
+- **Vertical Barriers**:
+  - [24, 26, 30]: This barrier spans from x=24 to x=30, affecting horizontal movement in that range.
+  - [40, 19, 23]: This barrier spans from x=40 to x=23, affecting horizontal movement in that range.
+
+### Pathfinding:
+1. Start at [16, 18].
+2. Move left to [15, 18] (valid move).
+3. Move down to [15, 17] (valid move).
+4. Move down to [15, 16] (valid move).
+5. Move down to [15, 15] (valid move).
+6. Move down to [15, 14] (valid move).
+7. Move down to [15, 13] (valid move).
+8. Move down to [15, 12] (valid move).
+9. Move down to [15, 11] (valid move).
+10. Move down to [15, 10] (valid move).
+11. Move down to [15, 9] (valid move).
+12. Move down to [15, 8] (valid move).
+13. Move down to [15, 7] (valid move).
+14. Move down to [15, 6] (valid move).
+15. Move down to [15, 5] (valid move).
+16. Move down to [15, 4] (valid move).
+17. Move down to [15, 3] (valid move).
+18. Move down to [15, 2] (valid move).
+19. Finally, move down to [15, 1] (goal).
+
+### Generated Path:
+The path taken is:
+- Start: [16, 18]
+- [15, 18]
+- [15, 17]
+- [15, 16]
+- [15, 15]
+- [15, 14]
+- [15, 13]
+- [15, 12]
+- [15, 11]
+- [15, 10]
+- [15, 9]
+- [15, 8]
+- [15, 7]
+- [15, 6]
+- [15, 5]
+- [15, 4]
+- [15, 3]
+- [15, 2]
+- Goal: [15, 1]
+
+### Final Output:
+Generated Path: [[16, 18], [15, 18], [15, 17], [15, 16], [15, 15], [15, 14], [15, 13], [15, 12], [15, 11], [15, 10], [15, 9], [15, 8], [15, 7], [15, 6], [15, 5], [15, 4], [15, 3], [15, 2], [15, 1]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

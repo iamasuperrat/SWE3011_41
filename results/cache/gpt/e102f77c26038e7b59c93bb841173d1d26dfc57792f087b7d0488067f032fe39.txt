@@ -1,0 +1,44 @@
+To find a path from the start point [22, 8] to the goal point [23, 28] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [22, 8] (confidence 1)
+2. **Goal Point**: [23, 28] (confidence 1)
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [7, 47, 49] (does not affect the path)
+  - [25, 6, 43] (affects the path from y=6 to y=25)
+  
+- **Vertical Barriers**:
+  - [14, 24, 30] (affects the path from x=14)
+  - [51, 8, 21] (does not affect the path)
+  - [26, 1, 1] (does not affect the path)
+  - [2, 17, 28] (does not affect the path)
+
+### Pathfinding:
+Starting from [22, 8], we can move upwards to avoid the horizontal barrier at y=25. The goal is to reach [23, 28].
+
+1. Move from [22, 8] to [22, 9]
+2. Move from [22, 9] to [22, 10]
+3. Move from [22, 10] to [22, 11]
+4. Move from [22, 11] to [22, 12]
+5. Move from [22, 12] to [22, 13]
+6. Move from [22, 13] to [22, 14]
+7. Move from [22, 14] to [22, 15]
+8. Move from [22, 15] to [22, 16]
+9. Move from [22, 16] to [22, 17]
+10. Move from [22, 17] to [22, 18]
+11. Move from [22, 18] to [22, 19]
+12. Move from [22, 19] to [22, 20]
+13. Move from [22, 20] to [22, 21]
+14. Move from [22, 21] to [22, 22]
+15. Move from [22, 22] to [22, 23]
+16. Move from [22, 23] to [22, 24]
+17. Move from [22, 24] to [22, 25]
+18. Move from [22, 25] to [22, 26]
+19. Move from [22, 26] to [22, 27]
+20. Move from [22, 27] to [23, 28] (goal)
+
+### Final Path:
+The generated path is:
+Generated Path: [[22, 8], [22, 9], [22, 10], [22, 11], [22, 12], [22, 13], [22, 14], [22, 15], [22, 16], [22, 17], [22, 18], [22, 19], [22, 20], [22, 21], [22, 22], [22, 23], [22, 24], [22, 25], [22, 26], [22, 27], [23, 28]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

@@ -1,0 +1,75 @@
+To find a path from the start point [27, 22] to the goal point [33, 3] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [27, 22]
+2. **Goal Point**: [33, 3]
+3. **Horizontal Barriers**: [[2, 38, 43], [10, 9, 9], [15, 25, 33]]
+4. **Vertical Barriers**: [[30, 25, 28], [7, 2, 12], [50, 17, 30]]
+
+### Pathfinding Steps:
+- Starting at [27, 22], we can move right to [28, 22].
+- From [28, 22], we can move down to [28, 21], then to [28, 20].
+- Next, we can move left to [27, 20], then down to [27, 19].
+- Continuing down to [27, 18], then left to [26, 18].
+- We can then move down to [26, 17], then left to [25, 17].
+- Moving down to [25, 16], then left to [24, 16].
+- Continuing down to [24, 15], then left to [23, 15].
+- Moving down to [23, 14], then left to [22, 14].
+- Continuing down to [22, 13], then left to [21, 13].
+- Moving down to [21, 12], then left to [20, 12].
+- Continuing down to [20, 11], then left to [19, 11].
+- Moving down to [19, 10], then left to [18, 10].
+- Continuing down to [18, 9], then left to [17, 9].
+- Moving down to [17, 8], then left to [16, 8].
+- Continuing down to [16, 7], then left to [15, 7].
+- Moving down to [15, 6], then left to [14, 6].
+- Continuing down to [14, 5], then left to [13, 5].
+- Moving down to [13, 4], then left to [12, 4].
+- Continuing down to [12, 3], then left to [11, 3].
+- Finally, moving down to [10, 3], then right to [10, 4], and finally to [10, 3].
+
+### Generated Path:
+The path can be summarized as follows:
+- Start at [27, 22]
+- Move to [28, 22]
+- Move down to [28, 21]
+- Move down to [28, 20]
+- Move left to [27, 20]
+- Move down to [27, 19]
+- Move down to [27, 18]
+- Move left to [26, 18]
+- Move down to [26, 17]
+- Move left to [25, 17]
+- Move down to [25, 16]
+- Move left to [24, 16]
+- Move down to [24, 15]
+- Move left to [23, 15]
+- Move down to [23, 14]
+- Move left to [22, 14]
+- Move down to [22, 13]
+- Move left to [21, 13]
+- Move down to [21, 12]
+- Move left to [20, 12]
+- Move down to [20, 11]
+- Move left to [19, 11]
+- Move down to [19, 10]
+- Move left to [18, 10]
+- Move down to [18, 9]
+- Move left to [17, 9]
+- Move down to [17, 8]
+- Move left to [16, 8]
+- Move down to [16, 7]
+- Move left to [15, 7]
+- Move down to [15, 6]
+- Move left to [14, 6]
+- Move down to [14, 5]
+- Move left to [13, 5]
+- Move down to [13, 4]
+- Move left to [12, 4]
+- Move down to [12, 3]
+- Move left to [11, 3]
+- Move down to [10, 3]
+- Move right to [10, 4]
+- Finally, reach [10, 3]
+
+### Final Output:
+Generated Path: [[27, 22], [28, 22], [28, 21], [28,

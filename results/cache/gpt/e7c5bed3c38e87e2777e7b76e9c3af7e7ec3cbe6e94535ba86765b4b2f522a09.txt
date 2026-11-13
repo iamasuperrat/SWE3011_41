@@ -1,0 +1,39 @@
+To find a path from the start point [10, 27] to the goal point [17, 17], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [2, 46, 49]: This barrier is irrelevant as it is above the start and goal points.
+  - [19, 18, 39]: This barrier is relevant as it spans from y=19 to y=39, blocking paths at y=19.
+  - [25, 5, 13]: This barrier is irrelevant as it is below the start and goal points.
+
+- **Vertical Barriers**:
+  - [39, 27, 30]: This barrier is irrelevant as it is to the right of the start and goal points.
+  - [30, 23, 25]: This barrier is irrelevant as it is to the right of the start and goal points.
+  - [24, 11, 16]: This barrier is irrelevant as it is to the right of the start and goal points.
+  - [3, 26, 28]: This barrier is irrelevant as it is below the start and goal points.
+
+### Pathfinding:
+Given the barriers, we can navigate from [10, 27] to [17, 17] by moving left and down, avoiding the horizontal barrier at y=19.
+
+1. Start at [10, 27].
+2. Move to [10, 20] (down).
+3. Move to [15, 20] (right).
+4. Move to [17, 17] (down and left).
+
+### Generated Path:
+The path can be represented as:
+- Start: [10, 27]
+- Move to: [10, 20]
+- Move to: [15, 20]
+- Move to: [17, 17] (Goal)
+
+Thus, the generated path is:
+Generated Path: [[10, 27], [10, 20], [15, 20], [17, 17]]
+
+### Confidence Scores:
+- Start point [10, 27]: 1 (definitely useful)
+- Point [10, 20]: 1 (definitely useful)
+- Point [15, 20]: 1 (definitely useful)
+- Goal point [17, 17]: 1 (definitely useful)
+
+Waypoint Confidence: [1, 1, 1, 1]

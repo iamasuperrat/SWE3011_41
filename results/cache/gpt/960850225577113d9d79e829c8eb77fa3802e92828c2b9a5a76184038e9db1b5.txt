@@ -1,0 +1,12 @@
+- First Iteration on [25, 19]
+Thought: The goal is located at [18, 14], and there are no immediate horizontal barriers obstructing the path. However, the vertical barrier at x=20 spanning y=13 to y=16 blocks a direct route. To navigate around it, we should move leftward.
+Selected Point: [19, 14]
+Evaluation: The selected point [19, 14] positions us just beside the vertical barrier, allowing us to bypass it while maintaining a clear path toward the goal.
+
+- Second Iteration on [19, 14]
+Thought: From [19, 14], we can move directly to the goal at [18, 14] without encountering any barriers.
+Selected Point: [18, 14]
+Evaluation: The path to the goal is unobstructed from here, allowing a straightforward move to [18, 14].
+
+Generated Path: [[25, 19], [19, 14], [18, 14]]
+Waypoint Confidence: [1, 1, 1]

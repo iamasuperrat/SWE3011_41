@@ -1,0 +1,31 @@
+To find the shortest path from the start point [10, 5] to the goal point [34, 7] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [2, 37, 51]: This barrier is irrelevant as it is outside the y-range of our path.
+  - [28, 12, 46]: This barrier is also irrelevant as it is outside the y-range of our path.
+  
+- **Vertical Barriers**:
+  - [50, 27, 27]: This barrier is irrelevant as it is outside the x-range of our path.
+  - [5, 22, 28]: This barrier affects the path as it blocks the vertical movement at x=5 from y=22 to y=28.
+  - [27, 6, 22]: This barrier affects the path as it blocks the vertical movement at x=27 from y=6 to y=22.
+
+### Pathfinding:
+Starting from [10, 5], we can move right towards the goal while avoiding the barriers. The path can be constructed as follows:
+
+1. Start at [10, 5].
+2. Move to [20, 5] (moving horizontally).
+3. Move to [30, 6] (moving diagonally up).
+4. Finally, move to [34, 7] (moving horizontally).
+
+### Generated Path:
+The path avoiding obstacles is:
+Generated Path: [[10, 5], [20, 5], [30, 6], [34, 7]]
+
+### Confidence Scores:
+- Start Point [10, 5]: 1 (definitely a starting point)
+- Point [20, 5]: 1 (clear path)
+- Point [30, 6]: 1 (clear path)
+- Goal Point [34, 7]: 1 (definitely the goal)
+
+Waypoint Confidence: [1, 1, 1, 1]

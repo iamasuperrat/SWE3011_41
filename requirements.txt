@@ -1,0 +1,9 @@
+setuptools~=68.2.2
+openai>=1.0.0
+inquirer~=3.2.4
+shapely
+matplotlib
+numpy
+transformers
+torch
+shapely

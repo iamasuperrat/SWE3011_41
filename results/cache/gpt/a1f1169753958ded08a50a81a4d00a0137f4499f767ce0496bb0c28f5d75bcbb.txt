@@ -1,0 +1,41 @@
+To navigate from the start point [28, 21] to the goal point [5, 4], we need to consider the horizontal and vertical barriers that may obstruct our path.
+
+- **First Iteration on [28, 21]**
+  - Thought: The horizontal barrier at y=26 spans x=34 to x=42, and the vertical barrier at x=22 spans y=1 to y=12. We need to move downward and left to avoid these barriers.
+  - Selected Point: [22, 25]
+  - Evaluation: The point [22, 25] moves downward and avoids the horizontal barrier while positioning us closer to the left side of the grid.
+
+- **Second Iteration on [22, 25]**
+  - Thought: The horizontal barrier at y=26 still blocks the path. We should move downward to clear this barrier.
+  - Selected Point: [22, 24]
+  - Evaluation: The point [22, 24] is still above the horizontal barrier, allowing us to navigate downward.
+
+- **Third Iteration on [22, 24]**
+  - Thought: We can now move left to avoid the vertical barrier at x=22.
+  - Selected Point: [21, 24]
+  - Evaluation: The point [21, 24] successfully moves left while remaining clear of the barriers.
+
+- **Fourth Iteration on [21, 24]**
+  - Thought: We can continue moving left to get closer to the goal.
+  - Selected Point: [20, 24]
+  - Evaluation: The point [20, 24] is clear of obstacles and continues toward the goal.
+
+- **Fifth Iteration on [20, 24]**
+  - Thought: We can now move downward to get closer to the goal.
+  - Selected Point: [20, 20]
+  - Evaluation: The point [20, 20] is clear of obstacles and allows for further movement toward the goal.
+
+- **Sixth Iteration on [20, 20]**
+  - Thought: We can now move left and down toward the goal.
+  - Selected Point: [10, 10]
+  - Evaluation: The point [10, 10] is clear of obstacles and allows for further movement toward the goal.
+
+- **Seventh Iteration on [10, 10]**
+  - Thought: We can now move left and down toward the goal.
+  - Selected Point: [5, 4]
+  - Evaluation: The point [5, 4] is the goal and is clear of obstacles.
+
+The generated path is:
+Generated Path: [[28, 21], [22, 25], [22, 24], [21, 24], [20, 24], [20, 20], [10, 10], [5, 4]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1]

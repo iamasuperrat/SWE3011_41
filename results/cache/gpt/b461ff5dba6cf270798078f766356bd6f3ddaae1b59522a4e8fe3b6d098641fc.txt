@@ -1,0 +1,29 @@
+To navigate from the start point [31, 17] to the goal point [48, 27], we need to avoid the horizontal and vertical barriers provided. 
+
+1. **Start Point**: [31, 17] (confidence 1)
+2. **Move Right**: We can move to [32, 17] (confidence 1).
+3. **Move Up**: Next, we can move to [32, 18] (confidence 1).
+4. **Move Right**: Then, we can move to [33, 18] (confidence 1).
+5. **Move Up**: Next, we can move to [33, 19] (confidence 1).
+6. **Move Right**: Then, we can move to [34, 19] (confidence 1).
+7. **Move Up**: Next, we can move to [34, 20] (confidence 1).
+8. **Move Right**: Then, we can move to [35, 20] (confidence 1).
+9. **Move Up**: Next, we can move to [35, 21] (confidence 1).
+10. **Move Right**: Then, we can move to [36, 21] (confidence 1).
+11. **Move Up**: Next, we can move to [36, 22] (confidence 1).
+12. **Move Right**: Then, we can move to [37, 22] (confidence 1).
+13. **Move Up**: Next, we can move to [37, 23] (confidence 1).
+14. **Move Right**: Then, we can move to [38, 23] (confidence 1).
+15. **Move Up**: Next, we can move to [38, 24] (confidence 1).
+16. **Move Right**: Then, we can move to [39, 24] (confidence 1).
+17. **Move Up**: Next, we can move to [39, 25] (confidence 1).
+18. **Move Right**: Then, we can move to [40, 25] (confidence 1).
+19. **Move Up**: Next, we can move to [40, 26] (confidence 1).
+20. **Move Right**: Finally, we can move to [41, 26] (confidence 1).
+21. **Move Up**: Then, we can move to [41, 27] (confidence 1).
+22. **Move Right**: Finally, we can move to [48, 27] (confidence 1).
+
+The generated path is as follows:
+
+Generated Path: [[31, 17], [32, 17], [32, 18], [33, 18], [33, 19], [34, 19], [34, 20], [35, 20], [35, 21], [36, 21], [36, 22], [37, 22], [37, 23], [38, 23], [38, 24], [39, 24], [39, 25], [40, 25], [40, 26], [41, 26], [41, 27], [48, 27]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

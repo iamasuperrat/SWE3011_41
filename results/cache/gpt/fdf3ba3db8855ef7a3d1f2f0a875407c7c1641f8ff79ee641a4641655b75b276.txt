@@ -1,0 +1,13 @@
+To navigate from the start point [3, 8] to the goal point [16, 24], we need to avoid the horizontal barrier at y=9 spanning x=8 to x=11 and the vertical barriers at x=16 spanning y=17 to y=17 and at x=13 spanning y=15 to y=27.
+
+1. Start at [3, 8].
+2. Move upward to [3, 10] to avoid the horizontal barrier at y=9.
+3. Move right to [12, 10] to bypass the vertical barrier at x=13.
+4. Move upward to [12, 20].
+5. Move right to [16, 20].
+6. Finally, move upward to [16, 24] to reach the goal.
+
+The generated path is:
+Generated Path: [[3, 8], [3, 10], [12, 10], [12, 20], [16, 20], [16, 24]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1]

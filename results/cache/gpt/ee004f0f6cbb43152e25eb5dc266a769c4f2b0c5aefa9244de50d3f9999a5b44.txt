@@ -1,0 +1,41 @@
+To navigate from the start point [12, 8] to the goal point [44, 24] while avoiding the specified horizontal and vertical barriers, we can follow these steps:
+
+1. **First Iteration on [12, 8]**:
+   - The horizontal barrier at y=10 spans from x=12 to x=44, blocking the direct path. We need to move upward to bypass this barrier.
+   - **Selected Point**: [12, 11]
+   - **Evaluation**: This point is just above the barrier, allowing us to navigate around it.
+
+2. **Second Iteration on [12, 11]**:
+   - The horizontal barrier at y=10 is now cleared. We can move right towards the goal, but we need to avoid the vertical barriers at x=15 and x=20.
+   - **Selected Point**: [15, 11]
+   - **Evaluation**: This point is still clear of barriers and allows us to navigate around the vertical barriers.
+
+3. **Third Iteration on [15, 11]**:
+   - We can now move further right, but we need to avoid the vertical barrier at x=20.
+   - **Selected Point**: [20, 11]
+   - **Evaluation**: This point is still clear of barriers and allows us to continue moving toward the goal.
+
+4. **Fourth Iteration on [20, 11]**:
+   - We are still below the horizontal barrier at y=28. We can move upward to avoid the vertical barriers.
+   - **Selected Point**: [20, 15]
+   - **Evaluation**: This point is above the vertical barriers and allows us to continue toward the goal.
+
+5. **Fifth Iteration on [20, 15]**:
+   - Now we can move right towards the goal while avoiding the horizontal barrier at y=28.
+   - **Selected Point**: [28, 15]
+   - **Evaluation**: This point is clear of barriers and allows us to continue toward the goal.
+
+6. **Sixth Iteration on [28, 15]**:
+   - We can now move upward to avoid the horizontal barrier at y=28.
+   - **Selected Point**: [28, 24]
+   - **Evaluation**: This point is above the horizontal barrier and allows us to move toward the goal.
+
+7. **Seventh Iteration on [28, 24]**:
+   - Finally, we can move right to reach the goal.
+   - **Selected Point**: [44, 24]
+   - **Evaluation**: This point is the goal and is clear of barriers.
+
+The generated path is as follows:
+Generated Path: [[12, 8], [12, 11], [15, 11], [20, 11], [20, 15], [28, 15], [28, 24], [44, 24]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1]

@@ -1,0 +1,38 @@
+To find a path from the start point [26, 3] to the goal point [4, 9] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [26, 3] (Confidence: 1)
+2. **Navigate Left**: Move to [25, 3] (Confidence: 0.9)
+3. **Navigate Down**: Move to [24, 3] (Confidence: 0.9)
+4. **Navigate Down**: Move to [23, 3] (Confidence: 0.9)
+5. **Navigate Down**: Move to [22, 3] (Confidence: 0.9)
+6. **Navigate Down**: Move to [21, 3] (Confidence: 0.9)
+7. **Navigate Down**: Move to [20, 3] (Confidence: 0.9)
+8. **Navigate Down**: Move to [19, 3] (Confidence: 0.9)
+9. **Navigate Down**: Move to [18, 3] (Confidence: 0.9)
+10. **Navigate Down**: Move to [17, 3] (Confidence: 0.9)
+11. **Navigate Down**: Move to [16, 3] (Confidence: 0.9)
+12. **Navigate Down**: Move to [15, 3] (Confidence: 0.9)
+13. **Navigate Down**: Move to [14, 3] (Confidence: 0.9)
+14. **Navigate Down**: Move to [13, 3] (Confidence: 0.9)
+15. **Navigate Down**: Move to [12, 3] (Confidence: 0.9)
+16. **Navigate Down**: Move to [11, 3] (Confidence: 0.9)
+17. **Navigate Down**: Move to [10, 3] (Confidence: 0.9)
+18. **Navigate Left**: Move to [10, 2] (Confidence: 0.9)
+19. **Navigate Left**: Move to [9, 2] (Confidence: 0.9)
+20. **Navigate Up**: Move to [9, 3] (Confidence: 0.9)
+21. **Navigate Up**: Move to [9, 4] (Confidence: 0.9)
+22. **Navigate Up**: Move to [9, 5] (Confidence: 0.9)
+23. **Navigate Up**: Move to [9, 6] (Confidence: 0.9)
+24. **Navigate Up**: Move to [9, 7] (Confidence: 0.9)
+25. **Navigate Up**: Move to [9, 8] (Confidence: 0.9)
+26. **Navigate Left**: Move to [8, 8] (Confidence: 0.9)
+27. **Navigate Left**: Move to [7, 8] (Confidence: 0.9)
+28. **Navigate Left**: Move to [6, 8] (Confidence: 0.9)
+29. **Navigate Left**: Move to [5, 8] (Confidence: 0.9)
+30. **Navigate Left**: Move to [4, 8] (Confidence: 0.9)
+31. **Navigate Up**: Move to [4, 9] (Confidence: 1)
+
+After analyzing the grid and avoiding the barriers, the generated path is:
+
+Generated Path: [[26, 3], [25, 3], [24, 3], [23, 3], [22, 3], [21, 3], [20, 3], [19, 3], [18, 3], [17, 3], [16, 3], [15, 3], [14, 3], [13, 3], [12, 3], [11, 3], [10, 3], [10, 2], [9, 2], [9, 3], [9, 4], [9, 5], [9, 6], [9, 7], [9, 8], [8, 8], [7, 8], [6, 8], [5, 8], [4, 8], [4, 9]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,

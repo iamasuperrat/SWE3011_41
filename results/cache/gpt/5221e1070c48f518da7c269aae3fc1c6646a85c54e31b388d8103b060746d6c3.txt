@@ -1,0 +1,54 @@
+To find a path from the start point [39, 17] to the goal point [36, 7], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [26, 39, 49]: This barrier is located at y = 26, spanning x = 39 to x = 49.
+  - [0, 22, 23]: This barrier is located at y = 0, spanning x = 22 to x = 23.
+  - [11, 30, 47]: This barrier is located at y = 11, spanning x = 30 to x = 47.
+  - [16, 11, 33]: This barrier is located at y = 16, spanning x = 11 to x = 33.
+
+- **Vertical Barriers**:
+  - [40, 16, 30]: This barrier is located at x = 40, spanning y = 16 to y = 30.
+  - [25, 22, 23]: This barrier is located at x = 25, spanning y = 22 to y = 23.
+
+### Pathfinding:
+1. Start at [39, 17].
+2. Move left to [38, 17] (no barriers).
+3. Move left to [37, 17] (no barriers).
+4. Move left to [36, 17] (no barriers).
+5. Move down to [36, 16] (no barriers).
+6. Move down to [36, 15] (no barriers).
+7. Move down to [36, 14] (no barriers).
+8. Move down to [36, 13] (no barriers).
+9. Move down to [36, 12] (no barriers).
+10. Move down to [36, 11] (no barriers).
+11. Move down to [36, 10] (no barriers).
+12. Move down to [36, 9] (no barriers).
+13. Move down to [36, 8] (no barriers).
+14. Move down to [36, 7] (goal point).
+
+### Generated Path:
+The path taken is:
+- Start: [39, 17]
+- [38, 17]
+- [37, 17]
+- [36, 17]
+- [36, 16]
+- [36, 15]
+- [36, 14]
+- [36, 13]
+- [36, 12]
+- [36, 11]
+- [36, 10]
+- [36, 9]
+- [36, 8]
+- Goal: [36, 7]
+
+Thus, the generated path is:
+Generated Path: [[39, 17], [38, 17], [37, 17], [36, 17], [36, 16], [36, 15], [36, 14], [36, 13], [36, 12], [36, 11], [36, 10], [36, 9], [36, 8], [36, 7]]
+
+### Waypoint Confidence:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 1 as they are clear of obstacles.
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

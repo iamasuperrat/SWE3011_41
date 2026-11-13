@@ -1,0 +1,68 @@
+To find a path from the start point [48, 10] to the goal point [7, 2] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [27, 14, 33]: This barrier spans from (14, 27) to (14, 33).
+  - [10, 38, 47]: This barrier spans from (38, 10) to (47, 10).
+  - [6, 1, 44]: This barrier spans from (1, 6) to (44, 6).
+
+- **Vertical Barriers**:
+  - [33, 19, 28]: This barrier spans from (19, 33) to (28, 33).
+  - [4, 30, 31]: This barrier spans from (30, 4) to (31, 4).
+  - [16, 28, 30]: This barrier spans from (28, 16) to (30, 16).
+
+### Pathfinding:
+Starting from [48, 10], we can navigate around the barriers as follows:
+1. Move left to [47, 10] (valid).
+2. Move left to [46, 10] (valid).
+3. Move left to [45, 10] (valid).
+4. Move left to [44, 10] (valid).
+5. Move left to [43, 10] (valid).
+6. Move left to [42, 10] (valid).
+7. Move left to [41, 10] (valid).
+8. Move left to [40, 10] (valid).
+9. Move left to [39, 10] (valid).
+10. Move left to [38, 10] (valid).
+11. Move down to [38, 9] (valid).
+12. Move down to [38, 8] (valid).
+13. Move left to [37, 8] (valid).
+14. Move left to [36, 8] (valid).
+15. Move left to [35, 8] (valid).
+16. Move left to [34, 8] (valid).
+17. Move left to [33, 8] (valid).
+18. Move down to [33, 7] (valid).
+19. Move down to [33, 6] (valid).
+20. Move left to [32, 6] (valid).
+21. Move left to [31, 6] (valid).
+22. Move left to [30, 6] (valid).
+23. Move down to [30, 5] (valid).
+24. Move down to [30, 4] (valid).
+25. Move left to [29, 4] (valid).
+26. Move left to [28, 4] (valid).
+27. Move down to [28, 3] (valid).
+28. Move down to [28, 2] (valid).
+29. Move left to [27, 2] (valid).
+30. Move left to [26, 2] (valid).
+31. Move left to [25, 2] (valid).
+32. Move left to [24, 2] (valid).
+33. Move left to [23, 2] (valid).
+34. Move left to [22, 2] (valid).
+35. Move left to [21, 2] (valid).
+36. Move left to [20, 2] (valid).
+37. Move left to [19, 2] (valid).
+38. Move left to [18, 2] (valid).
+39. Move left to [17, 2] (valid).
+40. Move left to [16, 2] (valid).
+41. Move left to [15, 2] (valid).
+42. Move left to [14, 2] (valid).
+43. Move left to [13, 2] (valid).
+44. Move left to [12, 2] (valid).
+45. Move left to [11, 2] (valid).
+46. Move left to [10, 2] (valid).
+47. Move left to [9, 2] (valid).
+48. Move left to [8, 2] (valid).
+49. Move left to [7, 2] (goal).
+
+### Generated Path:
+The generated path is:
+Generated Path: [[48, 10], [47, 10], [46, 10], [45, 10], [44, 10], [43, 10], [42, 10], [41, 10

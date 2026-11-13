@@ -1,0 +1,47 @@
+To find a path from the start point [40, 10] to the goal point [10, 10] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Given:
+- Start Point: [40, 10]
+- Goal Point: [10, 10]
+- Horizontal Barriers: [[15, 20, 30], [15, 35, 50]]
+- Vertical Barriers: [[20, 4, 30]]
+
+### Analysis:
+1. The horizontal barriers at y=15 block the path between x=20 and x=30.
+2. The vertical barrier at x=20 blocks the path between y=4 and y=30.
+3. The goal point is at y=10, which is below the horizontal barriers.
+
+### Pathfinding:
+Starting from [40, 10], we can move left towards the goal while avoiding the barriers:
+- Move left to [30, 10] (valid move).
+- Move left to [20, 10] (valid move).
+- Move left to [19, 10] (valid move).
+- Move left to [18, 10] (valid move).
+- Move left to [17, 10] (valid move).
+- Move left to [16, 10] (valid move).
+- Move left to [15, 10] (valid move).
+- Move left to [14, 10] (valid move).
+- Move left to [13, 10] (valid move).
+- Move left to [12, 10] (valid move).
+- Move left to [11, 10] (valid move).
+- Move left to [10, 10] (goal reached).
+
+### Generated Path:
+The path taken is:
+- Start: [40, 10]
+- [30, 10]
+- [20, 10]
+- [19, 10]
+- [18, 10]
+- [17, 10]
+- [16, 10]
+- [15, 10]
+- [14, 10]
+- [13, 10]
+- [12, 10]
+- [11, 10]
+- Goal: [10, 10]
+
+### Final Output:
+Generated Path: [[40, 10], [30, 10], [20, 10], [19, 10], [18, 10], [17, 10], [16, 10], [15, 10], [14, 10], [13, 10], [12, 10], [11, 10], [10, 10]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

@@ -1,0 +1,39 @@
+To find a path from the start point [44, 24] to the goal point [18, 7], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [19, 26, 49]: This barrier spans horizontally from x=26 to x=49 at y=19.
+  - [25, 50, 51]: This barrier spans horizontally from x=50 to x=51 at y=25.
+  
+- **Vertical Barriers**: 
+  - [16, 16, 24]: This barrier spans vertically from y=16 to y=24 at x=16.
+  - [40, 4, 19]: This barrier spans vertically from y=4 to y=19 at x=40.
+
+### Pathfinding:
+1. Start at [44, 24].
+2. Move left to avoid the vertical barrier at x=40.
+3. Move down to y=19 to avoid the horizontal barrier at y=19.
+4. Move left to x=16 to navigate around the vertical barrier.
+5. Move down to y=16.
+6. Move left to x=15.
+7. Move down to y=7 to reach the goal.
+
+### Generated Path:
+Following the above steps, the path can be represented as:
+- Start: [44, 24]
+- Move to: [39, 24]
+- Move to: [39, 19]
+- Move to: [16, 19]
+- Move to: [16, 16]
+- Move to: [15, 16]
+- Move to: [15, 7]
+- Goal: [18, 7]
+
+Thus, the generated path is:
+Generated Path: [[44, 24], [39, 24], [39, 19], [16, 19], [16, 16], [15, 16], [15, 7], [18, 7]]
+
+### Confidence Scores:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are strategically chosen to avoid barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

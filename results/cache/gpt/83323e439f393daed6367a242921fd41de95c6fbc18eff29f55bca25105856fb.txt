@@ -1,0 +1,12 @@
+To navigate from the start point [7, 8] to the goal point [44, 9], we need to avoid the horizontal and vertical barriers provided. 
+
+1. Start at [7, 8].
+2. Move right to [8, 8] to avoid the vertical barriers.
+3. Continue moving right to [9, 8], then to [10, 8], and so on until reaching [17, 8].
+4. From [17, 8], move up to [17, 9] to avoid the vertical barrier at x=17.
+5. Move right to [18, 9], then continue moving right until reaching [44, 9].
+
+The path avoids all barriers and reaches the goal efficiently.
+
+Generated Path: [[7, 8], [8, 8], [9, 8], [10, 8], [11, 8], [12, 8], [13, 8], [14, 8], [15, 8], [16, 8], [17, 8], [17, 9], [18, 9], [19, 9], [20, 9], [21, 9], [22, 9], [23, 9], [24, 9], [25, 9], [26, 9], [27, 9], [28, 9], [29, 9], [30, 9], [31, 9], [32, 9], [33, 9], [34, 9], [35, 9], [36, 9], [37, 9], [38, 9], [39, 9], [40, 9], [41, 9], [42, 9], [43, 9], [44, 9]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

@@ -1,0 +1,53 @@
+To find a path from the start point [19, 17] to the goal point [40, 14] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [19, 17] (Confidence: 1)
+2. **Goal Point**: [40, 14] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [7, 8, 34]: This barrier spans from (8, 7) to (34, 7).
+  - [27, 50, 50]: This barrier spans from (50, 27) to (50, 27).
+  - [7, 9, 50]: This barrier spans from (9, 7) to (50, 7).
+
+- **Vertical Barriers**:
+  - [23, 3, 21]: This barrier spans from (3, 23) to (21, 23).
+  - [10, 24, 26]: This barrier spans from (24, 10) to (26, 10).
+  - [31, 7, 15]: This barrier spans from (7, 31) to (15, 31).
+
+### Pathfinding:
+Starting from [19, 17], we can navigate around the barriers:
+1. Move right to [20, 17].
+2. Move right to [21, 17].
+3. Move right to [22, 17].
+4. Move down to [22, 16].
+5. Move down to [22, 15].
+6. Move down to [22, 14].
+7. Move right to [23, 14].
+8. Move right to [24, 14].
+9. Move right to [25, 14].
+10. Move right to [26, 14].
+11. Move right to [27, 14].
+12. Move right to [28, 14].
+13. Move right to [29, 14].
+14. Move right to [30, 14].
+15. Move right to [31, 14].
+16. Move right to [32, 14].
+17. Move right to [33, 14].
+18. Move right to [34, 14].
+19. Move right to [35, 14].
+20. Move right to [36, 14].
+21. Move right to [37, 14].
+22. Move right to [38, 14].
+23. Move right to [39, 14].
+24. Move right to [40, 14] (Goal).
+
+### Generated Path:
+The generated path is:
+Generated Path: [[19, 17], [20, 17], [21, 17], [22, 17], [22, 16], [22, 15], [22, 14], [23, 14], [24, 14], [25, 14], [26, 14], [27, 14], [28, 14], [29, 14], [30, 14], [31, 14], [32, 14], [33, 14], [34, 14], [35, 14], [36, 14], [37, 14], [38, 14], [39, 14], [40, 14]]
+
+### Waypoint Confidence:
+The confidence scores for the waypoints are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are part of a clear path avoiding barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

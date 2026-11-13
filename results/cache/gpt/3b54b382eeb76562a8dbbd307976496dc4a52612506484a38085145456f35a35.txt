@@ -1,0 +1,42 @@
+To find the shortest path from the start point [28, 25] to the goal point [48, 22] while navigating around the specified obstacles, we can analyze the barriers and determine a viable route.
+
+1. **Start Point**: [28, 25] (Confidence: 1)
+2. **Goal Point**: [48, 22] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [2, 46, 49]: This barrier does not affect the path since it is outside the y-range of our start and goal points.
+  - [19, 18, 39]: This barrier is horizontal and spans from y=19 to y=39, affecting the path.
+  - [25, 5, 13]: This barrier is horizontal and spans from y=25 to y=13, affecting the path.
+
+- **Vertical Barriers**:
+  - [39, 27, 30]: This barrier is vertical and spans from x=39 to y=30, affecting the path.
+  - [30, 23, 25]: This barrier is vertical and spans from x=30 to y=25, affecting the path.
+  - [24, 11, 16]: This barrier is vertical and spans from x=24 to y=16, affecting the path.
+  - [3, 26, 28]: This barrier is vertical and spans from x=3 to y=28, affecting the path.
+
+### Pathfinding:
+Given the barriers, we can navigate around them. A potential path could be:
+- Start at [28, 25]
+- Move to [30, 24] (avoiding the vertical barrier at x=30)
+- Move to [35, 23] (navigating around the horizontal barrier)
+- Move to [40, 22] (continuing towards the goal)
+- Finally, move to [48, 22] (reaching the goal)
+
+### Generated Path:
+The generated path is:
+Generated Path: [[28, 25], [30, 24], [35, 23], [40, 22], [48, 22]]
+
+### Confidence Scores:
+- Start Point: 1
+- Intermediate Points: 0.9 (for navigating around barriers), 0.9, 0.9
+- Goal Point: 1
+
+Thus, the confidence scores are:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 1] 
+
+Final output:
+```
+Generated Path: [[28, 25], [30, 24], [35, 23], [40, 22], [48, 22]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 1]
+```

@@ -1,0 +1,42 @@
+To find a path from the start point [17, 17] to the goal point [18, 2], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [8, 12, 28]: This barrier spans from y=12 to y=28, affecting the path in that vertical range.
+  - [13, 1, 9]: This barrier spans from y=1 to y=9, affecting the path in that vertical range.
+  - [17, 32, 45]: This barrier spans from y=32 to y=45, affecting the path in that vertical range.
+  
+- **Vertical Barriers**:
+  - [24, 26, 30]: This barrier spans from x=24 to x=30, affecting the path in that horizontal range.
+  - [40, 19, 23]: This barrier spans from x=40 to x=23, affecting the path in that horizontal range.
+
+### Finding the Path:
+1. Start at [17, 17].
+2. Move left to avoid the vertical barriers and down to avoid the horizontal barriers.
+3. The path can be constructed as follows:
+   - Move to [17, 16] (down).
+   - Move to [17, 15] (down).
+   - Move to [17, 14] (down).
+   - Move to [17, 13] (down).
+   - Move to [17, 12] (down).
+   - Move to [17, 11] (down).
+   - Move to [17, 10] (down).
+   - Move to [17, 9] (down).
+   - Move to [17, 8] (down).
+   - Move to [17, 7] (down).
+   - Move to [17, 6] (down).
+   - Move to [17, 5] (down).
+   - Move to [17, 4] (down).
+   - Move to [17, 3] (down).
+   - Move to [17, 2] (down).
+   - Move to [18, 2] (right).
+
+### Final Path:
+The generated path is:
+Generated Path: [[17, 17], [17, 16], [17, 15], [17, 14], [17, 13], [17, 12], [17, 11], [17, 10], [17, 9], [17, 8], [17, 7], [17, 6], [17, 5], [17, 4], [17, 3], [17, 2], [18, 2]]
+
+### Confidence Scores:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are on the path but may be closer to barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

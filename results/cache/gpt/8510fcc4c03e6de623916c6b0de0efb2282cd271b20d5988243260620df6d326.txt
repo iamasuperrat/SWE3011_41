@@ -1,0 +1,74 @@
+To navigate from the start point [27, 22] to the goal point [4, 3], we need to consider the horizontal and vertical barriers that may obstruct our path.
+
+- **First Iteration on [27, 22]**
+  - Thought: The vertical barrier at x=29 spanning y=9 to y=24 blocks the direct path. We should move left to avoid it.
+  - Selected Point: [28, 21]
+  - Evaluation: The point [28, 21] is a good choice as it moves us left and slightly down, avoiding the vertical barrier.
+
+- **Second Iteration on [28, 21]**
+  - Thought: The vertical barrier at x=29 is still a concern, but we can move further left to bypass it.
+  - Selected Point: [27, 20]
+  - Evaluation: The point [27, 20] continues to navigate around the vertical barrier while moving closer to the goal.
+
+- **Third Iteration on [27, 20]**
+  - Thought: We can now move downwards to avoid the horizontal barriers while still progressing towards the goal.
+  - Selected Point: [26, 19]
+  - Evaluation: The point [26, 19] is clear of obstacles and allows further movement downwards.
+
+- **Fourth Iteration on [26, 19]**
+  - Thought: Continuing downwards will help us avoid the horizontal barriers at y=20 and y=19.
+  - Selected Point: [25, 18]
+  - Evaluation: The point [25, 18] is unobstructed and keeps us on track towards the goal.
+
+- **Fifth Iteration on [25, 18]**
+  - Thought: We can continue moving downwards to get closer to the goal.
+  - Selected Point: [24, 17]
+  - Evaluation: The point [24, 17] is clear and allows further downward movement.
+
+- **Sixth Iteration on [24, 17]**
+  - Thought: We can continue moving downwards to avoid the horizontal barriers.
+  - Selected Point: [23, 16]
+  - Evaluation: The point [23, 16] is unobstructed and keeps us progressing towards the goal.
+
+- **Seventh Iteration on [23, 16]**
+  - Thought: Continuing downwards will help us avoid the horizontal barriers.
+  - Selected Point: [22, 15]
+  - Evaluation: The point [22, 15] is clear and allows further downward movement.
+
+- **Eighth Iteration on [22, 15]**
+  - Thought: We can continue moving downwards to get closer to the goal.
+  - Selected Point: [21, 14]
+  - Evaluation: The point [21, 14] is unobstructed and keeps us on track towards the goal.
+
+- **Ninth Iteration on [21, 14]**
+  - Thought: Continuing downwards will help us avoid the horizontal barriers.
+  - Selected Point: [20, 13]
+  - Evaluation: The point [20, 13] is clear and allows further downward movement.
+
+- **Tenth Iteration on [20, 13]**
+  - Thought: We can continue moving downwards to get closer to the goal.
+  - Selected Point: [19, 12]
+  - Evaluation: The point [19, 12] is unobstructed and keeps us on track towards the goal.
+
+- **Eleventh Iteration on [19, 12]**
+  - Thought: Continuing downwards will help us avoid the horizontal barriers.
+  - Selected Point: [18, 11]
+  - Evaluation: The point [18, 11] is clear and allows further downward movement.
+
+- **Twelfth Iteration on [18, 11]**
+  - Thought: We can continue moving downwards to get closer to the goal.
+  - Selected Point: [17, 10]
+  - Evaluation: The point [17, 10] is unobstructed and keeps us on track towards the goal.
+
+- **Thirteenth Iteration on [17, 10]**
+  - Thought: Continuing downwards will help us avoid the horizontal barriers.
+  - Selected Point: [16, 9]
+  - Evaluation: The point [16, 9] is clear and allows further downward movement.
+
+- **Fourteenth Iteration on [16, 9]**
+  - Thought: We can continue moving downwards to get closer to the goal.
+  - Selected Point: [15, 8]
+  - Evaluation: The point [15, 8] is unobstructed and keeps us on track towards the goal.
+
+- **Fifteenth Iteration on [15, 8]**
+  - Thought: Continuing downwards will help

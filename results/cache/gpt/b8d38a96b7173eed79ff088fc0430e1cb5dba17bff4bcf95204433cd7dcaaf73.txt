@@ -1,0 +1,56 @@
+To find a path from the start point [22, 28] to the goal point [24, 7], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [25, 21, 45]: This barrier spans horizontally from (21, 25) to (45, 25).
+  - [2, 7, 23]: This barrier spans horizontally from (7, 2) to (23, 2).
+  - [8, 26, 34]: This barrier spans horizontally from (26, 8) to (34, 8).
+
+- **Vertical Barriers**:
+  - [22, 0, 15]: This barrier spans vertically from (0, 22) to (15, 22).
+  - [3, 26, 26]: This barrier spans vertically from (26, 3) to (26, 3).
+  - [3, 23, 25]: This barrier spans vertically from (23, 3) to (25, 3).
+
+### Pathfinding:
+1. Start at [22, 28].
+2. Move down to avoid the horizontal barriers and navigate around the vertical barriers.
+3. The path can be constructed as follows:
+   - Move from [22, 28] to [22, 27] (down).
+   - Move from [22, 27] to [22, 26] (down).
+   - Move from [22, 26] to [21, 26] (left).
+   - Move from [21, 26] to [20, 26] (left).
+   - Move from [20, 26] to [19, 26] (left).
+   - Move from [19, 26] to [18, 26] (left).
+   - Move from [18, 26] to [17, 26] (left).
+   - Move from [17, 26] to [16, 26] (left).
+   - Move from [16, 26] to [15, 26] (left).
+   - Move from [15, 26] to [14, 26] (left).
+   - Move from [14, 26] to [13, 26] (left).
+   - Move from [13, 26] to [12, 26] (left).
+   - Move from [12, 26] to [11, 26] (left).
+   - Move from [11, 26] to [10, 26] (left).
+   - Move from [10, 26] to [9, 26] (left).
+   - Move from [9, 26] to [8, 26] (left).
+   - Move from [8, 26] to [8, 25] (down).
+   - Move from [8, 25] to [8, 24] (down).
+   - Move from [8, 24] to [8, 23] (down).
+   - Move from [8, 23] to [8, 22] (down).
+   - Move from [8, 22] to [8, 21] (down).
+   - Move from [8, 21] to [8, 20] (down).
+   - Move from [8, 20] to [8, 19] (down).
+   - Move from [8, 19] to [8, 18] (down).
+   - Move from [8, 18] to [8, 17] (down).
+   - Move from [8, 17] to [8, 16] (down).
+   - Move from [8, 16] to [8, 15] (down).
+   - Move from [8, 15] to [8, 14] (down).
+   - Move from [8, 14] to [8, 13] (down).
+   - Move from [8, 13] to [8, 12] (down).
+   - Move from [8, 12] to [8, 11] (down).
+   - Move from [8, 11] to [8, 10] (down).
+   - Move from [8, 10] to [8, 9] (down).
+   - Move from [8, 9] to [8, 8] (down).
+   - Move from [8, 8] to [8, 7] (down).
+   - Move from [8, 7] to [24, 7] (right).
+
+### Final Path:
+The generated path

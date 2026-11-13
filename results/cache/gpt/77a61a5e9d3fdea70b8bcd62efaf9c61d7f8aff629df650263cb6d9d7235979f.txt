@@ -1,0 +1,40 @@
+To find a path from the start point [25, 28] to the goal point [13, 21] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and determine a route that circumvents the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [4, 48, 48]: This barrier is irrelevant as it does not intersect with the path.
+  - [27, 39, 49]: This barrier is also irrelevant as it does not intersect with the path.
+  - [20, 44, 44]: This barrier does not affect the path.
+  - [24, 5, 47]: This barrier does not affect the path.
+
+- **Vertical Barriers**:
+  - [45, 31, 31]: This barrier does not affect the path.
+  - [49, 14, 26]: This barrier does not affect the path.
+  - [33, 18, 30]: This barrier does not affect the path.
+
+### Finding the Path:
+Given the start point [25, 28] and the goal point [13, 21], we can navigate around the barriers. A potential path could be:
+
+1. Start at [25, 28]
+2. Move to [24, 27]
+3. Move to [23, 26]
+4. Move to [22, 25]
+5. Move to [21, 24]
+6. Move to [20, 23]
+7. Move to [19, 22]
+8. Move to [18, 21]
+9. Move to [17, 20]
+10. Move to [16, 19]
+11. Move to [15, 18]
+12. Move to [14, 17]
+13. Move to [13, 21] (goal)
+
+### Generated Path:
+The generated path is:
+Generated Path: [[25, 28], [24, 27], [23, 26], [22, 25], [21, 24], [20, 23], [19, 22], [18, 21], [17, 20], [16, 19], [15, 18], [14, 17], [13, 21]]
+
+### Waypoint Confidence:
+The confidence scores for each waypoint, with the start and goal points having a confidence of 1, are as follows:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1] 
+
+This indicates high confidence in the path avoiding obstacles effectively.

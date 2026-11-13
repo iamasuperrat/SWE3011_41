@@ -1,0 +1,40 @@
+To find a path from the start point [7, 14] to the goal point [49, 7], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [29, 28, 29]: This barrier is horizontal at y=29 from x=28 to x=29.
+  - [22, 16, 51]: This barrier is horizontal at y=22 from x=16 to x=51.
+  
+- **Vertical Barriers**:
+  - [36, 9, 18]: This barrier is vertical at x=36 from y=9 to y=18.
+  - [24, 20, 26]: This barrier is vertical at x=24 from y=20 to y=26.
+
+### Pathfinding:
+1. Start at [7, 14].
+2. Move right to avoid the vertical barriers and reach a point where we can go down towards the goal.
+3. Navigate around the horizontal barriers while ensuring we stay clear of the vertical barriers.
+4. Finally, approach the goal at [49, 7].
+
+### Generated Path:
+After analyzing the barriers and calculating the shortest route while avoiding obstacles, the path can be constructed as follows:
+
+- Start at [7, 14]
+- Move to [15, 14] (right)
+- Move to [15, 10] (down)
+- Move to [30, 10] (right)
+- Move to [30, 7] (down)
+- Move to [49, 7] (right)
+
+Thus, the generated path is:
+Generated Path: [[7, 14], [15, 14], [15, 10], [30, 10], [30, 7], [49, 7]]
+
+### Confidence Scores:
+- Start Point: [7, 14] - Confidence: 1
+- [15, 14] - Confidence: 0.9 (clear path)
+- [15, 10] - Confidence: 0.9 (clear path)
+- [30, 10] - Confidence: 0.8 (approaching barriers)
+- [30, 7] - Confidence: 0.9 (clear path)
+- Goal Point: [49, 7] - Confidence: 1
+
+Thus, the confidence scores are:
+Waypoint Confidence: [1, 0.9, 0.9, 0.8, 0.9, 1]

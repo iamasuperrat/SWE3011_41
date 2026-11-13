@@ -1,0 +1,11 @@
+To navigate from the start point [36, 10] to the goal point [16, 27], we need to avoid the horizontal barrier at y=7 spanning x=3 to x=21 and the vertical barriers at x=5 spanning y=1 to y=22 and at x=26 spanning y=30 to y=31 and y=17 to y=25.
+
+1. Start at [36, 10].
+2. Move left to [25, 10] to avoid the vertical barrier at x=26.
+3. Move down to [25, 20] to avoid the horizontal barrier at y=7.
+4. Move left to [16, 20].
+5. Move up to [16, 27] to reach the goal.
+
+The generated path is:
+Generated Path: [[36, 10], [25, 10], [25, 20], [16, 20], [16, 27]]
+Waypoint Confidence: [1, 1, 1, 1, 1]

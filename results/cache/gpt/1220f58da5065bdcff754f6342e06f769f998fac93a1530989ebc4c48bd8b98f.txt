@@ -1,0 +1,17 @@
+To navigate from the start point [2, 28] to the goal point [44, 21], we need to avoid the horizontal and vertical barriers provided. 
+
+1. Starting at [2, 28], we can move right to avoid the vertical barriers and then head downward to navigate around the horizontal barriers.
+2. We will move to the right until we reach a point where we can safely move downwards without hitting any barriers.
+3. After navigating downwards, we will then move right towards the goal.
+
+Following this reasoning, the path can be constructed as follows:
+
+- Start at [2, 28]
+- Move right to [11, 28] (avoiding vertical barriers)
+- Move down to [11, 21] (avoiding horizontal barriers)
+- Move right to [44, 21] (directly to the goal)
+
+Thus, the generated path is:
+
+Generated Path: [[2, 28], [11, 28], [11, 21], [44, 21]]
+Waypoint Confidence: [1, 1, 1, 1]

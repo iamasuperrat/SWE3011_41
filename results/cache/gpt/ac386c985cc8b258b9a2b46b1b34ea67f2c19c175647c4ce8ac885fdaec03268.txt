@@ -1,0 +1,55 @@
+To find a path from the start point [21, 2] to the goal point [49, 9] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Given Information:
+- **Start Point:** [21, 2]
+- **Goal Point:** [49, 9]
+- **Horizontal Barriers:** [[17, 48, 50], [1, 14, 47]]
+- **Vertical Barriers:** [[33, 3, 11]]
+
+### Pathfinding Steps:
+1. **Start at [21, 2]:** This is the initial position.
+2. **Move to [21, 3]:** This is a valid move upward, avoiding the vertical barrier at x=33.
+3. **Move to [21, 4]:** Continue moving upward.
+4. **Move to [21, 5]:** Continue moving upward.
+5. **Move to [21, 6]:** Continue moving upward.
+6. **Move to [21, 7]:** Continue moving upward.
+7. **Move to [21, 8]:** Continue moving upward.
+8. **Move to [22, 8]:** Move right to avoid the vertical barrier.
+9. **Move to [23, 8]:** Continue moving right.
+10. **Move to [24, 8]:** Continue moving right.
+11. **Move to [25, 8]:** Continue moving right.
+12. **Move to [26, 8]:** Continue moving right.
+13. **Move to [27, 8]:** Continue moving right.
+14. **Move to [28, 8]:** Continue moving right.
+15. **Move to [29, 8]:** Continue moving right.
+16. **Move to [30, 8]:** Continue moving right.
+17. **Move to [31, 8]:** Continue moving right.
+18. **Move to [32, 8]:** Continue moving right.
+19. **Move to [33, 8]:** Continue moving right.
+20. **Move to [34, 8]:** Continue moving right.
+21. **Move to [35, 8]:** Continue moving right.
+22. **Move to [36, 8]:** Continue moving right.
+23. **Move to [37, 8]:** Continue moving right.
+24. **Move to [38, 8]:** Continue moving right.
+25. **Move to [39, 8]:** Continue moving right.
+26. **Move to [40, 8]:** Continue moving right.
+27. **Move to [41, 8]:** Continue moving right.
+28. **Move to [42, 8]:** Continue moving right.
+29. **Move to [43, 8]:** Continue moving right.
+30. **Move to [44, 8]:** Continue moving right.
+31. **Move to [45, 8]:** Continue moving right.
+32. **Move to [46, 8]:** Continue moving right.
+33. **Move to [47, 8]:** Continue moving right.
+34. **Move to [48, 8]:** Continue moving right.
+35. **Move to [49, 8]:** Continue moving right.
+36. **Move to [49, 9]:** Finally, move up to the goal.
+
+### Generated Path:
+The path can be summarized as follows:
+Generated Path: [[21, 2], [21, 3], [21, 4], [21, 5], [21, 6], [21, 7], [21, 8], [22, 8], [23, 8], [24, 8], [25, 8], [26, 8], [27, 8], [28, 8], [29, 8], [30, 8], [31, 8], [32, 8], [33, 8], [34, 8], [35, 8], [36, 8], [37, 8], [38, 8], [39, 8], [40, 8], [41, 8], [42, 8], [43, 8], [44, 8], [45, 8], [46, 8], [47, 8], [48, 8], [49, 8], [49, 9]]
+
+### Waypoint Confidence:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are valid moves avoiding obstacles.
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1

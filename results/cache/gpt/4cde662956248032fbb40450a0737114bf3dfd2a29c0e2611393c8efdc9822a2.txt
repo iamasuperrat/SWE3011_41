@@ -1,0 +1,25 @@
+To find the shortest path from the start point [26, 28] to the goal point [46, 7] while navigating around the specified obstacles, we can analyze the barriers and determine a viable route.
+
+Given the horizontal barriers:
+- [21, 31, 34]
+- [0, 26, 36]
+- [12, 9, 25]
+
+And the vertical barriers:
+- [32, 6, 16]
+- [3, 2, 15]
+- [17, 1, 25]
+- [50, 10, 10]
+
+We can visualize the grid and identify a path that avoids these barriers. 
+
+After analyzing the grid and potential paths, a possible route is:
+1. Start at [26, 28]
+2. Move to [30, 25] (avoiding horizontal barriers)
+3. Move to [35, 20] (navigating around vertical barriers)
+4. Move to [40, 15] (continuing to avoid obstacles)
+5. Finally, move to [46, 7] (reaching the goal)
+
+Thus, the generated path is:
+Generated Path: [[26, 28], [30, 25], [35, 20], [40, 15], [46, 7]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 1]

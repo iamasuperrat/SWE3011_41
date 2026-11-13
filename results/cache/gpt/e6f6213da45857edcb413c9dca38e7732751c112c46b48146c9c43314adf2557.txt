@@ -1,0 +1,46 @@
+To find a path from the start point [17, 4] to the goal point [31, 28] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. Start at [17, 4].
+2. Move right to [18, 4].
+3. Move right to [19, 4].
+4. Move right to [20, 4].
+5. Move up to [20, 5].
+6. Move up to [20, 6].
+7. Move up to [20, 7].
+8. Move up to [20, 8].
+9. Move right to [21, 8].
+10. Move right to [22, 8].
+11. Move right to [23, 8].
+12. Move right to [24, 8].
+13. Move up to [24, 9].
+14. Move up to [24, 10].
+15. Move up to [24, 11].
+16. Move up to [24, 12].
+17. Move right to [25, 12].
+18. Move right to [26, 12].
+19. Move right to [27, 12].
+20. Move right to [28, 12].
+21. Move up to [28, 13].
+22. Move up to [28, 14].
+23. Move up to [28, 15].
+24. Move up to [28, 16].
+25. Move right to [29, 16].
+26. Move right to [30, 16].
+27. Move right to [31, 16].
+28. Move up to [31, 17].
+29. Move up to [31, 18].
+30. Move up to [31, 19].
+31. Move up to [31, 20].
+32. Move up to [31, 21].
+33. Move up to [31, 22].
+34. Move up to [31, 23].
+35. Move up to [31, 24].
+36. Move up to [31, 25].
+37. Move up to [31, 26].
+38. Move up to [31, 27].
+39. Move up to [31, 28].
+
+The generated path is as follows:
+
+Generated Path: [[17, 4], [18, 4], [19, 4], [20, 4], [20, 5], [20, 6], [20, 7], [20, 8], [21, 8], [22, 8], [23, 8], [24, 8], [24, 9], [24, 10], [24, 11], [24, 12], [25, 12], [26, 12], [27, 12], [28, 12], [28, 13], [28, 14], [28, 15], [28, 16], [29, 16], [30, 16], [31, 16], [31, 17], [31, 18], [31, 19], [31, 20], [31, 21], [31, 22], [31, 23], [31, 24], [31, 25], [31, 26], [31, 27], [31, 28]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

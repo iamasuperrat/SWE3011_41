@@ -1,0 +1,30 @@
+To navigate from the start point [25, 25] to the goal point [4, 4] while avoiding the specified horizontal and vertical barriers, we can follow these steps:
+
+1. **Start Point**: [25, 25]
+   - This point is the starting position, and we are confident in it.
+   - Confidence: 1
+
+2. **First Iteration**: 
+   - The horizontal barrier at y=7 spans x=0 to x=20, and the vertical barrier at x=10 spans y=0 to y=5. 
+   - To avoid the barriers, we can move downward to clear the horizontal barrier.
+   - **Selected Point**: [21, 7]
+   - This point is just above the horizontal barrier and allows us to navigate around it.
+   - Confidence: 0.9
+
+3. **Second Iteration**: 
+   - From [21, 7], we need to navigate around the vertical barrier at x=10.
+   - We can move left to [10, 6], which is just below the vertical barrier.
+   - **Selected Point**: [10, 6]
+   - This point effectively bypasses the vertical barrier and positions us closer to the goal.
+   - Confidence: 0.8
+
+4. **Third Iteration**: 
+   - From [10, 6], we can now move directly to the goal since there are no obstacles in the way.
+   - **Selected Point**: [4, 4]
+   - This point is the goal, and we are confident in reaching it.
+   - Confidence: 1
+
+Putting it all together, the generated path and confidence scores are as follows:
+
+Generated Path: [[25, 25], [21, 7], [10, 6], [4, 4]]
+Waypoint Confidence: [1, 0.9, 0.8, 1]

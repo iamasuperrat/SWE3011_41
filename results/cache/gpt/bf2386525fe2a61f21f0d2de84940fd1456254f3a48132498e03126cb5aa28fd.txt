@@ -1,0 +1,17 @@
+To navigate from the start point [5, 5] to the goal point [20, 20], we need to avoid the horizontal barrier at y=10 spanning x=0 to x=25 and the vertical barrier at x=25 spanning y=10 to y=22. 
+
+1. Start at [5, 5].
+2. Move up to [5, 9] to avoid the horizontal barrier.
+3. Move right to [20, 9].
+4. Move up to [20, 20] to reach the goal.
+
+The generated path is:
+Generated Path: [[5, 5], [5, 9], [20, 9], [20, 20]]
+
+Confidence scores for each waypoint:
+- Start point [5, 5]: 1 (definitely useful)
+- Waypoint [5, 9]: 1 (definitely useful, avoids barrier)
+- Waypoint [20, 9]: 1 (definitely useful, avoids barrier)
+- Goal point [20, 20]: 1 (definitely useful)
+
+Waypoint Confidence: [1, 1, 1, 1]

@@ -1,0 +1,45 @@
+To find a path from the start point [18, 2] to the goal point [18, 9] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [13, 34, 35]: This barrier does not affect the path since it is above the start and goal points.
+  - [4, 47, 50]: This barrier is also above the start and goal points.
+  - [4, 3, 49]: This barrier runs horizontally from y=4 to y=49, affecting the path since it intersects with the vertical line at x=18.
+
+- **Vertical Barriers**:
+  - [44, 14, 14]: This barrier is far to the right and does not affect the path.
+  - [9, 6, 24]: This barrier runs vertically from y=6 to y=24, affecting the path at x=9.
+
+### Pathfinding:
+1. Start at [18, 2].
+2. Move vertically up to [18, 3] (just above the horizontal barrier).
+3. Move vertically up to [18, 4].
+4. Move vertically up to [18, 5].
+5. Move vertically up to [18, 6] (this is where the vertical barrier starts).
+6. Move horizontally left to [17, 6].
+7. Move vertically up to [17, 7].
+8. Move vertically up to [17, 8].
+9. Move vertically up to [17, 9].
+10. Move horizontally right to [18, 9] (goal).
+
+### Generated Path:
+The path can be summarized as follows:
+- Start: [18, 2]
+- Move to: [18, 3]
+- Move to: [18, 4]
+- Move to: [18, 5]
+- Move to: [18, 6]
+- Move to: [17, 6]
+- Move to: [17, 7]
+- Move to: [17, 8]
+- Move to: [17, 9]
+- Goal: [18, 9]
+
+Thus, the generated path is:
+Generated Path: [[18, 2], [18, 3], [18, 4], [18, 5], [18, 6], [17, 6], [17, 7], [17, 8], [17, 9], [18, 9]]
+
+### Waypoint Confidence:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are clear of obstacles but are not the start or goal.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

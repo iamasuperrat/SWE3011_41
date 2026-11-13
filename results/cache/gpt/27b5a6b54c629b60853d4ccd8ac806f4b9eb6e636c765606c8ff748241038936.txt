@@ -1,0 +1,57 @@
+To navigate from the start point [40, 21] to the goal point [1, 11], we need to avoid the horizontal barriers at y=15 (spanning x=1 to x=17) and y=2 (spanning x=14 to x=22), as well as the vertical barriers at x=12 (spanning y=11 to y=20) and x=26 (spanning y=4 to y=28). 
+
+1. Start at [40, 21].
+2. Move left to [39, 21].
+3. Move left to [38, 21].
+4. Move left to [37, 21].
+5. Move left to [36, 21].
+6. Move left to [35, 21].
+7. Move left to [34, 21].
+8. Move down to [34, 20].
+9. Move down to [34, 19].
+10. Move down to [34, 18].
+11. Move down to [34, 17].
+12. Move down to [34, 16].
+13. Move left to [33, 16].
+14. Move left to [32, 16].
+15. Move left to [31, 16].
+16. Move left to [30, 16].
+17. Move down to [30, 15].
+18. Move down to [30, 14].
+19. Move left to [29, 14].
+20. Move left to [28, 14].
+21. Move left to [27, 14].
+22. Move left to [26, 14].
+23. Move down to [26, 13].
+24. Move down to [26, 12].
+25. Move left to [25, 12].
+26. Move left to [24, 12].
+27. Move left to [23, 12].
+28. Move left to [22, 12].
+29. Move down to [22, 11].
+30. Move left to [21, 11].
+31. Move left to [20, 11].
+32. Move left to [19, 11].
+33. Move left to [18, 11].
+34. Move left to [17, 11].
+35. Move left to [16, 11].
+36. Move left to [15, 11].
+37. Move left to [14, 11].
+38. Move left to [13, 11].
+39. Move left to [12, 11].
+40. Move left to [11, 11].
+41. Move left to [10, 11].
+42. Move left to [9, 11].
+43. Move left to [8, 11].
+44. Move left to [7, 11].
+45. Move left to [6, 11].
+46. Move left to [5, 11].
+47. Move left to [4, 11].
+48. Move left to [3, 11].
+49. Move left to [2, 11].
+50. Move left to [1, 11].
+
+This path avoids all obstacles and reaches the goal.
+
+Generated Path: [[40, 21], [39, 21], [38, 21], [37, 21], [36, 21], [35, 21], [34, 21], [34, 20], [34, 19], [34, 18], [34, 17], [34, 16], [33, 16], [32, 16], [31, 16], [30, 16], [30, 15], [30, 14], [29, 14], [28, 14], [27, 14], [26, 14], [26, 13], [26, 12], [25, 12], [24, 12], [23, 12], [22, 12], [22, 11], [21, 11], [20, 11], [19, 11], [18, 11], [17, 11], [16, 11], [15, 11], [14, 11], [13, 11], [12, 11], [11, 11], [10, 11], [9, 11], [8, 11], [7, 11], [6, 11], [5, 11], [4, 11], [3, 11], [2, 11], [1, 11]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,

@@ -1,0 +1,10 @@
+To navigate from the start point [12, 13] to the goal point [19, 13], we need to avoid the vertical barrier at x=16 spanning y=7 to y=28. Since the start and goal points are on the same horizontal line (y=13), we can move directly to the right while avoiding the vertical barrier.
+
+1. Start at [12, 13].
+2. Move right to [15, 13] (just before the barrier).
+3. Move right to [19, 13] (goal point).
+
+The generated path is as follows:
+
+Generated Path: [[12, 13], [15, 13], [19, 13]]
+Waypoint Confidence: [1, 1, 1]

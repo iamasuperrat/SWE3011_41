@@ -1,0 +1,27 @@
+To navigate from the start point [30, 5] to the goal point [15, 1], we need to avoid the horizontal and vertical barriers provided. 
+
+1. **Start Point**: [30, 5] - Confidence: 1
+2. **Move Left**: We can move left to [29, 5] to start avoiding the barriers.
+3. **Continue Left**: Move left to [28, 5].
+4. **Continue Left**: Move left to [27, 5].
+5. **Continue Left**: Move left to [26, 5].
+6. **Move Down**: Move down to [26, 4] to avoid the horizontal barrier at y=8.
+7. **Move Down**: Move down to [26, 3].
+8. **Move Down**: Move down to [26, 2].
+9. **Move Left**: Move left to [25, 2].
+10. **Move Down**: Move down to [25, 1].
+11. **Move Left**: Move left to [24, 1].
+12. **Move Left**: Move left to [23, 1].
+13. **Move Left**: Move left to [22, 1].
+14. **Move Left**: Move left to [21, 1].
+15. **Move Left**: Move left to [20, 1].
+16. **Move Left**: Move left to [19, 1].
+17. **Move Left**: Move left to [18, 1].
+18. **Move Left**: Move left to [17, 1].
+19. **Move Left**: Move left to [16, 1].
+20. **Move Left**: Move left to [15, 1] - Goal Point - Confidence: 1
+
+The generated path is as follows:
+
+Generated Path: [[30, 5], [29, 5], [28, 5], [27, 5], [26, 5], [26, 4], [26, 3], [26, 2], [25, 2], [25, 1], [24, 1], [23, 1], [22, 1], [21, 1], [20, 1], [19, 1], [18, 1], [17, 1], [16, 1], [15, 1]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

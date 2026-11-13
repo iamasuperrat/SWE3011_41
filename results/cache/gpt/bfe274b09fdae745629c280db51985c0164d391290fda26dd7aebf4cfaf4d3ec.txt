@@ -1,0 +1,35 @@
+To navigate from the start point [43, 12] to the goal point [4, 13], we need to consider the horizontal and vertical barriers provided.
+
+1. **First Iteration on [43, 12]**:
+   - The horizontal barrier at y=23 spans x=37 to x=46, which does not obstruct the current position.
+   - The vertical barrier at x=8 spans y=10 to y=15 does not obstruct the current position either.
+   - Since there are no immediate barriers, we can move left towards the goal.
+   - **Selected Point**: [20, 12]
+   - **Evaluation**: This point moves us significantly closer to the goal while avoiding barriers.
+
+2. **Second Iteration on [20, 12]**:
+   - The horizontal barrier at y=23 does not obstruct us.
+   - The vertical barrier at x=8 does not obstruct us either.
+   - We can continue moving left towards the goal.
+   - **Selected Point**: [10, 12]
+   - **Evaluation**: This point continues to bring us closer to the goal without encountering barriers.
+
+3. **Third Iteration on [10, 12]**:
+   - The horizontal barrier at y=23 does not obstruct us.
+   - The vertical barrier at x=8 does not obstruct us.
+   - We can move left again.
+   - **Selected Point**: [5, 12]
+   - **Evaluation**: This point is still clear of barriers and moves us closer to the goal.
+
+4. **Fourth Iteration on [5, 12]**:
+   - The horizontal barrier at y=23 does not obstruct us.
+   - The vertical barrier at x=8 does not obstruct us.
+   - We can now move up to reach the goal.
+   - **Selected Point**: [4, 13]
+   - **Evaluation**: This point is the goal and is clear of barriers.
+
+The generated path is:
+Generated Path: [[43, 12], [20, 12], [10, 12], [5, 12], [4, 13]]
+
+The confidence scores for each waypoint are:
+Waypoint Confidence: [1, 1, 1, 1, 1]

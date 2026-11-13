@@ -1,0 +1,85 @@
+To find a path from the start point [29, 10] to the goal point [36, 3], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [4, 31, 49]: This barrier is not relevant as it is above the start and goal points.
+  - [24, 18, 18]: This barrier is also not relevant as it is below the start and goal points.
+
+- **Vertical Barriers**:
+  - [44, 22, 27]: This barrier is to the right of the goal and does not affect the path.
+  - [17, 5, 15]: This barrier is to the left of the start and does not affect the path.
+  - [35, 16, 19]: This barrier is directly above the goal point and will need to be navigated around.
+  - [14, 30, 31]: This barrier is not relevant as it is below the start and goal points.
+
+### Pathfinding:
+1. Start at [29, 10].
+2. Move right to [30, 10].
+3. Move right to [31, 10].
+4. Move right to [32, 10].
+5. Move right to [33, 10].
+6. Move right to [34, 10].
+7. Move up to [34, 11].
+8. Move up to [34, 12].
+9. Move up to [34, 13].
+10. Move up to [34, 14].
+11. Move up to [34, 15].
+12. Move up to [34, 16].
+13. Move left to [33, 16].
+14. Move left to [32, 16].
+15. Move left to [31, 16].
+16. Move left to [30, 16].
+17. Move left to [29, 16].
+18. Move left to [28, 16].
+19. Move left to [27, 16].
+20. Move left to [26, 16].
+21. Move left to [25, 16].
+22. Move left to [24, 16].
+23. Move left to [23, 16].
+24. Move left to [22, 16].
+25. Move left to [21, 16].
+26. Move left to [20, 16].
+27. Move left to [19, 16].
+28. Move left to [18, 16].
+29. Move left to [17, 16].
+30. Move left to [16, 16].
+31. Move down to [16, 15].
+32. Move down to [16, 14].
+33. Move down to [16, 13].
+34. Move down to [16, 12].
+35. Move down to [16, 11].
+36. Move down to [16, 10].
+37. Move down to [16, 9].
+38. Move down to [16, 8].
+39. Move down to [16, 7].
+40. Move down to [16, 6].
+41. Move down to [16, 5].
+42. Move down to [16, 4].
+43. Move down to [16, 3].
+44. Move left to [15, 3].
+45. Move left to [14, 3].
+46. Move left to [13, 3].
+47. Move left to [12, 3].
+48. Move left to [11, 3].
+49. Move left to [10, 3].
+50. Move left to [9, 3].
+51. Move left to [8, 3].
+52. Move left to [7, 3].
+53. Move left to [6, 3].
+54. Move left to [5, 3].
+55. Move left to [4, 3].
+56. Move left to [3, 3].
+57. Move left to [2, 3].
+58. Move left to [1, 3].
+59. Move left to [0, 3].
+60. Move down to [0, 2].
+61. Move down to [0, 1].
+62. Move down to [0, 0].
+63. Move right to [1, 0].
+64. Move right to [2, 0].
+65. Move right to [3, 0].
+66. Move right to [4, 0].
+67. Move right to [5, 0].
+68. Move right to [6, 0].
+69. Move right to [7, 0].
+70. Move right to [8, 0].
+71. Move right to [9

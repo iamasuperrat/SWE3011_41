@@ -1,0 +1,54 @@
+To navigate from the start point [10, 19] to the goal point [40, 4], we need to avoid the horizontal barrier at y=19 spanning x=37 to x=48 and the vertical barriers at x=9 spanning y=28 to y=30, x=38 spanning y=8 to y=29, and x=15 spanning y=9 to y=27.
+
+1. Start at [10, 19].
+2. Move left to [10, 18] to avoid the horizontal barrier.
+3. Move down to [10, 17].
+4. Move down to [10, 16].
+5. Move down to [10, 15].
+6. Move down to [10, 14].
+7. Move down to [10, 13].
+8. Move down to [10, 12].
+9. Move down to [10, 11].
+10. Move down to [10, 10].
+11. Move down to [10, 9].
+12. Move right to [11, 9].
+13. Move right to [12, 9].
+14. Move right to [13, 9].
+15. Move right to [14, 9].
+16. Move down to [14, 8].
+17. Move down to [14, 7].
+18. Move down to [14, 6].
+19. Move down to [14, 5].
+20. Move down to [14, 4].
+21. Move right to [15, 4].
+22. Move right to [16, 4].
+23. Move right to [17, 4].
+24. Move right to [18, 4].
+25. Move right to [19, 4].
+26. Move right to [20, 4].
+27. Move right to [21, 4].
+28. Move right to [22, 4].
+29. Move right to [23, 4].
+30. Move right to [24, 4].
+31. Move right to [25, 4].
+32. Move right to [26, 4].
+33. Move right to [27, 4].
+34. Move right to [28, 4].
+35. Move right to [29, 4].
+36. Move right to [30, 4].
+37. Move right to [31, 4].
+38. Move right to [32, 4].
+39. Move right to [33, 4].
+40. Move right to [34, 4].
+41. Move right to [35, 4].
+42. Move right to [36, 4].
+43. Move right to [37, 4].
+44. Move right to [38, 4].
+45. Move right to [39, 4].
+46. Move right to [40, 4].
+
+The generated path is as follows:
+
+Generated Path: [[10, 19], [10, 18], [10, 17], [10, 16], [10, 15], [10, 14], [10, 13], [10, 12], [10, 11], [10, 10], [10, 9], [11, 9], [12, 9], [13, 9], [14, 9], [14, 8], [14, 7], [14, 6], [14, 5], [14, 4], [15, 4], [16, 4], [17, 4], [18, 4], [19, 4], [20, 4], [21, 4], [22, 4], [23, 4], [24, 4], [25, 4], [26, 4], [27, 4], [28, 4], [29, 4], [30, 4], [31, 4], [32, 4], [33, 4], [34, 4], [35, 4], [36, 4], [37, 4], [38, 4], [39, 4], [40, 4]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,

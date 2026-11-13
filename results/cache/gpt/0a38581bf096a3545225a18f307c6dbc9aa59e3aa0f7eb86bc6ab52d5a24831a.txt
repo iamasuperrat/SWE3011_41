@@ -1,0 +1,47 @@
+To find a path from the start point [25, 25] to the goal point [43, 14] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [25, 25] (Confidence: 1)
+2. **Goal Point**: [43, 14] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [4, 48, 48]: This barrier is irrelevant as it is outside the range of our path.
+  - [27, 39, 49]: This barrier is also irrelevant as it is above our path.
+  - [20, 44, 44]: This barrier is irrelevant as it is above our path.
+  - [24, 5, 47]: This barrier is below our path.
+
+- **Vertical Barriers**:
+  - [45, 31, 31]: This barrier is irrelevant as it is to the right of our path.
+  - [49, 14, 26]: This barrier is irrelevant as it is to the right of our path.
+  - [33, 18, 30]: This barrier is relevant as it blocks part of the path.
+
+### Pathfinding:
+Starting from [25, 25], we can move towards the goal while avoiding the barriers. A potential path could be:
+- Move left to [25, 20]
+- Move left to [20, 20]
+- Move up to [20, 18]
+- Move right to [30, 18]
+- Move down to [30, 14]
+- Move right to [43, 14]
+
+### Generated Path:
+After analyzing the barriers and calculating the path, the generated path is:
+Generated Path: [[25, 25], [25, 20], [20, 20], [20, 18], [30, 18], [30, 14], [43, 14]]
+
+### Confidence Scores:
+- Start Point: 1
+- [25, 20]: 0.9 (close to barriers but still clear)
+- [20, 20]: 1 (clear path)
+- [20, 18]: 1 (clear path)
+- [30, 18]: 1 (clear path)
+- [30, 14]: 1 (clear path)
+- Goal Point: 1
+
+Thus, the confidence scores are:
+Waypoint Confidence: [1, 0.9, 1, 1, 1, 1, 1] 
+
+Final output:
+```
+Generated Path: [[25, 25], [25, 20], [20, 20], [20, 18], [30, 18], [30, 14], [43, 14]]
+Waypoint Confidence: [1, 0.9, 1, 1, 1, 1, 1]
+```

@@ -1,0 +1,41 @@
+To find a path from the start point [23, 23] to the goal point [11, 19] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [23, 23]
+2. **Goal Point**: [11, 19]
+3. **Horizontal Barriers**: [[6, 23, 47], [22, 14, 36]]
+4. **Vertical Barriers**: [[5, 3, 29], [37, 13, 25]]
+
+### Pathfinding Steps:
+- Starting at [23, 23], we need to move left and down towards the goal.
+- The first horizontal barrier at y=22 spans from x=14 to x=36, which means we can move down to y=21 and then navigate left.
+- We can move down to y=21, then to y=20, and then to y=19.
+- From [23, 21], we can move left to [22, 21], then to [21, 21], and continue left until we reach [11, 21].
+- Finally, we can move down to [11, 20] and then to [11, 19].
+
+### Generated Path:
+Following the above reasoning, the path can be constructed as follows:
+- Start at [23, 23]
+- Move to [22, 21]
+- Move to [21, 21]
+- Move to [20, 21]
+- Move to [19, 21]
+- Move to [18, 21]
+- Move to [17, 21]
+- Move to [16, 21]
+- Move to [15, 21]
+- Move to [14, 21]
+- Move to [13, 21]
+- Move to [12, 21]
+- Move to [11, 21]
+- Move down to [11, 20]
+- Finally, move down to [11, 19]
+
+Thus, the complete path is:
+Generated Path: [[23, 23], [22, 21], [21, 21], [20, 21], [19, 21], [18, 21], [17, 21], [16, 21], [15, 21], [14, 21], [13, 21], [12, 21], [11, 21], [11, 20], [11, 19]]
+
+### Confidence Scores:
+- Start and goal points have a confidence of 1.
+- Intermediate points are also considered valid waypoints with a confidence of 1.
+
+Thus, the confidence scores are:
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

@@ -1,0 +1,37 @@
+To find a path from the start point [14, 5] to the goal point [37, 23] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [4, 48, 48]: This barrier is irrelevant as it is outside the y-range of our start and goal points.
+  - [27, 39, 49]: This barrier is also irrelevant as it is outside the y-range of our start and goal points.
+  - [20, 44, 44]: This barrier is irrelevant as it is outside the y-range of our start and goal points.
+  - [24, 5, 47]: This barrier spans from y=5 to y=47, which will affect our path.
+
+- **Vertical Barriers**:
+  - [45, 31, 31]: This barrier is irrelevant as it is outside the x-range of our start and goal points.
+  - [49, 14, 26]: This barrier is irrelevant as it is outside the x-range of our start and goal points.
+  - [33, 18, 30]: This barrier is also irrelevant as it is outside the x-range of our start and goal points.
+
+### Pathfinding:
+Given the barriers, we can navigate from [14, 5] to [37, 23] while avoiding the horizontal barrier at y=5. 
+
+1. Start at [14, 5].
+2. Move to [14, 6] (up to avoid the horizontal barrier).
+3. Move to [20, 10] (moving diagonally towards the goal).
+4. Move to [30, 15] (continuing towards the goal).
+5. Finally, move to [37, 23] (reaching the goal).
+
+### Generated Path:
+The path can be represented as:
+Generated Path: [[14, 5], [14, 6], [20, 10], [30, 15], [37, 23]]
+
+### Confidence Scores:
+- Start Point [14, 5]: 1 (definitely useful)
+- Waypoint [14, 6]: 1 (definitely useful)
+- Waypoint [20, 10]: 1 (definitely useful)
+- Waypoint [30, 15]: 1 (definitely useful)
+- Goal Point [37, 23]: 1 (definitely useful)
+
+### Final Output:
+Generated Path: [[14, 5], [14, 6], [20, 10], [30, 15], [37, 23]]
+Waypoint Confidence: [1, 1, 1, 1, 1]

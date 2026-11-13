@@ -1,0 +1,36 @@
+To find a path from the start point [8, 23] to the goal point [45, 28] while navigating around the specified obstacles, we can analyze the barriers and determine a route that avoids them.
+
+### Analyzing the Barriers:
+1. **Horizontal Barriers**:
+   - [5, 49, 49]: This barrier is irrelevant as it is outside the y-range of the start and goal points.
+   - [6, 8, 39]: This barrier spans from y=6 to y=8, which affects the path.
+   - [19, 18, 36]: This barrier spans from y=19 to y=36, which also affects the path.
+
+2. **Vertical Barriers**:
+   - [22, 12, 18]: This barrier spans from x=22 to x=12, affecting the path.
+   - [44, 12, 30]: This barrier spans from x=44 to x=12, affecting the path.
+   - [21, 25, 30]: This barrier spans from x=21 to x=25, affecting the path.
+
+### Finding the Path:
+Starting from [8, 23], we can navigate around the barriers:
+- Move right to avoid the vertical barriers.
+- Move up to avoid the horizontal barriers.
+- Continue navigating towards the goal while avoiding the barriers.
+
+After analyzing the barriers and potential paths, a possible route could be:
+1. Start at [8, 23]
+2. Move to [15, 23] (right)
+3. Move to [15, 28] (up)
+4. Move to [45, 28] (right)
+
+### Generated Path:
+The generated path is:
+Generated Path: [[8, 23], [15, 23], [15, 28], [45, 28]]
+
+### Waypoint Confidence:
+- Start point [8, 23]: 1 (confident as the starting point)
+- Point [15, 23]: 1 (confident as it avoids barriers)
+- Point [15, 28]: 1 (confident as it avoids barriers)
+- Goal point [45, 28]: 1 (confident as the goal)
+
+Waypoint Confidence: [1, 1, 1, 1]

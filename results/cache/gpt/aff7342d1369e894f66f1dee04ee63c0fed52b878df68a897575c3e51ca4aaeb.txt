@@ -1,0 +1,31 @@
+To find a path from the start point [2, 8] to the goal point [18, 7] while avoiding the specified barriers, we can analyze the grid and navigate around the obstacles.
+
+1. Start at [2, 8].
+2. Move right to [3, 8].
+3. Move right to [4, 8].
+4. Move down to [4, 7].
+5. Move right to [5, 7].
+6. Move right to [6, 7].
+7. Move right to [7, 7].
+8. Move right to [8, 7].
+9. Move right to [9, 7].
+10. Move right to [10, 7].
+11. Move right to [11, 7].
+12. Move right to [12, 7].
+13. Move right to [13, 7].
+14. Move right to [14, 7].
+15. Move right to [15, 7].
+16. Move right to [16, 7].
+17. Move right to [17, 7].
+18. Finally, move right to [18, 7].
+
+This path avoids the horizontal barrier at y=4 and the vertical barrier at x=16.
+
+The generated path is:
+Generated Path: [[2, 8], [3, 8], [4, 8], [4, 7], [5, 7], [6, 7], [7, 7], [8, 7], [9, 7], [10, 7], [11, 7], [12, 7], [13, 7], [14, 7], [15, 7], [16, 7], [17, 7], [18, 7]]
+
+The confidence scores for each waypoint are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are part of a clear path.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

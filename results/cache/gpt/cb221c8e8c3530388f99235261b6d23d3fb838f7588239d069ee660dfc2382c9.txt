@@ -1,0 +1,36 @@
+To find a path from the start point [31, 14] to the goal point [41, 8], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [8, 45, 48]: This barrier is irrelevant as it does not intersect with the path.
+  - [25, 14, 34]: This barrier spans from (14, 25) to (34, 25) and will block any direct path at y=25.
+  - [20, 37, 44]: This barrier spans from (37, 20) to (44, 20) and will block any direct path at y=20.
+  - [13, 50, 51]: This barrier is irrelevant as it does not intersect with the path.
+
+- **Vertical Barriers**:
+  - [25, 18, 31]: This barrier spans from (18, 25) to (31, 25) and will block any direct path at x=25.
+  - [33, 4, 13]: This barrier spans from (4, 33) to (13, 33) and will block any direct path at x=33.
+
+### Pathfinding:
+1. Start at [31, 14].
+2. Move to [31, 25] (to avoid the vertical barrier at x=25).
+3. Move to [41, 25] (moving horizontally to the right).
+4. Move down to [41, 8] (moving vertically down to the goal).
+
+### Generated Path:
+The path taken is:
+- Start: [31, 14]
+- Move to: [31, 25]
+- Move to: [41, 25]
+- Move to: [41, 8] (Goal)
+
+Thus, the generated path is:
+Generated Path: [[31, 14], [31, 25], [41, 25], [41, 8]]
+
+### Confidence Scores:
+- Start Point [31, 14]: 1 (definitely a starting point)
+- Waypoint [31, 25]: 1 (clear path avoiding barriers)
+- Waypoint [41, 25]: 1 (clear path avoiding barriers)
+- Goal Point [41, 8]: 1 (definitely the goal)
+
+Waypoint Confidence: [1, 1, 1, 1]

@@ -1,0 +1,15 @@
+To navigate from the start point [30, 6] to the goal point [26, 21], we need to avoid the horizontal and vertical barriers provided. 
+
+1. Starting at [30, 6], we can move left to [29, 6].
+2. Then, we can move up to [29, 7] to avoid the vertical barrier at x=19.
+3. Next, we can move left to [28, 7], then continue left to [27, 7].
+4. From [27, 7], we can move up to [27, 8] and then to [27, 9].
+5. We can then move left to [26, 9] and continue moving up to [26, 10].
+6. Next, we can move up to [26, 11], then to [26, 12].
+7. We can then move up to [26, 13], and then to [26, 14].
+8. Finally, we can move up to [26, 15], then to [26, 16], and continue moving up to [26, 21] to reach the goal.
+
+The generated path is as follows:
+Generated Path: [[30, 6], [29, 6], [29, 7], [28, 7], [27, 7], [27, 8], [27, 9], [26, 9], [26, 10], [26, 11], [26, 12], [26, 13], [26, 14], [26, 15], [26, 16], [26, 21]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

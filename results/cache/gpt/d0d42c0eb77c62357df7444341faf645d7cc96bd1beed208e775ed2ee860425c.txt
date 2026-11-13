@@ -1,0 +1,65 @@
+To find a path from the start point [21, 27] to the goal point [48, 11] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [7, 47, 49]: This barrier is irrelevant as it is outside the y-range of our path.
+  - [25, 6, 43]: This barrier spans from y=25 to y=6, which will affect our path.
+
+- **Vertical Barriers**:
+  - [14, 24, 30]: This barrier spans from x=14, y=24 to y=30.
+  - [51, 8, 21]: This barrier is irrelevant as it is outside the x-range of our path.
+  - [26, 1, 1]: This barrier is irrelevant as it is outside the y-range of our path.
+  - [2, 17, 28]: This barrier is irrelevant as it is outside the x-range of our path.
+
+### Pathfinding:
+Starting from [21, 27], we can navigate around the barriers:
+1. Move right to [22, 27].
+2. Move down to [22, 26].
+3. Move down to [22, 25].
+4. Move down to [22, 24].
+5. Move right to [23, 24].
+6. Move down to [23, 23].
+7. Move down to [23, 22].
+8. Move down to [23, 21].
+9. Move down to [23, 20].
+10. Move down to [23, 19].
+11. Move down to [23, 18].
+12. Move down to [23, 17].
+13. Move down to [23, 16].
+14. Move down to [23, 15].
+15. Move down to [23, 14].
+16. Move down to [23, 13].
+17. Move down to [23, 12].
+18. Move down to [23, 11].
+19. Move right to [24, 11].
+20. Move right to [25, 11].
+21. Move right to [26, 11].
+22. Move right to [27, 11].
+23. Move right to [28, 11].
+24. Move right to [29, 11].
+25. Move right to [30, 11].
+26. Move right to [31, 11].
+27. Move right to [32, 11].
+28. Move right to [33, 11].
+29. Move right to [34, 11].
+30. Move right to [35, 11].
+31. Move right to [36, 11].
+32. Move right to [37, 11].
+33. Move right to [38, 11].
+34. Move right to [39, 11].
+35. Move right to [40, 11].
+36. Move right to [41, 11].
+37. Move right to [42, 11].
+38. Move right to [43, 11].
+39. Move right to [44, 11].
+40. Move right to [45, 11].
+41. Move right to [46, 11].
+42. Move right to [47, 11].
+43. Move right to [48, 11].
+
+### Final Path:
+The generated path is:
+Generated Path: [[21, 27], [22, 27], [22, 26], [22, 25], [22, 24], [23, 24], [23, 23], [23, 22], [23, 21], [23, 20], [23, 19], [23, 18], [23, 17], [23, 16], [23, 15], [23, 14], [23, 13], [23, 12], [23, 11], [24, 11], [25, 11], [26, 11], [27, 11], [28, 11], [29, 11], [30, 11], [31, 11], [32, 11], [33, 11], [34, 11], [35, 11], [36, 11], [37, 11], [38, 11], [39, 11], [40, 11], [41, 11], [42, 11], [43, 11], [44, 11], [45, 11], [46, 11], [47, 11], [48, 11]]
+
+### Confidence Scores:
+-

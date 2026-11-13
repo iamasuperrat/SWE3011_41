@@ -1,0 +1,39 @@
+To find a path from the start point [26, 26] to the goal point [31, 11], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [20, 28, 31]: This barrier spans horizontally from (28, 20) to (31, 20).
+  - [4, 9, 35]: This barrier spans horizontally from (9, 4) to (35, 4).
+  
+- **Vertical Barriers**: 
+  - [35, 21, 25]: This barrier spans vertically from (21, 35) to (25, 35).
+  - [6, 3, 26]: This barrier spans vertically from (3, 6) to (26, 6).
+  - [25, 10, 18]: This barrier spans vertically from (10, 25) to (18, 25).
+
+### Finding the Path:
+1. Start at [26, 26].
+2. Move left to avoid the vertical barrier at x=25.
+3. Move down to avoid the horizontal barrier at y=20.
+4. Navigate around the barriers to reach the goal.
+
+### Proposed Path:
+- Start at [26, 26]
+- Move to [26, 25]
+- Move to [26, 24]
+- Move to [26, 23]
+- Move to [26, 22]
+- Move to [26, 21]
+- Move to [31, 20] (navigating around the horizontal barrier)
+- Move to [31, 19]
+- Move to [31, 18]
+- Move to [31, 17]
+- Move to [31, 16]
+- Move to [31, 15]
+- Move to [31, 14]
+- Move to [31, 13]
+- Move to [31, 12]
+- Finally, move to [31, 11] (goal)
+
+### Final Path:
+Generated Path: [[26, 26], [26, 25], [26, 24], [26, 23], [26, 22], [26, 21], [31, 20], [31, 19], [31, 18], [31, 17], [31, 16], [31, 15], [31, 14], [31, 13], [31, 12], [31, 11]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 1]

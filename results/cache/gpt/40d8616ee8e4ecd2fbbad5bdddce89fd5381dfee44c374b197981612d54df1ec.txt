@@ -1,0 +1,38 @@
+To find the shortest path from the start point [16, 2] to the goal point [36, 5], while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [21, 31, 34]: This barrier spans from (31, 21) to (34, 21).
+  - [0, 26, 36]: This barrier spans from (26, 0) to (36, 0).
+  - [12, 9, 25]: This barrier spans from (9, 12) to (25, 12).
+  
+- **Vertical Barriers**:
+  - [32, 6, 16]: This barrier spans from (6, 32) to (16, 32).
+  - [3, 2, 15]: This barrier spans from (2, 3) to (15, 3).
+  - [17, 1, 25]: This barrier spans from (1, 17) to (25, 17).
+  - [50, 10, 10]: This barrier is a single point at (10, 50).
+
+### Pathfinding:
+Starting from [16, 2], we can navigate around the barriers to reach [36, 5]. The path can be constructed as follows:
+
+1. Start at [16, 2].
+2. Move to [20, 3] (avoiding the vertical barrier at x=3).
+3. Move to [25, 4] (staying clear of horizontal barriers).
+4. Finally, move to [36, 5].
+
+### Generated Path:
+The path identified is:
+- [16, 2]
+- [20, 3]
+- [25, 4]
+- [36, 5]
+
+### Confidence Scores:
+- Start Point [16, 2]: 1 (definitely useful)
+- Waypoint [20, 3]: 1 (clear path)
+- Waypoint [25, 4]: 1 (clear path)
+- Goal Point [36, 5]: 1 (definitely useful)
+
+### Final Output:
+Generated Path: [[16, 2], [20, 3], [25, 4], [36, 5]]
+Waypoint Confidence: [1, 1, 1, 1]

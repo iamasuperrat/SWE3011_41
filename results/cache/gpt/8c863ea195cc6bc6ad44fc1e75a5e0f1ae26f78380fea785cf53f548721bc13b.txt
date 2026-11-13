@@ -1,0 +1,23 @@
+To find a path from the start point [33, 12] to the goal point [31, 25] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [33, 12] (Confidence: 1)
+2. **Move Down** to [33, 13] (Confidence: 0.9)
+3. **Move Down** to [33, 14] (Confidence: 0.9)
+4. **Move Down** to [33, 15] (Confidence: 0.9)
+5. **Move Left** to [32, 15] (Confidence: 0.8)
+6. **Move Left** to [31, 15] (Confidence: 0.8)
+7. **Move Up** to [31, 16] (Confidence: 0.8)
+8. **Move Up** to [31, 17] (Confidence: 0.8)
+9. **Move Up** to [31, 18] (Confidence: 0.8)
+10. **Move Up** to [31, 19] (Confidence: 0.8)
+11. **Move Up** to [31, 20] (Confidence: 0.8)
+12. **Move Up** to [31, 21] (Confidence: 0.8)
+13. **Move Up** to [31, 22] (Confidence: 0.8)
+14. **Move Up** to [31, 23] (Confidence: 0.8)
+15. **Move Up** to [31, 24] (Confidence: 0.8)
+16. **Move Up** to [31, 25] (Goal Point, Confidence: 1)
+
+The generated path is as follows:
+
+Generated Path: [[33, 12], [33, 13], [33, 14], [33, 15], [32, 15], [31, 15], [31, 16], [31, 17], [31, 18], [31, 19], [31, 20], [31, 21], [31, 22], [31, 23], [31, 24], [31, 25]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 1]

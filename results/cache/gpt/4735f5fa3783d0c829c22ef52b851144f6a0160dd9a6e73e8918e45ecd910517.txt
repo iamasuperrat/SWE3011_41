@@ -1,0 +1,49 @@
+To find a path from the start point [39, 27] to the goal point [40, 13] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [39, 27] (confidence 1)
+2. **Goal Point**: [40, 13] (confidence 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**: 
+  - [29, 48, 49] (does not affect the path)
+  - [21, 34, 41] (does not affect the path)
+  - [24, 29, 47] (does not affect the path)
+  
+- **Vertical Barriers**:
+  - [37, 23, 31] (blocks movement from [37, 23] to [37, 31])
+  - [34, 18, 26] (blocks movement from [34, 18] to [34, 26])
+  - [11, 12, 14] (does not affect the path)
+
+### Pathfinding:
+Starting from [39, 27], we can move down to avoid the vertical barrier at x=37. The path can be constructed as follows:
+
+1. Move from [39, 27] to [39, 26]
+2. Move from [39, 26] to [39, 25]
+3. Move from [39, 25] to [39, 24]
+4. Move from [39, 24] to [39, 23]
+5. Move from [39, 23] to [38, 22]
+6. Move from [38, 22] to [37, 21]
+7. Move from [37, 21] to [36, 20]
+8. Move from [36, 20] to [35, 19]
+9. Move from [35, 19] to [34, 18] (this is blocked, so we need to adjust)
+10. Move from [36, 20] to [36, 19]
+11. Move from [36, 19] to [36, 18]
+12. Move from [36, 18] to [36, 17]
+13. Move from [36, 17] to [36, 16]
+14. Move from [36, 16] to [36, 15]
+15. Move from [36, 15] to [36, 14]
+16. Move from [36, 14] to [36, 13]
+17. Move from [36, 13] to [40, 13] (goal)
+
+### Final Path:
+The generated path is:
+- [[39, 27], [39, 26], [39, 25], [39, 24], [39, 23], [38, 22], [37, 21], [36, 20], [36, 19], [36, 18], [36, 17], [36, 16], [36, 15], [36, 14], [36, 13], [40, 13]]
+
+### Confidence Scores:
+- Start Point: 1
+- Intermediate Points: 0.8 (for points that are not blocked)
+- Goal Point: 1
+
+### Final Output:
+Generated Path: [[39, 27], [39, 26], [39, 25], [39, 24], [39, 23], [38, 22], [37, 21], [36, 20], [36, 19], [36, 18], [36, 17], [36, 16], [36, 15], [36, 14], [36, 13], [40, 13]]
+Waypoint Confidence: [1, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 1]

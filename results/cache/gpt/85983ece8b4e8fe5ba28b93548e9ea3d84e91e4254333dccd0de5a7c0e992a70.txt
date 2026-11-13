@@ -1,0 +1,36 @@
+To find a path from the start point [8, 4] to the goal point [32, 9] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Given Information:
+- **Start Point:** [8, 4]
+- **Goal Point:** [32, 9]
+- **Horizontal Barriers:** [[20, 14, 43]]
+- **Vertical Barriers:** [[15, 2, 31]]
+
+### Pathfinding Steps:
+1. **Start at [8, 4]**: This is our initial position.
+2. **Move right to [15, 4]**: This is just before the vertical barrier at x=15.
+3. **Move up to [15, 5]**: This allows us to navigate around the vertical barrier.
+4. **Move up to [15, 6]**: Continuing to navigate around the vertical barrier.
+5. **Move right to [20, 6]**: This is just before the horizontal barrier at y=14.
+6. **Move up to [20, 7]**: Continuing to navigate around the horizontal barrier.
+7. **Move right to [25, 7]**: Moving towards the goal while avoiding barriers.
+8. **Move right to [30, 7]**: Continuing towards the goal.
+9. **Move up to [30, 8]**: Getting closer to the goal.
+10. **Move right to [32, 9]**: Finally reaching the goal.
+
+### Generated Path:
+The path taken is:
+- [8, 4]
+- [15, 4]
+- [15, 5]
+- [15, 6]
+- [20, 6]
+- [20, 7]
+- [25, 7]
+- [30, 7]
+- [30, 8]
+- [32, 9]
+
+### Final Output:
+Generated Path: [[8, 4], [15, 4], [15, 5], [15, 6], [20, 6], [20, 7], [25, 7], [30, 7], [30, 8], [32, 9]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

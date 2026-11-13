@@ -1,0 +1,31 @@
+To navigate from the start point [5, 5] to the goal point [20, 20] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and find a suitable path.
+
+Given the barriers:
+- Horizontal Barriers: [[10, 0, 25], [15, 30, 50]]
+- Vertical Barriers: [[25, 10, 22]]
+
+The path must avoid crossing these barriers. 
+
+Starting from [5, 5], we can move right and up to navigate around the barriers. A possible path could be:
+1. Move right to [10, 5] (just before the horizontal barrier at y=10).
+2. Move up to [10, 10] (just before the horizontal barrier).
+3. Move right to [15, 10].
+4. Move up to [15, 15] (just before the next horizontal barrier).
+5. Move right to [20, 15].
+6. Move up to [20, 20] (goal).
+
+Thus, the generated path is:
+Generated Path: [[5, 5], [10, 5], [10, 10], [15, 10], [15, 15], [20, 15], [20, 20]]
+
+Now, assigning confidence scores:
+- Start Point: [5, 5] - Confidence: 1
+- [10, 5] - Confidence: 1 (clear path)
+- [10, 10] - Confidence: 1 (clear path)
+- [15, 10] - Confidence: 1 (clear path)
+- [15, 15] - Confidence: 1 (clear path)
+- [20, 15] - Confidence: 1 (clear path)
+- Goal Point: [20, 20] - Confidence: 1
+
+Thus, the final output is:
+Generated Path: [[5, 5], [10, 5], [10, 10], [15, 10], [15, 15], [20, 15], [20, 20]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1]

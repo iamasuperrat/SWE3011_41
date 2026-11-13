@@ -1,0 +1,36 @@
+To navigate from the start point [6, 21] to the goal point [19, 6], we need to avoid the horizontal barriers at y=8 (spanning x=12 to x=28) and y=13 (spanning x=1 to x=9), as well as the vertical barrier at x=24 (spanning y=26 to y=30). 
+
+1. Start at [6, 21].
+2. Move left to [6, 20] to avoid the horizontal barrier at y=8.
+3. Move down to [6, 19].
+4. Move down to [6, 18].
+5. Move down to [6, 17].
+6. Move down to [6, 16].
+7. Move down to [6, 15].
+8. Move down to [6, 14].
+9. Move down to [6, 13].
+10. Move down to [6, 12].
+11. Move right to [7, 12].
+12. Move right to [8, 12].
+13. Move right to [9, 12].
+14. Move right to [10, 12].
+15. Move right to [11, 12].
+16. Move right to [12, 12].
+17. Move down to [12, 11].
+18. Move down to [12, 10].
+19. Move down to [12, 9].
+20. Move down to [12, 8].
+21. Move down to [12, 7].
+22. Move down to [12, 6].
+23. Move right to [13, 6].
+24. Move right to [14, 6].
+25. Move right to [15, 6].
+26. Move right to [16, 6].
+27. Move right to [17, 6].
+28. Move right to [18, 6].
+29. Move right to [19, 6].
+
+This path avoids all obstacles and reaches the goal.
+
+Generated Path: [[6, 21], [6, 20], [6, 19], [6, 18], [6, 17], [6, 16], [6, 15], [6, 14], [6, 13], [6, 12], [7, 12], [8, 12], [9, 12], [10, 12], [11, 12], [12, 12], [12, 11], [12, 10], [12, 9], [12, 8], [12, 7], [12, 6], [13, 6], [14, 6], [15, 6], [16, 6], [17, 6], [18, 6], [19, 6]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

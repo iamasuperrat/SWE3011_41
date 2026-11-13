@@ -1,0 +1,67 @@
+To find a path from the start point [12, 8] to the goal point [44, 24] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [10, 12, 44]: This barrier spans from (12, 10) to (44, 10).
+  - [28, 23, 41]: This barrier spans from (23, 28) to (41, 28).
+
+- **Vertical Barriers**:
+  - [15, 14, 21]: This barrier spans from (14, 15) to (21, 15).
+  - [20, 28, 31]: This barrier spans from (28, 20) to (31, 20).
+  - [28, 13, 15]: This barrier spans from (13, 28) to (15, 28).
+
+### Pathfinding:
+1. Start at [12, 8].
+2. Move right to [12, 9] (safe).
+3. Move right to [12, 10] (blocked by horizontal barrier).
+4. Move up to [13, 9] (safe).
+5. Move up to [14, 9] (safe).
+6. Move up to [15, 9] (safe).
+7. Move up to [16, 9] (safe).
+8. Move right to [17, 9] (safe).
+9. Move right to [18, 9] (safe).
+10. Move right to [19, 9] (safe).
+11. Move up to [19, 10] (blocked).
+12. Move up to [19, 11] (safe).
+13. Move up to [19, 12] (safe).
+14. Move up to [19, 13] (safe).
+15. Move up to [19, 14] (safe).
+16. Move right to [20, 14] (safe).
+17. Move right to [21, 14] (safe).
+18. Move right to [22, 14] (safe).
+19. Move right to [23, 14] (safe).
+20. Move right to [24, 14] (safe).
+21. Move right to [25, 14] (safe).
+22. Move right to [26, 14] (safe).
+23. Move right to [27, 14] (safe).
+24. Move right to [28, 14] (safe).
+25. Move up to [28, 15] (blocked).
+26. Move up to [28, 16] (safe).
+27. Move up to [28, 17] (safe).
+28. Move up to [28, 18] (safe).
+29. Move up to [28, 19] (safe).
+30. Move right to [29, 19] (safe).
+31. Move right to [30, 19] (safe).
+32. Move right to [31, 19] (safe).
+33. Move right to [32, 19] (safe).
+34. Move right to [33, 19] (safe).
+35. Move right to [34, 19] (safe).
+36. Move right to [35, 19] (safe).
+37. Move right to [36, 19] (safe).
+38. Move right to [37, 19] (safe).
+39. Move right to [38, 19] (safe).
+40. Move right to [39, 19] (safe).
+41. Move right to [40, 19] (safe).
+42. Move right to [41, 19] (safe).
+43. Move right to [42, 19] (safe).
+44. Move right to [43, 19] (safe).
+45. Move right to [44, 19] (safe).
+46. Move up to [44, 20] (safe).
+47. Move up to [44, 21] (safe).
+48. Move up to [44, 22] (safe).
+49. Move up to [44, 23] (safe).
+50. Move up to [44, 24] (goal).
+
+### Generated Path:
+The generated path is:
+Generated Path: [[12, 8], [12, 9], [13, 9], [14, 9], [15, 9], [16, 9], [17, 9], [18, 9], [19, 9], [19, 11], [19, 12], [19, 13], [19, 14], [

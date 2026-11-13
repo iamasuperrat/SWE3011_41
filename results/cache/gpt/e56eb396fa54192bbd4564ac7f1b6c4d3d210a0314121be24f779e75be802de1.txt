@@ -1,0 +1,36 @@
+To navigate from the start point [26, 25] to the goal point [18, 10] while avoiding the specified obstacles, we will analyze the barriers and determine a suitable path.
+
+1. **First Iteration on [26, 25]**:
+   - The horizontal barrier at y=24 spans x=14 to x=40, which does not directly block the path to the goal.
+   - However, the vertical barrier at x=26 spans y=30 to y=31 blocks any downward movement.
+   - To navigate around the barriers, we can move left and down.
+   - **Selected Point**: [25, 24]
+   - **Evaluation**: This point is just below the horizontal barrier and allows for further movement.
+
+2. **Second Iteration on [25, 24]**:
+   - The horizontal barrier at y=24 does not block movement to the left.
+   - We can move left to avoid the vertical barrier at x=21.
+   - **Selected Point**: [20, 24]
+   - **Evaluation**: This point is clear of barriers and allows for further movement downwards.
+
+3. **Third Iteration on [20, 24]**:
+   - The path downward is clear, and we can move towards the goal.
+   - **Selected Point**: [20, 20]
+   - **Evaluation**: This point is still clear of barriers and allows for further movement downwards.
+
+4. **Fourth Iteration on [20, 20]**:
+   - The path to the left is clear, and we can move towards the goal.
+   - **Selected Point**: [18, 10]
+   - **Evaluation**: This point is the goal and is reachable without encountering barriers.
+
+The generated path is:
+Generated Path: [[26, 25], [25, 24], [20, 24], [20, 20], [18, 10]]
+
+The confidence scores for each waypoint are as follows:
+- Start Point: [26, 25] - Confidence: 1
+- Point: [25, 24] - Confidence: 0.9 (good position, but close to barriers)
+- Point: [20, 24] - Confidence: 0.9 (clear path)
+- Point: [20, 20] - Confidence: 1 (clear path to goal)
+- Goal Point: [18, 10] - Confidence: 1 (goal reached)
+
+Waypoint Confidence: [1, 0.9, 0.9, 1, 1]

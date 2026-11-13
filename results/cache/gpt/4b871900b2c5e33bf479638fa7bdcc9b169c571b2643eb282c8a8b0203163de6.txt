@@ -1,0 +1,17 @@
+To navigate from the start point [3, 16] to the goal point [11, 28], we need to avoid the horizontal barriers at y=9 and y=24, as well as the vertical barriers at x=30, x=4, and x=50. 
+
+1. Start at [3, 16].
+2. Move upward to avoid the horizontal barrier at y=9.
+3. Move right towards the goal while avoiding the vertical barriers.
+4. Finally, reach the goal at [11, 28].
+
+A possible path could be:
+- Start at [3, 16]
+- Move to [3, 20] (upward)
+- Move to [7, 24] (right and upward)
+- Move to [11, 28] (right and upward)
+
+This path avoids all obstacles and reaches the goal.
+
+Generated Path: [[3, 16], [3, 20], [7, 24], [11, 28]]
+Waypoint Confidence: [1, 1, 1, 1]

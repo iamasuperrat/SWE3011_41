@@ -1,0 +1,51 @@
+To navigate from the start point [7, 8] to the goal point [44, 9], we need to avoid the specified horizontal and vertical barriers. 
+
+1. Starting at [7, 8], we can move right to [8, 8].
+2. Continuing right, we can move to [9, 8], [10, 8], and so on, until we reach [27, 8].
+3. At [27, 8], we need to move up to avoid the horizontal barrier at y=27. We can move to [27, 9].
+4. From [27, 9], we can move right to [28, 9], then to [29, 9], and continue moving right until we reach [44, 9].
+
+The generated path is as follows:
+- Start at [7, 8]
+- Move to [8, 8]
+- Move to [9, 8]
+- Move to [10, 8]
+- Move to [11, 8]
+- Move to [12, 8]
+- Move to [13, 8]
+- Move to [14, 8]
+- Move to [15, 8]
+- Move to [16, 8]
+- Move to [17, 8]
+- Move to [18, 8]
+- Move to [19, 8]
+- Move to [20, 8]
+- Move to [21, 8]
+- Move to [22, 8]
+- Move to [23, 8]
+- Move to [24, 8]
+- Move to [25, 8]
+- Move to [26, 8]
+- Move to [27, 8]
+- Move to [27, 9]
+- Move to [28, 9]
+- Move to [29, 9]
+- Move to [30, 9]
+- Move to [31, 9]
+- Move to [32, 9]
+- Move to [33, 9]
+- Move to [34, 9]
+- Move to [35, 9]
+- Move to [36, 9]
+- Move to [37, 9]
+- Move to [38, 9]
+- Move to [39, 9]
+- Move to [40, 9]
+- Move to [41, 9]
+- Move to [42, 9]
+- Move to [43, 9]
+- Finally, move to [44, 9]
+
+The final generated path is:
+Generated Path: [[7, 8], [8, 8], [9, 8], [10, 8], [11, 8], [12, 8], [13, 8], [14, 8], [15, 8], [16, 8], [17, 8], [18, 8], [19, 8], [20, 8], [21, 8], [22, 8], [23, 8], [24, 8], [25, 8], [26, 8], [27, 8], [27, 9], [28, 9], [29, 9], [30, 9], [31, 9], [32, 9], [33, 9], [34, 9], [35, 9], [36, 9], [37, 9], [38, 9], [39, 9], [40, 9], [41, 9], [42, 9], [43, 9], [44, 9]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

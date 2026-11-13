@@ -1,0 +1,65 @@
+To find a path from the start point [47, 9] to the goal point [24, 25] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [27, 28, 45]: This barrier spans horizontally from (28, 27) to (45, 27).
+  - [8, 42, 42]: This barrier spans horizontally from (42, 8) to (42, 8).
+  - [10, 42, 51]: This barrier spans horizontally from (42, 10) to (51, 10).
+
+- **Vertical Barriers**:
+  - [0, 20, 26]: This barrier spans vertically from (0, 20) to (0, 26).
+  - [16, 27, 29]: This barrier spans vertically from (16, 27) to (16, 29).
+
+### Pathfinding:
+Starting from [47, 9], we need to navigate around the barriers to reach [24, 25]. 
+
+1. Move left to avoid the vertical barriers.
+2. Navigate downwards and then left to reach the goal.
+
+### Generated Path:
+After analyzing the grid and avoiding the barriers, the path can be constructed as follows:
+- Start at [47, 9]
+- Move to [46, 9]
+- Move to [45, 9]
+- Move to [44, 9]
+- Move to [43, 9]
+- Move to [42, 9]
+- Move to [41, 9]
+- Move to [40, 9]
+- Move to [39, 9]
+- Move to [38, 9]
+- Move to [37, 9]
+- Move to [36, 9]
+- Move to [35, 9]
+- Move to [34, 9]
+- Move to [33, 9]
+- Move to [32, 9]
+- Move to [31, 9]
+- Move to [30, 9]
+- Move to [29, 9]
+- Move to [28, 9]
+- Move to [27, 9]
+- Move to [26, 9]
+- Move to [25, 9]
+- Move to [24, 10]
+- Move to [24, 11]
+- Move to [24, 12]
+- Move to [24, 13]
+- Move to [24, 14]
+- Move to [24, 15]
+- Move to [24, 16]
+- Move to [24, 17]
+- Move to [24, 18]
+- Move to [24, 19]
+- Move to [24, 20]
+- Move to [24, 21]
+- Move to [24, 22]
+- Move to [24, 23]
+- Move to [24, 24]
+- Move to [24, 25]
+
+This path avoids all barriers and reaches the goal.
+
+### Final Output:
+Generated Path: [[47, 9], [46, 9], [45, 9], [44, 9], [43, 9], [42, 9], [41, 9], [40, 9], [39, 9], [38, 9], [37, 9], [36, 9], [35, 9], [34, 9], [33, 9], [32, 9], [31, 9], [30, 9], [29, 9], [28, 9], [27, 9], [26, 9], [25, 9], [24, 10], [24, 11], [24, 12], [24, 13], [24, 14], [24, 15], [24, 16], [24, 17], [24, 18], [24, 19], [24, 20], [24, 21], [24, 22], [24, 23], [24, 24], [24, 25]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 

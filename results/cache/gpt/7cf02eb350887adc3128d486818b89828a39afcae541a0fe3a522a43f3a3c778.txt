@@ -1,0 +1,20 @@
+To find a path from the start point [18, 5] to the goal point [11, 6] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. Start at [18, 5].
+2. Move left to [17, 5].
+3. Move left to [16, 5].
+4. Move left to [15, 5].
+5. Move left to [14, 5].
+6. Move up to [14, 6].
+7. Move left to [13, 6].
+8. Move left to [12, 6].
+9. Move left to [11, 6] (goal).
+
+The generated path is:
+Generated Path: [[18, 5], [17, 5], [16, 5], [15, 5], [14, 5], [14, 6], [13, 6], [12, 6], [11, 6]]
+
+Now, let's assign confidence scores to each waypoint:
+- Start and goal points have a confidence of 1.
+- Intermediate points are assigned a confidence of 0.9, as they are clear of obstacles.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

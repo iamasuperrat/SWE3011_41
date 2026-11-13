@@ -1,0 +1,45 @@
+To find a path from the start point [31, 3] to the goal point [47, 11] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [31, 3] (Confidence: 1)
+2. **Goal Point**: [47, 11] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [13, 35, 50]: This barrier is located at y = 13, spanning from x = 35 to x = 50.
+  - [28, 39, 41]: This barrier is located at y = 28, spanning from x = 39 to x = 41.
+
+- **Vertical Barriers**:
+  - [47, 19, 29]: This barrier is located at x = 47, spanning from y = 19 to y = 29.
+  - [35, 5, 20]: This barrier is located at x = 35, spanning from y = 5 to y = 20.
+
+### Pathfinding:
+Starting from [31, 3], we can move right and up to avoid the barriers. The following path is generated:
+
+1. Move from [31, 3] to [32, 4]
+2. Move from [32, 4] to [33, 5]
+3. Move from [33, 5] to [34, 6]
+4. Move from [34, 6] to [35, 7]
+5. Move from [35, 7] to [36, 8]
+6. Move from [36, 8] to [37, 9]
+7. Move from [37, 9] to [38, 10]
+8. Move from [38, 10] to [39, 11]
+9. Move from [39, 11] to [40, 12]
+10. Move from [40, 12] to [41, 13]
+11. Move from [41, 13] to [42, 14]
+12. Move from [42, 14] to [43, 15]
+13. Move from [43, 15] to [44, 16]
+14. Move from [44, 16] to [45, 17]
+15. Move from [45, 17] to [46, 18]
+16. Move from [46, 18] to [47, 11] (goal)
+
+### Final Path:
+The generated path is:
+Generated Path: [[31, 3], [32, 4], [33, 5], [34, 6], [35, 7], [36, 8], [37, 9], [38, 10], [39, 11], [40, 12], [41, 13], [42, 14], [43, 15], [44, 16], [45, 17], [46, 18], [47, 11]]
+
+### Confidence Scores:
+- Start Point: 1
+- Intermediate Points: 0.9 (for navigating around barriers)
+- Goal Point: 1
+
+Thus, the confidence scores for the waypoints are:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

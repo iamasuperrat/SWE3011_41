@@ -1,0 +1,38 @@
+To find the shortest path from the start point [10, 6] to the goal point [31, 18] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [10, 6] (Confidence: 1)
+2. **Goal Point**: [31, 18] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [16, 50, 51]: This barrier does not affect the path since it is above the goal.
+  - [11, 38, 41]: This barrier does not affect the path since it is below the start.
+  - [3, 35, 49]: This barrier does not affect the path since it is below the start.
+  - [15, 21, 48]: This barrier affects the path between y=15 and y=21.
+
+- **Vertical Barriers**:
+  - [42, 15, 30]: This barrier does not affect the path since it is to the right of the goal.
+  - [42, 0, 2]: This barrier does not affect the path since it is to the right of the goal.
+
+### Pathfinding:
+Starting from [10, 6], we can navigate to the right and upwards while avoiding the barriers. A potential path could be:
+
+1. Move right to [20, 6]
+2. Move up to [20, 10]
+3. Move right to [31, 10]
+4. Move up to [31, 18]
+
+### Generated Path:
+The generated path is:
+Generated Path: [[10, 6], [20, 6], [20, 10], [31, 10], [31, 18]]
+
+### Confidence Scores:
+- Start Point: 1
+- [20, 6]: 0.9 (confident it's a good waypoint)
+- [20, 10]: 0.9 (confident it's a good waypoint)
+- [31, 10]: 0.9 (confident it's a good waypoint)
+- Goal Point: 1
+
+### Final Output:
+Generated Path: [[10, 6], [20, 6], [20, 10], [31, 10], [31, 18]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 1]

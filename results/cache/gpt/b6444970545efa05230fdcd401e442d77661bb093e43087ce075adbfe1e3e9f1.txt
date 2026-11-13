@@ -1,0 +1,45 @@
+To find a path from the start point [30, 11] to the goal point [30, 27], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [13, 8, 50] (y = 13 from x = 8 to x = 50)
+  - [12, 35, 44] (y = 12 from x = 35 to x = 44)
+  
+- **Vertical Barriers**: 
+  - [43, 17, 21] (x = 43 from y = 17 to y = 21)
+  - [13, 3, 20] (x = 13 from y = 3 to y = 20)
+
+### Pathfinding:
+1. Start at [30, 11].
+2. Move vertically up to avoid the horizontal barrier at y = 13.
+3. Move horizontally to the right to avoid the vertical barrier at x = 13.
+4. Continue moving vertically up to reach the goal at [30, 27].
+
+### Generated Path:
+Following the above logic, the path can be constructed as follows:
+- Start at [30, 11]
+- Move to [30, 12] (up)
+- Move to [30, 13] (up)
+- Move to [30, 14] (up)
+- Move to [30, 15] (up)
+- Move to [30, 16] (up)
+- Move to [30, 17] (up)
+- Move to [30, 18] (up)
+- Move to [30, 19] (up)
+- Move to [30, 20] (up)
+- Move to [30, 21] (up)
+- Move to [30, 22] (up)
+- Move to [30, 23] (up)
+- Move to [30, 24] (up)
+- Move to [30, 25] (up)
+- Move to [30, 26] (up)
+- Finally, move to [30, 27] (up)
+
+Thus, the generated path is:
+Generated Path: [[30, 11], [30, 12], [30, 13], [30, 14], [30, 15], [30, 16], [30, 17], [30, 18], [30, 19], [30, 20], [30, 21], [30, 22], [30, 23], [30, 24], [30, 25], [30, 26], [30, 27]]
+
+### Waypoint Confidence:
+- The start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are directly on the path and avoid obstacles.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

@@ -1,0 +1,49 @@
+To find a path from the start point [3, 16] to the goal point [11, 28] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [3, 16] (confidence 1)
+2. **Goal Point**: [11, 28] (confidence 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**: 
+  - [9, 41, 43]: This barrier is above the start and goal points, so it does not affect the path.
+  - [24, 6, 48]: This barrier is also above the start and goal points, so it does not affect the path.
+
+- **Vertical Barriers**:
+  - [30, 24, 28]: This barrier is to the right of the start and goal points, so it does not affect the path.
+  - [4, 1, 12]: This barrier is to the left of the start point, so it will affect the path.
+  - [50, 17, 17]: This barrier is far to the right and does not affect the path.
+  - [50, 9, 11]: This barrier is also far to the right and does not affect the path.
+
+### Pathfinding:
+Given the barriers, we can navigate as follows:
+- Move from [3, 16] to [4, 16] (to avoid the vertical barrier).
+- Move up to [4, 17].
+- Move up to [4, 18].
+- Move up to [4, 19].
+- Move right to [5, 19].
+- Move right to [6, 19].
+- Move right to [7, 19].
+- Move right to [8, 19].
+- Move right to [9, 19].
+- Move up to [9, 20].
+- Move up to [9, 21].
+- Move up to [9, 22].
+- Move up to [9, 23].
+- Move up to [9, 24].
+- Move right to [10, 24].
+- Move right to [11, 24].
+- Move up to [11, 25].
+- Move up to [11, 26].
+- Move up to [11, 27].
+- Move up to [11, 28] (goal).
+
+### Generated Path:
+The generated path is:
+Generated Path: [[3, 16], [4, 16], [4, 17], [4, 18], [4, 19], [5, 19], [6, 19], [7, 19], [8, 19], [9, 19], [9, 20], [9, 21], [9, 22], [9, 23], [9, 24], [10, 24], [11, 24], [11, 25], [11, 26], [11, 27], [11, 28]]
+
+### Waypoint Confidence:
+The confidence scores for each waypoint are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9 as they are part of the path but not the start or goal.
+
+Waypoint Confidence: [1, 1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

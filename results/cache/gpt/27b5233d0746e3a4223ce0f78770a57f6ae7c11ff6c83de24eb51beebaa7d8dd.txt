@@ -1,0 +1,52 @@
+To find a path from the start point [20, 14] to the goal point [5, 8] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [20, 14] (confidence 1)
+2. **Goal Point**: [5, 8] (confidence 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [13, 19, 40]: This barrier spans from y=19 to y=40, blocking any movement through y=19.
+  - [26, 10, 46]: This barrier spans from y=10 to y=46, blocking any movement through y=10.
+  - [24, 2, 15]: This barrier spans from y=2 to y=15, blocking any movement through y=2.
+
+- **Vertical Barriers**:
+  - [1, 16, 18]: This barrier spans from x=1 to x=18, blocking any movement through x=1.
+  - [12, 13, 29]: This barrier spans from x=12 to x=29, blocking any movement through x=12.
+  - [14, 2, 25]: This barrier spans from x=14 to x=25, blocking any movement through x=14.
+
+### Pathfinding:
+Starting from [20, 14], we can move left and down to navigate around the barriers. The path can be constructed as follows:
+
+1. Move left to [19, 14]
+2. Move left to [18, 14]
+3. Move left to [17, 14]
+4. Move left to [16, 14]
+5. Move down to [16, 13]
+6. Move down to [16, 12]
+7. Move left to [15, 12]
+8. Move left to [14, 12]
+9. Move down to [14, 11]
+10. Move down to [14, 10]
+11. Move left to [13, 10]
+12. Move down to [13, 9]
+13. Move left to [12, 9]
+14. Move down to [12, 8]
+15. Move left to [11, 8]
+16. Move left to [10, 8]
+17. Move left to [9, 8]
+18. Move left to [8, 8]
+19. Move left to [7, 8]
+20. Move left to [6, 8]
+21. Move left to [5, 8] (goal)
+
+### Final Path:
+The generated path is:
+Generated Path: [[20, 14], [19, 14], [18, 14], [17, 14], [16, 14], [16, 13], [16, 12], [15, 12], [14, 12], [14, 11], [14, 10], [13, 10], [13, 9], [12, 9], [12, 8], [11, 8], [10, 8], [9, 8], [8, 8], [7, 8], [6, 8], [5, 8]]
+
+### Confidence Scores:
+- Start Point: 1
+- Intermediate Points: 0.9 (for points that are not blocked and are useful)
+- Goal Point: 1
+
+Thus, the confidence scores for the waypoints are:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

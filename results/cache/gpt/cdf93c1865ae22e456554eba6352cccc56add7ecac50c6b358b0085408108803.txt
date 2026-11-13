@@ -1,0 +1,37 @@
+To find a path from the start point [4, 9] to the goal point [29, 13] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [4, 9] (confidence 1)
+2. **Goal Point**: [29, 13] (confidence 1)
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [16, 26, 41]: This barrier spans from y=16, x=26 to x=41.
+  - [21, 24, 32]: This barrier spans from y=21, x=24 to x=32.
+  
+- **Vertical Barriers**:
+  - [28, 2, 23]: This barrier spans from x=28, y=2 to y=23.
+  - [12, 30, 30]: This barrier spans from x=12, y=30 to y=30.
+
+### Pathfinding:
+Starting from [4, 9], we can navigate right and up while avoiding the barriers. The path can be constructed as follows:
+
+1. Move right to [10, 9] (confidence 0.9)
+2. Move right to [15, 9] (confidence 0.9)
+3. Move up to [15, 10] (confidence 0.9)
+4. Move right to [20, 10] (confidence 0.9)
+5. Move right to [25, 10] (confidence 0.9)
+6. Move up to [25, 11] (confidence 0.9)
+7. Move right to [29, 13] (confidence 1)
+
+### Generated Path:
+The generated path is:
+Generated Path: [[4, 9], [10, 9], [15, 9], [15, 10], [20, 10], [25, 10], [25, 11], [29, 13]]
+
+### Waypoint Confidence:
+The confidence scores for each waypoint are:
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1] 
+
+Thus, the final output is:
+
+Generated Path: [[4, 9], [10, 9], [15, 9], [15, 10], [20, 10], [25, 10], [25, 11], [29, 13]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

@@ -1,0 +1,32 @@
+To navigate from the start point [45, 5] to the goal point [35, 13], we need to avoid the horizontal barrier at y=11 spanning x=28 to x=41. 
+
+1. Start at [45, 5].
+2. Move left to [44, 5], then continue left to [43, 5], [42, 5], [41, 5], [40, 5], [39, 5], [38, 5], [37, 5], and finally to [36, 5].
+3. From [36, 5], move up to [36, 6], [36, 7], [36, 8], [36, 9], [36, 10], and then to [36, 11] to bypass the horizontal barrier.
+4. Move left to [35, 11], then down to [35, 10], [35, 9], [35, 8], and finally to [35, 7].
+5. Move down to [35, 6], then to [35, 5], and finally to [35, 4].
+6. Move left to [34, 4], then to [33, 4], and finally to [32, 4].
+7. Move up to [32, 5], then to [32, 6], and finally to [32, 7].
+8. Move left to [31, 7], then to [30, 7], and finally to [29, 7].
+9. Move down to [29, 6], then to [29, 5], and finally to [29, 4].
+10. Move left to [28, 4], then to [27, 4], and finally to [26, 4].
+11. Move up to [26, 5], then to [26, 6], and finally to [26, 7].
+12. Move left to [25, 7], then to [24, 7], and finally to [23, 7].
+13. Move down to [23, 6], then to [23, 5], and finally to [23, 4].
+14. Move left to [22, 4], then to [21, 4], and finally to [20, 4].
+15. Move up to [20, 5], then to [20, 6], and finally to [20, 7].
+16. Move left to [19, 7], then to [18, 7], and finally to [17, 7].
+17. Move down to [17, 6], then to [17, 5], and finally to [17, 4].
+18. Move left to [16, 4], then to [15, 4], and finally to [14, 4].
+19. Move up to [14, 5], then to [14, 6], and finally to [14, 7].
+20. Move left to [13, 7], then to [12, 7], and finally to [11, 7].
+21. Move down to [11, 6], then to [11, 5], and finally to [11, 4].
+22. Move left to [10, 4], then to [9, 4], and finally to [8, 4].
+23. Move up to [8, 5], then to [8, 6], and finally to [8, 7].
+24. Move left to [7, 7], then to [6, 7], and finally to [5, 7].
+25. Move down to [5, 6], then to [5, 5], and finally to [5, 4].
+26. Move left to [4, 4].
+
+The generated path is as follows:
+
+Generated Path: [[45, 5], [44, 5], [43, 5], [42, 5], [41, 5], [40, 5], [39, 5], [38, 5], [37, 5], [36, 5], [36, 6], [36, 7], [36, 8], [36, 9], [36, 10], [36, 11], [35, 11], [35, 10], [35, 9], [35, 8], [35, 7], [35, 6], [35, 5], [35, 4], [34, 4], [33, 4], [32, 4], [32, 5], [32, 6],

@@ -1,0 +1,51 @@
+To find a path from the start point [39, 16] to the goal point [29, 3] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [11, 12, 46]: This barrier spans from (12, 11) to (46, 11).
+  - [4, 2, 50]: This barrier spans from (2, 4) to (50, 4).
+  - [8, 31, 43]: This barrier spans from (31, 8) to (43, 8).
+  - [28, 33, 47]: This barrier spans from (33, 28) to (47, 28).
+
+- **Vertical Barriers**:
+  - [5, 13, 25]: This barrier spans from (13, 5) to (25, 5).
+  - [26, 17, 19]: This barrier spans from (17, 26) to (19, 26).
+  - [15, 13, 30]: This barrier spans from (13, 15) to (30, 15).
+  - [46, 27, 31]: This barrier spans from (27, 46) to (31, 46).
+
+### Pathfinding:
+Starting from [39, 16], we can navigate around the barriers as follows:
+1. Move left to [38, 16].
+2. Move left to [37, 16].
+3. Move left to [36, 16].
+4. Move left to [35, 16].
+5. Move left to [34, 16].
+6. Move down to [34, 15].
+7. Move down to [34, 14].
+8. Move left to [33, 14].
+9. Move down to [33, 13].
+10. Move left to [32, 13].
+11. Move down to [32, 12].
+12. Move left to [31, 12].
+13. Move down to [31, 11].
+14. Move left to [30, 11].
+15. Move down to [30, 10].
+16. Move left to [29, 10].
+17. Move down to [29, 9].
+18. Move down to [29, 8].
+19. Move down to [29, 7].
+20. Move down to [29, 6].
+21. Move down to [29, 5].
+22. Move down to [29, 4].
+23. Move down to [29, 3] (goal).
+
+### Generated Path:
+The generated path is:
+Generated Path: [[39, 16], [38, 16], [37, 16], [36, 16], [35, 16], [34, 16], [34, 15], [34, 14], [33, 14], [33, 13], [32, 13], [32, 12], [31, 12], [31, 11], [30, 11], [30, 10], [29, 10], [29, 9], [29, 8], [29, 7], [29, 6], [29, 5], [29, 4], [29, 3]]
+
+### Waypoint Confidence:
+The confidence scores for each waypoint are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are part of the path but may have slight uncertainty due to proximity to barriers.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

@@ -1,0 +1,41 @@
+To find a path from the start point [35, 16] to the goal point [43, 7], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [11, 12, 46]: This barrier spans horizontally from y=11 to y=46.
+  - [4, 2, 50]: This barrier spans horizontally from y=4 to y=50.
+  - [8, 31, 43]: This barrier spans horizontally from y=31 to y=43.
+  - [28, 33, 47]: This barrier spans horizontally from y=28 to y=47.
+
+- **Vertical Barriers**:
+  - [5, 13, 25]: This barrier spans vertically from x=5 to x=25.
+  - [26, 17, 19]: This barrier spans vertically from x=26 to x=19.
+  - [15, 13, 30]: This barrier spans vertically from x=15 to x=30.
+  - [46, 27, 31]: This barrier spans vertically from x=46 to x=31.
+
+### Pathfinding:
+1. Start at [35, 16].
+2. Move to [36, 15] (clear of barriers).
+3. Move to [37, 14] (clear of barriers).
+4. Move to [38, 13] (clear of barriers).
+5. Move to [39, 12] (clear of barriers).
+6. Move to [40, 11] (clear of barriers).
+7. Move to [41, 10] (clear of barriers).
+8. Move to [42, 9] (clear of barriers).
+9. Finally, move to [43, 7] (goal).
+
+### Generated Path:
+The path taken is:
+- [35, 16]
+- [36, 15]
+- [37, 14]
+- [38, 13]
+- [39, 12]
+- [40, 11]
+- [41, 10]
+- [42, 9]
+- [43, 7]
+
+### Final Output:
+Generated Path: [[35, 16], [36, 15], [37, 14], [38, 13], [39, 12], [40, 11], [41, 10], [42, 9], [43, 7]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1]

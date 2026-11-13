@@ -1,0 +1,64 @@
+To find a path from the start point [31, 1] to the goal point [41, 27] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [31, 1] (Confidence: 1)
+2. **Goal Point**: [41, 27] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**:
+  - [24, 35, 43]: This barrier spans from y=24, x=35 to x=43.
+  - [22, 36, 48]: This barrier spans from y=22, x=36 to x=48.
+  - [17, 12, 33]: This barrier spans from y=17, x=12 to x=33.
+  
+- **Vertical Barriers**:
+  - [37, 14, 26]: This barrier spans from x=37, y=14 to y=26.
+  - [27, 14, 26]: This barrier spans from x=27, y=14 to y=26.
+
+### Pathfinding:
+Starting from [31, 1], we can navigate around the barriers as follows:
+1. Move right to [32, 1]
+2. Move right to [33, 1]
+3. Move right to [34, 1]
+4. Move up to [34, 2]
+5. Move up to [34, 3]
+6. Move up to [34, 4]
+7. Move up to [34, 5]
+8. Move up to [34, 6]
+9. Move up to [34, 7]
+10. Move up to [34, 8]
+11. Move right to [35, 8]
+12. Move right to [36, 8]
+13. Move right to [37, 8]
+14. Move up to [37, 9]
+15. Move up to [37, 10]
+16. Move up to [37, 11]
+17. Move up to [37, 12]
+18. Move up to [37, 13]
+19. Move right to [38, 13]
+20. Move right to [39, 13]
+21. Move right to [40, 13]
+22. Move up to [40, 14]
+23. Move up to [40, 15]
+24. Move up to [40, 16]
+25. Move up to [40, 17]
+26. Move up to [40, 18]
+27. Move up to [40, 19]
+28. Move up to [40, 20]
+29. Move up to [40, 21]
+30. Move up to [40, 22]
+31. Move up to [40, 23]
+32. Move up to [40, 24]
+33. Move up to [40, 25]
+34. Move up to [40, 26]
+35. Move up to [40, 27]
+36. Move right to [41, 27] (Goal)
+
+### Generated Path:
+The generated path is:
+Generated Path: [[31, 1], [32, 1], [33, 1], [34, 1], [34, 2], [34, 3], [34, 4], [34, 5], [34, 6], [34, 7], [34, 8], [35, 8], [36, 8], [37, 8], [37, 9], [37, 10], [37, 11], [37, 12], [37, 13], [38, 13], [39, 13], [40, 13], [40, 14], [40, 15], [40, 16], [40, 17], [40, 18], [40, 19], [40, 20], [40, 21], [40, 22], [40, 23], [40, 24], [40, 25], [40, 26], [40, 27], [41, 27]]
+
+### Waypoint Confidence:
+The confidence scores for the waypoints are as follows:
+- Start and goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are part of a clear path avoiding obstacles.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,

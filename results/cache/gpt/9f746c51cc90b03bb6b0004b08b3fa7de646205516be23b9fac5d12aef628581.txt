@@ -1,0 +1,28 @@
+To navigate from the start point [28, 25] to the goal point [48, 22], we need to consider the horizontal and vertical barriers provided.
+
+1. **First Iteration on [28, 25]**:
+   - The horizontal barrier at y=19 spans x=18 to x=39, which blocks a direct path to the goal.
+   - To bypass this barrier, we can move to the right and then down.
+   - **Selected Point**: [39, 25]
+   - **Evaluation**: This point is clear of barriers and allows us to navigate around the horizontal barrier.
+
+2. **Second Iteration on [39, 25]**:
+   - The vertical barrier at x=39 spans y=27 to y=30, which blocks downward movement.
+   - We need to move to the right to avoid this barrier.
+   - **Selected Point**: [40, 25]
+   - **Evaluation**: This point is clear and allows us to continue moving toward the goal.
+
+3. **Third Iteration on [40, 25]**:
+   - The vertical barrier at x=39 is still present, but we can move down to y=22, which is clear.
+   - **Selected Point**: [40, 22]
+   - **Evaluation**: This point is unobstructed and brings us closer to the goal.
+
+4. **Fourth Iteration on [40, 22]**:
+   - From here, we can move directly to the goal since there are no barriers obstructing the path.
+   - **Selected Point**: [48, 22]
+   - **Evaluation**: The path to the goal is clear from here.
+
+The generated path is:
+Generated Path: [[28, 25], [39, 25], [40, 25], [40, 22], [48, 22]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1]

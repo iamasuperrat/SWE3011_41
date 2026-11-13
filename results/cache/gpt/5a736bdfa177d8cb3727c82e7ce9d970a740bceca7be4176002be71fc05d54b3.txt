@@ -1,0 +1,50 @@
+To find a path from the start point [30, 26] to the goal point [21, 8] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [30, 26] (Confidence: 1)
+2. **Goal Point**: [21, 8] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**: [[8, 27, 44]] indicates a barrier from (27, 8) to (44, 8).
+- **Vertical Barriers**: [[5, 2, 5], [44, 28, 30], [26, 18, 28]] indicates barriers at x=5 from y=2 to y=5, at x=44 from y=28 to y=30, and at x=26 from y=18 to y=28.
+
+### Pathfinding:
+Starting from [30, 26], we can move left towards the goal while avoiding the barriers. The path can be constructed as follows:
+
+1. Move left to [29, 26]
+2. Move left to [28, 26]
+3. Move left to [27, 26]
+4. Move down to [27, 25]
+5. Move down to [27, 24]
+6. Move left to [26, 24]
+7. Move down to [26, 23]
+8. Move left to [25, 23]
+9. Move down to [25, 22]
+10. Move left to [24, 22]
+11. Move down to [24, 21]
+12. Move left to [23, 21]
+13. Move down to [23, 20]
+14. Move left to [22, 20]
+15. Move down to [22, 19]
+16. Move left to [21, 19]
+17. Move down to [21, 18]
+18. Move down to [21, 17]
+19. Move down to [21, 16]
+20. Move down to [21, 15]
+21. Move down to [21, 14]
+22. Move down to [21, 13]
+23. Move down to [21, 12]
+24. Move down to [21, 11]
+25. Move down to [21, 10]
+26. Move down to [21, 9]
+27. Move down to [21, 8] (Goal)
+
+### Generated Path:
+The generated path is:
+Generated Path: [[30, 26], [29, 26], [28, 26], [27, 26], [27, 25], [27, 24], [26, 24], [26, 23], [25, 23], [25, 22], [24, 22], [24, 21], [23, 21], [23, 20], [22, 20], [22, 19], [21, 19], [21, 18], [21, 17], [21, 16], [21, 15], [21, 14], [21, 13], [21, 12], [21, 11], [21, 10], [21, 9], [21, 8]]
+
+### Waypoint Confidence:
+The confidence scores for each waypoint are as follows:
+- Start and Goal points have a confidence of 1.
+- Intermediate points have a confidence of 0.9, as they are part of the path but not guaranteed to be optimal.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

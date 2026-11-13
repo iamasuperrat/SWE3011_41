@@ -1,0 +1,33 @@
+To find a path from the start point [22, 21] to the goal point [37, 1], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: [[11, 28, 41]]
+  - This barrier spans from y=28 to y=41, affecting the path if we try to go through this y-coordinate.
+  
+- **Vertical Barriers**: [[21, 30, 31]]
+  - This barrier spans from x=21 at y=30 to y=31, blocking any movement through this x-coordinate.
+
+### Pathfinding:
+1. Start at [22, 21].
+2. Move right to avoid the vertical barrier at x=21. The next possible x-coordinate is 22.
+3. Move up to y=28 to avoid the horizontal barrier.
+4. Move right to x=37 while staying below y=28.
+5. Finally, move down to reach the goal at [37, 1].
+
+### Generated Path:
+Following this reasoning, the path can be constructed as follows:
+- Start at [22, 21]
+- Move to [22, 28] (to avoid the horizontal barrier)
+- Move to [37, 28] (to move towards the goal)
+- Move down to [37, 1] (to reach the goal)
+
+Thus, the generated path is:
+Generated Path: [[22, 21], [22, 28], [37, 28], [37, 1]]
+
+### Confidence Scores:
+- Start Point [22, 21]: 1 (definitely useful)
+- Point [22, 28]: 1 (definitely useful)
+- Point [37, 28]: 1 (definitely useful)
+- Goal Point [37, 1]: 1 (definitely useful)
+
+Waypoint Confidence: [1, 1, 1, 1]

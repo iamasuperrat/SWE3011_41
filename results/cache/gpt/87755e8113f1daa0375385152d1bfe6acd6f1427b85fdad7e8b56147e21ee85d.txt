@@ -1,0 +1,47 @@
+To navigate from the start point [27, 9] to the goal point [49, 25], we need to avoid the horizontal and vertical barriers provided. 
+
+1. **Start Point**: [27, 9] (confidence 1)
+2. **Move Right**: We can move to [28, 9] as it is clear of barriers.
+3. **Move Right**: Next, we can move to [29, 9].
+4. **Move Right**: Continue to [30, 9].
+5. **Move Up**: Move to [30, 10] to avoid the horizontal barrier at y=22.
+6. **Move Up**: Move to [30, 11].
+7. **Move Up**: Move to [30, 12].
+8. **Move Up**: Move to [30, 13].
+9. **Move Up**: Move to [30, 14].
+10. **Move Right**: Move to [31, 14].
+11. **Move Right**: Move to [32, 14].
+12. **Move Right**: Move to [33, 14].
+13. **Move Up**: Move to [33, 15] to avoid the vertical barrier.
+14. **Move Up**: Move to [33, 16].
+15. **Move Up**: Move to [33, 17].
+16. **Move Up**: Move to [33, 18].
+17. **Move Up**: Move to [33, 19].
+18. **Move Up**: Move to [33, 20].
+19. **Move Up**: Move to [33, 21].
+20. **Move Up**: Move to [33, 22].
+21. **Move Right**: Move to [34, 22].
+22. **Move Right**: Move to [35, 22].
+23. **Move Right**: Move to [36, 22].
+24. **Move Right**: Move to [37, 22].
+25. **Move Right**: Move to [38, 22].
+26. **Move Right**: Move to [39, 22].
+27. **Move Right**: Move to [40, 22].
+28. **Move Right**: Move to [41, 22].
+29. **Move Right**: Move to [42, 22].
+30. **Move Right**: Move to [43, 22].
+31. **Move Right**: Move to [44, 22].
+32. **Move Right**: Move to [45, 22].
+33. **Move Right**: Move to [46, 22].
+34. **Move Right**: Move to [47, 22].
+35. **Move Right**: Move to [48, 22].
+36. **Move Up**: Move to [48, 23].
+37. **Move Up**: Move to [48, 24].
+38. **Move Up**: Move to [48, 25].
+39. **Move Right**: Move to [49, 25] (goal).
+
+The generated path is as follows:
+
+Generated Path: [[27, 9], [28, 9], [29, 9], [30, 9], [30, 10], [30, 11], [30, 12], [30, 13], [30, 14], [31, 14], [32, 14], [33, 14], [33, 15], [33, 16], [33, 17], [33, 18], [33, 19], [33, 20], [33, 21], [33, 22], [34, 22], [35, 22], [36, 22], [37, 22], [38, 22], [39, 22], [40, 22], [41, 22], [42, 22], [43, 22], [44, 22], [45, 22], [46, 22], [47, 22], [48, 22], [48, 23], [48, 24], [48, 25], [49, 25]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,

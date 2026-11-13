@@ -1,0 +1,56 @@
+To find a path from the start point [7, 23] to the goal point [49, 17] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. Start at [7, 23].
+2. Move right to [8, 23].
+3. Move right to [9, 23].
+4. Move right to [10, 23].
+5. Move down to [10, 22].
+6. Move down to [10, 21].
+7. Move down to [10, 20].
+8. Move down to [10, 19].
+9. Move right to [11, 19].
+10. Move right to [12, 19].
+11. Move right to [13, 19].
+12. Move right to [14, 19].
+13. Move right to [15, 19].
+14. Move right to [16, 19].
+15. Move right to [17, 19].
+16. Move right to [18, 19].
+17. Move down to [18, 18].
+18. Move down to [18, 17].
+19. Move right to [19, 17].
+20. Move right to [20, 17].
+21. Move right to [21, 17].
+22. Move right to [22, 17].
+23. Move right to [23, 17].
+24. Move right to [24, 17].
+25. Move right to [25, 17].
+26. Move right to [26, 17].
+27. Move right to [27, 17].
+28. Move right to [28, 17].
+29. Move right to [29, 17].
+30. Move right to [30, 17].
+31. Move right to [31, 17].
+32. Move right to [32, 17].
+33. Move right to [33, 17].
+34. Move right to [34, 17].
+35. Move right to [35, 17].
+36. Move right to [36, 17].
+37. Move right to [37, 17].
+38. Move right to [38, 17].
+39. Move right to [39, 17].
+40. Move right to [40, 17].
+41. Move right to [41, 17].
+42. Move right to [42, 17].
+43. Move right to [43, 17].
+44. Move right to [44, 17].
+45. Move right to [45, 17].
+46. Move right to [46, 17].
+47. Move right to [47, 17].
+48. Move right to [48, 17].
+49. Move right to [49, 17].
+
+The generated path is as follows:
+
+Generated Path: [[7, 23], [8, 23], [9, 23], [10, 23], [10, 22], [10, 21], [10, 20], [10, 19], [11, 19], [12, 19], [13, 19], [14, 19], [15, 19], [16, 19], [17, 19], [18, 19], [18, 18], [18, 17], [19, 17], [20, 17], [21, 17], [22, 17], [23, 17], [24, 17], [25, 17], [26, 17], [27, 17], [28, 17], [29, 17], [30, 17], [31, 17], [32, 17], [33, 17], [34, 17], [35, 17], [36, 17], [37, 17], [38, 17], [39, 17], [40, 17], [41, 17], [42, 17], [43, 17], [44, 17], [45, 17], [46, 17], [47, 17], [48, 17], [49, 17]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,

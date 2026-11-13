@@ -1,0 +1,80 @@
+To find a path from the start point [1, 4] to the goal point [46, 6] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [9, 41, 43]: This barrier spans horizontally from (41, 9) to (43, 9).
+  - [24, 6, 48]: This barrier spans horizontally from (6, 24) to (48, 24).
+
+- **Vertical Barriers**:
+  - [30, 24, 28]: This barrier spans vertically from (24, 30) to (28, 30).
+  - [4, 1, 12]: This barrier spans vertically from (1, 4) to (12, 4).
+  - [50, 17, 17]: This barrier spans vertically at x=50 from (17, 50) to (17, 50).
+  - [50, 9, 11]: This barrier spans vertically at x=50 from (9, 50) to (11, 50).
+
+### Pathfinding:
+Starting from [1, 4], we can navigate around the vertical barrier at x=4 and the horizontal barrier at y=24. The goal is to reach [46, 6].
+
+1. Start at [1, 4].
+2. Move right to [2, 4] (avoiding the vertical barrier).
+3. Continue moving right to [3, 4].
+4. Move up to [3, 5].
+5. Move right to [4, 5].
+6. Move up to [4, 6].
+7. Move right to [5, 6].
+8. Move up to [5, 7].
+9. Move right to [6, 7].
+10. Move up to [6, 8].
+11. Move right to [7, 8].
+12. Move up to [7, 9].
+13. Move right to [8, 9].
+14. Move up to [8, 10].
+15. Move right to [9, 10].
+16. Move up to [9, 11].
+17. Move right to [10, 11].
+18. Move up to [10, 12].
+19. Move right to [11, 12].
+20. Move up to [11, 13].
+21. Move right to [12, 13].
+22. Move up to [12, 14].
+23. Move right to [13, 14].
+24. Move up to [13, 15].
+25. Move right to [14, 15].
+26. Move up to [14, 16].
+27. Move right to [15, 16].
+28. Move up to [15, 17].
+29. Move right to [16, 17].
+30. Move up to [16, 18].
+31. Move right to [17, 18].
+32. Move up to [17, 19].
+33. Move right to [18, 19].
+34. Move up to [18, 20].
+35. Move right to [19, 20].
+36. Move up to [19, 21].
+37. Move right to [20, 21].
+38. Move up to [20, 22].
+39. Move right to [21, 22].
+40. Move up to [21, 23].
+41. Move right to [22, 23].
+42. Move up to [22, 24].
+43. Move right to [23, 24].
+44. Move up to [23, 25].
+45. Move right to [24, 25].
+46. Move up to [24, 26].
+47. Move right to [25, 26].
+48. Move up to [25, 27].
+49. Move right to [26, 27].
+50. Move up to [26, 28].
+51. Move right to [27, 28].
+52. Move up to [27, 29].
+53. Move right to [28, 29].
+54. Move up to [28, 30].
+55. Move right to [29, 30].
+56. Move up to [29, 31].
+57. Move right to [30, 31].
+58. Move up to [30, 32].
+59. Move right to [31, 32].
+60. Move up to [31, 33].
+61. Move right to [32, 33].
+62. Move up to [32, 34].
+63. Move right to [33, 34].
+64. Move up to [33, 

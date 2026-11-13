@@ -1,0 +1,29 @@
+To find a path from the start point [17, 4] to the goal point [6, 14] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. Start at [17, 4].
+2. Move left to [16, 4].
+3. Move left to [15, 4].
+4. Move down to [15, 5].
+5. Move down to [15, 6].
+6. Move left to [14, 6].
+7. Move left to [13, 6].
+8. Move down to [13, 7].
+9. Move down to [13, 8].
+10. Move left to [12, 8].
+11. Move left to [11, 8].
+12. Move down to [11, 9].
+13. Move down to [11, 10].
+14. Move left to [10, 10].
+15. Move down to [10, 11].
+16. Move down to [10, 12].
+17. Move left to [9, 12].
+18. Move down to [9, 13].
+19. Move left to [8, 13].
+20. Move down to [8, 14].
+21. Move left to [7, 14].
+22. Move left to [6, 14] (goal).
+
+The generated path is:
+Generated Path: [[17, 4], [16, 4], [15, 4], [15, 5], [15, 6], [14, 6], [13, 6], [13, 7], [13, 8], [12, 8], [11, 8], [11, 9], [11, 10], [10, 10], [10, 11], [10, 12], [9, 12], [9, 13], [8, 13], [8, 14], [7, 14], [6, 14]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

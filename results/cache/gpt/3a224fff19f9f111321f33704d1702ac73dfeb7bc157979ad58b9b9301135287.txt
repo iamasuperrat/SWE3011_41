@@ -1,0 +1,44 @@
+To find a path from the start point [19, 20] to the goal point [24, 15], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [27, 30, 43]: This barrier is above the start and goal points, so it does not affect the path.
+  - [0, 14, 45]: This barrier is below the start point and does not affect the path.
+
+- **Vertical Barriers**:
+  - [23, 12, 25]: This barrier is directly to the right of the start point and will block movement to the right.
+  - [16, 28, 30]: This barrier is above the goal point and does not affect the path.
+
+### Pathfinding:
+1. Start at [19, 20].
+2. Move left to avoid the vertical barrier at x=23. The next point can be [19, 19].
+3. Move left again to [19, 18].
+4. Move down to [19, 17].
+5. Move down to [19, 16].
+6. Move down to [19, 15].
+7. Move right to [20, 15].
+8. Move right to [21, 15].
+9. Move right to [22, 15].
+10. Move right to [23, 15].
+11. Finally, move right to [24, 15] (goal).
+
+### Generated Path:
+The path from start to goal is:
+- [[19, 20], [19, 19], [19, 18], [19, 17], [19, 16], [19, 15], [20, 15], [21, 15], [22, 15], [23, 15], [24, 15]]
+
+### Confidence Scores:
+- Start Point: [19, 20] - Confidence: 1
+- [19, 19] - Confidence: 0.9 (close to the barrier)
+- [19, 18] - Confidence: 0.9 (close to the barrier)
+- [19, 17] - Confidence: 0.9 (close to the barrier)
+- [19, 16] - Confidence: 0.9 (close to the barrier)
+- [19, 15] - Confidence: 0.9 (close to the barrier)
+- [20, 15] - Confidence: 1 (clear path)
+- [21, 15] - Confidence: 1 (clear path)
+- [22, 15] - Confidence: 1 (clear path)
+- [23, 15] - Confidence: 1 (clear path)
+- Goal Point: [24, 15] - Confidence: 1
+
+### Final Output:
+Generated Path: [[19, 20], [19, 19], [19, 18], [19, 17], [19, 16], [19, 15], [20, 15], [21, 15], [22, 15], [23, 15], [24, 15]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 0.9, 1, 1, 1, 1, 1]

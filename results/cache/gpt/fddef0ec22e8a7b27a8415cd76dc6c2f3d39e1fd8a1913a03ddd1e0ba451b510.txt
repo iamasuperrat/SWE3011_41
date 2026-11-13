@@ -1,0 +1,17 @@
+To find a path from the start point [3, 1] to the goal point [28, 17] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [3, 1] (Confidence: 1)
+2. **Navigate Right**: Move to [6, 1] (Confidence: 0.9) - This is just before the horizontal barrier at y=6.
+3. **Move Up**: Move to [6, 5] (Confidence: 0.8) - This is above the horizontal barrier.
+4. **Move Right**: Move to [10, 5] (Confidence: 0.8) - Clear path to the right.
+5. **Move Up**: Move to [10, 10] (Confidence: 0.7) - Clear path upwards.
+6. **Move Right**: Move to [14, 10] (Confidence: 0.7) - Clear path to the right.
+7. **Move Up**: Move to [14, 15] (Confidence: 0.6) - Clear path upwards.
+8. **Move Right**: Move to [18, 15] (Confidence: 0.6) - Clear path to the right.
+9. **Move Up**: Move to [18, 17] (Confidence: 0.9) - Clear path upwards.
+10. **Move Right**: Move to [28, 17] (Confidence: 1) - Reached the goal.
+
+The generated path is as follows:
+
+Generated Path: [[3, 1], [6, 1], [6, 5], [10, 5], [10, 10], [14, 10], [14, 15], [18, 15], [18, 17], [28, 17]]
+Waypoint Confidence: [1, 0.9, 0.8, 0.8, 0.7, 0.7, 0.6, 0.6, 0.9, 1]

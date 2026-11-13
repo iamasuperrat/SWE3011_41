@@ -1,0 +1,20 @@
+To navigate from the start point [2, 3] to the goal point [18, 8] while avoiding the specified barriers, we can follow these steps:
+
+1. **Start Point**: [2, 3]
+   - This point is the starting position, and we have full confidence in it.
+   - **Confidence**: 1
+
+2. **First Iteration**: 
+   - The horizontal barrier at y=7 spans x=0 to x=10, blocking a direct path. 
+   - We can move to the right and slightly up to bypass this barrier.
+   - **Selected Point**: [11, 6]
+   - **Confidence**: 1
+
+3. **Second Iteration**: 
+   - From [11, 6], the path to the goal is clear as there are no barriers directly obstructing the route.
+   - **Selected Point**: [18, 8]
+   - **Confidence**: 1
+
+The generated path is as follows:
+Generated Path: [[2, 3], [11, 6], [18, 8]]
+Waypoint Confidence: [1, 1, 1]

@@ -1,0 +1,46 @@
+To find a path from the start point [33, 4] to the goal point [48, 21] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [33, 4] (confidence 1)
+2. **Navigate around barriers**:
+   - The horizontal barriers at y=7 (from x=13 to x=20) and y=13 (from x=36 to x=44) will require us to move vertically around them.
+   - The vertical barriers at x=34 (from y=9 to y=13) and x=49 (from y=11 to y=27) also need to be avoided.
+
+3. **Pathfinding**:
+   - Move right to [34, 4] (avoid vertical barrier at x=34).
+   - Move up to [34, 9] (just below the vertical barrier).
+   - Move right to [35, 9].
+   - Move up to [35, 10].
+   - Move right to [36, 10].
+   - Move up to [36, 11].
+   - Move right to [37, 11].
+   - Move up to [37, 12].
+   - Move right to [38, 12].
+   - Move up to [38, 13].
+   - Move right to [39, 13].
+   - Move up to [39, 14].
+   - Move right to [40, 14].
+   - Move up to [40, 15].
+   - Move right to [41, 15].
+   - Move up to [41, 16].
+   - Move right to [42, 16].
+   - Move up to [42, 17].
+   - Move right to [43, 17].
+   - Move up to [43, 18].
+   - Move right to [44, 18].
+   - Move up to [44, 19].
+   - Move right to [45, 19].
+   - Move up to [45, 20].
+   - Move right to [46, 20].
+   - Move up to [46, 21].
+   - Move right to [47, 21].
+   - Finally, move to the goal at [48, 21].
+
+4. **Generated Path**:
+The path can be summarized as follows:
+Generated Path: [[33, 4], [34, 4], [34, 9], [35, 9], [35, 10], [36, 10], [36, 11], [37, 11], [37, 12], [38, 12], [38, 13], [39, 13], [39, 14], [40, 14], [40, 15], [41, 15], [41, 16], [42, 16], [42, 17], [43, 17], [43, 18], [44, 18], [44, 19], [45, 19], [45, 20], [46, 20], [46, 21], [47, 21], [48, 21]]
+
+5. **Confidence Scores**:
+- Start and goal points have a confidence of 1.
+- Intermediate points will have a confidence of 0.9, as they are strategically chosen to avoid barriers.
+
+Waypoint Confidence: [1, 1, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 1]

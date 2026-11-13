@@ -1,0 +1,18 @@
+To navigate from the start point [33, 28] to the goal point [22, 7], we need to avoid the horizontal barriers and the vertical barrier while finding the shortest path.
+
+1. Start at [33, 28].
+2. Move left to [32, 28] to avoid the vertical barrier at x=2.
+3. Move down to [32, 20] to avoid the horizontal barrier at y=30.
+4. Move left to [30, 20].
+5. Move down to [30, 10] to avoid the horizontal barrier at y=17.
+6. Move left to [28, 10].
+7. Move down to [28, 8].
+8. Move left to [26, 8].
+9. Move down to [26, 7].
+10. Move left to [24, 7].
+11. Move down to [22, 7] (goal).
+
+The generated path is:
+Generated Path: [[33, 28], [32, 28], [32, 20], [30, 20], [30, 10], [28, 10], [28, 8], [26, 8], [26, 7], [24, 7], [22, 7]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

@@ -1,0 +1,51 @@
+To find a path from the start point [2, 13] to the goal point [19, 1] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [25, 21, 45]: This barrier does not affect the path since it is beyond the goal point.
+  - [2, 7, 23]: This barrier spans from (2, 7) to (2, 23), blocking vertical movement at x = 2 between y = 7 and y = 23.
+  - [8, 26, 34]: This barrier does not affect the path since it is beyond the goal point.
+
+- **Vertical Barriers**:
+  - [22, 0, 15]: This barrier does not affect the path since it is beyond the goal point.
+  - [3, 26, 26]: This barrier does not affect the path since it is beyond the goal point.
+  - [3, 23, 25]: This barrier does not affect the path since it is beyond the goal point.
+
+### Pathfinding:
+Starting from [2, 13], we need to navigate around the horizontal barrier at x = 2. The only way to move is to the right (to x = 3 or higher) and then downwards towards the goal.
+
+1. Move to [3, 13]: This is a valid move.
+2. Move to [3, 12]: This is a valid move.
+3. Move to [3, 11]: This is a valid move.
+4. Move to [3, 10]: This is a valid move.
+5. Move to [3, 9]: This is a valid move.
+6. Move to [3, 8]: This is a valid move.
+7. Move to [3, 7]: This is a valid move.
+8. Move to [4, 6]: This is a valid move.
+9. Move to [5, 5]: This is a valid move.
+10. Move to [6, 4]: This is a valid move.
+11. Move to [7, 3]: This is a valid move.
+12. Move to [8, 2]: This is a valid move.
+13. Move to [9, 1]: This is a valid move.
+14. Move to [19, 1]: This is the goal.
+
+### Generated Path:
+The path can be summarized as follows:
+- Start at [2, 13]
+- Move to [3, 13]
+- Move to [3, 12]
+- Move to [3, 11]
+- Move to [3, 10]
+- Move to [3, 9]
+- Move to [3, 8]
+- Move to [4, 6]
+- Move to [5, 5]
+- Move to [6, 4]
+- Move to [7, 3]
+- Move to [8, 2]
+- Move to [9, 1]
+- Move to [19, 1]
+
+### Final Output:
+Generated Path: [[2, 13], [3, 13], [3, 12], [3, 11], [3, 10], [3, 9], [3, 8], [4, 6], [5, 5], [6, 4], [7, 3], [8, 2], [9, 1], [19, 1]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

@@ -1,0 +1,23 @@
+To find a path from the start point [43, 22] to the goal point [18, 8], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: [[20, 14, 43]]
+  - This barrier spans from y=20 to y=43 horizontally across x=20.
+- **Vertical Barriers**: [[15, 2, 31]]
+  - This barrier spans from x=15 to x=31 vertically across y=2.
+
+### Pathfinding:
+1. Start at [43, 22].
+2. Move left to avoid the vertical barrier at x=15. We can move to [15, 22].
+3. Move down to [15, 14] to avoid the horizontal barrier at y=20.
+4. Move left to [14, 14].
+5. Move down to [14, 8] to reach the goal y-coordinate.
+6. Finally, move left to the goal point [18, 8].
+
+### Generated Path:
+The path taken is:
+- [43, 22] → [15, 22] → [15, 14] → [14, 14] → [14, 8] → [18, 8]
+
+### Final Output:
+Generated Path: [[43, 22], [15, 22], [15, 14], [14, 14], [14, 8], [18, 8]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.9, 0.9, 1]

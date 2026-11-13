@@ -1,0 +1,42 @@
+To find a path from the start point [24, 2] to the goal point [26, 26] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**:
+  - [8, 45, 48]: This barrier is irrelevant as it is outside the range of our path.
+  - [25, 14, 34]: This barrier spans from (25, 14) to (25, 34).
+  - [20, 37, 44]: This barrier is also irrelevant as it is outside the range of our path.
+  - [13, 50, 51]: This barrier is irrelevant as it is outside the range of our path.
+
+- **Vertical Barriers**:
+  - [25, 18, 31]: This barrier spans from (25, 18) to (25, 31).
+  - [33, 4, 13]: This barrier is irrelevant as it is outside the range of our path.
+
+### Pathfinding:
+Starting from [24, 2], we can move right to [25, 2], then we need to navigate upwards to avoid the vertical barrier at x=25. We can move to [25, 3], then [25, 4], and continue moving up until we reach [25, 17]. From there, we can move left to [24, 17] and then up to [24, 18]. Finally, we can move right to [26, 26].
+
+### Generated Path:
+Following this analysis, the path can be constructed as follows:
+1. Start at [24, 2]
+2. Move to [25, 2]
+3. Move to [25, 3]
+4. Move to [25, 4]
+5. Move to [25, 5]
+6. Move to [25, 6]
+7. Move to [25, 7]
+8. Move to [25, 8]
+9. Move to [25, 9]
+10. Move to [25, 10]
+11. Move to [25, 11]
+12. Move to [25, 12]
+13. Move to [25, 13]
+14. Move to [25, 14]
+15. Move to [25, 15]
+16. Move to [25, 16]
+17. Move to [25, 17]
+18. Move to [24, 17]
+19. Move to [24, 18]
+20. Move to [26, 26]
+
+### Final Output:
+Generated Path: [[24, 2], [25, 2], [25, 3], [25, 4], [25, 5], [25, 6], [25, 7], [25, 8], [25, 9], [25, 10], [25, 11], [25, 12], [25, 13], [25, 14], [25, 15], [25, 16], [25, 17], [24, 17], [24, 18], [26, 26]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

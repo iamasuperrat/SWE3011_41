@@ -1,0 +1,12 @@
+To navigate from the start point [14, 14] to the goal point [38, 17], we need to avoid the horizontal and vertical barriers provided. 
+
+1. **Start Point**: [14, 14] - Confidence: 1
+2. **Move Right**: We can move to [20, 14] to avoid the vertical barriers and stay clear of the horizontal barriers.
+3. **Move Up**: Next, we can move to [20, 16] to avoid the horizontal barrier at y=8.
+4. **Move Right**: Then, we can move to [30, 16] to bypass the vertical barrier at x=37.
+5. **Move Up**: Finally, we can move to [38, 17] to reach the goal.
+
+The generated path is:
+Generated Path: [[14, 14], [20, 14], [20, 16], [30, 16], [38, 17]]
+
+Waypoint Confidence: [1, 1, 1, 1, 1]

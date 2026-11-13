@@ -1,0 +1,38 @@
+To find the shortest path from the start point [25, 25] to the goal point [34, 10] while navigating around the specified obstacles, we can analyze the barriers and determine a viable route.
+
+1. **Start Point**: [25, 25] (Confidence: 1)
+2. **Goal Point**: [34, 10] (Confidence: 1)
+
+### Analyzing Barriers:
+- **Horizontal Barriers**: 
+  - [9, 41, 43]: This barrier does not affect the path since it is above the start and goal points.
+  - [24, 6, 48]: This barrier runs horizontally at y=24, which will affect the path.
+
+- **Vertical Barriers**:
+  - [30, 24, 28]: This barrier runs vertically at x=30, affecting the path.
+  - [4, 1, 12]: This barrier does not affect the path since it is far left.
+  - [50, 17, 17]: This barrier does not affect the path since it is far right.
+  - [50, 9, 11]: This barrier does not affect the path since it is far right.
+
+### Pathfinding:
+Given the barriers, we can navigate around them. A potential path could be:
+- Start at [25, 25]
+- Move to [26, 24] (just below the horizontal barrier at y=24)
+- Move to [31, 24] (to the right, avoiding the vertical barrier at x=30)
+- Move down to [31, 10] (to get closer to the goal)
+- Finally, move to [34, 10] (the goal)
+
+### Generated Path:
+The path can be represented as:
+Generated Path: [[25, 25], [26, 24], [31, 24], [31, 10], [34, 10]]
+
+### Confidence Scores:
+- [25, 25]: 1 (Start)
+- [26, 24]: 0.9 (Close to horizontal barrier but clear)
+- [31, 24]: 0.9 (Clear path)
+- [31, 10]: 0.95 (Close to goal, clear path)
+- [34, 10]: 1 (Goal)
+
+### Final Output:
+Generated Path: [[25, 25], [26, 24], [31, 24], [31, 10], [34, 10]]
+Waypoint Confidence: [1, 0.9, 0.9, 0.95, 1]

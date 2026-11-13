@@ -1,0 +1,54 @@
+To find a path from the start point [48, 25] to the goal point [41, 16] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [0, 45, 47]: This barrier is at y=0, spanning x=45 to x=47.
+  - [21, 5, 20]: This barrier is at y=21, spanning x=5 to x=20.
+  
+- **Vertical Barriers**:
+  - [43, 10, 19]: This barrier is at x=43, spanning y=10 to y=19.
+  - [26, 25, 31]: This barrier is at x=26, spanning y=25 to y=31.
+  - [50, 7, 14]: This barrier is at x=50, spanning y=7 to y=14.
+
+### Pathfinding:
+1. Start at [48, 25].
+2. Move left to [47, 25] (clear path).
+3. Move left to [46, 25] (clear path).
+4. Move left to [45, 25] (clear path).
+5. Move down to [45, 24] (clear path).
+6. Move down to [45, 23] (clear path).
+7. Move left to [44, 23] (clear path).
+8. Move left to [43, 23] (clear path).
+9. Move down to [43, 22] (clear path).
+10. Move down to [43, 21] (clear path).
+11. Move down to [43, 20] (clear path).
+12. Move left to [42, 20] (clear path).
+13. Move left to [41, 20] (clear path).
+14. Move down to [41, 19] (clear path).
+15. Move down to [41, 18] (clear path).
+16. Move down to [41, 17] (clear path).
+17. Move down to [41, 16] (goal point).
+
+### Generated Path:
+The path taken is:
+- Start: [48, 25]
+- [47, 25]
+- [46, 25]
+- [45, 25]
+- [45, 24]
+- [45, 23]
+- [44, 23]
+- [43, 23]
+- [43, 22]
+- [43, 21]
+- [43, 20]
+- [42, 20]
+- [41, 20]
+- [41, 19]
+- [41, 18]
+- [41, 17]
+- Goal: [41, 16]
+
+### Final Output:
+Generated Path: [[48, 25], [47, 25], [46, 25], [45, 25], [45, 24], [45, 23], [44, 23], [43, 23], [43, 22], [43, 21], [43, 20], [42, 20], [41, 20], [41, 19], [41, 18], [41, 17], [41, 16]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

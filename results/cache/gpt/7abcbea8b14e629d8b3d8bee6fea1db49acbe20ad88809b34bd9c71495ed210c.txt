@@ -1,0 +1,18 @@
+To navigate from the start point [40, 21] to the goal point [45, 10], we need to avoid the horizontal barriers and vertical barriers listed. 
+
+1. **Start Point**: [40, 21] - Confidence: 1
+2. **Move Down**: To avoid the horizontal barrier at y=16 spanning x=50 to x=51, we can move down to y=15 while staying within the x-coordinate range.
+3. **Move Left**: We can then move left to x=42, y=15 to avoid the vertical barrier at x=42 spanning y=0 to y=2.
+4. **Move Down**: Next, we can move down to y=10 while staying at x=42.
+5. **Move Right**: Finally, we can move right to reach the goal point [45, 10].
+
+The path can be summarized as follows:
+- Start at [40, 21]
+- Move to [40, 15]
+- Move to [42, 15]
+- Move to [42, 10]
+- Move to [45, 10]
+
+Thus, the generated path is:
+Generated Path: [[40, 21], [40, 15], [42, 15], [42, 10], [45, 10]]
+Waypoint Confidence: [1, 1, 1, 1, 1]

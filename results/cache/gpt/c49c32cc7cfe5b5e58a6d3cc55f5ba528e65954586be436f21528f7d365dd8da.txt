@@ -1,0 +1,91 @@
+To navigate from the start point [18, 28] to the goal point [44, 1], we need to consider the horizontal and vertical barriers provided. 
+
+- **First Iteration on [18, 28]**
+  - Thought: The goal is far to the right and down. The horizontal barrier at y=31 spans x=43 to x=43, which is not directly in the way, but we need to navigate downwards first.
+  - Selected Point: [18, 27]
+  - Evaluation: This point moves us down while keeping us clear of any barriers.
+
+- **Second Iteration on [18, 27]**
+  - Thought: We can continue moving down to avoid the horizontal barrier at y=31.
+  - Selected Point: [18, 26]
+  - Evaluation: This point continues to move down, maintaining a clear path.
+
+- **Third Iteration on [18, 26]**
+  - Thought: Continuing downwards is still the best option.
+  - Selected Point: [18, 25]
+  - Evaluation: This point is still clear of barriers.
+
+- **Fourth Iteration on [18, 25]**
+  - Thought: We can now start moving right towards the goal.
+  - Selected Point: [19, 25]
+  - Evaluation: This point moves us closer to the goal while avoiding barriers.
+
+- **Fifth Iteration on [19, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [20, 25]
+  - Evaluation: This point is clear and moves us closer to the goal.
+
+- **Sixth Iteration on [20, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [21, 25]
+  - Evaluation: This point is clear and continues to move towards the goal.
+
+- **Seventh Iteration on [21, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [22, 25]
+  - Evaluation: This point is clear and continues to move towards the goal.
+
+- **Eighth Iteration on [22, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [23, 25]
+  - Evaluation: This point is clear and continues to move towards the goal.
+
+- **Ninth Iteration on [23, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [24, 25]
+  - Evaluation: This point is clear and continues to move towards the goal.
+
+- **Tenth Iteration on [24, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [25, 25]
+  - Evaluation: This point is clear and continues to move towards the goal.
+
+- **Eleventh Iteration on [25, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [26, 25]
+  - Evaluation: This point is clear and continues to move towards the goal.
+
+- **Twelfth Iteration on [26, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [27, 25]
+  - Evaluation: This point is clear and continues to move towards the goal.
+
+- **Thirteenth Iteration on [27, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [28, 25]
+  - Evaluation: This point is clear and continues to move towards the goal.
+
+- **Fourteenth Iteration on [28, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [29, 25]
+  - Evaluation: This point is clear and continues to move towards the goal.
+
+- **Fifteenth Iteration on [29, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [30, 25]
+  - Evaluation: This point is clear and continues to move towards the goal.
+
+- **Sixteenth Iteration on [30, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [31, 25]
+  - Evaluation: This point is clear and continues to move towards the goal.
+
+- **Seventeenth Iteration on [31, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [32, 25]
+  - Evaluation: This point is clear and continues to move towards the goal.
+
+- **Eighteenth Iteration on [32, 25]**
+  - Thought: We can continue moving right.
+  - Selected Point: [33, 25]
+  - Evaluation: This point is clear and continues to move towards the

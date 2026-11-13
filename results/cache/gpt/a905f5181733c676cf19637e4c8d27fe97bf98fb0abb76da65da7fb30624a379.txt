@@ -1,0 +1,31 @@
+To find a path from the start point [34, 14] to the goal point [13, 28] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+1. **Start Point**: [34, 14]
+2. **Goal Point**: [13, 28]
+3. **Horizontal Barriers**: [[5, 49, 49], [6, 8, 39], [19, 18, 36]]
+4. **Vertical Barriers**: [[22, 12, 18], [44, 12, 30], [21, 25, 30]]
+
+### Pathfinding Steps:
+- Start at [34, 14].
+- Move left to avoid vertical barriers and navigate around horizontal barriers.
+- Gradually move downwards and left towards the goal.
+
+### Generated Path:
+After analyzing the barriers and possible routes, the path can be constructed as follows:
+1. Start at [34, 14].
+2. Move to [30, 14].
+3. Move to [26, 14].
+4. Move to [22, 14].
+5. Move to [22, 20] (navigating around vertical barriers).
+6. Move to [18, 20].
+7. Move to [18, 24].
+8. Move to [13, 28] (goal).
+
+Thus, the generated path is:
+Generated Path: [[34, 14], [30, 14], [26, 14], [22, 14], [22, 20], [18, 20], [18, 24], [13, 28]]
+
+### Confidence Scores:
+- Start and goal points have a confidence of 1.
+- Intermediate points are assigned confidence scores based on their proximity to barriers and their usefulness in navigating towards the goal.
+
+Waypoint Confidence: [1, 0.9, 0.9, 0.8, 0.9, 0.9, 0.8, 1]

@@ -1,0 +1,35 @@
+To find a path from the start point [5, 22] to the goal point [31, 1], we need to navigate around the given horizontal and vertical barriers.
+
+### Analyzing the Barriers:
+- **Horizontal Barriers**: 
+  - [18, 45, 49]: This barrier is above the start and goal points, so it does not affect the path.
+  - [4, 27, 30]: This barrier is below the start point and does not affect the path.
+
+- **Vertical Barriers**:
+  - [37, 29, 30]: This barrier is to the right of the start and goal points, so it does not affect the path.
+  - [20, 13, 16]: This barrier is below the start point and does not affect the path.
+  - [49, 29, 30]: This barrier is to the right of the start and goal points, so it does not affect the path.
+
+### Pathfinding:
+Given that there are no barriers directly affecting the path from [5, 22] to [31, 1], we can create a direct path while avoiding any potential obstacles.
+
+1. Start at [5, 22].
+2. Move horizontally to the right towards [31, 22].
+3. Move vertically down to [31, 1].
+
+### Generated Path:
+The path can be represented as:
+- Start: [5, 22]
+- Move to: [31, 22]
+- Move to: [31, 1]
+- Goal: [31, 1]
+
+Thus, the generated path is:
+Generated Path: [[5, 22], [31, 22], [31, 1]]
+
+### Confidence Scores:
+- Start Point: [5, 22] - Confidence: 1
+- Intermediate Point: [31, 22] - Confidence: 0.9 (close to the goal, but still a valid point)
+- Goal Point: [31, 1] - Confidence: 1
+
+Waypoint Confidence: [1, 0.9, 1]

@@ -1,0 +1,84 @@
+To navigate from the start point [23, 22] to the goal point [20, 6], we need to consider the horizontal and vertical barriers that may obstruct our path.
+
+- **First Iteration on [23, 22]**
+  - Thought: The horizontal barrier at y=14 spanning x=23 to x=29 blocks the direct path downward. We should move left to avoid this barrier.
+  - Selected Point: [22, 21]
+  - Evaluation: The selected point [22, 21] moves us left and slightly down, avoiding the horizontal barrier while keeping us on track toward the goal.
+
+- **Second Iteration on [22, 21]**
+  - Thought: The horizontal barrier at y=14 still obstructs a direct downward path. We need to continue moving left and down to navigate around it.
+  - Selected Point: [21, 20]
+  - Evaluation: The point [21, 20] continues to move left while descending, effectively bypassing the horizontal barrier.
+
+- **Third Iteration on [21, 20]**
+  - Thought: We can now move down further without hitting any barriers.
+  - Selected Point: [20, 19]
+  - Evaluation: The point [20, 19] is clear of obstacles and allows us to continue toward the goal.
+
+- **Fourth Iteration on [20, 19]**
+  - Thought: We can move down again to get closer to the goal.
+  - Selected Point: [20, 18]
+  - Evaluation: The point [20, 18] is unobstructed and keeps us on track.
+
+- **Fifth Iteration on [20, 18]**
+  - Thought: Continuing down will bring us closer to the goal.
+  - Selected Point: [20, 17]
+  - Evaluation: The point [20, 17] is clear and allows further descent.
+
+- **Sixth Iteration on [20, 17]**
+  - Thought: We can move down again.
+  - Selected Point: [20, 16]
+  - Evaluation: The point [20, 16] is unobstructed.
+
+- **Seventh Iteration on [20, 16]**
+  - Thought: We can continue moving down.
+  - Selected Point: [20, 15]
+  - Evaluation: The point [20, 15] is clear.
+
+- **Eighth Iteration on [20, 15]**
+  - Thought: We can move down again.
+  - Selected Point: [20, 14]
+  - Evaluation: The point [20, 14] is unobstructed.
+
+- **Ninth Iteration on [20, 14]**
+  - Thought: We can move down again.
+  - Selected Point: [20, 13]
+  - Evaluation: The point [20, 13] is unobstructed.
+
+- **Tenth Iteration on [20, 13]**
+  - Thought: We can move down again.
+  - Selected Point: [20, 12]
+  - Evaluation: The point [20, 12] is unobstructed.
+
+- **Eleventh Iteration on [20, 12]**
+  - Thought: We can move down again.
+  - Selected Point: [20, 11]
+  - Evaluation: The point [20, 11] is unobstructed.
+
+- **Twelfth Iteration on [20, 11]**
+  - Thought: We can move down again.
+  - Selected Point: [20, 10]
+  - Evaluation: The point [20, 10] is unobstructed.
+
+- **Thirteenth Iteration on [20, 10]**
+  - Thought: We can move down again.
+  - Selected Point: [20, 9]
+  - Evaluation: The point [20, 9] is unobstructed.
+
+- **Fourteenth Iteration on [20, 9]**
+  - Thought: We can move down again.
+  - Selected Point: [20, 8]
+  - Evaluation: The point [20, 8] is unobstructed.
+
+- **Fifteenth Iteration on [20, 8]**
+  - Thought: We can move down again.
+  - Selected Point: [20, 7]
+  - Evaluation: The point [20, 7] is unobstructed.
+
+- **Sixteenth Iteration on [20, 7]**
+  - Thought: We can move down again.
+  - Selected Point: [20, 6]
+  - Evaluation: The point [20, 6] is the goal.
+
+The generated path is as follows:
+Generated Path: [[23, 22], [22, 21], [21, 20], [20, 19], [

@@ -1,0 +1,66 @@
+To find a path from the start point [15, 9] to the goal point [25, 23] while avoiding the specified horizontal and vertical barriers, we can analyze the grid and navigate around the obstacles.
+
+### Given Information:
+- **Start Point:** [15, 9]
+- **Goal Point:** [25, 23]
+- **Horizontal Barriers:** [[5, 49, 49], [6, 8, 39], [19, 18, 36]]
+- **Vertical Barriers:** [[22, 12, 18], [44, 12, 30], [21, 25, 30]]
+
+### Pathfinding Analysis:
+1. **Start at [15, 9]**: This is our starting point.
+2. **Move to [15, 10]**: This is a valid move upward.
+3. **Move to [15, 11]**: Continue moving upward.
+4. **Move to [15, 12]**: Continue upward.
+5. **Move to [15, 13]**: Continue upward.
+6. **Move to [15, 14]**: Continue upward.
+7. **Move to [15, 15]**: Continue upward.
+8. **Move to [15, 16]**: Continue upward.
+9. **Move to [15, 17]**: Continue upward.
+10. **Move to [15, 18]**: Continue upward.
+11. **Move to [16, 18]**: Move right to avoid the vertical barrier.
+12. **Move to [17, 18]**: Continue right.
+13. **Move to [18, 18]**: Continue right.
+14. **Move to [19, 18]**: Continue right.
+15. **Move to [20, 18]**: Continue right.
+16. **Move to [21, 18]**: Continue right.
+17. **Move to [22, 18]**: Continue right.
+18. **Move to [23, 18]**: Continue right.
+19. **Move to [24, 18]**: Continue right.
+20. **Move to [25, 18]**: Continue right.
+21. **Move to [25, 19]**: Move up.
+22. **Move to [25, 20]**: Move up.
+23. **Move to [25, 21]**: Move up.
+24. **Move to [25, 22]**: Move up.
+25. **Move to [25, 23]**: Move up to the goal.
+
+### Generated Path:
+The path taken is:
+- Start: [15, 9]
+- [15, 10]
+- [15, 11]
+- [15, 12]
+- [15, 13]
+- [15, 14]
+- [15, 15]
+- [15, 16]
+- [15, 17]
+- [15, 18]
+- [16, 18]
+- [17, 18]
+- [18, 18]
+- [19, 18]
+- [20, 18]
+- [21, 18]
+- [22, 18]
+- [23, 18]
+- [24, 18]
+- [25, 18]
+- [25, 19]
+- [25, 20]
+- [25, 21]
+- [25, 22]
+- Goal: [25, 23]
+
+### Final Output:
+Generated Path: [[15, 9], [15, 10], [15, 11], [15, 12], [15, 13], [15, 14], [15, 15], [15, 16], [15, 17], [15, 18], [16, 18], [17, 18], [18, 18], [19, 18], [20, 18], [21, 18], [22, 18], [23, 18], [24, 18], [25, 18], [25, 19], [25, 20], [25, 21], [25, 22], [25, 23]]
+Waypoint Confidence: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]

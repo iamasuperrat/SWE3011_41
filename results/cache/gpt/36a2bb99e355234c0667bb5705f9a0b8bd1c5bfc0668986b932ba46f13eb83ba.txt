@@ -1,0 +1,11 @@
+To navigate from the start point [25, 7] to the goal point [40, 7], we need to avoid the horizontal barriers at y=7 spanning x=0 to x=20 and the vertical barriers at x=10 spanning y=0 to y=5. 
+
+1. Start at [25, 7].
+2. Move right to [30, 7] to bypass the horizontal barrier.
+3. Continue moving right to [35, 7].
+4. Finally, move to the goal point [40, 7].
+
+The path avoids all obstacles and reaches the goal directly.
+
+Generated Path: [[25, 7], [30, 7], [35, 7], [40, 7]]
+Waypoint Confidence: [1, 1, 1, 1]
