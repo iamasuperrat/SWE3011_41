@@ -67,11 +67,10 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* with C1 (plan deviation OR stall, staged response):
-    - stall (②): no closer node to the current waypoint for STALL_LIMIT expansions
-      -> skip only the current waypoint;
-    - plan contradiction (⑲): the expanded node closest to the current waypoint has no
-      line of sight to it -> drop all remaining waypoints and search toward the goal only."""
+    """LLM-A* with C3 (partial drop): whenever the current waypoint shows a plan
+    contradiction (⑲: the expanded node closest to it has no line of sight to it) or a
+    stall (②: no closer node for STALL_LIMIT expansions), only that waypoint is skipped
+    and the search is guided toward the next one."""
 
     STALL_LIMIT = 20
 
@@ -83,8 +82,8 @@ class Ours(LLMAStar):
         self._tracked_target = None
         self._best_dist = math.inf
         self._stall = 0
-        self.plan_dropped = False
-        self.skipped_waypoints = 0
+        self.skipped_by_contradiction = 0
+        self.skipped_by_stall = 0
 
     def get_neighbor(self, s):
         # Called once per expansion with the node just popped from OPEN.
@@ -103,18 +102,19 @@ class Ours(LLMAStar):
         if dist < self._best_dist:  # progress: new closest approach
             self._best_dist = dist
             self._stall = 0
-            if self.is_collision(s, self.s_target):  # contradiction: drop all
-                self.i = len(self.target_list) - 1
-                self.s_target = self.s_goal
-                self.plan_dropped = True
-                self._update_queue()
+            if self.is_collision(s, self.s_target):  # contradiction: skip this waypoint
+                self._skip_current()
+                self.skipped_by_contradiction += 1
             return
 
         self._stall += 1
-        if self._stall >= self.STALL_LIMIT:  # stall: skip current waypoint only
-            self._update_target()
-            self.skipped_waypoints += 1
-            self._update_queue()
+        if self._stall >= self.STALL_LIMIT:  # stall: skip this waypoint
+            self._skip_current()
+            self.skipped_by_stall += 1
+
+    def _skip_current(self):
+        self._update_target()
+        self._update_queue()
 
 def valid_length(nodes, planner):
     """Evaluate the raw LLM polyline without filtering/repairing its nodes."""
