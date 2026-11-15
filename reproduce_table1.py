@@ -67,10 +67,11 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* with C2 (plan deviation AND stall): the remaining waypoints are dropped
-    only when the expanded node closest to the current waypoint has no line of sight
-    to it (plan contradiction, ⑲) and no closer node is found for STALL_LIMIT further
-    expansions (stall, ②). The search then continues toward the goal only."""
+    """LLM-A* with C1 (plan deviation OR stall, staged response):
+    - stall (②): no closer node to the current waypoint for STALL_LIMIT expansions
+      -> skip only the current waypoint;
+    - plan contradiction (⑲): the expanded node closest to the current waypoint has no
+      line of sight to it -> drop all remaining waypoints and search toward the goal only."""
 
     STALL_LIMIT = 20
 
@@ -82,8 +83,8 @@ class Ours(LLMAStar):
         self._tracked_target = None
         self._best_dist = math.inf
         self._stall = 0
-        self._blocked = False
         self.plan_dropped = False
+        self.skipped_waypoints = 0
 
     def get_neighbor(self, s):
         # Called once per expansion with the node just popped from OPEN.
@@ -97,21 +98,22 @@ class Ours(LLMAStar):
             self._tracked_target = self.s_target
             self._best_dist = math.inf
             self._stall = 0
-            self._blocked = False
 
         dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
         if dist < self._best_dist:  # progress: new closest approach
             self._best_dist = dist
             self._stall = 0
-            self._blocked = self.is_collision(s, self.s_target)
+            if self.is_collision(s, self.s_target):  # contradiction: drop all
+                self.i = len(self.target_list) - 1
+                self.s_target = self.s_goal
+                self.plan_dropped = True
+                self._update_queue()
             return
 
         self._stall += 1
-        if self._blocked and self._stall >= self.STALL_LIMIT:
-            # Contradiction confirmed by stall: drop the remaining waypoints.
-            self.i = len(self.target_list) - 1
-            self.s_target = self.s_goal
-            self.plan_dropped = True
+        if self._stall >= self.STALL_LIMIT:  # stall: skip current waypoint only
+            self._update_target()
+            self.skipped_waypoints += 1
             self._update_queue()
 
 def valid_length(nodes, planner):
