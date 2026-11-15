@@ -67,12 +67,15 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* with C7 (plan shortcutting + ⑲):
+    """LLM-A* with C8 (plan shortcutting + ⑪ + ⑲):
     1. Before the search, the LLM waypoint list is shortcut: from each kept waypoint,
-       jump to the farthest later waypoint reachable by a collision-free straight line,
-       removing unnecessary detours and densely listed points.
-    2. During the search, ⑲ is applied: if the expanded node closest to the current
-       waypoint has no line of sight to it, all remaining waypoints are dropped."""
+       jump to the farthest later waypoint reachable by a collision-free straight line.
+    2. At each expansion, waypoints within R that are visible from the expanded node are
+       treated as reached (⑪).
+    3. For the waypoint still not reached, if the expanded node closest to it has no line
+       of sight to it, all remaining waypoints are dropped (⑲)."""
+
+    R = 2.0
 
     # main() records this attribute; this method uses no waypoint confidence.
     waypoint_confidence = None
@@ -103,25 +106,40 @@ class Ours(LLMAStar):
 
     def get_neighbor(self, s):
         # Called once per expansion with the node just popped from OPEN.
-        self._check_contradiction(s)
+        changed = self._proximity_switch(s)
+        changed = self._check_contradiction(s) or changed
+        if changed:
+            self._update_queue()  # heuristic changed: recompute f of open states
         return super().get_neighbor(s)
+
+    def _reached(self, s, t):
+        return (math.hypot(t[0] - s[0], t[1] - s[1]) <= self.R
+                and not self.is_collision(s, t))
+
+    def _proximity_switch(self, s):
+        switched = False
+        while self.s_target != self.s_goal and self._reached(s, self.s_target):
+            self._update_target()
+            switched = True
+        return switched
 
     def _check_contradiction(self, s):
         if self.s_target == self.s_goal:
-            return
+            return False
         if self.s_target != self._tracked_target:  # new waypoint: reset tracking
             self._tracked_target = self.s_target
             self._best_dist = math.inf
 
         dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
         if dist >= self._best_dist:
-            return
+            return False
         self._best_dist = dist
         if self.is_collision(s, self.s_target):  # contradiction: drop all
             self.i = len(self.target_list) - 1
             self.s_target = self.s_goal
             self.plan_dropped = True
-            self._update_queue()
+            return True
+        return False
 
 def valid_length(nodes, planner):
     """Evaluate the raw LLM polyline without filtering/repairing its nodes."""
