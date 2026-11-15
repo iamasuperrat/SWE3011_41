@@ -67,46 +67,52 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* with proximity-based target switching: a waypoint counts as reached when
-    an expanded node is within R of it and has a collision-free straight line to it.
-    The original exact-match switching is kept as well."""
-    import math
+    """LLM-A* with C2 (plan deviation AND stall): the remaining waypoints are dropped
+    only when the expanded node closest to the current waypoint has no line of sight
+    to it (plan contradiction, ⑲) and no closer node is found for STALL_LIMIT further
+    expansions (stall, ②). The search then continues toward the goal only."""
 
-    STALL_LIMIT = 32
+    STALL_LIMIT = 20
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # reproduce_table1.py 에러(AttributeError) 방지를 위한 속성 추가
-        self.waypoint_confidence = 1.0 
-        self._best_target_distance = math.inf
-        self._stall_steps = 0
+    # main() records this attribute; this method uses no waypoint confidence.
+    waypoint_confidence = None
 
-    def _load_paths(self):
-        # 부모 클래스의 경로 로드 메서드 호출 (원래 메서드 이름에 맞게 수정 필요)
-        super()._load_paths()  
-        self._best_target_distance = math.inf
-        self._stall_steps = 0
-
-    def _update_target(self):
-        super()._update_target()
-        self._best_target_distance = math.inf
-        self._stall_steps = 0
+    def _initialize_llm_paths(self):
+        super()._initialize_llm_paths()
+        self._tracked_target = None
+        self._best_dist = math.inf
+        self._stall = 0
+        self._blocked = False
+        self.plan_dropped = False
 
     def get_neighbor(self, s):
-        if self.s_target != self.s_goal:
-            distance = math.dist(s, self.s_target)
-
-            if distance < self._best_target_distance - 1e-12:
-                self._best_target_distance = distance
-                self._stall_steps = 0
-            else:
-                self._stall_steps += 1
-
-            if self._stall_steps >= self.STALL_LIMIT:
-                self._update_target()
-                self._update_queue()
-
+        # Called once per expansion with the node just popped from OPEN.
+        self._check_plan(s)
         return super().get_neighbor(s)
+
+    def _check_plan(self, s):
+        if self.s_target == self.s_goal:
+            return
+        if self.s_target != self._tracked_target:  # new waypoint: reset tracking
+            self._tracked_target = self.s_target
+            self._best_dist = math.inf
+            self._stall = 0
+            self._blocked = False
+
+        dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
+        if dist < self._best_dist:  # progress: new closest approach
+            self._best_dist = dist
+            self._stall = 0
+            self._blocked = self.is_collision(s, self.s_target)
+            return
+
+        self._stall += 1
+        if self._blocked and self._stall >= self.STALL_LIMIT:
+            # Contradiction confirmed by stall: drop the remaining waypoints.
+            self.i = len(self.target_list) - 1
+            self.s_target = self.s_goal
+            self.plan_dropped = True
+            self._update_queue()
 
 def valid_length(nodes, planner):
     """Evaluate the raw LLM polyline without filtering/repairing its nodes."""
