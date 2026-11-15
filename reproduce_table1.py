@@ -67,60 +67,61 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* with C6 (trust budget): a problem with the current waypoint is either a
-    plan contradiction (⑲: the expanded node closest to it has no line of sight to it)
-    or a stall (②: no closer node for STALL_LIMIT expansions). The first TOLERANCE
-    problems only skip the current waypoint; after that, the LLM plan is considered
-    unreliable and all remaining waypoints are dropped."""
-
-    STALL_LIMIT = 20
-    TOLERANCE = 1
+    """LLM-A* with C7 (plan shortcutting + ⑲):
+    1. Before the search, the LLM waypoint list is shortcut: from each kept waypoint,
+       jump to the farthest later waypoint reachable by a collision-free straight line,
+       removing unnecessary detours and densely listed points.
+    2. During the search, ⑲ is applied: if the expanded node closest to the current
+       waypoint has no line of sight to it, all remaining waypoints are dropped."""
 
     # main() records this attribute; this method uses no waypoint confidence.
     waypoint_confidence = None
 
     def _initialize_llm_paths(self):
         super()._initialize_llm_paths()
+        self.original_target_list = list(self.target_list)
+        self.target_list = self._shortcut(self.target_list)
+        self.i = 1
+        self.s_target = self.target_list[self.i]
+
         self._tracked_target = None
         self._best_dist = math.inf
-        self._stall = 0
-        self.problems = 0
         self.plan_dropped = False
+
+    def _shortcut(self, points):
+        if len(points) <= 2:
+            return list(points)
+        kept = [points[0]]
+        i = 0
+        while i < len(points) - 1:
+            j = len(points) - 1
+            while j > i + 1 and self.is_collision(points[i], points[j]):
+                j -= 1
+            kept.append(points[j])  # if nothing farther is visible, keep the next one
+            i = j
+        return kept
 
     def get_neighbor(self, s):
         # Called once per expansion with the node just popped from OPEN.
-        self._check_plan(s)
+        self._check_contradiction(s)
         return super().get_neighbor(s)
 
-    def _check_plan(self, s):
+    def _check_contradiction(self, s):
         if self.s_target == self.s_goal:
             return
         if self.s_target != self._tracked_target:  # new waypoint: reset tracking
             self._tracked_target = self.s_target
             self._best_dist = math.inf
-            self._stall = 0
 
         dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
-        if dist < self._best_dist:  # progress: new closest approach
-            self._best_dist = dist
-            self._stall = 0
-            if self.is_collision(s, self.s_target):  # contradiction
-                self._on_problem()
+        if dist >= self._best_dist:
             return
-
-        self._stall += 1
-        if self._stall >= self.STALL_LIMIT:  # stall
-            self._on_problem()
-
-    def _on_problem(self):
-        self.problems += 1
-        if self.problems <= self.TOLERANCE:  # forgiven: skip current waypoint only
-            self._update_target()
-        else:  # budget exhausted: drop all remaining waypoints
+        self._best_dist = dist
+        if self.is_collision(s, self.s_target):  # contradiction: drop all
             self.i = len(self.target_list) - 1
             self.s_target = self.s_goal
             self.plan_dropped = True
-        self._update_queue()
+            self._update_queue()
 
 def valid_length(nodes, planner):
     """Evaluate the raw LLM polyline without filtering/repairing its nodes."""
