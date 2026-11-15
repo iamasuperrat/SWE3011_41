@@ -70,28 +70,43 @@ class Ours(LLMAStar):
     """LLM-A* with proximity-based target switching: a waypoint counts as reached when
     an expanded node is within R of it and has a collision-free straight line to it.
     The original exact-match switching is kept as well."""
+    import math
 
-    R = 2.0
+    STALL_LIMIT = 32
 
-    # main() records this attribute; this method uses no waypoint confidence.
-    waypoint_confidence = None
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # reproduce_table1.py 에러(AttributeError) 방지를 위한 속성 추가
+        self.waypoint_confidence = 1.0 
+        self._best_target_distance = math.inf
+        self._stall_steps = 0
+
+    def _load_paths(self):
+        # 부모 클래스의 경로 로드 메서드 호출 (원래 메서드 이름에 맞게 수정 필요)
+        super()._load_paths()  
+        self._best_target_distance = math.inf
+        self._stall_steps = 0
+
+    def _update_target(self):
+        super()._update_target()
+        self._best_target_distance = math.inf
+        self._stall_steps = 0
 
     def get_neighbor(self, s):
-        # Called once per expansion with the node just popped from OPEN.
-        self._proximity_switch(s)
+        if self.s_target != self.s_goal:
+            distance = math.dist(s, self.s_target)
+
+            if distance < self._best_target_distance - 1e-12:
+                self._best_target_distance = distance
+                self._stall_steps = 0
+            else:
+                self._stall_steps += 1
+
+            if self._stall_steps >= self.STALL_LIMIT:
+                self._update_target()
+                self._update_queue()
+
         return super().get_neighbor(s)
-
-    def _proximity_switch(self, s):
-        switched = False
-        while self.s_target != self.s_goal and self._reached(s, self.s_target):
-            self._update_target()
-            switched = True
-        if switched:
-            self._update_queue()  # heuristic changed: recompute f of open states
-
-    def _reached(self, s, t):
-        return (math.hypot(t[0] - s[0], t[1] - s[1]) <= self.R
-                and not self.is_collision(s, t))
 
 def valid_length(nodes, planner):
     """Evaluate the raw LLM polyline without filtering/repairing its nodes."""
