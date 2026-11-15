@@ -67,12 +67,15 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* with C4 (⑪ -> ⑲): at each expansion, waypoints within R that are visible
-    from the expanded node are first treated as reached (proximity switching, ⑪).
-    For the waypoint still not reached, if the expanded node closest to it has no line
-    of sight to it (plan contradiction, ⑲), all remaining waypoints are dropped."""
+    """LLM-A* with C5 (⑪ -> ⑲ -> ②), checked at each expansion:
+    1. proximity (⑪): waypoints within R and visible from the expanded node are reached;
+    2. plan contradiction (⑲): if the expanded node closest to the current waypoint has
+       no line of sight to it, all remaining waypoints are dropped;
+    3. stall (②): if no closer node is found for STALL_LIMIT expansions, only the
+       current waypoint is skipped."""
 
     R = 2.0
+    STALL_LIMIT = 20
 
     # main() records this attribute; this method uses no waypoint confidence.
     waypoint_confidence = None
@@ -81,12 +84,14 @@ class Ours(LLMAStar):
         super()._initialize_llm_paths()
         self._tracked_target = None
         self._best_dist = math.inf
+        self._stall = 0
         self.plan_dropped = False
+        self.skipped_waypoints = 0
 
     def get_neighbor(self, s):
         # Called once per expansion with the node just popped from OPEN.
         changed = self._proximity_switch(s)
-        changed = self._check_contradiction(s) or changed
+        changed = self._check_plan(s) or changed
         if changed:
             self._update_queue()  # heuristic changed: recompute f of open states
         return super().get_neighbor(s)
@@ -102,21 +107,29 @@ class Ours(LLMAStar):
             switched = True
         return switched
 
-    def _check_contradiction(self, s):
+    def _check_plan(self, s):
         if self.s_target == self.s_goal:
             return False
         if self.s_target != self._tracked_target:  # new waypoint: reset tracking
             self._tracked_target = self.s_target
             self._best_dist = math.inf
+            self._stall = 0
 
         dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
-        if dist >= self._best_dist:
+        if dist < self._best_dist:  # progress: new closest approach
+            self._best_dist = dist
+            self._stall = 0
+            if self.is_collision(s, self.s_target):  # contradiction: drop all
+                self.i = len(self.target_list) - 1
+                self.s_target = self.s_goal
+                self.plan_dropped = True
+                return True
             return False
-        self._best_dist = dist
-        if self.is_collision(s, self.s_target):  # contradiction: drop all
-            self.i = len(self.target_list) - 1
-            self.s_target = self.s_goal
-            self.plan_dropped = True
+
+        self._stall += 1
+        if self._stall >= self.STALL_LIMIT:  # stall: skip current waypoint only
+            self._update_target()
+            self.skipped_waypoints += 1
             return True
         return False
 
