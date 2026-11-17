@@ -67,21 +67,66 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* with C9 (re-shortcut on contradiction): when the expanded node closest to
-    the current waypoint has no line of sight to it (⑲), the remaining plan is rebuilt
-    instead of being dropped: the blocked waypoint is removed, the search is guided to
-    the farthest remaining waypoint visible from the current node (or the next one if
-    none is visible), and the rest of the plan is shortcut by collision-free lines."""
-
-    # main() records this attribute; this method uses no waypoint confidence.
-    waypoint_confidence = None
+    """LLM-A* with C7 (plan shortcutting + ⑲) and confidence weighting:
+    1. The LLM waypoint list is shortcut before the search.
+    2. Each remaining waypoint's heuristic term is weighted by its confidence
+       (unreadable confidence -> weight 1, i.e. plain C7).
+    3. If the expanded node closest to the current waypoint has no line of sight to it,
+       all remaining waypoints are dropped (⑲)."""
 
     def _initialize_llm_paths(self):
         super()._initialize_llm_paths()
+        self.original_target_list = list(self.target_list)
+        self.target_list = self._shortcut(self.target_list)
+        self.i = 1
+        self.s_target = self.target_list[self.i]
+
+        # Confidence of the waypoints kept after shortcutting.
+        nodes, scores = self._parse_response(self.model.response)
+        self.confidence_error = self._confidence_error(nodes, scores)
+        self.confidence_fallback = self.confidence_error is not None
+        confidence = {}
+        if not self.confidence_fallback:
+            for node, score in zip(nodes, scores):
+                confidence[tuple(node)] = score
+        confidence[self.s_start] = confidence[self.s_goal] = 1
+        self.waypoint_confidence = [confidence.get(point, 1) for point in self.target_list]
+
         self._tracked_target = None
         self._best_dist = math.inf
-        self.replans = 0
+        self.plan_dropped = False
 
+    # ---- confidence parsing ------------------------------------------------
+    def _parse_response(self, response):
+        import json
+        import re
+        from llmastar.utils import list_parse
+
+        nodes = list_parse(response or "")
+        match = re.search(r"Waypoint Confidence:\s*(\[[^\]]*\])", response or "")
+        try:
+            scores = json.loads(match[1]) if match else None
+        except ValueError:
+            scores = None
+        return nodes, scores
+
+    def _confidence_error(self, nodes, scores):
+        """Return None if every node has a valid score in [0, 1], else a short reason."""
+        if not isinstance(nodes, list):
+            return "unparsable waypoints"
+        if not isinstance(scores, list):
+            return "missing or unparsable confidence"
+        if len(nodes) != len(scores):
+            return "waypoint/confidence count mismatch"
+        for node, score in zip(nodes, scores):
+            if not (isinstance(node, (list, tuple)) and len(node) == 2
+                    and all(isinstance(v, (int, float)) and math.isfinite(v) for v in node)):
+                return "invalid waypoint"
+            if not (type(score) in (int, float) and math.isfinite(score) and 0 <= score <= 1):
+                return "invalid confidence value"
+        return None
+
+    # ---- C7 -------------------------------------------------------------------
     def _shortcut(self, points):
         if len(points) <= 2:
             return list(points)
@@ -94,6 +139,11 @@ class Ours(LLMAStar):
             kept.append(points[j])  # if nothing farther is visible, keep the next one
             i = j
         return kept
+
+    def heuristic(self, s):
+        goal = math.hypot(self.s_goal[0] - s[0], self.s_goal[1] - s[1])
+        waypoint = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
+        return goal + self.waypoint_confidence[self.i] * waypoint
 
     def get_neighbor(self, s):
         # Called once per expansion with the node just popped from OPEN.
@@ -111,19 +161,11 @@ class Ours(LLMAStar):
         if dist >= self._best_dist:
             return
         self._best_dist = dist
-        if self.is_collision(s, self.s_target):  # contradiction: rebuild remaining plan
-            self._replan_from(s)
-
-    def _replan_from(self, s):
-        remaining = self.target_list[self.i + 1:]  # drop the blocked waypoint; ends with goal
-        j = len(remaining) - 1
-        while j > 0 and self.is_collision(s, remaining[j]):
-            j -= 1
-        rebuilt = self._shortcut(remaining[j:])
-        self.target_list = self.target_list[:self.i] + rebuilt
-        self.s_target = self.target_list[self.i]
-        self.replans += 1
-        self._update_queue()
+        if self.is_collision(s, self.s_target):  # contradiction: drop all
+            self.i = len(self.target_list) - 1
+            self.s_target = self.s_goal
+            self.plan_dropped = True
+            self._update_queue()
 
 def valid_length(nodes, planner):
     """Evaluate the raw LLM polyline without filtering/repairing its nodes."""
