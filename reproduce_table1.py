@@ -67,13 +67,73 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """LLM-A* with C7 (plan shortcutting + ⑲) and confidence weighting:
-    1. The LLM waypoint list is shortcut before the search.
-    2. Each remaining waypoint's heuristic term is weighted by its confidence
-       (unreadable confidence -> weight 1, i.e. plain C7).
-    3. If the expanded node closest to the current waypoint has no line of sight to it,
-       all remaining waypoints are dropped (⑲)."""
+    """C7_STATIC + G2_GOAL geometry heuristic, keeping LLM waypoints.
+    - Distance estimate D(s, t): octile distance, raised to the shortest detour around
+      the end of any wall crossed by the straight line s -> t (geometric, no grid search).
+    - Heuristic: D(s, goal) + D(s, target); 2 * D(s, goal) when the target is the goal.
+    - LLM plan: shortcut before the search, static contradiction check before the search,
+      and ⑲ (drop all remaining waypoints on contradiction) during the search."""
 
+    waypoint_confidence = None
+
+    # ---- geometry heuristic (from G2_GOAL) ----------------------------------
+    def _initialize_parameters(self, data):
+        super()._initialize_parameters(data)
+        self._walls = []
+        for y, x0, x1 in self.horizontal_barriers:
+            lo, hi = sorted((x0, x1))
+            self._walls.append((1, y, lo, hi, (lo, y), (hi, y)))
+        for x, y0, y1 in self.vertical_barriers:
+            lo, hi = sorted((y0, y1))
+            self._walls.append((0, x, lo, hi, (x, lo), (x, hi)))
+        self._endpoint_distances = {}
+        self._heuristic_calls = 0
+        self._wall_checks = 0
+        self._blocking_walls = 0
+
+    @staticmethod
+    def _octile(a, b):
+        dx, dy = abs(a[0] - b[0]), abs(a[1] - b[1])
+        return max(dx, dy) + (math.sqrt(2) - 1) * min(dx, dy)
+
+    @staticmethod
+    def _crosses_wall(a, b, axis, coordinate, lo, hi):
+        other = 1 - axis
+        da, db = a[axis], b[axis]
+        if da == db:
+            return (da == coordinate
+                    and max(min(a[other], b[other]), lo) <= min(max(a[other], b[other]), hi))
+        if not min(da, db) <= coordinate <= max(da, db):
+            return False
+        delta = db - da
+        numerator = a[other] * delta + (coordinate - da) * (b[other] - a[other])
+        return min(lo * delta, hi * delta) <= numerator <= max(lo * delta, hi * delta)
+
+    def _distance_estimate(self, s, target):
+        bound = self._octile(s, target)
+        if s == target:
+            return bound
+        if target not in self._endpoint_distances:
+            self._endpoint_distances[target] = [
+                (math.dist(a, target), math.dist(b, target))
+                for _, _, _, _, a, b in self._walls
+            ]
+        for wall, (a_to_t, b_to_t) in zip(self._walls, self._endpoint_distances[target]):
+            axis, coordinate, lo, hi, a, b = wall
+            self._wall_checks += 1
+            if self._crosses_wall(s, target, axis, coordinate, lo, hi):
+                self._blocking_walls += 1
+                bound = max(bound, min(math.dist(s, a) + a_to_t, math.dist(s, b) + b_to_t))
+        return bound
+
+    def heuristic(self, s):
+        self._heuristic_calls += 1
+        goal = self._distance_estimate(s, self.s_goal)
+        if self.s_target == self.s_goal:
+            return goal + goal
+        return goal + self._distance_estimate(s, self.s_target)
+
+    # ---- C7_STATIC ------------------------------------------------------------
     def _initialize_llm_paths(self):
         super()._initialize_llm_paths()
         self.original_target_list = list(self.target_list)
@@ -81,52 +141,24 @@ class Ours(LLMAStar):
         self.i = 1
         self.s_target = self.target_list[self.i]
 
-        # Confidence of the waypoints kept after shortcutting.
-        nodes, scores = self._parse_response(self.model.response)
-        self.confidence_error = self._confidence_error(nodes, scores)
-        self.confidence_fallback = self.confidence_error is not None
-        confidence = {}
-        if not self.confidence_fallback:
-            for node, score in zip(nodes, scores):
-                confidence[tuple(node)] = score
-        confidence[self.s_start] = confidence[self.s_goal] = 1
-        self.waypoint_confidence = [confidence.get(point, 1) for point in self.target_list]
-
         self._tracked_target = None
         self._best_dist = math.inf
         self.plan_dropped = False
+        self.static_plan_dropped = False
+        self.static_segments_checked = 0
+        self.static_first_conflict = None
 
-    # ---- confidence parsing ------------------------------------------------
-    def _parse_response(self, response):
-        import json
-        import re
-        from llmastar.utils import list_parse
+        # Static check of the shortcut plan before the search.
+        for a, b in zip(self.target_list, self.target_list[1:]):
+            self.static_segments_checked += 1
+            if self.is_collision(a, b):
+                self.i = len(self.target_list) - 1
+                self.s_target = self.s_goal
+                self.plan_dropped = True
+                self.static_plan_dropped = True
+                self.static_first_conflict = [a, b]
+                break
 
-        nodes = list_parse(response or "")
-        match = re.search(r"Waypoint Confidence:\s*(\[[^\]]*\])", response or "")
-        try:
-            scores = json.loads(match[1]) if match else None
-        except ValueError:
-            scores = None
-        return nodes, scores
-
-    def _confidence_error(self, nodes, scores):
-        """Return None if every node has a valid score in [0, 1], else a short reason."""
-        if not isinstance(nodes, list):
-            return "unparsable waypoints"
-        if not isinstance(scores, list):
-            return "missing or unparsable confidence"
-        if len(nodes) != len(scores):
-            return "waypoint/confidence count mismatch"
-        for node, score in zip(nodes, scores):
-            if not (isinstance(node, (list, tuple)) and len(node) == 2
-                    and all(isinstance(v, (int, float)) and math.isfinite(v) for v in node)):
-                return "invalid waypoint"
-            if not (type(score) in (int, float) and math.isfinite(score) and 0 <= score <= 1):
-                return "invalid confidence value"
-        return None
-
-    # ---- C7 -------------------------------------------------------------------
     def _shortcut(self, points):
         if len(points) <= 2:
             return list(points)
@@ -136,14 +168,9 @@ class Ours(LLMAStar):
             j = len(points) - 1
             while j > i + 1 and self.is_collision(points[i], points[j]):
                 j -= 1
-            kept.append(points[j])  # if nothing farther is visible, keep the next one
+            kept.append(points[j])
             i = j
         return kept
-
-    def heuristic(self, s):
-        goal = math.hypot(self.s_goal[0] - s[0], self.s_goal[1] - s[1])
-        waypoint = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
-        return goal + self.waypoint_confidence[self.i] * waypoint
 
     def get_neighbor(self, s):
         # Called once per expansion with the node just popped from OPEN.
@@ -153,15 +180,14 @@ class Ours(LLMAStar):
     def _check_contradiction(self, s):
         if self.s_target == self.s_goal:
             return
-        if self.s_target != self._tracked_target:  # new waypoint: reset tracking
+        if self.s_target != self._tracked_target:
             self._tracked_target = self.s_target
             self._best_dist = math.inf
-
         dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
         if dist >= self._best_dist:
             return
         self._best_dist = dist
-        if self.is_collision(s, self.s_target):  # contradiction: drop all
+        if self.is_collision(s, self.s_target):  # ⑲: drop all remaining waypoints
             self.i = len(self.target_list) - 1
             self.s_target = self.s_goal
             self.plan_dropped = True
