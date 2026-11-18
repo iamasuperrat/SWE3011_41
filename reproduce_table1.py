@@ -67,17 +67,19 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """F2: P2 + gap-gated LLM guidance.
-    - Base: P2 heuristic, D = max(octile, wall-endpoint detour, grid portal bound).
-    - The LLM plan is shortcut and statically checked (as in C7_STATIC).
-    - Gate: if the valid plan's octile length exceeds P2's estimate D(start, goal) by more than
-      GAP, P2 is likely underestimating a multi-wall detour, so waypoint guidance is enabled
-      (h = D(s, goal) + D(s, target), with ⑲ dropping the plan on contradiction).
-      Otherwise the search is identical to P2 (goal only)."""
+    """F3: P2 + LLM upper-bound pruning.
+    - Base: P2 heuristic and goal-only search order, f = g + 2 * D(s, goal).
+    - If the shortcut LLM plan passes the static collision check, its octile length UB
+      is used as an estimated upper bound on the solution cost. A newly generated state
+      with g + D(s, goal) > UB_FACTOR * UB cannot lie on a path within that bound, so it
+      is discarded (not pushed, not stored).
+    - Since UB is only an estimate on the grid, if pruning empties the open list before
+      the goal is reached, the search is rerun without pruning; all expansions and stored
+      states of both runs are counted."""
 
     waypoint_confidence = None
     collinear = True
-    GAP = 0.05
+    UB_FACTOR = 1.1
 
     # ---- parameters ------------------------------------------------------------
     def _initialize_parameters(self, data):
@@ -91,7 +93,7 @@ class Ours(LLMAStar):
             self._walls.append((0, x, lo, hi, (x, lo), (x, hi)))
         self._endpoint_distances = {}
 
-    # ---- LLM plan and gate ---------------------------------------------------------
+    # ---- LLM plan -> upper bound ---------------------------------------------------
     def _initialize_llm_paths(self):
         super()._initialize_llm_paths()
         self.original_target_list = list(self.target_list)
@@ -99,26 +101,16 @@ class Ours(LLMAStar):
 
         self.static_plan_dropped = any(
             self.is_collision(a, b) for a, b in zip(self.target_list, self.target_list[1:]))
+        self.ub = None
+        self.ub_limit = math.inf
+        if not self.static_plan_dropped:
+            self.ub = sum(self._octile(a, b)
+                          for a, b in zip(self.target_list, self.target_list[1:]))
+            self.ub_limit = self.UB_FACTOR * self.ub
 
-        self.plan_gap = None
-        self.guided = False
-        if not self.static_plan_dropped and len(self.target_list) > 2:
-            plan_length = sum(self._octile(a, b)
-                              for a, b in zip(self.target_list, self.target_list[1:]))
-            estimate = self.distance_estimate(self.s_start, self.s_goal)
-            if estimate > 0:
-                self.plan_gap = plan_length / estimate - 1
-                self.guided = self.plan_gap > self.GAP
-
-        self._tracked_target = None
-        self._best_dist = math.inf
-        self.plan_dropped = False
-        if self.guided:
-            self.i = 1
-            self.s_target = self.target_list[self.i]
-        else:  # identical to P2
-            self.i = len(self.target_list) - 1
-            self.s_target = self.s_goal
+        # The search order is always P2's (goal only).
+        self.i = len(self.target_list) - 1
+        self.s_target = self.s_goal
 
     def _shortcut(self, points):
         if len(points) <= 2:
@@ -133,26 +125,68 @@ class Ours(LLMAStar):
             i = j
         return kept
 
-    # ---- ⑲ during guided search -------------------------------------------------------
-    def get_neighbor(self, s):
-        self._check_contradiction(s)
-        return super().get_neighbor(s)
+    # ---- search with pruning -----------------------------------------------------
+    def searching(self, query, filepath='temp.png'):
+        self.filepath = filepath
+        input_data = self._parse_query(query)
+        self._initialize_parameters(input_data)
+        self._initialize_llm_paths()
 
-    def _check_contradiction(self, s):
-        if self.s_target == self.s_goal:
-            return
-        if self.s_target != self._tracked_target:
-            self._tracked_target = self.s_target
-            self._best_dist = math.inf
-        dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
-        if dist >= self._best_dist:
-            return
-        self._best_dist = dist
-        if self.is_collision(s, self.s_target):
-            self.i = len(self.target_list) - 1
-            self.s_target = self.s_goal
-            self.plan_dropped = True
-            self._update_queue()
+        self.pruned = 0
+        self.ub_fallback = False
+        stored = {}
+        found = self._run(self.ub_limit, stored)
+        if not found and self.ub_limit < math.inf:
+            self.ub_fallback = True
+            found = self._run(math.inf, stored)
+        self.g = stored  # storage: states stored in any run
+
+        path = self.extract_path(self.PARENT)  # raises KeyError(goal) if no path, as the original
+        result = {
+            "operation": len(self.CLOSED),
+            "storage": len(self.g),
+            "length": sum(self._euclidean_distance(path[i], path[i + 1]) for i in range(len(path) - 1)),
+            "llm_output": self.target_list,
+        }
+        if self.filepath is not None:
+            self.plot.animation(path, self.CLOSED, True, "LLM-A*", self.filepath)
+        return result
+
+    def _run(self, limit, stored):
+        import heapq
+
+        g = {self.s_start: 0}
+        self.PARENT = {self.s_start: self.s_start}
+        self.g = g  # f_value reads self.g
+        closed = set()
+        open_ = [(self.f_value(self.s_start), self.s_start)]
+
+        while open_:
+            _, s = heapq.heappop(open_)
+            closed.add(s)
+            self.CLOSED.append(s)  # expansions of every run are counted
+
+            if s == self.s_goal:
+                stored.update(g)
+                return True
+
+            for s_n in self.get_neighbor(s):
+                if s_n in closed:
+                    continue
+                new_cost = g[s] + self.cost(s, s_n)
+                if (new_cost < math.inf and limit < math.inf
+                        and new_cost + self.distance_estimate(s_n, self.s_goal) > limit):
+                    self.pruned += 1  # outside the LLM bound: discard
+                    continue
+                if s_n not in g:  # keep original storage rule
+                    g[s_n] = math.inf
+                if new_cost < g[s_n]:
+                    g[s_n] = new_cost
+                    self.PARENT[s_n] = s
+                    heapq.heappush(open_, (self.f_value(s_n), s_n))
+
+        stored.update(g)
+        return False
 
     # ---- P2 geometry -------------------------------------------------------------
     @staticmethod
