@@ -67,16 +67,17 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """P2 + LLM-guided tie-breaking.
-    - Search order: f = g + 2 * D(s, goal), exactly as in P2 (waypoints never pull the search).
-    - Among states with the same f (rounded to TIE_DIGITS), the one closer to the
-      LLM polyline is expanded first.
-    - The LLM polyline is used only if, after shortcutting, it still has an intermediate
-      waypoint and passes the static collision check; otherwise the search is identical to P2."""
+    """F2: P2 + gap-gated LLM guidance.
+    - Base: P2 heuristic, D = max(octile, wall-endpoint detour, grid portal bound).
+    - The LLM plan is shortcut and statically checked (as in C7_STATIC).
+    - Gate: if the valid plan's octile length exceeds P2's estimate D(start, goal) by more than
+      GAP, P2 is likely underestimating a multi-wall detour, so waypoint guidance is enabled
+      (h = D(s, goal) + D(s, target), with ⑲ dropping the plan on contradiction).
+      Otherwise the search is identical to P2 (goal only)."""
 
     waypoint_confidence = None
     collinear = True
-    TIE_DIGITS = 9
+    GAP = 0.05
 
     # ---- parameters ------------------------------------------------------------
     def _initialize_parameters(self, data):
@@ -89,28 +90,35 @@ class Ours(LLMAStar):
             lo, hi = sorted((y0, y1))
             self._walls.append((0, x, lo, hi, (x, lo), (x, hi)))
         self._endpoint_distances = {}
-        self._guide = None
 
-    # ---- LLM plan: shortcut + static check, used only for tie-breaking -----------
+    # ---- LLM plan and gate ---------------------------------------------------------
     def _initialize_llm_paths(self):
         super()._initialize_llm_paths()
         self.original_target_list = list(self.target_list)
         self.target_list = self._shortcut(self.target_list)
 
-        self.static_plan_dropped = False
-        for a, b in zip(self.target_list, self.target_list[1:]):
-            if self.is_collision(a, b):
-                self.static_plan_dropped = True
-                break
+        self.static_plan_dropped = any(
+            self.is_collision(a, b) for a, b in zip(self.target_list, self.target_list[1:]))
 
-        # Guide only with a valid plan that still carries LLM information.
+        self.plan_gap = None
+        self.guided = False
         if not self.static_plan_dropped and len(self.target_list) > 2:
-            self._guide = list(zip(self.target_list, self.target_list[1:]))
-        self.tie_guidance = self._guide is not None
+            plan_length = sum(self._octile(a, b)
+                              for a, b in zip(self.target_list, self.target_list[1:]))
+            estimate = self.distance_estimate(self.s_start, self.s_goal)
+            if estimate > 0:
+                self.plan_gap = plan_length / estimate - 1
+                self.guided = self.plan_gap > self.GAP
 
-        # The search itself always targets the goal (as in P2).
-        self.i = len(self.target_list) - 1
-        self.s_target = self.s_goal
+        self._tracked_target = None
+        self._best_dist = math.inf
+        self.plan_dropped = False
+        if self.guided:
+            self.i = 1
+            self.s_target = self.target_list[self.i]
+        else:  # identical to P2
+            self.i = len(self.target_list) - 1
+            self.s_target = self.s_goal
 
     def _shortcut(self, points):
         if len(points) <= 2:
@@ -125,24 +133,26 @@ class Ours(LLMAStar):
             i = j
         return kept
 
-    @staticmethod
-    def _segment_distance(p, a, b):
-        ax, ay = a
-        dx, dy = b[0] - ax, b[1] - ay
-        length2 = dx * dx + dy * dy
-        if length2 == 0:
-            return math.hypot(p[0] - ax, p[1] - ay)
-        t = max(0.0, min(1.0, ((p[0] - ax) * dx + (p[1] - ay) * dy) / length2))
-        return math.hypot(p[0] - (ax + t * dx), p[1] - (ay + t * dy))
+    # ---- ⑲ during guided search -------------------------------------------------------
+    def get_neighbor(self, s):
+        self._check_contradiction(s)
+        return super().get_neighbor(s)
 
-    def _guide_distance(self, s):
-        return min(self._segment_distance(s, a, b) for a, b in self._guide)
-
-    def f_value(self, s):
-        f = self.g[s] + self.heuristic(s)
-        if self._guide is None:
-            return f  # identical to P2
-        return (round(f, self.TIE_DIGITS), self._guide_distance(s))
+    def _check_contradiction(self, s):
+        if self.s_target == self.s_goal:
+            return
+        if self.s_target != self._tracked_target:
+            self._tracked_target = self.s_target
+            self._best_dist = math.inf
+        dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
+        if dist >= self._best_dist:
+            return
+        self._best_dist = dist
+        if self.is_collision(s, self.s_target):
+            self.i = len(self.target_list) - 1
+            self.s_target = self.s_goal
+            self.plan_dropped = True
+            self._update_queue()
 
     # ---- P2 geometry -------------------------------------------------------------
     @staticmethod
