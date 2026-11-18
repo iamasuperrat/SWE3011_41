@@ -67,29 +67,148 @@ class CachedModel:
 
 
 class Ours(LLMAStar):
-    """C7_STATIC + G2_GOAL geometry heuristic, keeping LLM waypoints.
-    - Distance estimate D(s, t): octile distance, raised to the shortest detour around
-      the end of any wall crossed by the straight line s -> t (geometric, no grid search).
-    - Heuristic: D(s, goal) + D(s, target); 2 * D(s, goal) when the target is the goal.
-    - LLM plan: shortcut before the search, static contradiction check before the search,
-      and ⑲ (drop all remaining waypoints on contradiction) during the search."""
+    """G2_BOUNDARY: retain LLM waypoints and use grid/boundary detour bounds."""
 
     waypoint_confidence = None
 
-    # ---- geometry heuristic (from G2_GOAL) ----------------------------------
+    @staticmethod
+    def _normalize_query(query):
+        if not isinstance(query, dict):
+            raise ValueError('The parsed query must be a JSON object')
+        result = deepcopy(query)
+
+        def integers(value, length, field):
+            if not isinstance(value, (list, tuple)) or len(value) != length:
+                raise ValueError(f'{field} must contain {length} integers')
+            if any(type(v) not in (int, float) or not math.isfinite(v) or int(v) != v for v in value):
+                raise ValueError(f'{field} must use finite integer grid coordinates')
+            return [int(v) for v in value]
+
+        for field in ('start', 'goal', 'range_x', 'range_y'):
+            result[field] = integers(result.get(field), 2, field)
+        for field in ('horizontal_barriers', 'vertical_barriers'):
+            if not isinstance(result.get(field), (list, tuple)):
+                raise ValueError(f'{field} must be a list of wall segments')
+            result[field] = [integers(w, 3, field) for w in result[field]]
+        for field in ('range_x', 'range_y'):
+            low, high = result[field]
+            if high - low < 3:
+                raise ValueError(f'{field} must enclose an interior grid cell')
+        for field in ('start', 'goal'):
+            x, y = result[field]
+            if not (result['range_x'][0] < x < result['range_x'][1] - 1
+                    and result['range_y'][0] < y < result['range_y'][1] - 1):
+                raise ValueError(f'{field} must lie inside the original grid boundaries')
+            if (any(y == wy and min(a, b) <= x <= max(a, b)
+                    for wy, a, b in result['horizontal_barriers'])
+                    or any(x == wx and min(a, b) <= y <= max(a, b)
+                           for wx, a, b in result['vertical_barriers'])):
+                raise ValueError(f'{field} lies on a closed wall segment')
+        return result
+
+    def searching(self, query, filepath='temp.png'):
+        data = self._normalize_query(self._parse_query(deepcopy(query)))
+        self.path_found = None
+        if data['start'] == data['goal']:
+            self.filepath = filepath
+            self._initialize_parameters(data)
+            self.target_list = [self.s_start]
+            self.i, self.s_target = 0, self.s_goal
+            self.PARENT[self.s_start] = self.s_start
+            self.g[self.s_start] = 0
+            self.CLOSED.append(self.s_start)
+            self.path_found = True
+            return {'operation': 1, 'storage': 1, 'length': 0.0,
+                    'llm_output': self.target_list}
+        try:
+            result = super().searching(data, filepath=filepath)
+        except KeyError as error:
+            if (error.args != (tuple(data['goal']),)
+                    or not hasattr(self, 'PARENT') or tuple(data['goal']) in self.PARENT):
+                raise
+            self.path_found = False
+            return {'operation': len(self.CLOSED), 'storage': len(self.g),
+                    'length': None, 'llm_output': self.target_list}
+        self.path_found = True
+        return result
+
+    def extract_path(self, parent):
+        if getattr(self, 'path_found', None) is False:
+            return []
+        return super().extract_path(parent)
+
     def _initialize_parameters(self, data):
         super()._initialize_parameters(data)
         self._walls = []
-        for y, x0, x1 in self.horizontal_barriers:
-            lo, hi = sorted((x0, x1))
+        for y, a, b in self.horizontal_barriers:
+            lo, hi = sorted((a, b))
             self._walls.append((1, y, lo, hi, (lo, y), (hi, y)))
-        for x, y0, y1 in self.vertical_barriers:
-            lo, hi = sorted((y0, y1))
+        for x, a, b in self.vertical_barriers:
+            lo, hi = sorted((a, b))
             self._walls.append((0, x, lo, hi, (x, lo), (x, hi)))
         self._endpoint_distances = {}
-        self._heuristic_calls = 0
-        self._wall_checks = 0
-        self._blocking_walls = 0
+        self._tracked_target = None
+        self._best_dist = math.inf
+        self.plan_dropped = False
+        self.static_plan_dropped = False
+
+    def _initialize_llm_paths(self):
+        start, goal = list(self.s_start), list(self.s_goal)
+        query = self._generate_llm_query(start, goal)
+        if self.llm == 'gpt':
+            response = self.model.ask(prompt=query, max_tokens=1000, stop=None)
+        else:
+            response = self.model.ask(prompt=query)
+        nodes = list_parse(response) if isinstance(response, str) else []
+        self.target_list = self._filter_valid_nodes(nodes)
+        if not self.target_list or self.target_list[0] != self.s_start:
+            self.target_list.insert(0, self.s_start)
+        if self.target_list[-1] != self.s_goal:
+            self.target_list.append(self.s_goal)
+        self.original_target_list = list(self.target_list)
+        self.target_list = self._shortcut(self.target_list)
+        self.i = 1
+        self.s_target = self.target_list[self.i]
+        for a, b in zip(self.target_list, self.target_list[1:]):
+            if self.is_collision(a, b):
+                self.i = len(self.target_list) - 1
+                self.s_target = self.s_goal
+                self.plan_dropped = True
+                self.static_plan_dropped = True
+                break
+
+    def _shortcut(self, points):
+        if len(points) <= 2:
+            return list(points)
+        kept = [points[0]]
+        i = 0
+        while i < len(points) - 1:
+            j = len(points) - 1
+            while j > i + 1 and self.is_collision(points[i], points[j]):
+                j -= 1
+            kept.append(points[j])
+            i = j
+        return kept
+
+    def get_neighbor(self, s):
+        self._check_contradiction(s)
+        return super().get_neighbor(s)
+
+    def _check_contradiction(self, s):
+        if self.s_target == self.s_goal:
+            return
+        if self.s_target != self._tracked_target:
+            self._tracked_target = self.s_target
+            self._best_dist = math.inf
+        distance = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
+        if distance >= self._best_dist:
+            return
+        self._best_dist = distance
+        if self.is_collision(s, self.s_target):
+            self.i = len(self.target_list) - 1
+            self.s_target = self.s_goal
+            self.plan_dropped = True
+            self._update_queue()
 
     @staticmethod
     def _octile(a, b):
@@ -109,89 +228,47 @@ class Ours(LLMAStar):
         numerator = a[other] * delta + (coordinate - da) * (b[other] - a[other])
         return min(lo * delta, hi * delta) <= numerator <= max(lo * delta, hi * delta)
 
-    def _distance_estimate(self, s, target):
-        bound = self._octile(s, target)
-        if s == target:
-            return bound
-        if target not in self._endpoint_distances:
-            self._endpoint_distances[target] = [
-                (math.dist(a, target), math.dist(b, target))
-                for _, _, _, _, a, b in self._walls
-            ]
-        for wall, (a_to_t, b_to_t) in zip(self._walls, self._endpoint_distances[target]):
-            axis, coordinate, lo, hi, a, b = wall
-            self._wall_checks += 1
-            if self._crosses_wall(s, target, axis, coordinate, lo, hi):
-                self._blocking_walls += 1
-                bound = max(bound, min(math.dist(s, a) + a_to_t, math.dist(s, b) + b_to_t))
+    def _inside(self, point):
+        return (self.range_x[0] < point[0] < self.range_x[1]
+                and self.range_y[0] < point[1] < self.range_y[1])
+
+    def _portal_bound(self, s, target):
+        if not all(float(v).is_integer() for v in (*s, *target)):
+            return 0.0
+        bound = 0.0
+        for axis, coordinate, lo, hi, _, _ in self._walls:
+            if (lo >= hi or not all(float(v).is_integer() for v in (coordinate, lo, hi))
+                    or not self._crosses_wall(s, target, axis, coordinate, lo, hi)):
+                continue
+            if (s[axis] - coordinate) * (target[axis] - coordinate) < 0:
+                if axis == 0:
+                    candidates = ((coordinate, lo - 1), (coordinate, hi + 1))
+                else:
+                    candidates = ((lo - 1, coordinate), (hi + 1, coordinate))
+                costs = [self._octile(s, p) + self._octile(p, target)
+                         for p in candidates if self._inside(p)]
+                if costs:
+                    bound = max(bound, min(costs))
         return bound
 
+    def distance_estimate(self, s, target):
+        bound = self._octile(s, target)
+        if s != target:
+            if target not in self._endpoint_distances:
+                self._endpoint_distances[target] = [
+                    (math.dist(a, target), math.dist(b, target))
+                    for _, _, _, _, a, b in self._walls]
+            for wall, (a_to_t, b_to_t) in zip(self._walls, self._endpoint_distances[target]):
+                axis, coordinate, lo, hi, a, b = wall
+                if self._crosses_wall(s, target, axis, coordinate, lo, hi):
+                    bound = max(bound, min(math.dist(s, a) + a_to_t,
+                                           math.dist(s, b) + b_to_t))
+        return max(bound, self._portal_bound(s, target))
+
     def heuristic(self, s):
-        self._heuristic_calls += 1
-        goal = self._distance_estimate(s, self.s_goal)
-        if self.s_target == self.s_goal:
-            return goal + goal
-        return goal + self._distance_estimate(s, self.s_target)
-
-    # ---- C7_STATIC ------------------------------------------------------------
-    def _initialize_llm_paths(self):
-        super()._initialize_llm_paths()
-        self.original_target_list = list(self.target_list)
-        self.target_list = self._shortcut(self.target_list)
-        self.i = 1
-        self.s_target = self.target_list[self.i]
-
-        self._tracked_target = None
-        self._best_dist = math.inf
-        self.plan_dropped = False
-        self.static_plan_dropped = False
-        self.static_segments_checked = 0
-        self.static_first_conflict = None
-
-        # Static check of the shortcut plan before the search.
-        for a, b in zip(self.target_list, self.target_list[1:]):
-            self.static_segments_checked += 1
-            if self.is_collision(a, b):
-                self.i = len(self.target_list) - 1
-                self.s_target = self.s_goal
-                self.plan_dropped = True
-                self.static_plan_dropped = True
-                self.static_first_conflict = [a, b]
-                break
-
-    def _shortcut(self, points):
-        if len(points) <= 2:
-            return list(points)
-        kept = [points[0]]
-        i = 0
-        while i < len(points) - 1:
-            j = len(points) - 1
-            while j > i + 1 and self.is_collision(points[i], points[j]):
-                j -= 1
-            kept.append(points[j])
-            i = j
-        return kept
-
-    def get_neighbor(self, s):
-        # Called once per expansion with the node just popped from OPEN.
-        self._check_contradiction(s)
-        return super().get_neighbor(s)
-
-    def _check_contradiction(self, s):
-        if self.s_target == self.s_goal:
-            return
-        if self.s_target != self._tracked_target:
-            self._tracked_target = self.s_target
-            self._best_dist = math.inf
-        dist = math.hypot(self.s_target[0] - s[0], self.s_target[1] - s[1])
-        if dist >= self._best_dist:
-            return
-        self._best_dist = dist
-        if self.is_collision(s, self.s_target):  # ⑲: drop all remaining waypoints
-            self.i = len(self.target_list) - 1
-            self.s_target = self.s_goal
-            self.plan_dropped = True
-            self._update_queue()
+        goal = self.distance_estimate(s, self.s_goal)
+        return goal + (goal if self.s_target == self.s_goal
+                       else self.distance_estimate(s, self.s_target))
 
 def valid_length(nodes, planner):
     """Evaluate the raw LLM polyline without filtering/repairing its nodes."""
