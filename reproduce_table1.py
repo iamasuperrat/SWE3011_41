@@ -77,7 +77,7 @@ class Ours(LLMAStar):
 
     waypoint_confidence = None
     collinear = True
-    UB_FACTOR = 1.1
+    UB_FACTOR = 1.05
     MAX_DEPTH = 6
     MAX_INSERT = 8
 
