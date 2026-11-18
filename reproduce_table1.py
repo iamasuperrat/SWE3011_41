@@ -81,6 +81,8 @@ class Ours(LLMAStar):
     MAX_DEPTH = 6
     MAX_INSERT = 8
     UB_TOL = 1e-9 # 실현 가능한 상한의 부동소수점 허용 오차
+    DELTA = 0.01       # LLM 경로 채택 허용 비율: 하한의 (1 + DELTA)배 이내면 채택
+    DYNAMIC = True     # 탐색 중 하한으로도 채택 여부를 판정할지
 
     # ---- parameters ------------------------------------------------------------
     def _initialize_parameters(self, data):
@@ -109,15 +111,15 @@ class Ours(LLMAStar):
             self.ub_plan = self._repair(self.target_list)
             self.plan_repaired = self.ub_plan is not None
 
-        # F7: an upper bound from a path that actually exists on the grid, if possible.
         self.ub = None
         self.ub_limit = math.inf
         self.ub_feasible = False
+        self.ub_path = None
         if self.ub_plan is not None:
             traced = self._trace(self.ub_plan)
-            if traced is not None:  # real grid path: no slack needed
-                self.ub = traced
-                self.ub_limit = traced + self.UB_TOL
+            if traced is not None:  # real grid path
+                self.ub, self.ub_path = traced
+                self.ub_limit = self.ub + self.UB_TOL
                 self.ub_feasible = True
             else:  # not traceable: F5-style slack
                 self.ub = sum(self._octile(a, b) for a, b in zip(self.ub_plan, self.ub_plan[1:]))
@@ -127,26 +129,35 @@ class Ours(LLMAStar):
         self.i = len(self.target_list) - 1
         self.s_target = self.s_goal
     
-# ---- F7: trace the plan on the 8-connected grid ---------------------------------
     def _trace(self, plan):
-        """Follow each plan segment with 8-connected moves along the straight line.
-        Returns the length of this grid path if every move is collision-free, else None."""
-        if not all(float(v).is_integer() for p in plan for v in p):
-            return None
-        length = 0.0
-        for a, b in zip(plan, plan[1:]):
-            a = (int(a[0]), int(a[1]))
-            b = (int(b[0]), int(b[1]))
-            dx, dy = b[0] - a[0], b[1] - a[1]
-            n = max(abs(dx), abs(dy))
-            prev = a
-            for k in range(1, n + 1):
-                cur = (a[0] + round(k * dx / n), a[1] + round(k * dy / n))
-                if cur in self.obs or self.is_collision(prev, cur):
-                    return None
-                length += self.cost(prev, cur)
-                prev = cur
-        return length
+            """Follow each plan segment with 8-connected moves along the straight line.
+            Returns (length, path) of this grid path if every move is collision-free, else None."""
+            if not all(float(v).is_integer() for p in plan for v in p):
+                return None
+            path = [(int(plan[0][0]), int(plan[0][1]))]
+            for a, b in zip(plan, plan[1:]):
+                a = (int(a[0]), int(a[1]))
+                b = (int(b[0]), int(b[1]))
+                dx, dy = b[0] - a[0], b[1] - a[1]
+                n = max(abs(dx), abs(dy))
+                prev = a
+                for k in range(1, n + 1):
+                    cur = (a[0] + round(k * dx / n), a[1] + round(k * dy / n))
+                    if cur in self.obs or self.is_collision(prev, cur):
+                        return None
+                    path.append(cur)
+                    prev = cur
+            # Remove loops: if a cell is revisited, cut the path back to its first visit.
+            cleaned, index = [], {}
+            for p in path:
+                if p in index:
+                    del cleaned[index[p] + 1:]
+                    index = {q: i for i, q in enumerate(cleaned)}
+                else:
+                    index[p] = len(cleaned)
+                    cleaned.append(p)
+            length = sum(self.cost(p, q) for p, q in zip(cleaned, cleaned[1:]))
+            return length, cleaned
 
     def _shortcut(self, points):
         if len(points) <= 2:
@@ -223,12 +234,21 @@ class Ours(LLMAStar):
 
         self.pruned = 0
         self.ub_fallback = False
+        self.adopted = None
         stored = {}
-        found = self._run(self.ub_limit, stored)
-        if not found and self.ub_limit < math.inf:
-            self.ub_fallback = True
-            found = self._run(math.inf, stored)
-        self.g = stored  # storage: states stored in any run
+
+        lower = self.distance_estimate(self.s_start, self.s_goal)
+        if self.ub_path is not None and self.ub <= (1 + self.DELTA) * lower + self.UB_TOL:
+            # The LLM path is already within (1 + DELTA) of a lower bound: adopt without search.
+            self._adopt(stored, 'static')
+        else:
+            status = self._run(self.ub_limit, stored)
+            if status == 'fail' and self.ub_path is not None:
+                self._adopt(stored, 'exhausted')  # pruning emptied OPEN: the LLM path still exists
+            elif status == 'fail' and self.ub_limit < math.inf:
+                self.ub_fallback = True
+                self._run(math.inf, stored)
+        self.g = stored  # storage: states stored in any run or on the adopted path
 
         path = self.extract_path(self.PARENT)  # raises KeyError(goal) if no path, as the original
         result = {
@@ -250,32 +270,59 @@ class Ours(LLMAStar):
         closed = set()
         open_ = [(self.f_value(self.s_start), self.s_start)]
 
+        check = self.DYNAMIC and self.ub_path is not None
+        lb_heap = [(self.distance_estimate(self.s_start, self.s_goal), 0, self.s_start)]
+
         while open_:
+            if check:
+                # Lower bound: smallest g + D(s, goal) among live open states.
+                while lb_heap and (lb_heap[0][2] in closed or g.get(lb_heap[0][2]) != lb_heap[0][1]):
+                    heapq.heappop(lb_heap)
+                if lb_heap and self.ub <= (1 + self.DELTA) * lb_heap[0][0] + self.UB_TOL:
+                    stored.update(g)
+                    self._adopt(stored, 'dynamic')
+                    return 'adopt'
+
             _, s = heapq.heappop(open_)
             closed.add(s)
             self.CLOSED.append(s)  # expansions of every run are counted
 
             if s == self.s_goal:
                 stored.update(g)
-                return True
+                return 'goal'
 
             for s_n in self.get_neighbor(s):
                 if s_n in closed:
                     continue
                 new_cost = g[s] + self.cost(s, s_n)
-                if (new_cost < math.inf and limit < math.inf
-                        and new_cost + self.distance_estimate(s_n, self.s_goal) > limit):
-                    self.pruned += 1  # outside the LLM bound: discard
-                    continue
+                if new_cost < math.inf:
+                    estimate = self.distance_estimate(s_n, self.s_goal)
+                    if limit < math.inf and new_cost + estimate > limit:
+                        self.pruned += 1  # outside the LLM bound: discard
+                        continue
                 if s_n not in g:  # keep original storage rule
                     g[s_n] = math.inf
                 if new_cost < g[s_n]:
                     g[s_n] = new_cost
                     self.PARENT[s_n] = s
                     heapq.heappush(open_, (self.f_value(s_n), s_n))
+                    if check:
+                        heapq.heappush(lb_heap, (new_cost + estimate, new_cost, s_n))
 
         stored.update(g)
-        return False
+        return 'fail'
+
+    def _adopt(self, stored, how):
+        """Return the traced LLM path as the solution. Each verified move counts as one
+        operation and each path cell as stored."""
+        path = self.ub_path
+        self.adopted = how
+        self.PARENT = {path[0]: path[0]}
+        for prev, cur in zip(path, path[1:]):
+            self.PARENT[cur] = prev
+        self.CLOSED.extend(path[1:])
+        for p in path:
+            stored.setdefault(p, 0)
 
     # ---- P2 geometry -------------------------------------------------------------
     @staticmethod
