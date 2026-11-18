@@ -76,7 +76,7 @@ class Ours(LLMAStar):
     waypoint_confidence = None
     collinear = True
     UB_FACTOR = 1.02 # 격자에서 따라갈 수 없는 계획에만 적용 (F5에서 고른 값)
-    MAX_DEPTH = 4        # F8: 6. 양쪽 끝을 모두 시도하므로 분기 폭을 고려해 줄임
+    MAX_DEPTH = 6        
     MAX_INSERT = 8
     UB_TOL = 1e-9 # 실현 가능한 상한의 부동소수점 허용 오차
     DELTA = 0.01       # LLM 경로 채택 허용 비율: 하한의 (1 + DELTA)배 이내면 채택
