@@ -77,9 +77,10 @@ class Ours(LLMAStar):
 
     waypoint_confidence = None
     collinear = True
-    UB_FACTOR = 1.0
+    UB_FACTOR = 1.1
     MAX_DEPTH = 6
     MAX_INSERT = 8
+    EPS = 0.5
 
     # ---- parameters ------------------------------------------------------------
     def _initialize_parameters(self, data):
@@ -115,9 +116,37 @@ class Ours(LLMAStar):
             self.ub = sum(self._octile(a, b) for a, b in zip(self.ub_plan, self.ub_plan[1:]))
             self.ub_limit = self.UB_FACTOR * self.ub
 
+        # F6: guide with the valid (possibly repaired) plan if it carries intermediate points.
+        self._guide = None
+        if self.ub_plan is not None and len(self.ub_plan) > 2:
+            self._guide = list(zip(self.ub_plan, self.ub_plan[1:]))
+        self.tie_guidance = self._guide is not None
+
         # The search order is always P2's (goal only).
         self.i = len(self.target_list) - 1
         self.s_target = self.s_goal
+    
+    # ---- F6: near-tie window guided by the plan ------------------------------------
+    @staticmethod
+    def _segment_distance(p, a, b):
+        ax, ay = a
+        dx, dy = b[0] - ax, b[1] - ay
+        length2 = dx * dx + dy * dy
+        if length2 == 0:
+            return math.hypot(p[0] - ax, p[1] - ay)
+        t = max(0.0, min(1.0, ((p[0] - ax) * dx + (p[1] - ay) * dy) / length2))
+        return math.hypot(p[0] - (ax + t * dx), p[1] - (ay + t * dy))
+
+    def _guide_distance(self, s):
+        return min(self._segment_distance(s, a, b) for a, b in self._guide)
+
+    def f_value(self, s):
+        f = self.g[s] + self.heuristic(s)
+        if self._guide is None:
+            return f  # identical to F4
+        # States whose f falls in the same EPS-wide bucket are ordered by closeness
+        # to the plan, then by f.
+        return (math.floor(f / self.EPS), self._guide_distance(s), f)
 
     def _shortcut(self, points):
         if len(points) <= 2:
