@@ -65,21 +65,21 @@ class CachedModel:
         self.response = path.read_text(encoding="utf-8")
         return self.response
 
-
 class Ours(LLMAStar):
-    """F3: P2 + LLM upper-bound pruning.
+    """F4: F3 + plan repair for the upper bound.
     - Base: P2 heuristic and goal-only search order, f = g + 2 * D(s, goal).
-    - If the shortcut LLM plan passes the static collision check, its octile length UB
-      is used as an estimated upper bound on the solution cost. A newly generated state
-      with g + D(s, goal) > UB_FACTOR * UB cannot lie on a path within that bound, so it
-      is discarded (not pushed, not stored).
-    - Since UB is only an estimate on the grid, if pruning empties the open list before
-      the goal is reached, the search is rerun without pruning; all expansions and stored
-      states of both runs are counted."""
+    - The LLM plan is shortcut. If a segment collides, it is repaired instead of discarded:
+      the first wall it crosses is bypassed through the free cell just beyond one wall end
+      (the P2 portal cell, whichever gives the shorter octile detour), recursively.
+    - If the (possibly repaired) plan is collision-free, its octile length UB gives the
+      pruning limit UB_FACTOR * UB, as in F3. Otherwise no pruning (identical to P2).
+    - If pruning empties the open list, the search is rerun without pruning; both runs are counted."""
 
     waypoint_confidence = None
     collinear = True
     UB_FACTOR = 1.1
+    MAX_DEPTH = 6
+    MAX_INSERT = 8
 
     # ---- parameters ------------------------------------------------------------
     def _initialize_parameters(self, data):
@@ -93,7 +93,7 @@ class Ours(LLMAStar):
             self._walls.append((0, x, lo, hi, (x, lo), (x, hi)))
         self._endpoint_distances = {}
 
-    # ---- LLM plan -> upper bound ---------------------------------------------------
+    # ---- LLM plan -> (repaired) upper bound --------------------------------------------
     def _initialize_llm_paths(self):
         super()._initialize_llm_paths()
         self.original_target_list = list(self.target_list)
@@ -101,11 +101,18 @@ class Ours(LLMAStar):
 
         self.static_plan_dropped = any(
             self.is_collision(a, b) for a, b in zip(self.target_list, self.target_list[1:]))
+        self.plan_repaired = False
+        self.repair_inserted = 0
+        if not self.static_plan_dropped:
+            self.ub_plan = list(self.target_list)
+        else:
+            self.ub_plan = self._repair(self.target_list)
+            self.plan_repaired = self.ub_plan is not None
+
         self.ub = None
         self.ub_limit = math.inf
-        if not self.static_plan_dropped:
-            self.ub = sum(self._octile(a, b)
-                          for a, b in zip(self.target_list, self.target_list[1:]))
+        if self.ub_plan is not None:
+            self.ub = sum(self._octile(a, b) for a, b in zip(self.ub_plan, self.ub_plan[1:]))
             self.ub_limit = self.UB_FACTOR * self.ub
 
         # The search order is always P2's (goal only).
@@ -125,7 +132,60 @@ class Ours(LLMAStar):
             i = j
         return kept
 
-    # ---- search with pruning -----------------------------------------------------
+    # ---- plan repair ---------------------------------------------------------------
+    def _repair(self, plan):
+        budget = [self.MAX_INSERT]
+        repaired = [plan[0]]
+        for a, b in zip(plan, plan[1:]):
+            segment = self._repair_segment(a, b, budget, 0)
+            if segment is None:
+                return None
+            repaired.extend(segment[1:])
+        self.repair_inserted = self.MAX_INSERT - budget[0]
+        return repaired
+
+    def _repair_segment(self, a, b, budget, depth):
+        if not self.is_collision(a, b):
+            return [a, b]
+        if depth >= self.MAX_DEPTH or budget[0] <= 0:
+            return None
+        p = self._portal_for(a, b)
+        if p is None:
+            return None
+        budget[0] -= 1
+        left = self._repair_segment(a, p, budget, depth + 1)
+        if left is None:
+            return None
+        right = self._repair_segment(p, b, budget, depth + 1)
+        if right is None:
+            return None
+        return left + right[1:]
+
+    def _portal_for(self, a, b):
+        # The crossed wall closest to a along the segment.
+        best = None
+        for axis, coordinate, lo, hi, _, _ in self._walls:
+            if a[axis] == b[axis]:  # collinear overlap: not repaired
+                continue
+            if not self._crosses_wall(a, b, axis, coordinate, lo, hi):
+                continue
+            t = (coordinate - a[axis]) / (b[axis] - a[axis])
+            if best is None or t < best[0]:
+                best = (t, axis, coordinate, lo, hi)
+        if best is None:  # collision not caused by a crossable wall (e.g. boundary)
+            return None
+        _, axis, coordinate, lo, hi = best
+        if axis == 0:
+            candidates = ((coordinate, lo - 1), (coordinate, hi + 1))
+        else:
+            candidates = ((lo - 1, coordinate), (hi + 1, coordinate))
+        options = [p for p in candidates
+                   if self._inside(p) and p not in self.obs and p not in (a, b)]
+        if not options:
+            return None
+        return min(options, key=lambda p: self._octile(a, p) + self._octile(p, b))
+
+    # ---- search with pruning (as F3) -------------------------------------------------
     def searching(self, query, filepath='temp.png'):
         self.filepath = filepath
         input_data = self._parse_query(query)
