@@ -77,10 +77,10 @@ class Ours(LLMAStar):
 
     waypoint_confidence = None
     collinear = True
-    UB_FACTOR = 1.1
+    UB_FACTOR = 1.02 # 격자에서 따라갈 수 없는 계획에만 적용 (F5에서 고른 값)
     MAX_DEPTH = 6
     MAX_INSERT = 8
-    EPS = 0.5
+    UB_TOL = 1e-9 # 실현 가능한 상한의 부동소수점 허용 오차
 
     # ---- parameters ------------------------------------------------------------
     def _initialize_parameters(self, data):
@@ -94,7 +94,6 @@ class Ours(LLMAStar):
             self._walls.append((0, x, lo, hi, (x, lo), (x, hi)))
         self._endpoint_distances = {}
 
-    # ---- LLM plan -> (repaired) upper bound --------------------------------------------
     def _initialize_llm_paths(self):
         super()._initialize_llm_paths()
         self.original_target_list = list(self.target_list)
@@ -110,43 +109,44 @@ class Ours(LLMAStar):
             self.ub_plan = self._repair(self.target_list)
             self.plan_repaired = self.ub_plan is not None
 
+        # F7: an upper bound from a path that actually exists on the grid, if possible.
         self.ub = None
         self.ub_limit = math.inf
+        self.ub_feasible = False
         if self.ub_plan is not None:
-            self.ub = sum(self._octile(a, b) for a, b in zip(self.ub_plan, self.ub_plan[1:]))
-            self.ub_limit = self.UB_FACTOR * self.ub
-
-        # F6: guide with the valid (possibly repaired) plan if it carries intermediate points.
-        self._guide = None
-        if self.ub_plan is not None and len(self.ub_plan) > 2:
-            self._guide = list(zip(self.ub_plan, self.ub_plan[1:]))
-        self.tie_guidance = self._guide is not None
+            traced = self._trace(self.ub_plan)
+            if traced is not None:  # real grid path: no slack needed
+                self.ub = traced
+                self.ub_limit = traced + self.UB_TOL
+                self.ub_feasible = True
+            else:  # not traceable: F5-style slack
+                self.ub = sum(self._octile(a, b) for a, b in zip(self.ub_plan, self.ub_plan[1:]))
+                self.ub_limit = self.UB_FACTOR * self.ub
 
         # The search order is always P2's (goal only).
         self.i = len(self.target_list) - 1
         self.s_target = self.s_goal
     
-    # ---- F6: near-tie window guided by the plan ------------------------------------
-    @staticmethod
-    def _segment_distance(p, a, b):
-        ax, ay = a
-        dx, dy = b[0] - ax, b[1] - ay
-        length2 = dx * dx + dy * dy
-        if length2 == 0:
-            return math.hypot(p[0] - ax, p[1] - ay)
-        t = max(0.0, min(1.0, ((p[0] - ax) * dx + (p[1] - ay) * dy) / length2))
-        return math.hypot(p[0] - (ax + t * dx), p[1] - (ay + t * dy))
-
-    def _guide_distance(self, s):
-        return min(self._segment_distance(s, a, b) for a, b in self._guide)
-
-    def f_value(self, s):
-        f = self.g[s] + self.heuristic(s)
-        if self._guide is None:
-            return f  # identical to F4
-        # States whose f falls in the same EPS-wide bucket are ordered by closeness
-        # to the plan, then by f.
-        return (math.floor(f / self.EPS), self._guide_distance(s), f)
+# ---- F7: trace the plan on the 8-connected grid ---------------------------------
+    def _trace(self, plan):
+        """Follow each plan segment with 8-connected moves along the straight line.
+        Returns the length of this grid path if every move is collision-free, else None."""
+        if not all(float(v).is_integer() for p in plan for v in p):
+            return None
+        length = 0.0
+        for a, b in zip(plan, plan[1:]):
+            a = (int(a[0]), int(a[1]))
+            b = (int(b[0]), int(b[1]))
+            dx, dy = b[0] - a[0], b[1] - a[1]
+            n = max(abs(dx), abs(dy))
+            prev = a
+            for k in range(1, n + 1):
+                cur = (a[0] + round(k * dx / n), a[1] + round(k * dy / n))
+                if cur in self.obs or self.is_collision(prev, cur):
+                    return None
+                length += self.cost(prev, cur)
+                prev = cur
+        return length
 
     def _shortcut(self, points):
         if len(points) <= 2:
