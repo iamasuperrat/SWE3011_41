@@ -66,21 +66,19 @@ class CachedModel:
         return self.response
 
 class Ours(LLMAStar):
-    """F8: P2 heuristic + LLM upper bound + early adoption.
-    - Search order: f = g + 2 * D(s, goal), D = max(octile, wall-endpoint detour, portal bound).
-    - LLM plan: shortcut; if a segment collides, repair it through wall-end portal cells.
-    - Upper bound: if the plan can be traced on the grid, the traced length (no slack);
-      otherwise UB_FACTOR * octile length. States with g + D > bound are pruned.
-    - Early adoption: the traced LLM path is returned when it is within (1 + DELTA) of the
-      lower bound D(start, goal) (before search) or of min(g + D) over OPEN (during search),
-      or when pruning empties OPEN."""
+    """F9: F8 with a tighter upper-bound path.
+    - Plan repair tries both ends of each crossed wall and keeps the shorter repaired plan.
+    - The traced grid path is tightened: from each kept cell, jump to the farthest later
+      turning point reachable by a collision-free 8-connected straight line.
+    - Pruning and early adoption are as in F8, using the tightened path and length."""
 
     waypoint_confidence = None  # recorded by main()
     UB_FACTOR = 1.02
     UB_TOL = 1e-9
     DELTA = 0.01
-    MAX_DEPTH = 6
+    MAX_DEPTH = 4
     MAX_INSERT = 8
+    TIGHTEN_ROUNDS = 3
 
     def _initialize_parameters(self, data):
         super()._initialize_parameters(data)
@@ -124,33 +122,40 @@ class Ours(LLMAStar):
         return kept
 
     def _repair(self, plan):
-        budget = [self.MAX_INSERT]
+        self._repair_memo = {}
         repaired = [plan[0]]
         for a, b in zip(plan, plan[1:]):
-            segment = self._repair_segment(a, b, budget, 0)
+            segment = self._repair_segment(a, b, 0)
             if segment is None:
                 return None
             repaired.extend(segment[1:])
-        return repaired
+        return None if len(repaired) - len(plan) > self.MAX_INSERT else repaired
 
-    def _repair_segment(self, a, b, budget, depth):
+    def _repair_segment(self, a, b, depth):
+        key = (a, b, depth)
+        if key in self._repair_memo:
+            return self._repair_memo[key]
         if not self.is_collision(a, b):
-            return [a, b]
-        if depth >= self.MAX_DEPTH or budget[0] <= 0:
-            return None
-        p = self._portal_for(a, b)
-        if p is None:
-            return None
-        budget[0] -= 1
-        left = self._repair_segment(a, p, budget, depth + 1)
-        if left is None:
-            return None
-        right = self._repair_segment(p, b, budget, depth + 1)
-        if right is None:
-            return None
-        return left + right[1:]
+            best = [a, b]
+        elif depth >= self.MAX_DEPTH:
+            best = None
+        else:
+            best, best_length = None, math.inf
+            for p in self._portal_options(a, b):
+                left = self._repair_segment(a, p, depth + 1)
+                if left is None:
+                    continue
+                right = self._repair_segment(p, b, depth + 1)
+                if right is None:
+                    continue
+                candidate = left + right[1:]
+                length = sum(self._octile(u, v) for u, v in zip(candidate, candidate[1:]))
+                if length < best_length:
+                    best, best_length = candidate, length
+        self._repair_memo[key] = best
+        return best
 
-    def _portal_for(self, a, b):
+    def _portal_options(self, a, b):
         best = None  # the crossed wall closest to a
         for axis, coordinate, lo, hi, _, _ in self._walls:
             if a[axis] == b[axis] or not self._crosses_wall(a, b, axis, coordinate, lo, hi):
@@ -159,35 +164,31 @@ class Ours(LLMAStar):
             if best is None or t < best[0]:
                 best = (t, axis, coordinate, lo, hi)
         if best is None:
-            return None
+            return []
         _, axis, coordinate, lo, hi = best
         if axis == 0:
             candidates = ((coordinate, lo - 1), (coordinate, hi + 1))
         else:
             candidates = ((lo - 1, coordinate), (hi + 1, coordinate))
-        options = [p for p in candidates
-                   if self._inside(p) and p not in self.obs and p not in (a, b)]
-        if not options:
-            return None
-        return min(options, key=lambda p: self._octile(a, p) + self._octile(p, b))
+        return [p for p in candidates
+                if self._inside(p) and p not in self.obs and p not in (a, b)]
 
-    def _trace(self, plan):
-        """(length, path) of the 8-connected grid path along the plan, or None if any move collides."""
-        if not all(float(v).is_integer() for p in plan for v in p):
-            return None
-        path = [(int(plan[0][0]), int(plan[0][1]))]
-        for a, b in zip(plan, plan[1:]):
-            a, b = (int(a[0]), int(a[1])), (int(b[0]), int(b[1]))
-            dx, dy = b[0] - a[0], b[1] - a[1]
-            n = max(abs(dx), abs(dy))
-            prev = a
-            for k in range(1, n + 1):
-                cur = (a[0] + round(k * dx / n), a[1] + round(k * dy / n))
-                if cur in self.obs or self.is_collision(prev, cur):
-                    return None
-                path.append(cur)
-                prev = cur
-        cleaned, index = [], {}  # remove loops
+    def _trace_segment(self, a, b):
+        a, b = (int(a[0]), int(a[1])), (int(b[0]), int(b[1]))
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        n = max(abs(dx), abs(dy))
+        cells, prev = [a], a
+        for k in range(1, n + 1):
+            cur = (a[0] + round(k * dx / n), a[1] + round(k * dy / n))
+            if cur in self.obs or self.is_collision(prev, cur):
+                return None
+            cells.append(cur)
+            prev = cur
+        return cells
+
+    @staticmethod
+    def _remove_loops(path):
+        cleaned, index = [], {}
         for p in path:
             if p in index:
                 del cleaned[index[p] + 1:]
@@ -195,7 +196,51 @@ class Ours(LLMAStar):
             else:
                 index[p] = len(cleaned)
                 cleaned.append(p)
-        return sum(self.cost(p, q) for p, q in zip(cleaned, cleaned[1:])), cleaned
+        return cleaned
+
+    def _path_length(self, path):
+        return sum(self.cost(p, q) for p, q in zip(path, path[1:]))
+
+    def _tighten(self, path):
+        if len(path) <= 2:
+            return list(path)
+        corners = [0] + [
+            k for k in range(1, len(path) - 1)
+            if (path[k][0] - path[k - 1][0], path[k][1] - path[k - 1][1])
+            != (path[k + 1][0] - path[k][0], path[k + 1][1] - path[k][1])
+        ] + [len(path) - 1]
+        result, i = [path[0]], 0
+        while i < len(path) - 1:
+            for j in reversed([k for k in corners if k > i]):
+                segment = self._trace_segment(path[i], path[j])
+                if segment is not None:
+                    result.extend(segment[1:])
+                    i = j
+                    break
+            else:
+                result.append(path[i + 1])
+                i += 1
+        return self._remove_loops(result)
+
+    def _trace(self, plan):
+        """(length, path) of the tightened grid path along the plan, or None if it cannot be traced."""
+        if not all(float(v).is_integer() for p in plan for v in p):
+            return None
+        path = [(int(plan[0][0]), int(plan[0][1]))]
+        for a, b in zip(plan, plan[1:]):
+            segment = self._trace_segment(a, b)
+            if segment is None:
+                return None
+            path.extend(segment[1:])
+        path = self._remove_loops(path)
+        length = self._path_length(path)
+        for _ in range(self.TIGHTEN_ROUNDS):
+            tighter = self._tighten(path)
+            tighter_length = self._path_length(tighter)
+            if tighter_length >= length - self.UB_TOL:
+                break
+            path, length = tighter, tighter_length
+        return length, path
 
     # ---- search ------------------------------------------------------------------
     def searching(self, query, filepath='temp.png'):
