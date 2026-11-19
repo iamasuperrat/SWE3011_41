@@ -66,24 +66,22 @@ class CachedModel:
         return self.response
 
 class Ours(LLMAStar):
-    """F9: F8 + tighter upper-bound path.
-    - Plan repair tries both ends of each crossed wall and keeps the shorter repaired plan.
-    - The traced grid path is tightened: from each kept cell, jump to the farthest later
-      turning point reachable by a collision-free 8-connected straight line (up to
-      TIGHTEN_ROUNDS rounds). Every move stays verified, so the result is a real grid path.
-    - The tightened length is the upper bound used for pruning and early adoption (as F8)."""
+    """F8: P2 heuristic + LLM upper bound + early adoption.
+    - Search order: f = g + 2 * D(s, goal), D = max(octile, wall-endpoint detour, portal bound).
+    - LLM plan: shortcut; if a segment collides, repair it through wall-end portal cells.
+    - Upper bound: if the plan can be traced on the grid, the traced length (no slack);
+      otherwise UB_FACTOR * octile length. States with g + D > bound are pruned.
+    - Early adoption: the traced LLM path is returned when it is within (1 + DELTA) of the
+      lower bound D(start, goal) (before search) or of min(g + D) over OPEN (during search),
+      or when pruning empties OPEN."""
 
-    waypoint_confidence = None
-    collinear = True
-    UB_FACTOR = 1.02 # 격자에서 따라갈 수 없는 계획에만 적용 (F5에서 고른 값)
-    MAX_DEPTH = 6        
+    waypoint_confidence = None  # recorded by main()
+    UB_FACTOR = 1.02
+    UB_TOL = 1e-9
+    DELTA = 0.01
+    MAX_DEPTH = 6
     MAX_INSERT = 8
-    UB_TOL = 1e-9 # 실현 가능한 상한의 부동소수점 허용 오차
-    DELTA = 0.01       # LLM 경로 채택 허용 비율: 하한의 (1 + DELTA)배 이내면 채택
-    DYNAMIC = True     # 탐색 중 하한으로도 채택 여부를 판정할지
-    TIGHTEN_ROUNDS = 3   # 상한 경로 단축 반복 횟수
 
-    # ---- parameters ------------------------------------------------------------
     def _initialize_parameters(self, data):
         super()._initialize_parameters(data)
         self._walls = []
@@ -95,121 +93,28 @@ class Ours(LLMAStar):
             self._walls.append((0, x, lo, hi, (x, lo), (x, hi)))
         self._endpoint_distances = {}
 
+    # ---- LLM plan -> upper bound ---------------------------------------------------
     def _initialize_llm_paths(self):
         super()._initialize_llm_paths()
-        self.original_target_list = list(self.target_list)
         self.target_list = self._shortcut(self.target_list)
+        plan = self.target_list
+        if any(self.is_collision(a, b) for a, b in zip(plan, plan[1:])):
+            plan = self._repair(plan)
 
-        self.static_plan_dropped = any(
-            self.is_collision(a, b) for a, b in zip(self.target_list, self.target_list[1:]))
-        self.plan_repaired = False
-        self.repair_inserted = 0
-        if not self.static_plan_dropped:
-            self.ub_plan = list(self.target_list)
-        else:
-            self.ub_plan = self._repair(self.target_list)
-            self.plan_repaired = self.ub_plan is not None
-
-        self.ub = None
-        self.ub_limit = math.inf
-        self.ub_feasible = False
-        self.ub_path = None
-        if self.ub_plan is not None:
-            traced = self._trace(self.ub_plan)
-            if traced is not None:  # real grid path
+        self.ub, self.ub_path, self.ub_limit = None, None, math.inf
+        if plan is not None:
+            traced = self._trace(plan)
+            if traced is not None:
                 self.ub, self.ub_path = traced
                 self.ub_limit = self.ub + self.UB_TOL
-                self.ub_feasible = True
-            else:  # not traceable: F5-style slack
-                self.ub = sum(self._octile(a, b) for a, b in zip(self.ub_plan, self.ub_plan[1:]))
+            else:
+                self.ub = sum(self._octile(a, b) for a, b in zip(plan, plan[1:]))
                 self.ub_limit = self.UB_FACTOR * self.ub
-
-        # The search order is always P2's (goal only).
-        self.i = len(self.target_list) - 1
-        self.s_target = self.s_goal
-    
-    # ---- F9: trace, then tighten the upper-bound path -------------------------------
-    def _trace_segment(self, a, b):
-        """8-connected cells along the straight line a -> b, or None if any move collides."""
-        a = (int(a[0]), int(a[1]))
-        b = (int(b[0]), int(b[1]))
-        dx, dy = b[0] - a[0], b[1] - a[1]
-        n = max(abs(dx), abs(dy))
-        cells, prev = [a], a
-        for k in range(1, n + 1):
-            cur = (a[0] + round(k * dx / n), a[1] + round(k * dy / n))
-            if cur in self.obs or self.is_collision(prev, cur):
-                return None
-            cells.append(cur)
-            prev = cur
-        return cells
-
-    @staticmethod
-    def _remove_loops(path):
-        cleaned, index = [], {}
-        for p in path:
-            if p in index:
-                del cleaned[index[p] + 1:]
-                index = {q: i for i, q in enumerate(cleaned)}
-            else:
-                index[p] = len(cleaned)
-                cleaned.append(p)
-        return cleaned
-
-    def _path_length(self, path):
-        return sum(self.cost(p, q) for p, q in zip(path, path[1:]))
-
-    def _tighten(self, path):
-        """From each kept cell, jump to the farthest later turning point reachable by a
-        traceable straight line."""
-        if len(path) <= 2:
-            return list(path)
-        corners = [0] + [
-            k for k in range(1, len(path) - 1)
-            if (path[k][0] - path[k - 1][0], path[k][1] - path[k - 1][1])
-            != (path[k + 1][0] - path[k][0], path[k + 1][1] - path[k][1])
-        ] + [len(path) - 1]
-        result, i = [path[0]], 0
-        while i < len(path) - 1:
-            for j in reversed([k for k in corners if k > i]):
-                segment = self._trace_segment(path[i], path[j])
-                if segment is not None:
-                    result.extend(segment[1:])
-                    i = j
-                    break
-            else:
-                result.append(path[i + 1])
-                i += 1
-        return self._remove_loops(result)
-
-    def _trace(self, plan):
-        """Trace the plan on the grid, then tighten it. Returns (length, path) of a
-        collision-free grid path, or None if the plan cannot be traced."""
-        if not all(float(v).is_integer() for p in plan for v in p):
-            return None
-        path = [(int(plan[0][0]), int(plan[0][1]))]
-        for a, b in zip(plan, plan[1:]):
-            segment = self._trace_segment(a, b)
-            if segment is None:
-                return None
-            path.extend(segment[1:])
-        path = self._remove_loops(path)
-        length = self._path_length(path)
-        self.trace_raw_length = length
-
-        for _ in range(self.TIGHTEN_ROUNDS):
-            tighter = self._tighten(path)
-            tighter_length = self._path_length(tighter)
-            if tighter_length >= length - self.UB_TOL:
-                break
-            path, length = tighter, tighter_length
-        return length, path
 
     def _shortcut(self, points):
         if len(points) <= 2:
             return list(points)
-        kept = [points[0]]
-        i = 0
+        kept, i = [points[0]], 0
         while i < len(points) - 1:
             j = len(points) - 1
             while j > i + 1 and self.is_collision(points[i], points[j]):
@@ -218,157 +123,154 @@ class Ours(LLMAStar):
             i = j
         return kept
 
-    # ---- F9: plan repair trying both wall ends --------------------------------------
     def _repair(self, plan):
-        self._repair_memo = {}
+        budget = [self.MAX_INSERT]
         repaired = [plan[0]]
         for a, b in zip(plan, plan[1:]):
-            segment = self._repair_segment(a, b, 0)
+            segment = self._repair_segment(a, b, budget, 0)
             if segment is None:
                 return None
             repaired.extend(segment[1:])
-        self.repair_inserted = len(repaired) - len(plan)
-        if self.repair_inserted > self.MAX_INSERT:
-            return None
         return repaired
 
-    def _repair_segment(self, a, b, depth):
-        key = (a, b, depth)
-        if key in self._repair_memo:
-            return self._repair_memo[key]
+    def _repair_segment(self, a, b, budget, depth):
         if not self.is_collision(a, b):
-            best = [a, b]
-        elif depth >= self.MAX_DEPTH:
-            best = None
-        else:
-            best, best_length = None, math.inf
-            for p in self._portal_options(a, b):  # both ends of the first crossed wall
-                left = self._repair_segment(a, p, depth + 1)
-                if left is None:
-                    continue
-                right = self._repair_segment(p, b, depth + 1)
-                if right is None:
-                    continue
-                candidate = left + right[1:]
-                length = sum(self._octile(u, v) for u, v in zip(candidate, candidate[1:]))
-                if length < best_length:
-                    best, best_length = candidate, length
-        self._repair_memo[key] = best
-        return best
+            return [a, b]
+        if depth >= self.MAX_DEPTH or budget[0] <= 0:
+            return None
+        p = self._portal_for(a, b)
+        if p is None:
+            return None
+        budget[0] -= 1
+        left = self._repair_segment(a, p, budget, depth + 1)
+        if left is None:
+            return None
+        right = self._repair_segment(p, b, budget, depth + 1)
+        if right is None:
+            return None
+        return left + right[1:]
 
-    def _portal_options(self, a, b):
-        # The crossed wall closest to a along the segment.
-        best = None
+    def _portal_for(self, a, b):
+        best = None  # the crossed wall closest to a
         for axis, coordinate, lo, hi, _, _ in self._walls:
-            if a[axis] == b[axis]:  # collinear overlap: not repaired
-                continue
-            if not self._crosses_wall(a, b, axis, coordinate, lo, hi):
+            if a[axis] == b[axis] or not self._crosses_wall(a, b, axis, coordinate, lo, hi):
                 continue
             t = (coordinate - a[axis]) / (b[axis] - a[axis])
             if best is None or t < best[0]:
                 best = (t, axis, coordinate, lo, hi)
-        if best is None:  # collision not caused by a crossable wall (e.g. boundary)
-            return []
+        if best is None:
+            return None
         _, axis, coordinate, lo, hi = best
         if axis == 0:
             candidates = ((coordinate, lo - 1), (coordinate, hi + 1))
         else:
             candidates = ((lo - 1, coordinate), (hi + 1, coordinate))
-        return [p for p in candidates
-                if self._inside(p) and p not in self.obs and p not in (a, b)]
+        options = [p for p in candidates
+                   if self._inside(p) and p not in self.obs and p not in (a, b)]
+        if not options:
+            return None
+        return min(options, key=lambda p: self._octile(a, p) + self._octile(p, b))
 
-    # ---- search with pruning (as F3) -------------------------------------------------
+    def _trace(self, plan):
+        """(length, path) of the 8-connected grid path along the plan, or None if any move collides."""
+        if not all(float(v).is_integer() for p in plan for v in p):
+            return None
+        path = [(int(plan[0][0]), int(plan[0][1]))]
+        for a, b in zip(plan, plan[1:]):
+            a, b = (int(a[0]), int(a[1])), (int(b[0]), int(b[1]))
+            dx, dy = b[0] - a[0], b[1] - a[1]
+            n = max(abs(dx), abs(dy))
+            prev = a
+            for k in range(1, n + 1):
+                cur = (a[0] + round(k * dx / n), a[1] + round(k * dy / n))
+                if cur in self.obs or self.is_collision(prev, cur):
+                    return None
+                path.append(cur)
+                prev = cur
+        cleaned, index = [], {}  # remove loops
+        for p in path:
+            if p in index:
+                del cleaned[index[p] + 1:]
+                index = {q: i for i, q in enumerate(cleaned)}
+            else:
+                index[p] = len(cleaned)
+                cleaned.append(p)
+        return sum(self.cost(p, q) for p, q in zip(cleaned, cleaned[1:])), cleaned
+
+    # ---- search ------------------------------------------------------------------
     def searching(self, query, filepath='temp.png'):
-        self.filepath = filepath
-        input_data = self._parse_query(query)
-        self._initialize_parameters(input_data)
+        self._initialize_parameters(self._parse_query(query))
         self._initialize_llm_paths()
 
-        self.pruned = 0
-        self.ub_fallback = False
-        self.adopted = None
         stored = {}
-
         lower = self.distance_estimate(self.s_start, self.s_goal)
         if self.ub_path is not None and self.ub <= (1 + self.DELTA) * lower + self.UB_TOL:
-            # The LLM path is already within (1 + DELTA) of a lower bound: adopt without search.
-            self._adopt(stored, 'static')
-        else:
-            status = self._run(self.ub_limit, stored)
-            if status == 'fail' and self.ub_path is not None:
-                self._adopt(stored, 'exhausted')  # pruning emptied OPEN: the LLM path still exists
-            elif status == 'fail' and self.ub_limit < math.inf:
-                self.ub_fallback = True
-                self._run(math.inf, stored)
-        self.g = stored  # storage: states stored in any run or on the adopted path
+            self._adopt(stored)
+        elif not self._run(self.ub_limit, stored, lower):
+            if self.ub_path is not None:
+                self._adopt(stored)
+            elif self.ub_limit < math.inf:
+                self._run(math.inf, stored, lower)
+        self.g = stored
 
-        path = self.extract_path(self.PARENT)  # raises KeyError(goal) if no path, as the original
+        path = self.extract_path(self.PARENT)
         result = {
             "operation": len(self.CLOSED),
             "storage": len(self.g),
             "length": sum(self._euclidean_distance(path[i], path[i + 1]) for i in range(len(path) - 1)),
             "llm_output": self.target_list,
         }
-        if self.filepath is not None:
-            self.plot.animation(path, self.CLOSED, True, "LLM-A*", self.filepath)
+        if filepath is not None:
+            self.plot.animation(path, self.CLOSED, True, "LLM-A*", filepath)
         return result
 
-    def _run(self, limit, stored):
+    def _run(self, limit, stored, lower):
         import heapq
 
-        g = {self.s_start: 0}
-        self.PARENT = {self.s_start: self.s_start}
-        self.g = g  # f_value reads self.g
-        closed = set()
-        open_ = [(self.f_value(self.s_start), self.s_start)]
-
-        check = self.DYNAMIC and self.ub_path is not None
-        lb_heap = [(self.distance_estimate(self.s_start, self.s_goal), 0, self.s_start)]
+        start, goal = self.s_start, self.s_goal
+        g, self.PARENT, closed = {start: 0}, {start: start}, set()
+        open_ = [(2 * lower, start)]
+        check = self.ub_path is not None
+        lb_heap = [(lower, 0, start)]
 
         while open_:
             if check:
-                # Lower bound: smallest g + D(s, goal) among live open states.
                 while lb_heap and (lb_heap[0][2] in closed or g.get(lb_heap[0][2]) != lb_heap[0][1]):
                     heapq.heappop(lb_heap)
                 if lb_heap and self.ub <= (1 + self.DELTA) * lb_heap[0][0] + self.UB_TOL:
                     stored.update(g)
-                    self._adopt(stored, 'dynamic')
-                    return 'adopt'
+                    self._adopt(stored)
+                    return True
 
             _, s = heapq.heappop(open_)
             closed.add(s)
-            self.CLOSED.append(s)  # expansions of every run are counted
-
-            if s == self.s_goal:
+            self.CLOSED.append(s)
+            if s == goal:
                 stored.update(g)
-                return 'goal'
+                return True
 
             for s_n in self.get_neighbor(s):
                 if s_n in closed:
                     continue
                 new_cost = g[s] + self.cost(s, s_n)
                 if new_cost < math.inf:
-                    estimate = self.distance_estimate(s_n, self.s_goal)
-                    if limit < math.inf and new_cost + estimate > limit:
-                        self.pruned += 1  # outside the LLM bound: discard
+                    estimate = self.distance_estimate(s_n, goal)
+                    if new_cost + estimate > limit:
                         continue
-                if s_n not in g:  # keep original storage rule
+                if s_n not in g:
                     g[s_n] = math.inf
                 if new_cost < g[s_n]:
                     g[s_n] = new_cost
                     self.PARENT[s_n] = s
-                    heapq.heappush(open_, (self.f_value(s_n), s_n))
+                    heapq.heappush(open_, (new_cost + 2 * estimate, s_n))
                     if check:
                         heapq.heappush(lb_heap, (new_cost + estimate, new_cost, s_n))
 
         stored.update(g)
-        return 'fail'
+        return False
 
-    def _adopt(self, stored, how):
-        """Return the traced LLM path as the solution. Each verified move counts as one
-        operation and each path cell as stored."""
+    def _adopt(self, stored):
         path = self.ub_path
-        self.adopted = how
         self.PARENT = {path[0]: path[0]}
         for prev, cur in zip(path, path[1:]):
             self.PARENT[cur] = prev
@@ -405,9 +307,7 @@ class Ours(LLMAStar):
             return bound
         if target not in self._endpoint_distances:
             self._endpoint_distances[target] = [
-                (math.dist(a, target), math.dist(b, target))
-                for _, _, _, _, a, b in self._walls
-            ]
+                (math.dist(a, target), math.dist(b, target)) for _, _, _, _, a, b in self._walls]
         for wall, (a_to_t, b_to_t) in zip(self._walls, self._endpoint_distances[target]):
             axis, coordinate, lo, hi, a, b = wall
             if self._crosses_wall(s, target, axis, coordinate, lo, hi):
@@ -428,7 +328,7 @@ class Ours(LLMAStar):
                          for p in candidates if self._inside(p)]
                 if costs:
                     bound = max(bound, min(costs))
-            elif self.collinear and s[axis] == target[axis] == coordinate:
+            elif s[axis] == target[axis] == coordinate:
                 other = 1 - axis
                 if min(s[other], target[other]) < lo and max(s[other], target[other]) > hi:
                     bound = max(bound, abs(s[other] - target[other]) + 2 * (math.sqrt(2) - 1))
@@ -438,9 +338,7 @@ class Ours(LLMAStar):
         return max(self._wall_bound(s, target), self._portal_bound(s, target))
 
     def heuristic(self, s):
-        goal = self.distance_estimate(s, self.s_goal)
-        return goal + (goal if self.s_target == self.s_goal
-                       else self.distance_estimate(s, self.s_target))
+        return 2 * self.distance_estimate(s, self.s_goal)
 
 def valid_length(nodes, planner):
     """Evaluate the raw LLM polyline without filtering/repairing its nodes."""
